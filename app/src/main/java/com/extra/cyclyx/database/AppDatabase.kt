@@ -1,11 +1,11 @@
-package com.extra.cyclyx.Database
+package com.extra.cyclyx.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.extra.cyclyx.Entity.Bersepeda
-import com.extra.cyclyx.Entity.Pengguna
+import com.extra.cyclyx.entity.Bersepeda
+import com.extra.cyclyx.entity.Pengguna
 
 @Database(entities = [Bersepeda::class,Pengguna::class],version = 1)
 abstract class AppDatabase : RoomDatabase(){

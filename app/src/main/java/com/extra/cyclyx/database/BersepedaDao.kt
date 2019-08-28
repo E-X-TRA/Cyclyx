@@ -1,8 +1,8 @@
-package com.extra.cyclyx.Database
+package com.extra.cyclyx.database
 
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
-import com.extra.cyclyx.Entity.Bersepeda
+import com.extra.cyclyx.entity.Bersepeda
 
 @Dao
 interface BersepedaDao {

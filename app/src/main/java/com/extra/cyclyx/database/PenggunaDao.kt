@@ -1,8 +1,8 @@
-package com.extra.cyclyx.Database
+package com.extra.cyclyx.database
 
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
-import com.extra.cyclyx.Entity.Pengguna
+import com.extra.cyclyx.entity.Pengguna
 
 @Dao
 interface PenggunaDao {

@@ -1,4 +1,4 @@
-package com.extra.cyclyx.ui.dashboard
+package com.extra.cyclyx.ui.riwayat
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.extra.cyclyx.R
 
-class DashboardFragment : Fragment() {
+class RiwayatFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-            ViewModelProviders.of(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(this, Observer {
+        homeViewModel =
+            ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_riwayat, container, false)
+        val textView: TextView = root.findViewById(R.id.text_home)
+        homeViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

@@ -1,9 +1,8 @@
-package com.extra.cyclyx.Entity
+package com.extra.cyclyx.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
 
 @Entity(tableName = "Pengguna")
 data class Pengguna(

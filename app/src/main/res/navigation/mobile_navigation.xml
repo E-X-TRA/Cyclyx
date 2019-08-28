@@ -6,20 +6,20 @@
         app:startDestination="@+id/navigation_home">
 
     <fragment
+            android:id="@+id/navigation_riwayat"
+            android:name="com.extra.cyclyx.ui.riwayat.RiwayatFragment"
+            android:label="@string/title_home"
+            tools:layout="@layout/fragment_riwayat" />
+
+    <fragment
             android:id="@+id/navigation_home"
             android:name="com.extra.cyclyx.ui.home.HomeFragment"
-            android:label="@string/title_home"
+            android:label="Home"
             tools:layout="@layout/fragment_home" />
 
     <fragment
-            android:id="@+id/navigation_dashboard"
-            android:name="com.extra.cyclyx.ui.dashboard.DashboardFragment"
-            android:label="@string/title_dashboard"
-            tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
-            android:id="@+id/navigation_notifications"
-            android:name="com.extra.cyclyx.ui.notifications.NotificationsFragment"
-            android:label="@string/title_notifications"
-            tools:layout="@layout/fragment_notifications" />
+            android:id="@+id/navigation_profil"
+            android:name="com.extra.cyclyx.ui.profil.ProfilFragment"
+            android:label="Profil Saya"
+            tools:layout="@layout/fragment_profil" />
 </navigation>
