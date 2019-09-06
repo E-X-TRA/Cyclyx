@@ -12,8 +12,7 @@
         <activity android:name=".ui.tantangan.TantanganActivity"></activity>
         <activity android:name=".ui.pendaftaran.PendaftaranActivity" />
         <activity
-                android:name=".MainActivity"
-                android:label="@string/title_activity_main">
+                android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
