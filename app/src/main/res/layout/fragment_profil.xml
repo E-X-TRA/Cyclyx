@@ -18,60 +18,67 @@
                 />
         <ImageView
                 android:id="@+id/person"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_marginTop="25dp"
                 android:src="@drawable/user"
                 android:layout_gravity="center_horizontal"/>
     </FrameLayout>
-    <GridLayout
+
+    <androidx.cardview.widget.CardView
+            app:cardCornerRadius="5dp"
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:rowCount="2"
-            android:columnCount="2"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@drawable/persegi"
-            android:layout_marginBottom="150dp">
-        <TextView
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Nama :"
-                android:textColor="@color/whiteText"/>
-        <EditText
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"/>
-        <TextView
-                android:layout_marginLeft="20dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Umur :"
-                android:textColor="@color/whiteText"/>
-        <EditText
-                android:layout_width="200dp"
-                android:layout_height="wrap_content" />
-        <TextView
-                android:layout_marginLeft="20dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Berat :"
-                android:textColor="@color/whiteText"/>
-        <EditText
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"/>
-        <TextView
-                android:layout_marginLeft="20dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Tinggi :"
-                android:textColor="@color/whiteText"/>
-        <EditText
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"/>
-    </GridLayout>
+            android:layout_marginBottom="150dp"
+            >
+        <GridLayout
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:rowCount="2"
+                android:columnCount="2"
+                android:background="@drawable/persegi">
+            <TextView
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Nama :"
+                    android:textColor="@color/whiteText"/>
+            <EditText
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                    android:layout_marginLeft="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Umur :"
+                    android:textColor="@color/whiteText"/>
+            <EditText
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content" />
+            <TextView
+                    android:layout_marginLeft="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Berat :"
+                    android:textColor="@color/whiteText"/>
+            <EditText
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                    android:layout_marginLeft="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Tinggi :"
+                    android:textColor="@color/whiteText"/>
+            <EditText
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"/>
+        </GridLayout>
 
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,20 +12,11 @@ import com.extra.cyclyx.R
 
 class ProfilFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-            ViewModelProviders.of(this).get(NotificationsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_profil, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        notificationsViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
-        return root
+        return inflater.inflate(R.layout.fragment_profil, container, false)
     }
 }
