@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "220218515591",
+    "firebase_url": "https://cyclyx-fa145.firebaseio.com",
+    "project_id": "cyclyx-fa145",
+    "storage_bucket": "cyclyx-fa145.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220218515591:android:67a40811bd339a38e01822",
+        "android_client_info": {
+          "package_name": "com.extra.cyclyx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "220218515591-4n466k1tubt69neq9lv9kr6bitfpmato.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.extra.cyclyx",
+            "certificate_hash": "9b9add64ee00a5e89faa0f55ce56f883305e2211"
+          }
+        },
+        {
+          "client_id": "220218515591-i2silo4llacdq1qtigs6itgjnkiunake.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9i6PpImf4VTUNdzAEMiNSJ6-_wM0IHEQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "220218515591-i2silo4llacdq1qtigs6itgjnkiunake.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
