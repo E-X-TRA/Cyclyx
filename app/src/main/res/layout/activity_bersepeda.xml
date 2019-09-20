@@ -1,34 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.bersepeda.BersepedaActivity">
-        <fragment
-            xmlns:map="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    <Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="PAUSE"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-    android:id="@+id/btnPause"
-    />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/btnPause"
-        android:text="STOP"
-        android:id="@+id/btnStop"
-        />
-    <TextView
-        android:layout_below="@id/btnPause"
+<com.sothree.slidinguppanel.SlidingUpPanelLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/slideuppane"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/_stopwatchTime"
-    />
-</RelativeLayout>
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:layout_gravity="bottom"
+        app:umanoFadeColor="#28000000"
+        app:umanoDragView="@id/dragview"
+        app:umanoShadowHeight="0dp"
+        app:umanoOverlay="true"
+        tools:context=".MainActivity">
+
+    <RelativeLayout
+            android:background="#EEE3C4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <fragment
+                xmlns:map="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+            android:background="#00000000"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:id="@+id/dragview"
+            android:clickable="true"
+            android:orientation="vertical">
+        <RelativeLayout
+                android:gravity="center"
+                android:background="@drawable/circle"
+                android:layout_width="match_parent"
+                android:layout_marginVertical="10sp"
+                android:layout_marginHorizontal="25sp"
+                android:layout_height="50dp">
+
+            <ImageButton
+                    android:background="@drawable/pause"
+                    android:layout_toStartOf="@id/view"
+                    android:id="@+id/imgPause"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"/>
+
+            <View
+                    android:id="@+id/view"
+                    android:layout_width="75dp"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"/>
+
+            <ImageButton
+                    android:background="@drawable/stop"
+                    android:id="@+id/imgStop"
+                    android:layout_centerInParent="true"
+                    android:layout_toEndOf="@id/view"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+            <Chronometer
+                    android:textColor="@color/whiteText"
+                    android:id="@+id/chronometer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jarak"
+                    android:textColor="#FFF"
+                    android:textSize="20sp" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kecepatan"
+                    android:textColor="#FFF"
+                    android:textSize="20sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>
