@@ -39,7 +39,6 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.firebase:firebase-auth:19.0.0'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     testImplementation 'junit:junit:4.12'
@@ -49,10 +48,11 @@ dependencies {
     implementation 'android.arch.persistence.room:runtime:1.1.1'
     kapt 'android.arch.persistence.room:compiler:1.1.1'
     implementation 'android.arch.persistence.room:rxjava2:1.1.1'
-    implementation 'com.google.android.gms:play-services-location:17.0.0'
+
     implementation 'com.beust:klaxon:5.0.1'
     implementation "org.jetbrains.anko:anko-sdk25:0.10.8"
 
     implementation 'com.sothree.slidinguppanel:library:3.4.0'
 
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:8.4.0'
 }

@@ -1,272 +1,147 @@
 package com.extra.cyclyx.ui.bersepeda
 
-import android.content.pm.PackageManager
-import android.graphics.Color
-import android.location.Location
 import android.os.Bundle
 import android.os.SystemClock
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import com.beust.klaxon.JsonArray
-import com.beust.klaxon.JsonObject
-import com.beust.klaxon.Parser
-import com.extra.cyclyx.R
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.maps.model.PolylineOptions
+import com.mapbox.android.core.permissions.PermissionsListener
+import com.mapbox.android.core.permissions.PermissionsManager
+import com.mapbox.mapboxsdk.Mapbox
+import com.mapbox.mapboxsdk.camera.CameraPosition
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
+import com.mapbox.mapboxsdk.location.LocationComponent
+import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions
+import com.mapbox.mapboxsdk.location.LocationComponentOptions
+import com.mapbox.mapboxsdk.location.OnCameraTrackingChangedListener
+import com.mapbox.mapboxsdk.location.modes.CameraMode
+import com.mapbox.mapboxsdk.location.modes.RenderMode
+import com.mapbox.mapboxsdk.maps.MapView
+import com.mapbox.mapboxsdk.maps.MapboxMap
+import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
+import com.mapbox.mapboxsdk.maps.Style
 import kotlinx.android.synthetic.main.activity_bersepeda.*
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
-import java.net.URL
 
-class BersepedaActivity : AppCompatActivity(), OnMapReadyCallback,
-    GoogleMap.OnMarkerClickListener {
-//    private lateinit var locationCallback: LocationCallback
-//    private lateinit var locationRequest: LocationRequest
-//    private var locationUpdateState = false
 
-    lateinit var markerPoints : ArrayList<LatLng>
-
-    //request code location
-    companion object {
-        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
-        private const val REQUEST_CHECK_SETTINGS = 2
+class BersepedaActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener, OnCameraTrackingChangedListener
+{
+    override fun onCameraTrackingChanged(currentMode: Int) {
+       //empty on purpose
     }
 
-    //request permission code
-    private fun setUpMap() {
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
-                LOCATION_PERMISSION_REQUEST_CODE
-            )
-            return
-        }
+    override fun onCameraTrackingDismissed() {
+        isInTrackingMode=false
+    }
 
-        map.isMyLocationEnabled = true
+    override fun onExplanationNeeded(permissionsToExplain: MutableList<String>?) {
+        Toast.makeText(this, "Location Permission Needed", Toast.LENGTH_LONG).show();
+    }
 
-        fusedLocationProviderClient.lastLocation.addOnSuccessListener(this) { location ->
-            if (location != null) {
-                lastLocation = location
-                val currentLatLng = LatLng(location.latitude, location.longitude)
-                placeMarkerOnMap(currentLatLng)
-                map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 20f))
+    override fun onPermissionResult(granted: Boolean) {
+        if(granted){
+            Toast.makeText(this,"Permission granted",Toast.LENGTH_LONG).show()
+            mapboxMap.getStyle {
+                enableLocationComponent(it)
             }
+        }else{
+            Toast.makeText(this,"Permission not granted",Toast.LENGTH_LONG).show()
+            finish()
         }
     }
 
-    override fun onMarkerClick(p0: Marker?) = false
+    override fun onMapReady(mapboxMap: MapboxMap) {
+        this.mapboxMap = mapboxMap
+        val cameraZoom = CameraPosition.Builder()
+            .zoom(16.0)
+            .build()
+        mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraZoom),100)
+        mapboxMap.setStyle(Style.LIGHT) {
+            enableLocationComponent(it)
+        }
+    }
 
-    private lateinit var lastLocation: Location
-    private lateinit var map: GoogleMap
-    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private fun enableLocationComponent(loadedMapStyle : Style){
+        if(PermissionsManager.areLocationPermissionsGranted(this)){
+            Toast.makeText(this,"Permission Granted!",Toast.LENGTH_LONG).show()
+            var customLocationMarker = LocationComponentOptions.builder(this)
+                .elevation(5F)
+                .build()
+
+            locationComponent = mapboxMap.locationComponent
+
+            var markerActivationOptions = LocationComponentActivationOptions.builder(this,loadedMapStyle)
+                .locationComponentOptions(customLocationMarker)
+                .build()
+
+            locationComponent.activateLocationComponent(markerActivationOptions)
+            locationComponent.isLocationComponentEnabled = true
+            locationComponent.cameraMode = CameraMode.TRACKING
+            locationComponent.renderMode = RenderMode.COMPASS
+            locationComponent.addOnCameraTrackingChangedListener(this)
+        }else{
+            permissionsManager = PermissionsManager(this);
+            permissionsManager.requestLocationPermissions(this);
+        }
+    }
+
+    private lateinit var mapView: MapView
+    private lateinit var mapboxMap: MapboxMap
+    private lateinit var permissionsManager: PermissionsManager
+    private lateinit var locationComponent: LocationComponent
+    private var isInTrackingMode : Boolean = true
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
+                                            grantResults: IntArray) {
+        permissionsManager.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bersepeda)
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        //all the map nibba
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-//        locationCallback = object : LocationCallback() {
-//            override fun onLocationResult(p0: LocationResult?) {
-//                super.onLocationResult(p0)
-//
-//                lastLocation = p0!!.lastLocation
-////                placeMarkerOnMap(LatLng(lastLocation.latitude,lastLocation.longitude))
-//            }
-//        }
-//        createLocationRequest()
+        //initialize this first before setContentView
+        Mapbox.getInstance(this,applicationContext.resources.getString(com.extra.cyclyx.R.string.mapbox_token)+"");
+        setContentView(com.extra.cyclyx.R.layout.activity_bersepeda)
+        //map set
+        mapView = findViewById(com.extra.cyclyx.R.id.mapView)
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync(this)
         //logic for stopwatch
         stopWatch()
     }
 
-    override fun onMapReady(googleMap: GoogleMap) {
-        map = googleMap
-        map.uiSettings.isZoomControlsEnabled = false
-        map.setOnMarkerClickListener(this)
-
-        val options = PolylineOptions()
-        options.color(Color.RED)
-        options.width(5f)
-
-        markerPoints = ArrayList<LatLng>()
-
-        map.setOnMapClickListener {
-            if(markerPoints.size > 1){
-                markerPoints.clear()
-                map.clear()
-            }
-
-            markerPoints.add(it)
-            placeMarkerOnMap(it)
-
-            if(markerPoints.size>=2){
-                var origin : LatLng = markerPoints[0]
-                var dest : LatLng = markerPoints[1]
-
-                val url = getUrl(origin,dest)
-                doAsync{
-                    val result = URL(url).readText()
-                    uiThread {
-                        val parser : Parser = Parser.default()
-                        val stringBuilder : StringBuilder = StringBuilder(result)
-                        val json : JsonObject = parser.parse(stringBuilder) as JsonObject
-                        val routes = json.array<JsonObject>("routes")
-                        val points = routes!!["legs"]["steps"][0] as JsonArray<JsonObject>
-
-                        val polypts = points.flatMap { decodePoly(it.obj("polyline")?.string("points")!!) }
-                        options.add(origin)
-                        for (point in polypts) options.add(point)
-                        options.add(dest)
-                        map.addPolyline(options)
-                    }
-                }
-            }
-        }
-        setUpMap()
+    override fun onStart() {
+        super.onStart()
+        mapView.onStart()
     }
 
-    private fun getUrl(from : LatLng,to : LatLng) : String{
-        val origin = "origin="+from.latitude+","+from.longitude
-        val dest = "destination="+to.latitude+","+to.longitude
-        val sensor = "sensor=false"
-        val key = applicationContext.resources.getString(R.string.google_maps_key)
-        val params = "$origin&$dest&$sensor&key=$key"
-
-        Log.d("DIRECTION","https://maps.googleapis.com/maps/api/directions/json?$params")
-        return "https://maps.googleapis.com/maps/api/directions/json?$params"
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
     }
 
-    private fun placeMarkerOnMap(location: LatLng) {
-        // 1
-        val markerOptions = MarkerOptions().position(location)
-        // 2
-        map.addMarker(markerOptions)
+    override fun onPause() {
+        super.onPause()
+        mapView.onPause()
     }
 
-    private fun decodePoly(encoded: String): List<LatLng> {
-        val poly = ArrayList<LatLng>()
-        var index = 0
-        val len = encoded.length
-        var lat = 0
-        var lng = 0
-
-        while (index < len) {
-            var b: Int
-            var shift = 0
-            var result = 0
-            do {
-                b = encoded[index++].toInt() - 63
-                result = result or (b and 0x1f shl shift)
-                shift += 5
-            } while (b >= 0x20)
-            val dlat = if (result and 1 != 0) (result shr 1).inv() else result shr 1
-            lat += dlat
-
-            shift = 0
-            result = 0
-            do {
-                b = encoded[index++].toInt() - 63
-                result = result or (b and 0x1f shl shift)
-                shift += 5
-            } while (b >= 0x20)
-            val dlng = if (result and 1 != 0) (result shr 1).inv() else result shr 1
-            lng += dlng
-
-            val p = LatLng(lat.toDouble() / 1E5,
-                lng.toDouble() / 1E5)
-            poly.add(p)
-        }
-
-        return poly
+    override fun onStop() {
+        super.onStop()
+        mapView.onStop()
     }
 
-//    private fun startLocationUpdates() {
-//        //request permission
-//        if (ActivityCompat.checkSelfPermission(
-//                this,
-//                android.Manifest.permission.ACCESS_FINE_LOCATION
-//            ) != PackageManager.PERMISSION_GRANTED
-//        ) {
-//            ActivityCompat.requestPermissions(
-//                this,
-//                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
-//                LOCATION_PERMISSION_REQUEST_CODE
-//            )
-//            return
-//        }
-//        //if location access granted, start receiving update
-//        fusedLocationProviderClient.requestLocationUpdates(
-//            locationRequest,
-//            locationCallback,
-//            null /* Looper */
-//        )
-//    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        mapView.onSaveInstanceState(outState)
+    }
 
-//    private fun createLocationRequest() {
-//        locationRequest = LocationRequest()
-//        locationRequest.interval = 10000
-//
-//        locationRequest.fastestInterval = 5000
-//        locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-//
-//        val builder = LocationSettingsRequest.Builder().addLocationRequest(locationRequest)
-//        val client = LocationServices.getSettingsClient(this)
-//        val task = client.checkLocationSettings(builder.build())
-//
-//        task.addOnSuccessListener {
-//            locationUpdateState = true
-//            startLocationUpdates()
-//        }
-//        task.addOnFailureListener { e ->
-//            if (e is ResolvableApiException) {
-//                try {
-//                    e.startResolutionForResult(this@BersepedaActivity, REQUEST_CHECK_SETTINGS)
-//                } catch (sendEx: IntentSender.SendIntentException) {
-//                    //ignore the error
-//                }
-//            }
-//        }
-//    }
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView.onLowMemory()
+    }
 
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (requestCode == REQUEST_CHECK_SETTINGS) {
-//            if (resultCode == Activity.RESULT_OK) {
-//                locationUpdateState = true
-//                startLocationUpdates()
-//            }
-//        }
-//    }
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView.onDestroy()
+    }
 
-//    override fun onPause() {
-//        super.onPause()
-//        fusedLocationProviderClient.removeLocationUpdates(locationCallback)
-//    }
-//
-//    override fun onResume() {
-//        super.onResume()
-//        if (!locationUpdateState) {
-//            startLocationUpdates()
-//        }
-//    }
     fun stopWatch() {
         var pauseOffset: Long = 0
         var running: Boolean = false
@@ -290,13 +165,13 @@ class BersepedaActivity : AppCompatActivity(), OnMapReadyCallback,
                 chronometer.stop()
                 pauseOffset = SystemClock.elapsedRealtime() - chronometer.base
                 running = false
-                imgPause.setBackgroundResource(R.drawable.play)
+                imgPause.setBackgroundResource(com.extra.cyclyx.R.drawable.play)
                 Toast.makeText(this, "Paused", Toast.LENGTH_SHORT).show()
             } else {
                 chronometer.base = SystemClock.elapsedRealtime() - pauseOffset
                 chronometer.start()
                 running = true
-                imgPause.setBackgroundResource(R.drawable.pause)
+                imgPause.setBackgroundResource(com.extra.cyclyx.R.drawable.pause)
                 Toast.makeText(this, "Resumed", Toast.LENGTH_SHORT).show()
             }
         }
