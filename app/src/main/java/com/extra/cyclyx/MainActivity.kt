@@ -1,18 +1,17 @@
 package com.extra.cyclyx
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+//        Toast.makeText(this,applicationContext.resources.getString(R.string.mapbox_token),Toast.LENGTH_LONG).show()
         //da navview
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         //da navcontroller
