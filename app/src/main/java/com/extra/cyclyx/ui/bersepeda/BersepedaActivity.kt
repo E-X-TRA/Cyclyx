@@ -1,9 +1,11 @@
 package com.extra.cyclyx.ui.bersepeda
 
+import android.location.Location
 import android.os.Bundle
 import android.os.SystemClock
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.mapbox.android.core.location.*
 import com.mapbox.android.core.permissions.PermissionsListener
 import com.mapbox.android.core.permissions.PermissionsManager
 import com.mapbox.mapboxsdk.Mapbox
@@ -20,16 +22,29 @@ import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
 import kotlinx.android.synthetic.main.activity_bersepeda.*
+import java.lang.ref.WeakReference
 
 
-class BersepedaActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener, OnCameraTrackingChangedListener
-{
+class BersepedaActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener,
+    OnCameraTrackingChangedListener {
+
+    private lateinit var mapView: MapView
+    private lateinit var mapboxMap: MapboxMap
+    private lateinit var permissionsManager: PermissionsManager
+    private lateinit var locationComponent: LocationComponent
+    private lateinit var locationEngine: LocationEngine
+
+    private val callback = LocationListeningCallback(this)
+    var originLocation : Location? = null
+
+    private var isInTrackingMode: Boolean = true
+
     override fun onCameraTrackingChanged(currentMode: Int) {
-       //empty on purpose
+        //empty on purpose
     }
 
     override fun onCameraTrackingDismissed() {
-        isInTrackingMode=false
+        isInTrackingMode = false
     }
 
     override fun onExplanationNeeded(permissionsToExplain: MutableList<String>?) {
@@ -37,13 +52,13 @@ class BersepedaActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
     }
 
     override fun onPermissionResult(granted: Boolean) {
-        if(granted){
-            Toast.makeText(this,"Permission granted",Toast.LENGTH_LONG).show()
+        if (granted) {
+            Toast.makeText(this, "Permission granted", Toast.LENGTH_LONG).show()
             mapboxMap.getStyle {
                 enableLocationComponent(it)
             }
-        }else{
-            Toast.makeText(this,"Permission not granted",Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this, "Permission not granted", Toast.LENGTH_LONG).show()
             finish()
         }
     }
@@ -53,51 +68,70 @@ class BersepedaActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         val cameraZoom = CameraPosition.Builder()
             .zoom(16.0)
             .build()
-        mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraZoom),100)
+        mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraZoom), 100)
         mapboxMap.setStyle(Style.LIGHT) {
             enableLocationComponent(it)
         }
+
+        initializeLocationEngine()
     }
 
-    private fun enableLocationComponent(loadedMapStyle : Style){
-        if(PermissionsManager.areLocationPermissionsGranted(this)){
-            Toast.makeText(this,"Permission Granted!",Toast.LENGTH_LONG).show()
+    private fun enableLocationComponent(loadedMapStyle: Style) {
+        if (PermissionsManager.areLocationPermissionsGranted(this)) {
+            Toast.makeText(this, "Permission Granted!", Toast.LENGTH_LONG).show()
             var customLocationMarker = LocationComponentOptions.builder(this)
                 .elevation(5F)
                 .build()
 
             locationComponent = mapboxMap.locationComponent
 
-            var markerActivationOptions = LocationComponentActivationOptions.builder(this,loadedMapStyle)
-                .locationComponentOptions(customLocationMarker)
-                .build()
+            var markerActivationOptions =
+                LocationComponentActivationOptions.builder(this, loadedMapStyle)
+                    .locationComponentOptions(customLocationMarker)
+                    .build()
 
             locationComponent.activateLocationComponent(markerActivationOptions)
             locationComponent.isLocationComponentEnabled = true
             locationComponent.cameraMode = CameraMode.TRACKING
             locationComponent.renderMode = RenderMode.COMPASS
             locationComponent.addOnCameraTrackingChangedListener(this)
-        }else{
+        } else {
             permissionsManager = PermissionsManager(this);
             permissionsManager.requestLocationPermissions(this);
         }
     }
 
-    private lateinit var mapView: MapView
-    private lateinit var mapboxMap: MapboxMap
-    private lateinit var permissionsManager: PermissionsManager
-    private lateinit var locationComponent: LocationComponent
-    private var isInTrackingMode : Boolean = true
+    @SuppressWarnings("MissingPermission")
+    fun initializeLocationEngine() {
+        val DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L
+        val DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
-                                            grantResults: IntArray) {
+        locationEngine = LocationEngineProvider.getBestLocationEngine(this)
+        var request = LocationEngineRequest.Builder(DEFAULT_INTERVAL_IN_MILLISECONDS)
+            .setPriority(LocationEngineRequest.PRIORITY_NO_POWER)
+            .setMaxWaitTime(DEFAULT_MAX_WAIT_TIME)
+            .build()
+
+        locationEngine.requestLocationUpdates(request, callback, mainLooper)
+        locationEngine.getLastLocation(callback)
+
+        val lastLocation = locationEngine.getLastLocation(callback)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int, permissions: Array<String>,
+        grantResults: IntArray
+    ) {
         permissionsManager.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //initialize this first before setContentView
-        Mapbox.getInstance(this,applicationContext.resources.getString(com.extra.cyclyx.R.string.mapbox_token)+"");
+        Mapbox.getInstance(
+            this,
+            applicationContext.resources.getString(com.extra.cyclyx.R.string.mapbox_token) + ""
+        );
         setContentView(com.extra.cyclyx.R.layout.activity_bersepeda)
         //map set
         mapView = findViewById(com.extra.cyclyx.R.id.mapView)
@@ -124,6 +158,7 @@ class BersepedaActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
 
     override fun onStop() {
         super.onStop()
+        locationEngine?.removeLocationUpdates(callback)
         mapView.onStop()
     }
 
@@ -174,6 +209,35 @@ class BersepedaActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
                 imgPause.setBackgroundResource(com.extra.cyclyx.R.drawable.pause)
                 Toast.makeText(this, "Resumed", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    private class LocationListeningCallback internal constructor(activity: BersepedaActivity) :
+        LocationEngineCallback<LocationEngineResult> {
+
+        private val activityWeakReference: WeakReference<BersepedaActivity>
+
+        init {this.activityWeakReference = WeakReference(activity)}
+
+        override fun onSuccess(result: LocationEngineResult) {
+
+// The LocationEngineCallback interface's method which fires when the device's location has changed.
+
+            result.getLastLocation()
+
+        }
+
+        /**
+         * The LocationEngineCallback interface's method which fires when the device's location can not be captured
+         *
+         * @param exception the exception message
+         */
+        override fun onFailure(exception: Exception) {
+
+            // The LocationEngineCallback interface's method which fires when the device's location can not be captured
+
+
+
         }
     }
 }
