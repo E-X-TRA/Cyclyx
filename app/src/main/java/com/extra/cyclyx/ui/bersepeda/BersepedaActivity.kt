@@ -130,7 +130,7 @@ class BersepedaActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
         //initialize this first before setContentView
         Mapbox.getInstance(
             this,
-            applicationContext.resources.getString(com.extra.cyclyx.R.string.mapbox_token) + ""
+            com.extra.cyclyx.BuildConfig.apikey
         );
         setContentView(com.extra.cyclyx.R.layout.activity_bersepeda)
         //map set
@@ -158,7 +158,7 @@ class BersepedaActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsLi
 
     override fun onStop() {
         super.onStop()
-        locationEngine?.removeLocationUpdates(callback)
+        locationEngine.removeLocationUpdates(callback)
         mapView.onStop()
     }
 
