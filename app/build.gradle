@@ -7,6 +7,10 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 
+def apikeyPropertiesFile = rootProject.file("apikey.properties");
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -17,6 +21,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "apikey", apikeyProperties['apikey'])
     }
     buildTypes {
         release {
