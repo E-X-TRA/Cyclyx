@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/bersepeda_navigation"
+        app:startDestination="@id/bersepeda">
+    <fragment
+            android:id="@+id/bersepeda"
+            android:name="com.extra.cyclyx.ui.bersepeda.BersepedaFragment"
+            android:label="BersepedaFragment"
+            tools:layout="@layout/fragment_bersepeda"/>
+    <fragment
+            android:id="@+id/hasil_bersepeda"
+            android:name="com.extra.cyclyx.ui.hasilBersepeda.HasilBersepedaFragment"
+            android:label="fragment_hasil_bersepeda"
+            tools:layout="@layout/fragment_hasil_bersepeda" />
+</navigation>

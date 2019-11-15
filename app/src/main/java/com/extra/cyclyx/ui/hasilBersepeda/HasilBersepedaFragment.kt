@@ -1,4 +1,4 @@
-package com.extra.cyclyx.ui
+package com.extra.cyclyx.ui.hasilBersepeda
 
 
 import android.os.Bundle
@@ -12,14 +12,14 @@ import com.extra.cyclyx.R
 /**
  * A simple [Fragment] subclass.
  */
-class SplashFragment : Fragment() {
+class HasilBersepedaFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash, container, false)
+        return inflater.inflate(R.layout.fragment_hasil_bersepeda, container, false)
     }
 
 
