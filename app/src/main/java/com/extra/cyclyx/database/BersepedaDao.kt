@@ -9,12 +9,15 @@ interface BersepedaDao {
     @Query("SELECT * FROM bersepeda")
     fun getAll() : List<Bersepeda>
 
-    @Insert(onConflict = REPLACE)
-    fun insertAll(bersepeda : Bersepeda)
+    @Query("SELECT * FROM bersepeda ORDER BY id_sesi DESC LIMIT 1")
+    fun getLatestCycling() : Bersepeda
 
-    @Update
-    fun updateAll(bersepeda: Bersepeda)
+    @Insert(onConflict = REPLACE)
+    fun insert(bersepeda : Bersepeda)
 
     @Delete
-    fun deleteAll(bersepeda: Bersepeda)
+    fun delete(bersepeda: Bersepeda)
+
+    @Query("DELETE FROM bersepeda")
+    fun deleteAll()
 }

@@ -3,23 +3,29 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/mobile_navigation"
-        app:startDestination="@+id/navigation_home">
+        app:startDestination="@+id/home">
 
     <fragment
-            android:id="@+id/navigation_home"
+            android:id="@+id/home"
             android:name="com.extra.cyclyx.ui.home.HomeFragment"
             android:label="Home"
-            tools:layout="@layout/fragment_home" />
+            tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/navigate_to_bersepeda"
+            app:destination="@id/bersepeda"/>
+    </fragment>
 
     <fragment
-            android:id="@+id/navigation_riwayat"
+            android:id="@+id/riwayat"
             android:name="com.extra.cyclyx.ui.riwayat.RiwayatFragment"
             android:label="Riwayat"
             tools:layout="@layout/fragment_riwayat" />
 
     <fragment
-            android:id="@+id/navigation_profil"
+            android:id="@+id/profil"
             android:name="com.extra.cyclyx.ui.profil.ProfilFragment"
             android:label="Profil Saya"
             tools:layout="@layout/fragment_profil" />
+
+
 </navigation>

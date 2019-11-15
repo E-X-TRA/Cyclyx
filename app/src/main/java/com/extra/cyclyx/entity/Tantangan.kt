@@ -7,10 +7,9 @@ import androidx.room.PrimaryKey
 import java.sql.Time
 import java.util.*
 
-@Entity(tableName = "Bersepeda",foreignKeys = [ForeignKey(entity = Pengguna::class,parentColumns = ["id"],childColumns = ["tipe_pesepeda"])])
+@Entity(tableName = "tantangan")
 data class Tantangan(
     @PrimaryKey @ColumnInfo(name = "id_tantangan") var id: Int,
-    @ColumnInfo(name = "pengguna") var pengguna: Pengguna,
     @ColumnInfo(name = "badge_tantangan") var badgeTantangan : Int,
     @ColumnInfo(name = "tipe_tantangan") var tipeTantangan: String,
     @ColumnInfo(name = "label_tantangan") var labelTantangan: String,

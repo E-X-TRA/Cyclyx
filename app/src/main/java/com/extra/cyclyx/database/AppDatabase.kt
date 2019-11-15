@@ -4,31 +4,36 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.extra.cyclyx.database.converter.LatLngConverter
 import com.extra.cyclyx.entity.Bersepeda
-import com.extra.cyclyx.entity.Pengguna
+import com.extra.cyclyx.entity.Tantangan
 
-@Database(entities = [Bersepeda::class,Pengguna::class],version = 1,exportSchema = false)
+@Database(entities = [Bersepeda::class, Tantangan::class],version = 1,exportSchema = false)
+@TypeConverters(LatLngConverter::class)
 abstract class AppDatabase : RoomDatabase(){
-    abstract fun sepedahanDAO() : BersepedaDao
-    abstract fun userDAO() : PenggunaDao
+    abstract val bersepedaDAO : BersepedaDao
+    abstract val tantanganDAO : TantanganDao
 
     companion object{
         var INSTANCE : AppDatabase? = null
 
-        fun getAppDataBase(context: Context) : AppDatabase?{
-            if(INSTANCE == null){
-                synchronized(AppDatabase::class){
-                    INSTANCE = Room.databaseBuilder(
+        fun getInstance(context: Context) : AppDatabase {
+            synchronized(this) {
+                var instance = INSTANCE
+                if (instance == null) {
+                    instance = Room.databaseBuilder(
                         context.applicationContext,
-                        AppDatabase::class.java,"cyclyxDB"
-                    ).build()
+                        AppDatabase::class.java,
+                        "CyclyxDB"
+                    )
+                        .fallbackToDestructiveMigration()
+                        .build()
+                    INSTANCE = instance
                 }
-            }
-            return INSTANCE
-        }
-    }
 
-    fun destroyDataBase(){
-        INSTANCE = null
+                return instance
+            }
+        }
     }
 }
