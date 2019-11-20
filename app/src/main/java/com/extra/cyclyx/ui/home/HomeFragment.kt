@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.extra.cyclyx.R
 import com.extra.cyclyx.databinding.FragmentHomeBinding
-import com.extra.cyclyx.ui.bersepeda.BersepedaActivity
+import com.extra.cyclyx.BersepedaActivity
 import com.extra.cyclyx.utils.PERMISSION_FINE_LOCATION_REQUEST
 import com.google.android.material.snackbar.Snackbar
 
@@ -59,7 +59,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.btnGo.setOnClickListener {
-            val intent = Intent(activity,BersepedaActivity::class.java)
+            val intent = Intent(activity, BersepedaActivity::class.java)
             startActivity(intent)
         }
 

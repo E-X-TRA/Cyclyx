@@ -5,12 +5,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.extra.cyclyx.database.converter.LatLngConverter
+import com.extra.cyclyx.database.converter.LocationConverter
 import com.extra.cyclyx.entity.Bersepeda
 import com.extra.cyclyx.entity.Tantangan
 
 @Database(entities = [Bersepeda::class, Tantangan::class],version = 1,exportSchema = false)
-@TypeConverters(LatLngConverter::class)
+@TypeConverters(LocationConverter::class)
 abstract class AppDatabase : RoomDatabase(){
     abstract val bersepedaDAO : BersepedaDao
     abstract val tantanganDAO : TantanganDao

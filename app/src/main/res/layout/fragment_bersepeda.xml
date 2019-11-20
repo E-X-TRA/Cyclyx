@@ -20,7 +20,7 @@
             app:umanoDragView="@id/dragview"
             app:umanoShadowHeight="0dp"
             app:umanoOverlay="true"
-            tools:context=".ui.bersepeda.BersepedaActivity">
+            tools:context=".BersepedaActivity">
 
         <RelativeLayout
                 android:background="#EEE3C4"

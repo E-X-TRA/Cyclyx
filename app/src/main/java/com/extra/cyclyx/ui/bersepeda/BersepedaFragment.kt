@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -44,19 +43,11 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
     private lateinit var map: MapboxMap
     private lateinit var viewModel: BersepedaViewModel
     private lateinit var ctx: Context
-    //map component
-    private val SOURCE_ID = "SOURCE_ID"
-    private val CIRCLE_LAYER_ID = "CIRCLE_LAYER_ID"
-    private val LINE_LAYER_ID = "LINE_LAYER_ID"
-    private val CIRCLE_COLOR = Color.RED
-    private val LINE_COLOR = CIRCLE_COLOR
-    private val CIRCLE_RADIUS: Float = 3f
-    private val LINE_WIDTH: Float = 2f
 
     override fun onMapReady(mapboxMap: MapboxMap) {
         map = mapboxMap
         map.setStyle(
-            Style.MAPBOX_STREETS
+            Style.OUTDOORS
         ) {
             it.addSource(GeoJsonSource(SOURCE_ID))
             it.addLayer(
@@ -141,7 +132,7 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
         )
 
         modifyTrackingService(START_SERVICE)
-        viewModel.startTimer()
+        viewModel.onStart()
 
         viewModel.trackingStatus.observe(this, Observer { status ->
             when (status) {
@@ -149,29 +140,29 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
                     binding.imgPause.setBackgroundResource(R.drawable.pause)
                     binding.imgPause.setOnClickListener {
                         modifyTrackingService(PAUSE_SERVICE)
-                        viewModel.pauseTimer()
+                        viewModel.onPause()
                     }
 
                     binding.imgStop.setOnClickListener {
                         modifyTrackingService(STOP_SERVICE)
-                        viewModel.stopTimer()
-                        activity?.finish()
+                        viewModel.onStop()
                     }
                 }
                 TRACKING_PAUSED -> {
                     binding.imgPause.setBackgroundResource(R.drawable.play)
                     binding.imgPause.setOnClickListener {
                         modifyTrackingService(START_SERVICE)
-                        viewModel.resumeTimer()
+                        viewModel.onResume()
                     }
 
                     binding.imgStop.setOnClickListener {
-                        viewModel.stopTimer()
-                        activity?.finish()
+                        viewModel.onStop()
+
                     }
                 }
                 TRACKING_STOPPED -> {
-                    activity?.finish()
+                    binding.imgPause.visibility = View.INVISIBLE
+                    binding.imgStop.visibility = View.INVISIBLE
                 }
             }
         })
