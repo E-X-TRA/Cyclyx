@@ -11,7 +11,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".ui.bersepeda.BersepedaActivity"
+                android:name=".BersepedaActivity"
                 android:label="Bersepeda"/>
         <activity android:name=".ui.pendaftaran.PendaftaranActivity" />
         <activity android:name=".MainActivity">

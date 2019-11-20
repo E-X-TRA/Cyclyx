@@ -13,8 +13,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.extra.cyclyx.BersepedaActivity
 import com.extra.cyclyx.R
-import com.extra.cyclyx.ui.bersepeda.BersepedaActivity
 import com.extra.cyclyx.utils.*
 import com.mapbox.android.core.location.*
 import com.mapbox.geojson.Point
@@ -71,7 +71,9 @@ class TrackingService : Service(){
                     Log.d("TRACKING", "Service Paused!")
                 }
                 STOP_SERVICE -> {
-                    cyclyxLocationEngine.removeLocationUpdates(callback)
+                    if(::cyclyxLocationEngine.isInitialized){
+                        cyclyxLocationEngine.removeLocationUpdates(callback)
+                    }
                     stopForeground(true)
                     stopSelf()
                     Toast.makeText(applicationContext, "Service Stopped!", Toast.LENGTH_SHORT)
@@ -80,7 +82,7 @@ class TrackingService : Service(){
                 }
             }
         }
-        return super.onStartCommand(intent, flags, startId)
+        return START_NOT_STICKY
     }
 
     //implement Service()
@@ -117,7 +119,7 @@ class TrackingService : Service(){
             val service = serviceWeakReference.get()
             if (service != null) {
                 val location = result?.lastLocation ?: return
-                service.pointList.add(Point.fromLngLat(location.longitude, location.latitude))
+                service.pointList.add(Point.fromLngLat(location.longitude, location.latitude,location.altitude))
                 val routeString = service.encodePointToString(service.pointList)
                 Log.d("TRACKING", "RouteString : $routeString")
                 service.sendBroadcast(routeString)

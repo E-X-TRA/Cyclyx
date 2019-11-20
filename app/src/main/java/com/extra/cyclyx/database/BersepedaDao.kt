@@ -1,22 +1,33 @@
 package com.extra.cyclyx.database
 
-import androidx.room.*
+import androidx.lifecycle.LiveData
+import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
+import androidx.room.Query
+import androidx.room.Update
 import com.extra.cyclyx.entity.Bersepeda
 
 @Dao
 interface BersepedaDao {
     @Query("SELECT * FROM bersepeda")
-    fun getAll() : List<Bersepeda>
+    fun getAll() : LiveData<List<Bersepeda>>
 
-    @Query("SELECT * FROM bersepeda ORDER BY id_sesi DESC LIMIT 1")
-    fun getLatestCycling() : Bersepeda
+    @Query("SELECT * FROM bersepeda ORDER BY id DESC LIMIT 1")
+    fun getLatestCycling() : Bersepeda?
+
+    @Query("SELECT * FROM bersepeda WHERE id = :key")
+    fun getCyclingAct(key :Long): LiveData<Bersepeda>
 
     @Insert(onConflict = REPLACE)
     fun insert(bersepeda : Bersepeda)
 
-    @Delete
-    fun delete(bersepeda: Bersepeda)
+    @Update
+    fun update(bersepeda : Bersepeda)
+
+    //deleting entry
+    @Query("DELETE FROM bersepeda WHERE id = :key")
+    fun deleteCyclingAct(key : Long)
 
     @Query("DELETE FROM bersepeda")
     fun deleteAll()

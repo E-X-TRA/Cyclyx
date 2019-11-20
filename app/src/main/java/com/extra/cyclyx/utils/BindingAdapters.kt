@@ -11,9 +11,16 @@ fun TextView.timerValue(elapsedTime : Long){
 }
 
 @BindingAdapter("durationToString")
-fun TextView.durationToString(act : Bersepeda){
-    act.let{
-        val duration = act.waktuSelesai - act.waktuMulai
+fun TextView.durationToString(act : Bersepeda?){
+    act?.let{
+        val duration = act.endTime - act.startTime
         text = convertDurationToString(duration)
+    }
+}
+
+@BindingAdapter("formatDouble")
+fun TextView.formatDouble(double : Double?){
+    double?.let{
+        text = "${formatDouble(double, "#.#")} KM"
     }
 }

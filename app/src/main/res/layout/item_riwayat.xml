@@ -1,82 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="2">
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.cardview.widget.CardView
-            android:id="@+id/cv_top"
+    <data>
+        <variable
+                name="bersepeda"
+                type="com.extra.cyclyx.entity.Bersepeda" />
+        <variable
+                name="clickListener"
+                type="com.extra.cyclyx.adapter.RiwayatClickListener" />
+        <variable
+                name="isFinished"
+                type="Boolean" />
+    </data>
+
+    <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_columnSpan="2"
-            android:layout_margin="5dp"
-            app:cardCornerRadius="4dp">
+            android:columnCount="2">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+                android:id="@+id/cv_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:background="@color/backgroundComponent">
+                android:layout_columnSpan="2"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="4dp">
 
-            <TextView
-                    android:id="@+id/tv_itemR_tanggal"
-                    android:layout_width="wrap_content"
+            <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="12 Agustus 2019"
-                    android:textColor="@android:color/white" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@color/backgroundComponent">
 
-    <androidx.cardview.widget.CardView
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            app:cardCornerRadius="4dp">
+                <TextView
+                        android:id="@+id/tv_itemR_tanggal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="12 Agustus 2019"
+                        android:textColor="@android:color/white" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        <LinearLayout
-                android:padding="7dp"
-                android:layout_width="match_parent"
+        <androidx.cardview.widget.CardView
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/backgroundComponent"
-                android:gravity="center">
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="4dp">
 
-            <TextView
-                    android:id="@+id/tv_itemR_waktu"
-                    android:layout_width="wrap_content"
+            <LinearLayout
+                    android:padding="7dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="34:21"
-                    android:textColor="@android:color/white" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                    android:background="@color/backgroundComponent"
+                    android:gravity="center">
 
-    <androidx.cardview.widget.CardView
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            app:cardCornerRadius="4dp">
+                <TextView
+                        android:id="@+id/tv_itemR_waktu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="34:21"
+                        app:durationToString="@{bersepeda}"
+                        android:textColor="@android:color/white" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        <LinearLayout
-                android:padding="7dp"
-                android:layout_width="match_parent"
+        <androidx.cardview.widget.CardView
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/backgroundComponent"
-                android:gravity="center">
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="4dp">
 
-            <TextView
-                    android:id="@+id/tv_itemR_jarak"
-                    android:layout_width="wrap_content"
+            <LinearLayout
+                    android:padding="7dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="12 KM"
-                    android:textColor="@android:color/white" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                    android:background="@color/backgroundComponent"
+                    android:gravity="center">
 
-</GridLayout>
+                <TextView
+                        android:id="@+id/tv_itemR_jarak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:formatDouble="@{bersepeda.distance}"
+                        tools:text="12 KM"
+                        android:textColor="@android:color/white" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </GridLayout>
+</layout>

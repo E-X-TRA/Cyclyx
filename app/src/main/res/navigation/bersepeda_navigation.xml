@@ -8,10 +8,23 @@
             android:id="@+id/bersepeda"
             android:name="com.extra.cyclyx.ui.bersepeda.BersepedaFragment"
             android:label="BersepedaFragment"
-            tools:layout="@layout/fragment_bersepeda"/>
+            tools:layout="@layout/fragment_bersepeda">
+        <action
+                android:id="@+id/navigate_to_hasil_bersepeda_from_bersepeda"
+                app:destination="@+id/hasil_bersepeda"/>
+    </fragment>
     <fragment
             android:id="@+id/hasil_bersepeda"
             android:name="com.extra.cyclyx.ui.hasilBersepeda.HasilBersepedaFragment"
             android:label="fragment_hasil_bersepeda"
-            tools:layout="@layout/fragment_hasil_bersepeda" />
+            tools:layout="@layout/fragment_hasil_bersepeda">
+        <argument
+                android:name="bersepedaKey"
+                app:argType="long"/>
+        <action
+                android:id="@+id/navigate_to_riwayat_from_hasil_bersepeda"
+                app:destination="@id/riwayat"
+                app:popUpTo="@id/riwayat"
+                />
+    </fragment>
 </navigation>
