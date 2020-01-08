@@ -3,12 +3,14 @@
     <item>
         <shape xmlns:android="http://schemas.android.com/apk/res/android"
                 android:shape="oval">
-            <solid android:color="@color/colorAccent"/>
+            <solid android:color="#FFF"/>
+            <stroke android:color="#08B2E3"
+                    android:width="10dp"/>
         </shape>
     </item>
     <item>
         <inset android:drawable="@drawable/iconfinder_bike_107227"
-            android:inset="10dp"/>
+                android:inset="15dp"/>
 
     </item>
 </layer-list>

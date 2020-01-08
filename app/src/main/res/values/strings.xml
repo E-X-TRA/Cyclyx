@@ -11,4 +11,11 @@
     <string name="text_tantangan">Tantangan</string>
     <string name="permission_location_explanation">Cyclyx Need To Use Location Permission To Track Your Cycling</string>
     <string name="text_back">KEMBALI</string>
+    <string name="txt_waktu">Waktu</string>
+    <string name="txt_jarak">Jarak</string>
+    <string name="txt_kecepatan">Kecepatan</string>
+    <string name="your_cycling_plan_for_today">Your cycling plan for today</string>
+    <string name="txt_waktu_kalori">1 hour and 856 kal</string>
+    <string name="txt_pencapaianmu">Pencapaianmu</string>
+    <string name="txt_persentase">100%</string>
 </resources>
