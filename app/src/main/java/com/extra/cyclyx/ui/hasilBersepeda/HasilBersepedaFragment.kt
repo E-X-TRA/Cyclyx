@@ -1,6 +1,7 @@
 package com.extra.cyclyx.ui.hasilBersepeda
 
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,10 +27,10 @@ import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.style.layers.CircleLayer
-import com.mapbox.mapboxsdk.style.layers.LineLayer
-import com.mapbox.mapboxsdk.style.layers.Property
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory
+import com.mapbox.mapboxsdk.style.layers.SymbolLayer
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
+import com.mapbox.turf.TurfMeasurement
 
 /**
  * A simple [Fragment] subclass.
@@ -50,27 +51,38 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
         val application = requireNotNull(this.activity).application
         val arguments = HasilBersepedaFragmentArgs.fromBundle(arguments!!)
         val dataSource = AppDatabase.getInstance(application).bersepedaDAO
-        val viewModelFactory = HasilBersepedaViewModelFactory(arguments.bersepedaKey,dataSource)
+        val viewModelFactory = HasilBersepedaViewModelFactory(arguments.bersepedaKey, dataSource)
 
         binding.mapView.onCreate(savedInstanceState)
         binding.mapView.getMapAsync(this)
 
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(HasilBersepedaViewModel::class.java)
+        viewModel =
+            ViewModelProviders.of(this, viewModelFactory).get(HasilBersepedaViewModel::class.java)
         binding.viewModel = viewModel
 
-        viewModel.routeList.observe(this, Observer {route ->
-            route?.let{
-                if(::map.isInitialized) {
+        viewModel.routeList.observe(this, Observer { route ->
+            route?.let {
+                if (::map.isInitialized) {
                     addPointToMap(route)
-                    moveCamera(route.first(), map)
+                    val envelope = TurfMeasurement.envelope(
+                        FeatureCollection.fromFeature(
+                            Feature.fromGeometry(LineString.fromLngLats(route))
+                        )
+                    )
+                    moveCamera(
+                        TurfMeasurement.midpoint(route.first(), route.last()),
+                        map,
+                        determineZoomLevel(TurfMeasurement.length(envelope, "kilometers"))
+                    )
                 }
             }
         })
 
-        viewModel.backToMenu.observe(this, Observer {status ->
-            status?.let{
-                if(it){
-                    this.findNavController().navigate(HasilBersepedaFragmentDirections.navigateToRiwayatFromHasilBersepeda())
+        viewModel.backToMenu.observe(this, Observer { status ->
+            status?.let {
+                if (it) {
+                    this.findNavController()
+                        .navigate(HasilBersepedaFragmentDirections.navigateToRiwayatFromHasilBersepeda())
                     viewModel.doneNavigating()
                 }
             }
@@ -81,6 +93,7 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(mapboxMap: MapboxMap) {
         map = mapboxMap
+        map.setMaxZoomPreference(18.0)
         map.setStyle(
             Style.MAPBOX_STREETS
         ) {
@@ -91,21 +104,20 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
                     PropertyFactory.circleRadius(CIRCLE_RADIUS)
                 )
             )
-            it.addLayerBelow(
-                LineLayer(LINE_LAYER_ID, SOURCE_ID).withProperties(
-                    PropertyFactory.lineColor(LINE_COLOR),
-                    PropertyFactory.lineWidth(LINE_WIDTH),
-                    PropertyFactory.lineJoin(Property.LINE_JOIN_ROUND)
-                ), CIRCLE_LAYER_ID
+            it.addLayer(
+                SymbolLayer(SYMBOL_LAYER_ID, SOURCE_ID).withProperties(
+                    PropertyFactory.iconImage(ICON_ID),
+                    PropertyFactory.iconColor(Color.RED)
+                )
             )
             viewModel.onMapAsyncFinished()
         }
     }
 
-    private fun moveCamera(point: Point, map : MapboxMap){
+    private fun moveCamera(point: Point, map: MapboxMap, zoom: Double) {
         val cameraPosition = CameraPosition.Builder()
-            .target(LatLng(point.latitude(),point.longitude()))
-            .zoom(18.0)
+            .target(LatLng(point.latitude(), point.longitude()))
+            .zoom(zoom)
             .build()
 
         map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
@@ -115,12 +127,26 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
         map.getStyle {
             val geoJsonSource = it.getSourceAs<GeoJsonSource>(SOURCE_ID)
             if (geoJsonSource != null) {
+                val listFeature = ArrayList<Feature>()
                 val lineString = LineString.fromLngLats(points)
+                listFeature.add(
+                    Feature.fromGeometry(
+                        lineString
+                    )
+                )
+                listFeature.add(
+                    Feature.fromGeometry(
+                        points.first()
+                    )
+                )
+                listFeature.add(
+                    Feature.fromGeometry(
+                        points.last()
+                    )
+                )
                 geoJsonSource.setGeoJson(
-                    FeatureCollection.fromFeature(
-                        Feature.fromGeometry(
-                            lineString
-                        )
+                    FeatureCollection.fromFeatures(
+                        listFeature
                     )
                 )
             }

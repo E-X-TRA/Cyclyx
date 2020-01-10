@@ -38,7 +38,8 @@ class HasilBersepedaViewModel(
         uiScope.launch {
             act?.let {
                 Log.d("TRACKING","${act.toString()}")
-                _routeList.value = PolylineUtils.decode(act.routeString, 5)
+                val decodedRoute = PolylineUtils.decode(act.routeString, 5)
+                _routeList.value = PolylineUtils.simplify(decodedRoute,0.00005)
             }
         }
     }
