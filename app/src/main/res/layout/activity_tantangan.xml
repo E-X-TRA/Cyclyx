@@ -11,7 +11,7 @@
             android:id="@+id/head"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_margin="@dimen/_13sdp"
             android:orientation="vertical"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -27,9 +27,9 @@
                 android:textSize="@dimen/_27ssp" />
 
         <TextView
+                android:id="@+id/TxtTodayDateTtg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/TxtTodayDateTtg"
                 android:fontFamily="@font/exo2_regular"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#96000000"
@@ -41,11 +41,11 @@
     <androidx.cardview.widget.CardView
             android:id="@+id/card"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_margin="10dp"
+            android:layout_height="@dimen/_126sdp"
+            android:layout_margin="@dimen/_8sdp"
             android:backgroundTint="@color/bg_tantangan"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="10dp"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:cardElevation="@dimen/_8sdp"
             app:layout_constraintTop_toBottomOf="@id/head">
 
         <LinearLayout
@@ -58,9 +58,9 @@
                 android:orientation="vertical">
 
             <TextView
+                    android:id="@+id/TxtTtg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/TxtTtg"
                     android:fontFamily="@font/exo2_bold"
                     android:text="@string/your_cycling_plan_for_today"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -68,9 +68,9 @@
                     android:textSize="@dimen/_25ssp" />
 
             <TextView
+                    android:id="@+id/TxtPlan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/TxtPlan"
                     android:fontFamily="@font/exo2_regular"
                     android:text="@string/txt_waktu_kalori"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -84,10 +84,10 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_17sdp"
-            android:layout_marginBottom="@dimen/_17sdp"
             android:layout_marginStart="@dimen/_17sdp"
+            android:layout_marginTop="@dimen/_17sdp"
             android:layout_marginEnd="@dimen/_17sdp"
+            android:layout_marginBottom="@dimen/_17sdp"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/card">
 
@@ -101,62 +101,12 @@
                 android:textSize="@dimen/_18ssp" />
 
 
-        <!-- TODO: TAMBAHIN RECYCLER VIEW -->
-        <LinearLayout
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPencapaian"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_13sdp"
-                android:layout_marginBottom="@dimen/_13sdp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content" />
 
-            <LinearLayout
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/tantangancircle"
-                    android:gravity="center">
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/TxtTtgPercentage"
-                        android:fontFamily="@font/josefinsans_bold"
-                        android:text="@string/txt_persentase"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textSize="@dimen/_12ssp" />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:layout_marginBottom="@dimen/_4sdp"
-                    android:orientation="vertical">
-
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/exo2_bold"
-                        android:id="@+id/TxtTtgTitle"
-                        android:text="@string/txt_kecepatan"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textColor="#0C1B44"
-                        android:textSize="@dimen/_18ssp" />
-
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/exo2_regular"
-                        android:id="@+id/TxtTtgDesc"
-                        android:text="Bersepeda dalam kecepatan 15km/detik"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="#96000000"
-                        android:textSize="@dimen/_13ssp" />
-
-            </LinearLayout>
-        </LinearLayout>
 
 
     </LinearLayout>
