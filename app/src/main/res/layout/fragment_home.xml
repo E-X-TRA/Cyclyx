@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg4">
+    android:background="@drawable/bg_4">
 
     <LinearLayout
         android:layout_marginTop="15dp"
@@ -23,6 +23,7 @@
             android:background="@drawable/circle_button"/>
         <TextView
             android:fontFamily="@font/exo2_bold"
+            android:id="@+id/TxtMonthNow"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,6 +34,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/TxtObj"
             android:fontFamily="@font/exo2_light"
             android:textColor="#F0FFFFFF"
             android:textSize="18dp"
@@ -71,6 +73,7 @@
                     android:orientation="vertical">
                     <TextView
                         android:fontFamily="@font/exo2_bold"
+                        android:id="@+id/TxtRecentJarak"
                         android:textSize="24dp"
                         android:textColor="#B4E308"
                         android:layout_width="match_parent"
@@ -93,6 +96,7 @@
                     android:orientation="vertical">
                     <TextView
                         android:fontFamily="@font/exo2_bold"
+                        android:id="@+id/TxtRecentDur"
                         android:textSize="24dp"
                         android:textColor="#E36E08"
                         android:layout_width="match_parent"
@@ -131,7 +135,7 @@
                         android:fontFamily="@font/exo2_bold"
                         android:textSize="24dp"
                         android:textColor="#B4E308"
-                        android:id="@+id/dist"
+                        android:id="@+id/TxtOldJarak"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="12.43 km"
@@ -152,6 +156,7 @@
                     android:orientation="vertical">
                     <TextView
                         android:fontFamily="@font/exo2_bold"
+                        android:id="@+id/TxtOldDur"
                         android:textSize="24dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

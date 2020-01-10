@@ -27,6 +27,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+                android:id="@+id/TxtTodayDate"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:text="Hari ini, 14 November"
             android:fontFamily="@font/exo2_regular"
@@ -55,6 +56,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/TxtCardHist"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:text="Sejauh ini anda sudah membakar kalori"
                 android:fontFamily="@font/exo2_bold"
@@ -63,6 +65,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                    android:id="@+id/TxtCountKal"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:text="65,356 kkal"
                 android:fontFamily="@font/exo2_bold"
@@ -103,6 +106,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                        android:id="@+id/TxtTercepat"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:text="30km/jam"
                     android:fontFamily="@font/exo2_bold"
@@ -142,6 +146,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                        android:id="@+id/TxtTotalJam"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:text="15 jam"
                     android:fontFamily="@font/exo2_bold"
@@ -182,6 +187,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                        android:id="@+id/TxtTotalJarak"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:text="30.7 km"
                     android:fontFamily="@font/exo2_bold"

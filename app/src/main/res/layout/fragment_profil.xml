@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg5">
+    android:background="@drawable/bg_5">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/prim"
@@ -36,6 +36,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                        android:id="@+id/TxtUserName"
                     android:text="John Doe"
                     android:textColor="#494949"
                     android:fontFamily="@font/exo2_regular"
@@ -44,6 +45,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                        android:id="@+id/TxtUserType"
                     android:text="Pesepeda"
                     android:textColor="#96494949"
                     android:fontFamily="@font/exo2_regular"
@@ -55,6 +57,7 @@
         <ImageView
             app:layout_constraintBottom_toTopOf="@id/div"
             app:layout_constraintRight_toRightOf="parent"
+                android:id="@+id/BtnSettings"
             android:layout_margin="10dp"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -80,6 +83,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                        android:id="@+id/TxtUserTtgDone"
                     android:text="14"
                     android:textColor="#E30808"
                     android:fontFamily="@font/exo2_bold"
@@ -102,6 +106,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                        android:id="@+id/TxtUserJarak"
                     android:text="42"
                     android:textColor="#B4E308"
                     android:fontFamily="@font/exo2_bold"
@@ -124,6 +129,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                        android:id="@+id/TxtUserJam"
                     android:text="8"
                     android:textColor="#E36E08"
                     android:fontFamily="@font/exo2_bold"
@@ -168,6 +174,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                    android:id="@+id/TxtUserAge"
                 android:textColor="#087DE3"
                 android:text="23"
                 android:fontFamily="@font/exo2_bold"
@@ -197,6 +204,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                        android:id="@+id/TxtUserWeight"
                     android:text="67"
                     android:textColor="#087DE3"
                     android:fontFamily="@font/exo2_bold"
@@ -226,6 +234,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                        android:id="@+id/TxtUserHeight"
                     android:text="178"
                     android:textColor="#087DE3"
                     android:fontFamily="@font/exo2_bold"

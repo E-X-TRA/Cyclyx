@@ -29,6 +29,7 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/TxtTodayDateTtg"
                 android:fontFamily="@font/exo2_regular"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#96000000"
@@ -59,6 +60,7 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/TxtTtg"
                     android:fontFamily="@font/exo2_bold"
                     android:text="@string/your_cycling_plan_for_today"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -68,6 +70,7 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/TxtPlan"
                     android:fontFamily="@font/exo2_regular"
                     android:text="@string/txt_waktu_kalori"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -116,6 +119,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/TxtTtgPercentage"
                         android:fontFamily="@font/josefinsans_bold"
                         android:text="@string/txt_persentase"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -135,6 +139,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/exo2_bold"
+                        android:id="@+id/TxtTtgTitle"
                         android:text="@string/txt_kecepatan"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="#0C1B44"
@@ -144,6 +149,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/exo2_regular"
+                        android:id="@+id/TxtTtgDesc"
                         android:text="Bersepeda dalam kecepatan 15km/detik"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="#96000000"
