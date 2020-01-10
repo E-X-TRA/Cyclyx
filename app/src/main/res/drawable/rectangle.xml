@@ -3,9 +3,6 @@
 
     <corners android:radius="7dp"></corners>
 
-    <gradient
-            android:startColor="@color/actionTrasnsparent"
-            android:endColor="@color/actionTrasnsparent"
-            ></gradient>
+    <solid android:color="@color/backgroundComponent"/>
 
 </shape>

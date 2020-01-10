@@ -48,6 +48,8 @@ dependencies {
     //ui ux
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.sothree.slidinguppanel:library:3.4.0'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
     //navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
