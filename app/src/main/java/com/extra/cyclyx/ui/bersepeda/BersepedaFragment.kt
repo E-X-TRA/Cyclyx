@@ -109,9 +109,8 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
         //init viewModel
         val application = requireNotNull(this.activity).application
         val dataSource = AppDatabase.getInstance(application).bersepedaDAO
-        val viewModelFactory = BersepedaViewModelFactory(dataSource, application)
         viewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(BersepedaViewModel::class.java)
+            ViewModelProviders.of(this, BersepedaViewModel.Factory(application)).get(BersepedaViewModel::class.java)
 
         //bind viewmodel
         binding.viewModel = viewModel

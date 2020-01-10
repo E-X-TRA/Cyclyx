@@ -4,15 +4,12 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
                 name="bersepeda"
                 type="com.extra.cyclyx.entity.Bersepeda" />
-
         <variable
                 name="clickListener"
-                type="com.extra.cyclyx.adapter.RiwayatClickListener" />
-
+                type="com.extra.cyclyx.utils.adapter.RiwayatClickListener" />
         <variable
                 name="isFinished"
                 type="Boolean" />
@@ -28,74 +25,74 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_columnSpan="2"
-                android:layout_margin="@dimen/_4sdp"
-                app:cardCornerRadius="@dimen/_3sdp">
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/backgroundComponent"
-                    android:paddingStart="@dimen/_8sdp"
-                    android:paddingTop="@dimen/_4sdp"
-                    android:paddingEnd="@dimen/_8sdp"
-                    android:paddingBottom="@dimen/_4sdp">
-
-                <TextView
-                        android:id="@+id/tv_itemR_tanggal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@android:color/white"
-                        tools:text="12 Agustus 2019" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_marginStart="@dimen/_4sdp"
-                android:layout_marginEnd="@dimen/_4sdp"
+                android:layout_margin="5dp"
                 app:cardCornerRadius="4dp">
 
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@color/backgroundComponent">
+
+                <TextView
+                        android:id="@+id/tv_itemR_tanggal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="12 Agustus 2019"
+                        android:textColor="@android:color/white" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="4dp">
+
+            <LinearLayout
+                    android:padding="7dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@color/backgroundComponent"
-                    android:gravity="center"
-                    android:padding="@dimen/_6sdp">
+                    android:gravity="center">
 
                 <TextView
                         android:id="@+id/tv_itemR_waktu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/white"
+                        tools:text="34:21"
                         app:durationToString="@{bersepeda}"
-                        tools:text="34:21" />
+                        android:textColor="@android:color/white" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginLeft="@dimen/_4sdp"
-                android:layout_marginRight="@dimen/_4sdp"
-                app:cardCornerRadius="@dimen/_3sdp">
+                app:cardCornerRadius="4dp">
 
             <LinearLayout
+                    android:padding="7dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/backgroundComponent"
-                    android:gravity="center"
-                    android:padding="@dimen/_6sdp">
+                    android:gravity="center">
 
                 <TextView
                         android:id="@+id/tv_itemR_jarak"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/white"
                         app:formatDouble="@{bersepeda.distance}"
-                        tools:text="12 KM" />
+                        tools:text="12 KM"
+                        android:textColor="@android:color/white" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

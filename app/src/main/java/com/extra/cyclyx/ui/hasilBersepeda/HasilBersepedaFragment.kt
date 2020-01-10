@@ -51,13 +51,12 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
         val application = requireNotNull(this.activity).application
         val arguments = HasilBersepedaFragmentArgs.fromBundle(arguments!!)
         val dataSource = AppDatabase.getInstance(application).bersepedaDAO
-        val viewModelFactory = HasilBersepedaViewModelFactory(arguments.bersepedaKey, dataSource)
 
         binding.mapView.onCreate(savedInstanceState)
         binding.mapView.getMapAsync(this)
 
         viewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(HasilBersepedaViewModel::class.java)
+            ViewModelProviders.of(this, HasilBersepedaViewModel.Factory(arguments.bersepedaKey, application)).get(HasilBersepedaViewModel::class.java)
         binding.viewModel = viewModel
 
         viewModel.routeList.observe(this, Observer { route ->
@@ -82,7 +81,7 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
             status?.let {
                 if (it) {
                     this.findNavController()
-                        .navigate(HasilBersepedaFragmentDirections.navigateToRiwayatFromHasilBersepeda())
+                        .navigate(HasilBersepedaFragmentDirections.navigateToStatistikFromHasilBersepeda())
                     viewModel.doneNavigating()
                 }
             }

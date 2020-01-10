@@ -1,5 +1,6 @@
 package com.extra.cyclyx.utils
 
+import android.util.Log
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat

@@ -8,7 +8,7 @@
     <fragment
             android:id="@+id/home"
             android:name="com.extra.cyclyx.ui.home.HomeFragment"
-            android:label="Home"
+            android:label="Beranda"
             tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/navigate_to_bersepeda"
@@ -16,12 +16,11 @@
     </fragment>
 
     <fragment
-            android:id="@+id/riwayat"
-            android:name="com.extra.cyclyx.ui.riwayat.RiwayatFragment"
-            android:label="Riwayat"
-            tools:layout="@layout/fragment_riwayat">
+        android:id="@+id/statistik"
+        android:name="com.extra.cyclyx.ui.statistik.StatistikFragment"
+        android:label="Statistik">
         <action
-                android:id="@+id/navigate_to_hasil_bersepeda_from_riwayat"
+                android:id="@+id/navigate_to_hasil_bersepeda_from_statistik"
                 app:destination="@id/hasil_bersepeda"/>
     </fragment>
 

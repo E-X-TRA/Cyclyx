@@ -1,4 +1,4 @@
-package com.extra.cyclyx.adapter
+package com.extra.cyclyx.utils.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:mapbox="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:mapbox="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
                 name="viewModel"
                 type="com.extra.cyclyx.ui.bersepeda.BersepedaViewModel" />
@@ -18,7 +17,8 @@
             android:layout_gravity="bottom"
             android:gravity="bottom"
             app:umanoDragView="@id/dragview"
-            app:umanoFadeColor="#28000000"
+            app:umanoFadeColor="#00000000"
+            app:umanoInitialState="expanded"
             app:umanoOverlay="true"
             app:umanoShadowHeight="0dp"
             tools:context=".BersepedaActivity">
@@ -39,7 +39,7 @@
         <LinearLayout
                 android:id="@+id/dragview"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_210sdp"
+                android:layout_height="@dimen/_168sdp"
                 android:background="#00000000"
                 android:clickable="true"
                 android:focusable="true"
@@ -47,18 +47,29 @@
 
             <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_42sdp"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:background="@drawable/circle"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="@dimen/_21sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_21sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:background="@drawable/rounded_button"
                     android:gravity="center">
 
-                <ImageButton
-                        android:id="@+id/imgPause"
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:layout_centerVertical="true"
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_toStartOf="@id/view"
-                        android:background="@drawable/pause" />
+                        android:background="#00000000"
+                        android:padding="@dimen/_8sdp">
+
+                    <ImageButton
+                            android:id="@+id/imgPause"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/pause" />
+
+                </LinearLayout>
 
                 <View
                         android:id="@+id/view"
@@ -66,45 +77,165 @@
                         android:layout_height="@dimen/_25sdp"
                         android:layout_centerInParent="true" />
 
-                <ImageButton
-                        android:id="@+id/imgStop"
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:layout_centerInParent="true"
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/view"
-                        android:background="@drawable/stop" />
+                        android:background="#00000000"
+                        android:padding="@dimen/_8sdp">
+
+                    <ImageButton
+                            android:id="@+id/imgStop"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/stop" />
+
+                </LinearLayout>
 
             </RelativeLayout>
 
             <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_7"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_4sdp">
 
-                <TextView
-                        android:id="@+id/text_timer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/whiteText"
-                        android:textSize="@dimen/_25ssp"
-                        app:timerValue="@{viewModel.elapsedTime}" />
+                <androidx.cardview.widget.CardView
+                        android:layout_width="@dimen/_84sdp"
+                        android:layout_height="@dimen/_63sdp"
+                        android:layout_margin="@dimen/_4sdp"
+                        app:cardBackgroundColor="#EE6352"
+                        app:cardCornerRadius="@dimen/_6sdp"
+                        app:cardElevation="@dimen/_8sdp">
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#FFF"
-                        android:textSize="@dimen/_17ssp"
-                        tools:text="Kecepatan" />
+                    <LinearLayout
+                            android:id="@+id/tttl"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:orientation="vertical">
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#FFF"
-                        android:textSize="@dimen/_17ssp"
-                        tools:text="Kecepatan" />
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/exo2_regular"
+                                android:text="@string/txt_waktu"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textColor="#FFF"
+                                android:textSize="@dimen/_14ssp" />
+
+                        <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_1sdp"
+                                android:background="#FFF" />
+                    </LinearLayout>
+
+                    <TextView
+                            android:id="@+id/text_timer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="@dimen/_4sdp"
+                            android:fontFamily="@font/exo2_regular"
+                            android:padding="@dimen/_8sdp"
+                            android:textColor="#FFF"
+                            android:textSize="@dimen/_16sdp"
+                            android:textStyle="bold"
+                            app:timerValue="@{viewModel.elapsedTime}" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                        android:layout_width="@dimen/_84sdp"
+                        android:layout_height="@dimen/_63sdp"
+                        android:layout_margin="@dimen/_4sdp"
+                        app:cardBackgroundColor="#57A773"
+                        app:cardCornerRadius="@dimen/_6sdp"
+                        app:cardElevation="@dimen/_8sdp">
+
+                    <LinearLayout
+                            android:id="@+id/tttl2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:orientation="vertical">
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/exo2_regular"
+                                android:text="@string/txt_jarak"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textColor="#FFF"
+                                android:textSize="@dimen/_14sdp" />
+
+                        <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_1sdp"
+                                android:background="#FFF" />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="@dimen/_4sdp"
+                                android:fontFamily="@font/exo2_regular"
+                                android:text="200 M"
+                                android:textColor="#FFF"
+                                android:textSize="@dimen/_16ssp"
+                                android:textStyle="bold" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                        android:layout_width="@dimen/_84sdp"
+                        android:layout_height="@dimen/_63sdp"
+                        android:layout_margin="@dimen/_4sdp"
+                        app:cardBackgroundColor="#484D6D"
+                        app:cardCornerRadius="@dimen/_6sdp"
+                        app:cardElevation="@dimen/_8sdp">
+
+                    <LinearLayout
+                            android:id="@+id/tttl3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:orientation="vertical">
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/exo2_regular"
+                                android:text="@string/txt_kecepatan"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textColor="#FFF"
+                                android:textSize="@dimen/_14sdp" />
+
+                        <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_1sdp"
+                                android:background="#FFF" />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="@dimen/_4sdp"
+                                android:fontFamily="@font/exo2_regular"
+                                android:text="20 Km/H"
+                                android:textColor="#FFF"
+                                android:textSize="@dimen/_17ssp"
+                                android:textStyle="bold" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
             </LinearLayout>
+
+
         </LinearLayout>
 
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>

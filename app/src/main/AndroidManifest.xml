@@ -13,7 +13,6 @@
         <activity
                 android:name=".BersepedaActivity"
                 android:label="Bersepeda"/>
-        <activity android:name=".ui.pendaftaran.PendaftaranActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

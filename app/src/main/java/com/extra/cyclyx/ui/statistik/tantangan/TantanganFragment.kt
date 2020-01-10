@@ -1,4 +1,4 @@
-package com.extra.cyclyx.ui.tantangan
+package com.extra.cyclyx.ui.statistik.tantangan
 
 
 import android.os.Bundle
