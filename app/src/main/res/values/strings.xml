@@ -18,4 +18,19 @@
     <string name="txt_waktu_kalori">1 hour and 856 kal</string>
     <string name="txt_pencapaianmu">Pencapaianmu</string>
     <string name="txt_persentase">100%</string>
+    <string name="txt_pesepeda">Pesepeda</string>
+    <string name="txt_tantangan">Tantangan</string>
+    <string name="txt_kilometer">Kilometer</string>
+    <string name="txt_jam">Jam</string>
+    <string name="txt_usia">Usia</string>
+    <string name="txt_kilogram">Kilogram</string>
+    <string name="txt_centimeter">Centimeter</string>
+    <string name="txt_distance">Distance</string>
+    <string name="txt_duration">Duration</string>
+    <string name="txt_caps_tantangan">TANTANGAN</string>
+    <string name="txt_riwayat">Riwayat</string>
+    <string name="txt_membakar_kalori">Sejauh ini anda sudah membakar kalori</string>
+    <string name="txt_kecepatan_tercepat">Kecepatan tercepat</string>
+    <string name="txt_total_waktu_bersepeda">Total waktu bersepeda</string>
+    <string name="txt_total_jarak_bersepeda">Total jarak bersepeda</string>
 </resources>

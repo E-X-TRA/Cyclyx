@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tool="http://schemas.android.com/tools"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_5"
@@ -33,7 +33,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#96000000"
                 android:textSize="@dimen/_15ssp"
-                tool:text="Hari ini, 14 November" />
+                tools:text="Hari ini, 14 November" />
 
     </LinearLayout>
 
@@ -144,7 +144,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/exo2_regular"
-                        android:text="Bersepeda dalam kecepatan 15km/detik"
+                        tools:text="Bersepeda dalam kecepatan 15km/detik"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="#96000000"
                         android:textSize="@dimen/_13ssp" />
