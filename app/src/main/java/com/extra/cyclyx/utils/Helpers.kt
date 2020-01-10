@@ -88,3 +88,16 @@ fun formatDouble(double : Double,pattern : String) : String{
     df.roundingMode = RoundingMode.CEILING
     return df.format(double)
 }
+
+fun determineZoomLevel(distanceBetweenPoint : Double) : Double{ //distance in km
+    Log.d("TRACKING","Rough Distance = $distanceBetweenPoint")
+    return when{
+        distanceBetweenPoint <= 0.5 -> 17.0
+        distanceBetweenPoint > 0.5 && distanceBetweenPoint <= 5.0 -> 15.0
+        distanceBetweenPoint > 5.0 && distanceBetweenPoint <= 20.0 -> 13.0
+        distanceBetweenPoint > 20.0 && distanceBetweenPoint <= 80.0 -> 11.0
+        distanceBetweenPoint > 80.0 && distanceBetweenPoint <= 320.0 -> 9.0
+        distanceBetweenPoint > 320.0 && distanceBetweenPoint <= 640.0 -> 7.0
+        else -> 6.0
+    }
+}

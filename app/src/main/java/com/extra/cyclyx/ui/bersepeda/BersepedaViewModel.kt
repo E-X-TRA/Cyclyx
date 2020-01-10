@@ -187,8 +187,8 @@ class BersepedaViewModel(
                     _peakSpeed = speed
                 }
                 //elevation loss and gain
-                val oldPointAlt = oldPoint.altitude() - elevationHelper.getOffset(oldPoint)
-                val newPointAlt = newPoint.altitude() - elevationHelper.getOffset(newPoint)
+                val oldPointAlt = elevationHelper.getOffset(oldPoint)
+                val newPointAlt = elevationHelper.getOffset(newPoint)
                 when {
                     oldPointAlt < newPointAlt -> { //means elevation gain
                         val elevationChange = newPointAlt - oldPointAlt
