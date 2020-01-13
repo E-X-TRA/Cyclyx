@@ -9,7 +9,7 @@
                 type="com.extra.cyclyx.entity.Bersepeda" />
         <variable
                 name="clickListener"
-                type="com.extra.cyclyx.adapter.RiwayatClickListener" />
+                type="com.extra.cyclyx.utils.adapter.RiwayatClickListener" />
         <variable
                 name="isFinished"
                 type="Boolean" />

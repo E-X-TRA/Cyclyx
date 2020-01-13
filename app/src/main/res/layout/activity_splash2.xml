@@ -16,8 +16,8 @@
 
         <ImageView
                 android:id="@+id/imgcy"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
+                android:layout_width="@dimen/_210sdp"
+                android:layout_height="@dimen/_210sdp"
                 android:src="@drawable/db_logo_revi"
                 android:tint="#08B2E3" />
 

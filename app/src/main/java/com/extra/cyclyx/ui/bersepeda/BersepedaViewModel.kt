@@ -4,12 +4,9 @@ import android.app.Application
 import android.os.Handler
 import android.os.SystemClock
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.extra.cyclyx.database.BersepedaDao
+import androidx.lifecycle.*
 import com.extra.cyclyx.entity.Bersepeda
+import com.extra.cyclyx.repository.CyclyxRepository
 import com.extra.cyclyx.utils.*
 import com.mapbox.geojson.Point
 import com.mapbox.geojson.utils.PolylineUtils
@@ -17,10 +14,9 @@ import com.mapbox.turf.TurfMeasurement
 import kotlinx.coroutines.*
 
 class BersepedaViewModel(
-    dataSource : BersepedaDao,
     val app : Application
 ) : AndroidViewModel(app){
-    val database = dataSource
+    val repository = CyclyxRepository(app.applicationContext)
     //coroutine
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -88,7 +84,7 @@ class BersepedaViewModel(
 
     private suspend fun getLatestBersepeda(): Bersepeda? {
         return withContext(Dispatchers.IO) {
-            var cycling = database.getLatestCycling()
+            var cycling = repository.getLatestCyclingData()
             if (cycling?.endTime != cycling?.startTime) {
                 cycling = null
             }
@@ -97,15 +93,11 @@ class BersepedaViewModel(
     }
 
     private suspend fun insert(cycling: Bersepeda) {
-        withContext(Dispatchers.IO) {
-            database.insert(cycling)
-        }
+        repository.insertCyclingData(cycling)
     }
 
-    private suspend fun update(cycling: Bersepeda) {
-        withContext(Dispatchers.IO) {
-            database.update(cycling)
-        }
+    private suspend fun update(cycling: Bersepeda){
+        repository.updateCyclingData(cycling)
     }
 
     fun onStart() {
@@ -271,5 +263,18 @@ class BersepedaViewModel(
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    class Factory(val app: Application) : ViewModelProvider.Factory{
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            @Suppress("UNCHECKED_CAST")
+            if(modelClass.isAssignableFrom(BersepedaViewModel::class.java)){
+                return BersepedaViewModel(
+                    app
+                ) as T
+            }
+            throw IllegalArgumentException("Unable To Construct ViewModel")
+        }
+
     }
 }

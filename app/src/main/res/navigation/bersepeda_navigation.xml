@@ -22,9 +22,9 @@
                 android:name="bersepedaKey"
                 app:argType="long"/>
         <action
-                android:id="@+id/navigate_to_riwayat_from_hasil_bersepeda"
-                app:destination="@id/riwayat"
-                app:popUpTo="@id/riwayat"
+                android:id="@+id/navigate_to_statistik_from_hasil_bersepeda"
+                app:destination="@id/statistik"
+                app:popUpTo="@id/statistik"
                 />
     </fragment>
 </navigation>

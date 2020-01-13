@@ -14,6 +14,7 @@ import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import java.util.*
 
 class HomeViewModel(val app: Application) : AndroidViewModel(app) {
     private val viewModelJob = Job()
@@ -26,6 +27,8 @@ class HomeViewModel(val app: Application) : AndroidViewModel(app) {
     private var _navigateToBersepeda = MutableLiveData<Boolean>()
     val navigateToBersepeda: LiveData<Boolean>
         get() = _navigateToBersepeda
+
+    val stringMonth : String = (Calendar.getInstance()).getDisplayName(Calendar.MONTH,Calendar.LONG,Locale.US) ?: "ERROR"
 
     init {
         //checkLocationPermission

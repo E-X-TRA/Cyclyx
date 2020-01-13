@@ -7,9 +7,9 @@
             android:title="@string/title_home"/>
 
     <item
-            android:id="@+id/riwayat"
+            android:id="@+id/statistik"
             android:icon="@drawable/history"
-            android:title="Riwayat"/>
+            android:title="Statistik"/>
 
     <item
             android:id="@+id/profil"

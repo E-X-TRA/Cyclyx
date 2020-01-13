@@ -1,4 +1,4 @@
-package com.extra.cyclyx.ui.pendaftaran
+package com.extra.cyclyx.ui.statistik.tantangan
 
 
 import android.os.Bundle
@@ -12,16 +12,14 @@ import com.extra.cyclyx.R
 /**
  * A simple [Fragment] subclass.
  */
-class PendaftaranDataDiri : Fragment() {
+class TantanganFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-
-
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pendaftaran_data_diri, container, false)
+        return inflater.inflate(R.layout.fragment_tantangan, container, false)
     }
 
 

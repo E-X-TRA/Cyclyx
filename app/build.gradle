@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs'
-apply plugin: 'com.google.gms.google-services'
 
 def apikeyPropertiesFile = rootProject.file("apikey.properties")
 def apikeyProperties = new Properties()
@@ -30,7 +29,7 @@ android {
             minifyEnabled false
         }
     }
-    dataBinding{
+    dataBinding {
         enabled = true
     }
 }
@@ -59,9 +58,6 @@ dependencies {
     kapt 'android.arch.persistence.room:compiler:1.1.1'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
-    //firebase
-    implementation 'com.google.firebase:firebase-auth:19.1.0'
-    implementation 'com.google.android.gms:play-services-auth:17.0.0'
     //maps
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:8.4.0'
     implementation 'com.mapbox.mapboxsdk:mapbox-sdk-turf:4.9.0'
