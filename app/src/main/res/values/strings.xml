@@ -33,4 +33,8 @@
     <string name="txt_kecepatan_tercepat">Kecepatan tercepat</string>
     <string name="txt_total_waktu_bersepeda">Total waktu bersepeda</string>
     <string name="txt_total_jarak_bersepeda">Total jarak bersepeda</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>
