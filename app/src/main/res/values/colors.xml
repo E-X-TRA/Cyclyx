@@ -9,4 +9,5 @@
     <color name="backgroundComponent">#99222831</color>
     <color name="actionTrasnsparent">#6600ADB5</color>
     <color name="bg_tantangan">#D5EFFF</color>
+    <color name="bg_edittext">#c4c4c4</color>
 </resources>

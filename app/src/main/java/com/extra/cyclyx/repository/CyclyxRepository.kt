@@ -1,6 +1,7 @@
 package com.extra.cyclyx.repository
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.extra.cyclyx.database.AppDatabase
 import com.extra.cyclyx.entity.Bersepeda
@@ -47,4 +48,11 @@ class CyclyxRepository(context: Context){
 
     //challenge related
     val allChallengeData : LiveData<List<Tantangan>> = database.tantanganDAO.getAllTantangan()
+
+    suspend fun insertTantanganData(data : Tantangan){
+        withContext(Dispatchers.IO){
+            database.tantanganDAO.insertTantangan(data)
+            Log.d("DB","Inserted -> $data")
+        }
+    }
 }
