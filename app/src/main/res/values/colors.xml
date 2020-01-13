@@ -10,4 +10,5 @@
     <color name="actionTrasnsparent">#6600ADB5</color>
     <color name="bg_tantangan">#D5EFFF</color>
     <color name="bg_edittext">#c4c4c4</color>
+    <color name="bg_card">#F1FEFF</color>
 </resources>
