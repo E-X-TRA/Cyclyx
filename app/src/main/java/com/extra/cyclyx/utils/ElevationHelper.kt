@@ -2,7 +2,7 @@ package com.extra.cyclyx.utils
 
 import android.content.Context
 import android.util.Log
-import com.extra.cyclyx.utils.matthiaszimmerman.Location
+import com.extra.cyclyx.utils.matthiaszimmerman.LocationPoint
 import com.extra.cyclyx.utils.matthiaszimmerman.egm96.Geoid
 import com.mapbox.geojson.Point
 import kotlinx.coroutines.CoroutineScope
@@ -30,6 +30,6 @@ class ElevationHelper(val context: Context) {
     }
 
     fun getOffset(point : Point) : Double{
-        return Geoid.getOffset(Location(point.latitude(),point.longitude()))
+        return Geoid.getOffset(LocationPoint(point.latitude(),point.longitude()))
     }
 }
