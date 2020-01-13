@@ -34,7 +34,7 @@
     <string name="txt_total_waktu_bersepeda">Total waktu bersepeda</string>
     <string name="txt_total_jarak_bersepeda">Total jarak bersepeda</string>
     <string name="email">Email</string>
-    <string name="username">Username</string>
-    <string name="password">Password</string>
-    <string name="confirm_password">Confirm Password</string>
+    <string name="username">Nama User</string>
+    <string name="password">Kata Sandi</string>
+    <string name="confirm_password">Konfirmasi Kata Sandi</string>
 </resources>
