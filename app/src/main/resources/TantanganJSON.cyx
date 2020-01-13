@@ -1,0 +1,14 @@
+[
+  {
+    "tipe_tantangan": "Kecepatan",
+    "label_tantangan": "Mencapai 5kmph"
+  },
+  {
+     "tipe_tantangan": "Kecepatan",
+     "label_tantangan": "Mencapai 10kmph"
+   },
+   {
+      "tipe_tantangan": "Kecepatan",
+      "label_tantangan": "Mencapai 15kmph"
+   },
+]

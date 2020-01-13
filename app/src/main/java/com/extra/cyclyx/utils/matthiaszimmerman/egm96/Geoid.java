@@ -2,7 +2,7 @@ package com.extra.cyclyx.utils.matthiaszimmerman.egm96;
 
 import android.util.Log;
 
-import com.extra.cyclyx.utils.matthiaszimmerman.Location;
+import com.extra.cyclyx.utils.matthiaszimmerman.LocationPoint;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -56,7 +56,7 @@ public class Geoid {
         StringBuffer b = new StringBuffer();
         b.append("lat=").append(lat).append(" ");
         b.append("long=").append(lng).append(" ");
-        b.append("offset=").append(getOffset(new Location(lat, lng)));
+        b.append("offset=").append(getOffset(new LocationPoint(lat, lng)));
 
         System.out.println(b.toString());
     }
@@ -81,7 +81,7 @@ public class Geoid {
         return s_model_ok;
     }
 
-    public static double getOffset(Location location) {
+    public static double getOffset(LocationPoint location) {
         double lat = location.getLatitude();
         double lng = location.getLongitude();
 
@@ -90,38 +90,38 @@ public class Geoid {
             return getGridOffset(lat, lng);
         }
 
-        Location[][] q = new Location[4][4];
+        LocationPoint[][] q = new LocationPoint[4][4];
 
         // get four grid locations surrounding the target location
         // used for bilinear interpolation
-        q[1][1] = getGridFloorLocation(lat, lng);
-        q[1][2] = getUpperLocation(q[1][1]);
-        q[2][1] = getRightLocation(q[1][1]);
-        q[2][2] = getUpperLocation(q[2][1]);
+        q[1][1] = getGridFloorLocationPoint(lat, lng);
+        q[1][2] = getUpperLocationPoint(q[1][1]);
+        q[2][1] = getRightLocationPoint(q[1][1]);
+        q[2][2] = getUpperLocationPoint(q[2][1]);
 
         // check if we can get points for bicubic interpolation
         if (q[1][1].getLatitude() >= LATITUDE_MIN_GRID && q[1][2].getLatitude() <= LATITUDE_MAX_GRID) {
             // left column
-            q[0][1] = getLeftLocation(q[1][1]);
-            q[0][2] = getUpperLocation(q[0][1]);
-            q[0][3] = getUpperLocation(q[0][2]);
+            q[0][1] = getLeftLocationPoint(q[1][1]);
+            q[0][2] = getUpperLocationPoint(q[0][1]);
+            q[0][3] = getUpperLocationPoint(q[0][2]);
 
             // top row
-            q[1][3] = getRightLocation(q[0][3]);
-            q[2][3] = getRightLocation(q[1][3]);
-            q[2][3] = getRightLocation(q[1][3]);
-            q[3][3] = getRightLocation(q[2][3]);
+            q[1][3] = getRightLocationPoint(q[0][3]);
+            q[2][3] = getRightLocationPoint(q[1][3]);
+            q[2][3] = getRightLocationPoint(q[1][3]);
+            q[3][3] = getRightLocationPoint(q[2][3]);
 
             // bottom row
-            q[0][0] = getLowerLocation(q[0][1]);
-            q[1][0] = getRightLocation(q[0][0]);
-            q[1][0] = getRightLocation(q[0][0]);
-            q[2][0] = getRightLocation(q[1][0]);
+            q[0][0] = getLowerLocationPoint(q[0][1]);
+            q[1][0] = getRightLocationPoint(q[0][0]);
+            q[1][0] = getRightLocationPoint(q[0][0]);
+            q[2][0] = getRightLocationPoint(q[1][0]);
 
             // right column
-            q[3][0] = getRightLocation(q[2][0]);
-            q[3][1] = getUpperLocation(q[3][0]);
-            q[3][2] = getUpperLocation(q[3][1]);
+            q[3][0] = getRightLocationPoint(q[2][0]);
+            q[3][1] = getUpperLocationPoint(q[3][0]);
+            q[3][2] = getUpperLocationPoint(q[3][1]);
 
 //			return bilinearInterpolation(location, q[1][1], q[1][2], q[2][1], q[2][2]);
             return bicubicSplineInterpolation(location, q);
@@ -131,7 +131,7 @@ public class Geoid {
         }
     }
 
-    private static double bilinearInterpolation(Location target, Location q11, Location q12, Location q21, Location q22) {
+    private static double bilinearInterpolation(LocationPoint target, LocationPoint q11, LocationPoint q12, LocationPoint q21, LocationPoint q22) {
         double fq11 = getGridOffset(q11); // lower left
         double fq12 = getGridOffset(q12); // upper left
         double fq21 = getGridOffset(q21); // lower right
@@ -158,7 +158,7 @@ public class Geoid {
         return (f11 + f12 + f21 + f22) / ((x2 - x1) * (y2 - y1));
     }
 
-    private static double bicubicSplineInterpolation(Location target, Location[][] grid) {
+    private static double bicubicSplineInterpolation(LocationPoint target, LocationPoint[][] grid) {
         double[][] G = new double[4][4];
 
         for (int i = 0; i < 4; i++) {
@@ -177,7 +177,7 @@ public class Geoid {
         return c.eval(u, v);
     }
 
-    private static Location getUpperLocation(Location location) {
+    private static LocationPoint getUpperLocationPoint(LocationPoint location) {
         double lat = location.getLatitude();
         double lng = location.getLongitude();
 
@@ -193,10 +193,10 @@ public class Geoid {
             lat += LATITUDE_STEP;
         }
 
-        return new Location(lat, lng);
+        return new LocationPoint(lat, lng);
     }
 
-    private static Location getLowerLocation(Location location) {
+    private static LocationPoint getLowerLocationPoint(LocationPoint location) {
         double lat = location.getLatitude();
         double lng = location.getLongitude();
 
@@ -212,25 +212,25 @@ public class Geoid {
             lat -= LATITUDE_STEP;
         }
 
-        return new Location(lat, lng);
+        return new LocationPoint(lat, lng);
     }
 
-    private static Location getLeftLocation(Location location) {
+    private static LocationPoint getLeftLocationPoint(LocationPoint location) {
         double lat = location.getLatitude();
         double lng = location.getLongitude();
 
-        return new Location(lat, lng - LATITUDE_STEP);
+        return new LocationPoint(lat, lng - LATITUDE_STEP);
     }
 
-    private static Location getRightLocation(Location location) {
+    private static LocationPoint getRightLocationPoint(LocationPoint location) {
         double lat = location.getLatitude();
         double lng = location.getLongitude();
 
-        return new Location(lat, lng + LATITUDE_STEP);
+        return new LocationPoint(lat, lng + LATITUDE_STEP);
     }
 
-    private static Location getGridFloorLocation(double lat, double lng) {
-        Location floor = (new Location(lat, lng)).floor(LATITUDE_STEP);
+    private static LocationPoint getGridFloorLocationPoint(double lat, double lng) {
+        LocationPoint floor = (new LocationPoint(lat, lng)).floor(LATITUDE_STEP);
         double latFloor = floor.getLatitude();
 
         if (lat >= LATITUDE_MAX_GRID && lat < LATITUDE_MAX) {
@@ -241,10 +241,10 @@ public class Geoid {
             latFloor = LATITUDE_MIN_GRID;
         }
 
-        return new Location(latFloor, floor.getLongitude());
+        return new LocationPoint(latFloor, floor.getLongitude());
     }
 
-    private static double getGridOffset(Location location) {
+    private static double getGridOffset(LocationPoint location) {
         return getGridOffset(location.getLatitude(), location.getLongitude());
     }
 

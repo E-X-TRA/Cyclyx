@@ -1,13 +1,13 @@
 package com.extra.cyclyx.utils.matthiaszimmerman;
 
-public class Location {
+public class LocationPoint {
     // TODO verify if this is meaningful (eg. if this is sufficient for cm accuracy on earth)
     private static final double EPSILON = 0.00000001;
 
     private double m_lat;
     private double m_lng;
 
-    public Location(double lat, double lng) {
+    public LocationPoint(double lat, double lng) {
         init(lat, lng);
     }
 
@@ -65,11 +65,11 @@ public class Location {
             return false;
         }
 
-        if (!(o instanceof Location)) {
+        if (!(o instanceof LocationPoint)) {
             return false;
         }
 
-        Location other = (Location) o;
+        LocationPoint other = (LocationPoint) o;
 
         return Math.abs(getLatitude() - other.getLatitude()) <= EPSILON && Math.abs(getLongitude() - other.getLongitude()) <= EPSILON;
 
@@ -80,7 +80,7 @@ public class Location {
         return "(" + getLatitude() + "," + getLongitude() + ")";
     }
 
-    public Location floor(double precision) {
+    public LocationPoint floor(double precision) {
         if(precision <= 0.0 || precision > 1.0) {
             throw new IllegalArgumentException("precision out of bounds (0,1]");
         }
@@ -88,6 +88,6 @@ public class Location {
         double latFloor = Math.floor(getLatitude() / precision) * precision;
         double lngFloor = Math.floor(getLongitude() / precision) * precision;
 
-        return new Location(latFloor, lngFloor);
+        return new LocationPoint(latFloor, lngFloor);
     }
 }
