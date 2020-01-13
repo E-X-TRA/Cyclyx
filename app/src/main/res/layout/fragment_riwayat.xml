@@ -43,7 +43,7 @@
         android:layout_margin="10dp"
         app:cardElevation="10dp"
         app:cardCornerRadius="10dp"
-        android:backgroundTint="@color/ic_launcher_background"
+        android:backgroundTint="@color/bg_tantangan"
         android:layout_height="150dp">
 
         <LinearLayout
