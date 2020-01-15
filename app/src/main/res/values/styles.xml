@@ -24,13 +24,12 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_alignParentEnd">true</item>
     </style>
-
     <style name="cardSetting_hasil">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@color/bg_list</item>
     </style>
-
+    
     <style name="edit_text">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">35dp</item>
@@ -68,27 +67,19 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/font_light_blue</item>
         <item name="android:background">@drawable/rounded_btn_pengenalan2</item>
-        <item name="android:layout_marginStart">@dimen/_40sdp</item>
-    </style>
-
-    <style name="GenderButton">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:fontFamily">@font/exo2_bold</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/font_light_blue</item>
-        <item name="android:background">@drawable/rounded_btn_pengenalan2</item>
-        <item name="android:padding">@dimen/_5sdp</item>
+        <item name="android:layout_marginLeft">@dimen/_40ssp</item>
+        <item name="android:layout_marginRight">@dimen/_20ssp</item>
     </style>
 
     <style name="NextButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/exo2_bold</item>
-        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/whiteText</item>
         <item name="android:background">@drawable/rounded_btn_pengenalan</item>
-        <item name="android:layout_marginStart">@dimen/_40sdp</item>
+        <item name="android:layout_marginRight">@dimen/_40ssp</item>
+        <item name="android:layout_marginLeft">@dimen/_20ssp</item>
     </style>
 
 </resources>

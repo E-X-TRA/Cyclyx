@@ -39,16 +39,4 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="txt_kalori">Kalori</string>
     <string name="txt_elevasi">Elevasi</string>
-    <string name="txt_buat">Buat</string>
-    <string name="txt_akun">Akun</string>
-    <string name="txt_perempuan">Perempuan</string>
-    <string name="txt_laki_laki">Laki - Laki</string>
-    <string name="txt_kembali">Kembali</string>
-    <string name="txt_selanjutnya">Selanjutnya</string>
-    <string name="titled_jenis_kelamin_anda">Jenis Kelamin Anda</string>
-    <string name="nama_depan">Nama Depan</string>
-    <string name="nama_belakang">Nama Belakang</string>
-    <string name="tanggal_lahir">Tanggal Lahir</string>
-    <string name="berat_badan">Berat Badan</string>
-    <string name="tinggi_badan">Tinggi Badan</string>
 </resources>
