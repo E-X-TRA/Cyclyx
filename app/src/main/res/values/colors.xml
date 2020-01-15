@@ -5,7 +5,7 @@
     <color name="colorAccent">#00ADB5</color>
 
     <color name="FontColor">#FFF</color>
-    <color name="FontColorBlack">#000000</color>
+    <color name="FontColorBlack">#000000</color>git
     <color name="whiteText">#FFF</color>
     <color name="backgroundComponent">#99222831</color>
     <color name="actionTrasnsparent">#6600ADB5</color>
@@ -18,4 +18,5 @@
     <color name="font_green">#3FC600</color>
     <color name="bg_list">#F1FEFF</color>
     <color name="bg_card_tantangan">#FFFFFF</color>
+    <color name="font_light_grey">#8D8D8D</color>
 </resources>
