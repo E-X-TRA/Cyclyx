@@ -4,6 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
                 name="viewModel"
                 type="com.extra.cyclyx.ui.profil.ProfilViewModel" />
@@ -11,29 +12,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-<<<<<<< HEAD
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_20ssp"
-            android:layout_marginEnd="@dimen/_12sdp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        <RelativeLayout
-                android:id="@+id/name"
-=======
             android:layout_height="match_parent"
             android:background="@drawable/bg_5">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/prim"
->>>>>>> origin/dev
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginEnd="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_20ssp"
+                android:layout_marginEnd="@dimen/_12sdp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -42,40 +30,6 @@
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-<<<<<<< HEAD
-                    android:layout_below="@id/icUser"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:layout_marginBottom="@dimen/_8sdp"
-                    android:orientation="vertical">
-
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                    <TextView
-
-                            android:id="@+id/TxtUserName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/exo2_regular"
-                            android:text="John Doe"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                            android:textColor="#494949"
-                            android:textSize="@dimen/_27ssp" />
-
-                    <Button
-                            android:id="@+id/btnEditNama"
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:background="@drawable/ic_semi_edit"
-                            android:visibility="invisible" />
-                </LinearLayout>
-
-                <TextView
-                        android:id="@+id/TxtUserType"
-=======
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -88,23 +42,36 @@
                         android:tint="#000" />
 
                 <LinearLayout
->>>>>>> origin/dev
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/icUser"
-                        android:orientation="vertical"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:layout_marginBottom="@dimen/_8sdp">
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:orientation="vertical">
 
-                    <TextView
-                            android:id="@+id/TxtUserName"
+                    <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/exo2_regular"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                            android:textColor="#494949"
-                            android:textSize="@dimen/_27ssp"
-                            android:text="@{viewModel.profil.userName}" />
+                            android:orientation="horizontal">
+
+                        <TextView
+
+                                android:id="@+id/TxtUserName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/exo2_regular"
+                                android:text="@{viewModel.profil.userName}"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                android:textColor="#494949"
+                                android:textSize="@dimen/_27ssp" />
+
+                        <Button
+                                android:id="@+id/btnEditNama"
+                                android:layout_width="@dimen/_25sdp"
+                                android:layout_height="@dimen/_25sdp"
+                                android:background="@drawable/ic_semi_edit"
+                                android:visibility="invisible" />
+                    </LinearLayout>
 
                     <TextView
                             android:id="@+id/TxtUserType"
@@ -148,32 +115,6 @@
                         android:layout_margin="@dimen/_8sdp"
                         android:orientation="vertical">
 
-<<<<<<< HEAD
-                    <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                        <TextView
-
-                                android:id="@+id/TxtUserAge"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/exo2_bold"
-                                android:text="23"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                                android:textColor="#087DE3"
-                                android:textSize="@dimen/_18ssp" />
-
-                        <Button
-                                android:id="@+id/btnEditUsia"
-                                android:layout_width="@dimen/_20sdp"
-                                android:layout_height="@dimen/_20sdp"
-                                android:layout_marginStart="@dimen/_10sdp"
-                                android:background="@drawable/ic_semi_edit"
-                                android:visibility="invisible" />
-                    </LinearLayout>
-=======
                     <TextView
                             android:id="@+id/TxtUserTtgDone"
                             android:layout_width="wrap_content"
@@ -183,7 +124,6 @@
                             android:textAppearance="@style/TextAppearance.AppCompat.Large"
                             android:textColor="#E30808"
                             android:textSize="@dimen/_18ssp" />
->>>>>>> origin/dev
 
                     <TextView
                             android:layout_width="wrap_content"
@@ -201,32 +141,6 @@
                         android:layout_margin="@dimen/_8sdp"
                         android:orientation="vertical">
 
-<<<<<<< HEAD
-                    <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                        <TextView
-
-                                android:id="@+id/TxtUserWeight"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/exo2_bold"
-                                android:text="67"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                                android:textColor="#087DE3"
-                                android:textSize="@dimen/_18ssp" />
-
-                        <Button
-                                android:id="@+id/btnEditKilogram"
-                                android:layout_width="@dimen/_20sdp"
-                                android:layout_height="@dimen/_20sdp"
-                                android:layout_marginStart="@dimen/_10sdp"
-                                android:background="@drawable/ic_semi_edit"
-                                android:visibility="invisible" />
-                    </LinearLayout>
-=======
                     <TextView
                             android:id="@+id/TxtUserJarak"
                             android:layout_width="wrap_content"
@@ -236,7 +150,6 @@
                             android:textAppearance="@style/TextAppearance.AppCompat.Large"
                             android:textColor="#B4E308"
                             android:textSize="@dimen/_18ssp" />
->>>>>>> origin/dev
 
                     <TextView
                             android:layout_width="wrap_content"
@@ -254,32 +167,6 @@
                         android:layout_margin="10dp"
                         android:orientation="vertical">
 
-<<<<<<< HEAD
-                    <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                        <TextView
-
-                                android:id="@+id/TxtUserHeight"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/exo2_bold"
-                                android:text="178"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                                android:textColor="#087DE3"
-                                android:textSize="@dimen/_18ssp" />
-
-                        <Button
-                                android:id="@+id/btnEditCentimeter"
-                                android:layout_width="@dimen/_20sdp"
-                                android:layout_height="@dimen/_20sdp"
-                                android:layout_marginStart="@dimen/_10sdp"
-                                android:background="@drawable/ic_semi_edit"
-                                android:visibility="invisible" />
-                    </LinearLayout>
-=======
                     <TextView
                             android:id="@+id/TxtUserJam"
                             android:layout_width="wrap_content"
@@ -289,7 +176,6 @@
                             android:textAppearance="@style/TextAppearance.AppCompat.Large"
                             android:textColor="#E36E08"
                             android:textSize="@dimen/_18ssp" />
->>>>>>> origin/dev
 
                     <TextView
                             android:layout_width="wrap_content"
@@ -337,15 +223,29 @@
                             android:layout_margin="@dimen/_7sdp"
                             android:orientation="vertical">
 
-                        <TextView
-                                android:id="@+id/TxtUserAge"
+                        <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/exo2_bold"
-                                android:text="@{viewModel.convertDateStringtoAge(viewModel.profil.birthDay)}"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                                android:textColor="#087DE3"
-                                android:textSize="@dimen/_18ssp" />
+                                android:orientation="horizontal">
+
+                            <TextView
+
+                                    android:id="@+id/TxtUserAge"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/exo2_bold"
+                                    android:text="@{viewModel.convertDateStringtoAge(viewModel.profil.birthDay)}"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                    android:textColor="#087DE3"
+                                    android:textSize="@dimen/_18ssp" />
+
+                            <Button
+                                    android:id="@+id/btnEditUsia"
+                                    android:layout_width="@dimen/_25sdp"
+                                    android:layout_height="@dimen/_25sdp"
+                                    android:background="@drawable/ic_semi_edit"
+                                    android:visibility="invisible" />
+                        </LinearLayout>
 
                         <TextView
                                 android:layout_width="wrap_content"
@@ -371,15 +271,29 @@
                             android:layout_margin="@dimen/_8sdp"
                             android:orientation="vertical">
 
-                        <TextView
-                                android:id="@+id/TxtUserWeight"
+                        <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/exo2_bold"
-                                app:showInt="@{viewModel.profil.weight}"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                                android:textColor="#087DE3"
-                                android:textSize="@dimen/_18ssp" />
+                                android:orientation="horizontal">
+
+                            <TextView
+
+                                    android:id="@+id/TxtUserWeight"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/exo2_bold"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                    android:textColor="#087DE3"
+                                    android:textSize="@dimen/_18ssp"
+                                    app:showInt="@{viewModel.profil.weight}" />
+
+                            <Button
+                                    android:id="@+id/btnEditKilogram"
+                                    android:layout_width="@dimen/_25sdp"
+                                    android:layout_height="@dimen/_25sdp"
+                                    android:background="@drawable/ic_semi_edit"
+                                    android:visibility="invisible" />
+                        </LinearLayout>
 
                         <TextView
                                 android:layout_width="wrap_content"
@@ -405,15 +319,29 @@
                             android:layout_margin="@dimen/_8sdp"
                             android:orientation="vertical">
 
-                        <TextView
-                                android:id="@+id/TxtUserHeight"
+                        <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/exo2_bold"
-                                app:showInt="@{viewModel.profil.height}"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                                android:textColor="#087DE3"
-                                android:textSize="@dimen/_18ssp" />
+                                android:orientation="horizontal">
+
+                            <TextView
+
+                                    android:id="@+id/TxtUserHeight"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/exo2_bold"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                    android:textColor="#087DE3"
+                                    android:textSize="@dimen/_18ssp"
+                                    app:showInt="@{viewModel.profil.height}" />
+
+                            <Button
+                                    android:id="@+id/btnEditCentimeter"
+                                    android:layout_width="@dimen/_25sdp"
+                                    android:layout_height="@dimen/_25sdp"
+                                    android:background="@drawable/ic_semi_edit"
+                                    android:visibility="invisible" />
+                        </LinearLayout>
 
                         <TextView
                                 android:layout_width="wrap_content"
