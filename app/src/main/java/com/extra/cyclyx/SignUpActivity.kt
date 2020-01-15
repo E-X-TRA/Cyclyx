@@ -15,7 +15,7 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
 
 
-        val sharedPreferences = getSharedPreferences("CYCLYX_PROFILE", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences(SP_CYCLYX, Context.MODE_PRIVATE)
 
         //save data in shared preferences
 
@@ -36,9 +36,9 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         showdata.setOnClickListener {
-            val mail = sharedPreferences.getString("USER_EMAIL", "")
-            val uname = sharedPreferences.getString("USER_USERNAME", "")
-            val ps = sharedPreferences.getString("USER_PASSWORD", "")
+            val mail = sharedPreferences.getString(USER_EMAIL, "")
+            val uname = sharedPreferences.getString(USER_USERNAME, "")
+            val ps = sharedPreferences.getString(USER_PASSWORD, "")
 
             Log.d("TRACKING","Email: $mail \nUsername: $uname \nPassword: $ps")
         }

@@ -12,6 +12,7 @@ import com.mapbox.geojson.Point
 import com.mapbox.geojson.utils.PolylineUtils
 import com.mapbox.turf.TurfMeasurement
 import kotlinx.coroutines.*
+import timber.log.Timber
 
 class BersepedaViewModel(
     val app : Application
@@ -137,7 +138,8 @@ class BersepedaViewModel(
             oldAct.elevationLoss = _elevationLoss
             oldAct.routeString = thisActRoute
             oldAct.finished = true
-            Log.d("TRACKING",oldAct.toString())
+            Timber.d("TRACKING : $oldAct")
+
             update(oldAct)
 
             thisAct.value = oldAct
@@ -150,13 +152,14 @@ class BersepedaViewModel(
     fun decodePolyLine(route: String) {
         uiScope.launch {
             thisActRoute = route
+            Timber.d("TRACKING -> Route String from Intent : $route")
             timeLog.add(System.currentTimeMillis())
             val tempListLatLng = PolylineUtils.decode(route, 5)
             _locationPoints.value = tempListLatLng
 
             viewModelScope.launch {
                 processMapsData()
-                Log.d("TRACKING","Speed : ${_speed.value}")
+                Timber.d("TRACKING -> Speed : $speed")
             }
         }
     }

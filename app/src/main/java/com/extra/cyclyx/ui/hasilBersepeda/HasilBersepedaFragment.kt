@@ -1,9 +1,9 @@
 package com.extra.cyclyx.ui.hasilBersepeda
 
 
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +12,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.extra.cyclyx.R
-import com.extra.cyclyx.database.AppDatabase
 import com.extra.cyclyx.databinding.FragmentHasilBersepedaBinding
 import com.extra.cyclyx.utils.*
 import com.mapbox.geojson.Feature
@@ -26,11 +25,13 @@ import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
-import com.mapbox.mapboxsdk.style.layers.CircleLayer
+import com.mapbox.mapboxsdk.style.layers.LineLayer
+import com.mapbox.mapboxsdk.style.layers.Property
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import com.mapbox.turf.TurfMeasurement
+import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
@@ -50,7 +51,7 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
 
         val application = requireNotNull(this.activity).application
         val arguments = HasilBersepedaFragmentArgs.fromBundle(arguments!!)
-        val dataSource = AppDatabase.getInstance(application).bersepedaDAO
+        Timber.d("RESULT -> ${arguments.bersepedaKey}")
 
         binding.mapView.onCreate(savedInstanceState)
         binding.mapView.getMapAsync(this)
@@ -61,7 +62,9 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
 
         viewModel.routeList.observe(this, Observer { route ->
             route?.let {
+                Timber.d("RESULT -> OBSERVED ROUTE LIST")
                 if (::map.isInitialized) {
+                    Timber.d("RESULT -> UPDATE MAPS FROM ROUTE LIST")
                     addPointToMap(route)
                     val envelope = TurfMeasurement.envelope(
                         FeatureCollection.fromFeature(
@@ -97,25 +100,35 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
             Style.MAPBOX_STREETS
         ) {
             it.addSource(GeoJsonSource(SOURCE_ID))
+            it.addImage(ICON_ID, BitmapFactory.decodeResource(
+                resources,R.drawable.mapbox_marker_icon_default
+            ))
             it.addLayer(
-                CircleLayer(CIRCLE_LAYER_ID, SOURCE_ID).withProperties(
-                    PropertyFactory.circleColor(CIRCLE_COLOR),
-                    PropertyFactory.circleRadius(CIRCLE_RADIUS)
+                LineLayer(LINE_LAYER_ID, SOURCE_ID).withProperties(
+                    PropertyFactory.lineColor(LINE_COLOR),
+                    PropertyFactory.lineWidth(LINE_WIDTH),
+                    PropertyFactory.lineJoin(Property.LINE_JOIN_ROUND)
                 )
             )
             it.addLayer(
-                SymbolLayer(SYMBOL_LAYER_ID, SOURCE_ID).withProperties(
+                SymbolLayer(SYMBOL_LAYER_RED_ID, SOURCE_ID).withProperties(
                     PropertyFactory.iconImage(ICON_ID),
                     PropertyFactory.iconColor(Color.RED)
+                )
+            )
+            it.addLayer(
+                SymbolLayer(SYMBOL_LAYER_BLUE_ID, SOURCE_ID).withProperties(
+                    PropertyFactory.iconImage(ICON_ID),
+                    PropertyFactory.iconColor(Color.BLUE)
                 )
             )
             viewModel.onMapAsyncFinished()
         }
     }
 
-    private fun moveCamera(point: Point, map: MapboxMap, zoom: Double) {
+    private fun moveCamera(point: Point,map : MapboxMap,zoom : Double){
         val cameraPosition = CameraPosition.Builder()
-            .target(LatLng(point.latitude(), point.longitude()))
+            .target(LatLng(point.latitude(),point.longitude()))
             .zoom(zoom)
             .build()
 
@@ -128,21 +141,15 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
             if (geoJsonSource != null) {
                 val listFeature = ArrayList<Feature>()
                 val lineString = LineString.fromLngLats(points)
-                listFeature.add(
-                    Feature.fromGeometry(
-                        lineString
-                    )
-                )
-                listFeature.add(
-                    Feature.fromGeometry(
-                        points.first()
-                    )
-                )
-                listFeature.add(
-                    Feature.fromGeometry(
-                        points.last()
-                    )
-                )
+                listFeature.add(Feature.fromGeometry(
+                    lineString
+                ))
+                listFeature.add(Feature.fromGeometry(
+                    points.first()
+                ))
+                listFeature.add(Feature.fromGeometry(
+                    points.last()
+                ))
                 geoJsonSource.setGeoJson(
                     FeatureCollection.fromFeatures(
                         listFeature
@@ -154,31 +161,26 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
 
     @SuppressWarnings("MissingPermission")
     override fun onStart() {
-        Log.i("TRACKING", "ONSTART!")
         super.onStart()
         binding.mapView.onStart()
     }
 
     override fun onResume() {
-        Log.i("TRACKING", "ONRESUME!")
         super.onResume()
         binding.mapView.onResume()
     }
 
     override fun onPause() {
-        Log.i("TRACKING", "ONPAUSE!")
         super.onPause()
         binding.mapView.onPause()
     }
 
     override fun onStop() {
-        Log.i("TRACKING", "ONSTOP!")
         super.onStop()
         binding.mapView.onStop()
     }
 
     override fun onDestroy() {
-        Log.i("TRACKING", "ONDESTROY!")
         super.onDestroy()
         binding.mapView.onDestroy()
     }

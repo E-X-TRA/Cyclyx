@@ -26,12 +26,15 @@ const val CIRCLE_COLOR = Color.BLUE
 const val LINE_COLOR = CIRCLE_COLOR
 const val CIRCLE_RADIUS: Float = 3f
 const val LINE_WIDTH: Float = 7.5f
-const val SYMBOL_LAYER_ID = "SYMBOL_LAYER_ID"
-const val ICON_ID = "ICON_ID"
+const val SYMBOL_LAYER_RED_ID = "SYMBOL_LAYER_RED_ID"
+const val SYMBOL_LAYER_BLUE_ID = "SYMBOL_LAYER_BLUE_ID"
+const val ICON_ID = "icon_id"
+
 //onclick action
 const val DELETE_ITEM = "delete_item"
 const val DETAIL_ITEM = "detail_item"
 //shared preferences key
+const val SP_CYCLYX = "CYCLYX_PROFILE"
 const val USER_FIRST_NAME = "first_name"
 const val USER_LAST_NAME = "last_name"
 const val USER_USERNAME = "username"

@@ -19,6 +19,7 @@ import com.extra.cyclyx.utils.*
 import com.mapbox.android.core.location.*
 import com.mapbox.geojson.Point
 import com.mapbox.geojson.utils.PolylineUtils
+import timber.log.Timber
 import java.lang.ref.WeakReference
 
 class TrackingService : Service(){
@@ -63,12 +64,12 @@ class TrackingService : Service(){
                     startForeground(1024, makeNotification("Tracking Your Trip"))
                     Toast.makeText(applicationContext, "Service Started!", Toast.LENGTH_SHORT)
                         .show()
-                    Log.d("TRACKING", "Service Started!")
+                    Timber.d("TRACKING -> Service Started")
                 }
                 PAUSE_SERVICE -> {
                     startForeground(1024,makeNotification("Trip Is Paused"))
                     cyclyxLocationEngine.removeLocationUpdates(callback)
-                    Log.d("TRACKING", "Service Paused!")
+                    Timber.d("TRACKING -> Service Paused")
                 }
                 STOP_SERVICE -> {
                     if(::cyclyxLocationEngine.isInitialized){
@@ -78,7 +79,8 @@ class TrackingService : Service(){
                     stopSelf()
                     Toast.makeText(applicationContext, "Service Stopped!", Toast.LENGTH_SHORT)
                         .show()
-                    Log.d("TRACKING", "Service Stopped!")
+                    Timber.d("TRACKING -> Service Stopped")
+
                 }
             }
         }
@@ -121,15 +123,17 @@ class TrackingService : Service(){
                 val location = result?.lastLocation ?: return
                 service.pointList.add(Point.fromLngLat(location.longitude, location.latitude,location.altitude))
                 val routeString = service.encodePointToString(service.pointList)
-                Log.d("TRACKING", "RouteString : $routeString")
+                Timber.d("TRACKING -> RouteString = $routeString")
+
                 service.sendBroadcast(routeString)
             } else {
-                Log.d("TRACKING", "Service Reference Null")
+                Timber.d("TRACKING -> Service Reference Null")
             }
         }
 
         override fun onFailure(exception: Exception) {
-            Log.d("TRACKING", "Location Update Failed")
+            Timber.d("TRACKING -> Location Update Failed")
+
         }
     }
 
@@ -140,6 +144,7 @@ class TrackingService : Service(){
 
     //send the data via broadcast
     private fun sendBroadcast(route: String) {
+        Timber.d("TRACKING -> Sending Data via Broadcast...")
         val intentSendLocationRoute = Intent("LocationUpdates")
         intentSendLocationRoute.putExtra(ENCODED_STRING, route)
         LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intentSendLocationRoute)

@@ -18,10 +18,17 @@ fun TextView.durationToString(act : Bersepeda?){
     }
 }
 
-@BindingAdapter("formatDouble")
-fun TextView.formatDouble(double : Double?){
+@BindingAdapter("formatDistance")
+fun TextView.formatDistance(double : Double?){
     double?.let{
         text = "${formatDouble(double, "#.#")} KM"
+    }
+}
+
+@BindingAdapter("formatSpeed")
+fun TextView.formatSpeed(double : Double?){
+    double?.let{
+        text = "${formatDouble(double, "#.#")} KPH"
     }
 }
 

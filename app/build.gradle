@@ -64,6 +64,8 @@ dependencies {
     implementation 'com.mapbox.mapboxsdk:mapbox-sdk-turf:4.9.0'
     //gson
     implementation 'com.google.code.gson:gson:2.8.5'
+    //logging
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 }

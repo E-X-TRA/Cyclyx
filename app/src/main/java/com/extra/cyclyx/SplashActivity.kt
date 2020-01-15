@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.extra.cyclyx.utils.SP_CYCLYX
+import com.extra.cyclyx.utils.USER_TOKEN
 
 class SplashActivity : AppCompatActivity() {
     private val mWaitHandler = Handler()
@@ -29,8 +31,8 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun determineNextPage() : Intent{
-        val sharedPreferences = getSharedPreferences("CYCLYX_PROFILE", Context.MODE_PRIVATE)
-        val token = sharedPreferences.getString("USER_TOKEN","")
+        val sharedPreferences = getSharedPreferences(SP_CYCLYX, Context.MODE_PRIVATE)
+        val token = sharedPreferences.getString(USER_TOKEN,"")
         Log.d("TOKEN","User Token => '$token'")
         if(!token.equals("")){
             return Intent(applicationContext,MainActivity::class.java)

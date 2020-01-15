@@ -13,8 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import androidx.navigation.fragment.findNavController
 import com.extra.cyclyx.R
-import com.extra.cyclyx.database.AppDatabase
 import com.extra.cyclyx.databinding.FragmentBersepedaBinding
 import com.extra.cyclyx.utils.*
 import com.extra.cyclyx.utils.service.TrackingService
@@ -34,6 +34,7 @@ import com.mapbox.mapboxsdk.style.layers.LineLayer
 import com.mapbox.mapboxsdk.style.layers.Property.LINE_JOIN_ROUND
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory.*
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
+import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
@@ -105,10 +106,9 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
 
         binding.lifecycleOwner = this
         //init context for use within fragment
-        ctx = requireNotNull(this.context).applicationContext
+        ctx = activity?.applicationContext!!
         //init viewModel
         val application = requireNotNull(this.activity).application
-        val dataSource = AppDatabase.getInstance(application).bersepedaDAO
         viewModel =
             ViewModelProviders.of(this, BersepedaViewModel.Factory(application)).get(BersepedaViewModel::class.java)
 
@@ -123,12 +123,6 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
                 addPointToMap(it)
             }
         })
-
-        //init broadcast receiver
-        LocalBroadcastManager.getInstance(ctx).registerReceiver(
-            locationUpdateReceiver,
-            IntentFilter("LocationUpdates")
-        )
 
         modifyTrackingService(START_SERVICE)
         viewModel.onStart()
@@ -165,7 +159,14 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
                 }
             }
         })
-        // Inflate the layout for this fragment
+
+        viewModel.navigateToResult.observe(this, Observer {act ->
+            act?.let{
+                navigateToResult(act.id)
+                viewModel.doneNavigatingToResult()
+            }
+        })
+            // Inflate the layout for this fragment
         return binding.root
     }
 
@@ -175,15 +176,23 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
         context?.startService(intent)
     }
 
+    private fun navigateToResult(id : Long){
+        this.findNavController().navigate(BersepedaFragmentDirections.navigateToHasilBersepedaFromBersepeda(id))
+    }
+
     //receive service location update
     private val locationUpdateReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
+            Timber.d("TRACKING -> Receiving Location Update!")
             if (intent != null) {
                 val encodedString = intent.getStringExtra(ENCODED_STRING)
+                Timber.d("TRACKING -> DECODING ROUTE!")
                 viewModel.decodePolyLine(encodedString!!)
             }
         }
     }
+
+
 
     //necessary for mapbox mapview to adapt lifecycle
     @SuppressWarnings("MissingPermission")
@@ -195,10 +204,18 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
     override fun onResume() {
         super.onResume()
         binding.mapView.onResume()
+
+        //register broadcast receiver
+        LocalBroadcastManager.getInstance(activity!!).registerReceiver(
+            locationUpdateReceiver,
+            IntentFilter("LocationUpdates")
+        )
     }
 
     override fun onPause() {
         super.onPause()
+        LocalBroadcastManager.getInstance(activity!!)
+            .unregisterReceiver(locationUpdateReceiver) // stop receiving broadcast
         binding.mapView.onPause()
     }
 
@@ -210,8 +227,6 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
     override fun onDestroy() {
         super.onDestroy()
         modifyTrackingService(STOP_SERVICE) //dont forget to stop service
-        LocalBroadcastManager.getInstance(ctx)
-            .unregisterReceiver(locationUpdateReceiver) // and stop receiving broadcast
         binding.mapView.onDestroy()
     }
 
