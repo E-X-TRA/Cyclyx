@@ -8,4 +8,26 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="card_font_left">
+        <item name="android:textSize">@dimen/_20ssp</item>
+        <item name="android:textColor">@color/font_bold_purple</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="card_font_right">
+        <item name="android:textSize">@dimen/_20ssp</item>
+        <item name="android:textColor">@color/font_green</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_alignParentEnd">true</item>
+    </style>
+    <style name="cardSetting_hasil">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/bg_list</item>
+    </style>
+
 </resources>
