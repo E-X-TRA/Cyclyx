@@ -25,8 +25,8 @@
     <string name="txt_usia">Usia</string>
     <string name="txt_kilogram">Kilogram</string>
     <string name="txt_centimeter">Centimeter</string>
-    <string name="txt_distance">Distance</string>
-    <string name="txt_duration">Duration</string>
+    <string name="txt_distance">Jarak</string>
+    <string name="txt_duration">Durasi</string>
     <string name="txt_caps_tantangan">TANTANGAN</string>
     <string name="txt_riwayat">Riwayat</string>
     <string name="txt_membakar_kalori">Sejauh ini anda sudah membakar kalori</string>
@@ -34,7 +34,9 @@
     <string name="txt_total_waktu_bersepeda">Total waktu bersepeda</string>
     <string name="txt_total_jarak_bersepeda">Total jarak bersepeda</string>
     <string name="email">Email</string>
-    <string name="username">Nama User</string>
-    <string name="password">Kata Sandi</string>
-    <string name="confirm_password">Konfirmasi Kata Sandi</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="txt_kalori">Kalori</string>
+    <string name="txt_elevasi">Elevasi</string>
 </resources>

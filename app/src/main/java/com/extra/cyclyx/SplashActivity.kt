@@ -22,10 +22,10 @@ class SplashActivity : AppCompatActivity() {
             } catch (ignored: Exception) {
                 ignored.printStackTrace()
             }
-        }, 2600)  // Delay dalam millisekon
+        }, 1500)  // Delay dalam millisekon
         mWaitHandler.postDelayed({
             finish()
-        },4000)
+        },3000)
     }
 
     private fun determineNextPage() : Intent{

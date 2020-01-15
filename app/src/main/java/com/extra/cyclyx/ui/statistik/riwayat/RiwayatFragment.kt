@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.extra.cyclyx.database.AppDatabase
 import com.extra.cyclyx.databinding.FragmentRiwayatBinding
 
 class RiwayatFragment : Fragment() {
@@ -21,7 +20,6 @@ class RiwayatFragment : Fragment() {
         binding = FragmentRiwayatBinding.inflate(inflater)
         binding.lifecycleOwner = this
         val application = requireNotNull(this.activity).application
-        val dataSource = AppDatabase.getInstance(application).bersepedaDAO
         viewModel = ViewModelProviders.of(this, RiwayatViewModel.Factory(application)).get(RiwayatViewModel::class.java)
 
         binding.viewModel = viewModel

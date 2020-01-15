@@ -135,7 +135,6 @@ class BersepedaViewModel(
             oldAct.peakSpeed = _peakSpeed
             oldAct.elevationGain = _elevationGain
             oldAct.elevationLoss = _elevationLoss
-            oldAct.calories = _calories.value!!
             oldAct.routeString = thisActRoute
             oldAct.finished = true
             Log.d("TRACKING",oldAct.toString())
