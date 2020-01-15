@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.pengenalan.registrasi.PengenalanRegistrasiFragment">
+        android:background="@drawable/bg_5"
+        tools:context=".ui.pengenalan.registrasi.RegistrasiBasicFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+    android:id="@+id/title_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp"
+    android:layout_marginTop="44dp">
+
     <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Buat"
+            android:textSize="40sp" />
 
-</FrameLayout>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Akun"
+            android:textColor="@color/colorAccent"
+            android:textSize="40sp" />
+</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

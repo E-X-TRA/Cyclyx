@@ -1,14 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bg_5"
         tools:context=".ui.pengenalan.registrasi.RegistrasiDataDiriFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+            android:id="@+id/title_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="44dp">
 
-</FrameLayout>
+        <TextView
+                style="@style/TextViewTitle"
+                android:text="Buat" />
+
+        <TextView
+                style="@style/TextViewTitle.Blue"
+                android:text="Akun" />
+
+        <TextView
+                style="@style/TextViewSubTitle"
+                android:text="Lengkapi data diri anda" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/form_data_diri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/_60ssp"
+            android:paddingRight="@dimen/_60ssp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_layout">
+
+        <EditText
+                android:id="@+id/edt_nama_depan"
+                style="@style/edit_text"
+                android:hint="Nama Depan"
+               />
+
+        <EditText
+                android:id="@+id/edt_nama_belakang"
+                style="@style/edit_text"
+                android:hint="Nama Belakang"
+                />
+
+        <EditText
+                android:id="@+id/edt_tgl_lahir"
+                style="@style/edit_text"
+                android:hint="Tanggal Lahir"
+                android:layout_marginTop="32dp"/>
+
+        <EditText
+                android:id="@+id/edt_berat"
+                style="@style/edit_text"
+                android:hint="Berat Badan"
+                android:layout_marginTop="32dp"/>
+
+        <EditText
+                android:id="@+id/edt_tinggi"
+                style="@style/edit_text"
+                android:hint="Tinggi Badan"
+                />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/form_data_diri"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+                style="@style/BackButton"
+                android:text="Kembali"
+                android:layout_weight="0.75"/>
+
+        <Button
+                style="@style/NextButton"
+                android:text="Selanjutnya"
+                android:layout_weight="1.25" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
