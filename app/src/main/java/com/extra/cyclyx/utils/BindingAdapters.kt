@@ -24,3 +24,10 @@ fun TextView.formatDouble(double : Double?){
         text = "${formatDouble(double, "#.#")} KM"
     }
 }
+
+@BindingAdapter("showInt")
+fun TextView.showInt(int : Int?){
+    int?.let {
+        text = "$int"
+    }
+}

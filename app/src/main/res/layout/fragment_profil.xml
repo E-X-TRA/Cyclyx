@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_5">
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name="viewModel"
+                type="com.extra.cyclyx.ui.profil.ProfilViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/prim"
             android:layout_width="match_parent"
+<<<<<<< HEAD
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginTop="@dimen/_20ssp"
@@ -19,22 +22,27 @@
 
         <RelativeLayout
                 android:id="@+id/name"
+=======
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_5">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/prim"
+>>>>>>> origin/dev
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_20ssp"
                 app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                    android:id="@+id/icUser"
-                    android:layout_width="125dp"
-                    android:layout_height="125dp"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/user"
-                    android:tint="#000" />
-
-            <LinearLayout
-                    android:layout_width="wrap_content"
+            <RelativeLayout
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+<<<<<<< HEAD
                     android:layout_below="@id/icUser"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginBottom="@dimen/_8sdp"
@@ -67,154 +75,80 @@
 
                 <TextView
                         android:id="@+id/TxtUserType"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/exo2_regular"
-                        android:text="@string/txt_pesepeda"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="#96494949"
-                        android:textSize="@dimen/_20ssp" />
+=======
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            </LinearLayout>
-        </RelativeLayout>
-
-        <ImageView
-                android:id="@+id/BtnSettings"
-                android:layout_width="@dimen/_21sdp"
-                android:layout_height="@dimen/_21sdp"
-                android:layout_margin="@dimen/_8sdp"
-                android:src="@drawable/ic_settings_black_24dp"
-                app:layout_constraintBottom_toTopOf="@id/div"
-                app:layout_constraintRight_toRightOf="parent" />
-
-        <View
-                android:id="@+id/div"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_1sdp"
-                android:background="#3B000000"
-                app:layout_constraintBottom_toTopOf="@id/more" />
-
-        <LinearLayout
-                android:id="@+id/more"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/name">
-
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:orientation="vertical">
-
-                <TextView
-                        android:id="@+id/TxtUserTtgDone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/exo2_bold"
-                        android:text="14"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textColor="#E30808"
-                        android:textSize="@dimen/_18ssp" />
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/exo2_regular"
-                        android:text="Tantangan"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="#494949"
-                        android:textSize="@dimen/_13ssp" />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:orientation="vertical">
-
-                <TextView
-                        android:id="@+id/TxtUserJarak"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/exo2_bold"
-                        android:text="42"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textColor="#B4E308"
-                        android:textSize="@dimen/_18ssp" />
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/exo2_regular"
-                        android:text="@string/txt_kilometer"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="#494949"
-                        android:textSize="@dimen/_13ssp" />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
-
-                <TextView
-                        android:id="@+id/TxtUserJam"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/exo2_bold"
-                        android:text="8"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textColor="#E36E08"
-                        android:textSize="@dimen/_18ssp" />
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/exo2_regular"
-                        android:text="@string/txt_jam"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="#494949"
-                        android:textSize="@dimen/_13ssp" />
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginEnd="@dimen/_12sdp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/prim">
-
-        <LinearLayout
-
-                android:id="@+id/dets"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#F5F5F5"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent">
-
-            <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_4sdp"
-                    android:padding="@dimen/_7sdp"
-                    app:cardCornerRadius="@dimen/_4sdp"
-                    app:cardElevation="@dimen/_4sdp">
+                <ImageView
+                        android:id="@+id/icUser"
+                        android:layout_width="125dp"
+                        android:layout_height="125dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/user"
+                        android:tint="#000" />
 
                 <LinearLayout
-                        android:layout_width="match_parent"
+>>>>>>> origin/dev
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_7sdp"
+                        android:layout_below="@id/icUser"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginBottom="@dimen/_8sdp">
+
+                    <TextView
+                            android:id="@+id/TxtUserName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo2_regular"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textColor="#494949"
+                            android:textSize="@dimen/_27ssp"
+                            android:text="@{viewModel.profil.userName}" />
+
+                    <TextView
+                            android:id="@+id/TxtUserType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo2_regular"
+                            android:text="@string/txt_pesepeda"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                            android:textColor="#96494949"
+                            android:textSize="@dimen/_20ssp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <ImageView
+                    android:id="@+id/BtnSettings"
+                    android:layout_width="@dimen/_21sdp"
+                    android:layout_height="@dimen/_21sdp"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:src="@drawable/ic_settings_black_24dp"
+                    app:layout_constraintBottom_toTopOf="@id/div"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+            <View
+                    android:id="@+id/div"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="#3B000000"
+                    app:layout_constraintBottom_toTopOf="@id/more" />
+
+            <LinearLayout
+                    android:id="@+id/more"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@id/name">
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_8sdp"
                         android:orientation="vertical">
 
+<<<<<<< HEAD
                     <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -239,31 +173,35 @@
                                 android:background="@drawable/ic_semi_edit"
                                 android:visibility="invisible" />
                     </LinearLayout>
+=======
+                    <TextView
+                            android:id="@+id/TxtUserTtgDone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo2_bold"
+                            android:text="14"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textColor="#E30808"
+                            android:textSize="@dimen/_18ssp" />
+>>>>>>> origin/dev
 
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/exo2_regular"
-                            android:text="@string/txt_usia"
+                            android:text="Tantangan"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                            android:textColor="#494949"
                             android:textSize="@dimen/_13ssp" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_4sdp"
-                    android:padding="@dimen/_8sdp"
-                    app:cardCornerRadius="@dimen/_4sdp"
-                    app:cardElevation="@dimen/_4sdp">
 
                 <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_8sdp"
                         android:orientation="vertical">
 
+<<<<<<< HEAD
                     <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -288,31 +226,35 @@
                                 android:background="@drawable/ic_semi_edit"
                                 android:visibility="invisible" />
                     </LinearLayout>
+=======
+                    <TextView
+                            android:id="@+id/TxtUserJarak"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo2_bold"
+                            android:text="42"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textColor="#B4E308"
+                            android:textSize="@dimen/_18ssp" />
+>>>>>>> origin/dev
 
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/exo2_regular"
-                            android:text="@string/txt_kilogram"
+                            android:text="@string/txt_kilometer"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                            android:textColor="#494949"
                             android:textSize="@dimen/_13ssp" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_4sdp"
-                    android:padding="@dimen/_8sdp"
-                    app:cardCornerRadius="@dimen/_4sdp"
-                    app:cardElevation="@dimen/_4sdp">
 
                 <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_8sdp"
+                        android:layout_margin="10dp"
                         android:orientation="vertical">
 
+<<<<<<< HEAD
                     <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -337,18 +279,154 @@
                                 android:background="@drawable/ic_semi_edit"
                                 android:visibility="invisible" />
                     </LinearLayout>
+=======
+                    <TextView
+                            android:id="@+id/TxtUserJam"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/exo2_bold"
+                            android:text="8"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textColor="#E36E08"
+                            android:textSize="@dimen/_18ssp" />
+>>>>>>> origin/dev
 
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/exo2_regular"
-                            android:text="@string/txt_centimeter"
+                            android:text="@string/txt_jam"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                            android:textColor="#494949"
                             android:textSize="@dimen/_13ssp" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/prim">
+
+            <LinearLayout
+
+                    android:id="@+id/dets"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#F5F5F5"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent">
+
+                <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_4sdp"
+                        android:padding="@dimen/_7sdp"
+                        app:cardCornerRadius="@dimen/_4sdp"
+                        app:cardElevation="@dimen/_4sdp">
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_7sdp"
+                            android:orientation="vertical">
+
+                        <TextView
+                                android:id="@+id/TxtUserAge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/exo2_bold"
+                                android:text="@{viewModel.convertDateStringtoAge(viewModel.profil.birthDay)}"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                android:textColor="#087DE3"
+                                android:textSize="@dimen/_18ssp" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/exo2_regular"
+                                android:text="@string/txt_usia"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textSize="@dimen/_13ssp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_4sdp"
+                        android:padding="@dimen/_8sdp"
+                        app:cardCornerRadius="@dimen/_4sdp"
+                        app:cardElevation="@dimen/_4sdp">
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:orientation="vertical">
+
+                        <TextView
+                                android:id="@+id/TxtUserWeight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/exo2_bold"
+                                app:showInt="@{viewModel.profil.weight}"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                android:textColor="#087DE3"
+                                android:textSize="@dimen/_18ssp" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/exo2_regular"
+                                android:text="@string/txt_kilogram"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textSize="@dimen/_13ssp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_4sdp"
+                        android:padding="@dimen/_8sdp"
+                        app:cardCornerRadius="@dimen/_4sdp"
+                        app:cardElevation="@dimen/_4sdp">
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:orientation="vertical">
+
+                        <TextView
+                                android:id="@+id/TxtUserHeight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/exo2_bold"
+                                app:showInt="@{viewModel.profil.height}"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                android:textColor="#087DE3"
+                                android:textSize="@dimen/_18ssp" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/exo2_regular"
+                                android:text="@string/txt_centimeter"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textSize="@dimen/_13ssp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

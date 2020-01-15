@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.extra.cyclyx.utils.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import java.util.*
 
@@ -26,10 +27,10 @@ class SignUpActivity : AppCompatActivity() {
 
             val editor = sharedPreferences.edit()
 
-            editor.putString("USER_EMAIL",email)
-            editor.putString("USER_USERNAME", username)
-            editor.putString("USER_PASSWORD", password)
-            editor.putString("USER_TOKEN",RandomStringGenerator().getRandomString(32))
+            editor.putString(USER_EMAIL,email)
+            editor.putString(USER_USERNAME, username)
+            editor.putString(USER_PASSWORD, password)
+            editor.putString(USER_TOKEN,RandomStringGenerator().getRandomString(32))
 
             editor.apply()
         }
