@@ -14,4 +14,5 @@
     <color name="font_light_blue">#00ADB5</color>
     <color name="font_green">#3FC600</color>
     <color name="bg_list">#F1FEFF</color>
+    <color name="bg_card_tantangan">#FFFFFF</color>
 </resources>
