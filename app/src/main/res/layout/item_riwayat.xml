@@ -20,7 +20,9 @@
             android:layout_height="@dimen/_90sdp"
             android:background="@color/bg_tantangan"
             app:cardElevation="@dimen/_10sdp"
-            app:cardCornerRadius="@dimen/_5sdp">
+            app:cardCornerRadius="@dimen/_5sdp"
+            android:onClick="@{() -> clickListener.onClickResult(bersepeda)}">
+
 
         <TextView
                 android:layout_width="match_parent"
@@ -73,7 +75,8 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/TxtRiwWaktu"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:text="2 jam"
+                        app:formatShortDuration="@{bersepeda}"
+                        tools:text="2 jam"
                         android:fontFamily="@font/exo2_bold"
                         android:textColor="#304FFE"
                         android:textSize="22dp" />
@@ -98,7 +101,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/exo2_bold"
-                        android:text="5 Km"
+                        app:formatDistance="@{bersepeda.distance}"
+                        tools:text="5 Km"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="#304FFE"
                         android:textSize="22dp" />

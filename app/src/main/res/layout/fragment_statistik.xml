@@ -21,8 +21,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tabGravity="fill"
-                app:tabMode="fixed" />
+                app:tabBackground="@drawable/vp_tab_selector"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp"
+                app:tabMode="fixed"
+                />
 
         <androidx.viewpager.widget.ViewPager
                 app:layout_constraintBottom_toBottomOf="parent"

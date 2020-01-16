@@ -134,4 +134,6 @@ fun determineZoomLevel(distanceBetweenPoint : Double) : Double{ //distance in km
     }
 }
 
-val cyclyxDateFormat = SimpleDateFormat("MM-DD-YYYY",Locale.US)
+val indonesianLocale = Locale("id")
+val cyclyxDateFormat = SimpleDateFormat("MM-DD-YYYY", indonesianLocale)
+
