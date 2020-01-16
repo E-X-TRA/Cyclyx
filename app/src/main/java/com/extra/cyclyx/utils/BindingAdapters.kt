@@ -10,8 +10,8 @@ fun TextView.timerValue(elapsedTime : Long){
     text = convertDurationToString(elapsedTime)
 }
 
-@BindingAdapter("durationToString")
-fun TextView.durationToString(act : Bersepeda?){
+@BindingAdapter("formatDuration")
+fun TextView.formatDuration(act : Bersepeda?){
     act?.let{
         val duration = act.endTime - act.startTime
         text = convertDurationToString(duration)
@@ -29,6 +29,20 @@ fun TextView.formatDistance(double : Double?){
 fun TextView.formatSpeed(double : Double?){
     double?.let{
         text = "${formatDouble(double, "#.#")} KPH"
+    }
+}
+
+@BindingAdapter("formatCalorie")
+fun TextView.formatCalorie(double : Double?){
+    double?.let {
+        text = "${formatDouble(double,"#.#")} kcal"
+    }
+}
+
+@BindingAdapter("formatElevation")
+fun TextView.formatElevation(act : Bersepeda?){
+    act?.let {
+        text = "${formatDouble(act.elevationGain,"#.##")}+ || ${formatDouble(act.elevationLoss,"#.##")}-"
     }
 }
 

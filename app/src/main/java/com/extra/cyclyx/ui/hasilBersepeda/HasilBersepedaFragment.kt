@@ -4,6 +4,7 @@ package com.extra.cyclyx.ui.hasilBersepeda
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,7 +32,6 @@ import com.mapbox.mapboxsdk.style.layers.PropertyFactory
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import com.mapbox.turf.TurfMeasurement
-import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
@@ -51,7 +51,7 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
 
         val application = requireNotNull(this.activity).application
         val arguments = HasilBersepedaFragmentArgs.fromBundle(arguments!!)
-        Timber.d("RESULT -> ${arguments.bersepedaKey}")
+        Log.d("RESULT","${arguments.bersepedaKey}")
 
         binding.mapView.onCreate(savedInstanceState)
         binding.mapView.getMapAsync(this)
@@ -62,9 +62,9 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
 
         viewModel.routeList.observe(this, Observer { route ->
             route?.let {
-                Timber.d("RESULT -> OBSERVED ROUTE LIST")
+                Log.d("RESULT","OBSERVED ROUTE LIST")
                 if (::map.isInitialized) {
-                    Timber.d("RESULT -> UPDATE MAPS FROM ROUTE LIST")
+                    Log.d("RESULT","UPDATE MAPS FROM ROUTE LIST")
                     addPointToMap(route)
                     val envelope = TurfMeasurement.envelope(
                         FeatureCollection.fromFeature(
@@ -122,7 +122,12 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
                     PropertyFactory.iconColor(Color.BLUE)
                 )
             )
-            viewModel.onMapAsyncFinished()
+
+            viewModel.act.observe(this, Observer {act ->
+                act?.let{
+                    viewModel.onMapAsyncFinished()
+                }
+            })
         }
     }
 

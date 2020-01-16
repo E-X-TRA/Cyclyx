@@ -45,3 +45,6 @@ const val USER_HEIGHT = "height"
 const val USER_WEIGHT = "weight"
 const val USER_GENDER = "gender"
 const val USER_TOKEN = "token"
+//service
+const val EXTRA_ROUTE = "extra_route"
+const val EXTRA_ALT = "extra_alt"

@@ -16,10 +16,6 @@ class TantanganViewModel(app : Application) :
 
     val challenges = repository.allChallengeData
 
-    fun onActClicked(id: Long) {
-
-    }
-
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
