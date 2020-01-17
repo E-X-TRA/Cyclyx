@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
                 name="tantangan"
                 type="com.extra.cyclyx.entity.Tantangan" />
+
         <variable
                 name="clickListener"
                 type="com.extra.cyclyx.utils.adapter.TantanganClickListener" />
@@ -17,9 +19,9 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -34,9 +36,9 @@
             <LinearLayout
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:background="@drawable/tantangancircle"
-                    android:layout_gravity="center"
                     android:gravity="center">
 
                 <TextView
@@ -44,11 +46,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/josefinsans_bold"
-                        tools:text="@string/txt_persentase"
-                        android:textAlignment="center"
                         android:text="@{tantangan.progressTantangan}"
+                        android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textSize="@dimen/_12ssp" />
+                        android:textSize="@dimen/_12ssp"
+                        tools:text="@string/txt_persentase" />
             </LinearLayout>
 
             <LinearLayout
@@ -65,22 +67,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/exo2_bold"
-                        tools:text="@string/txt_kecepatan"
                         android:text="@{tantangan.tipeTantangan}"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="#0C1B44"
-                        android:textSize="@dimen/_18ssp" />
+                        android:textSize="@dimen/_18ssp"
+                        tools:text="@string/txt_kecepatan" />
 
                 <TextView
                         android:id="@+id/TxtTtgDesc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/exo2_regular"
-                        tools:text="Bersepeda dalam kecepatan 15km/detik"
                         android:text="@{tantangan.labelTantangan}"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="#96000000"
-                        android:textSize="@dimen/_13ssp" />
+                        android:textSize="@dimen/_13ssp"
+                        tools:text="Bersepeda dalam kecepatan 15km/detik" />
 
             </LinearLayout>
         </LinearLayout>

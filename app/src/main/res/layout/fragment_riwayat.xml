@@ -17,7 +17,7 @@
 
         <LinearLayout
                 android:id="@+id/head"
-                android:layout_margin="15dp"
+                android:layout_margin="@dimen/_13sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
@@ -29,10 +29,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:text="Riwayat"
+                    android:text="@string/txt_riwayat"
                     android:fontFamily="@font/exo2_bold"
                     android:textColor="#2962FF"
-                    android:textSize="32dp" />
+                    android:textSize="@dimen/_27ssp" />
 
             <TextView
                     android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                     android:text="@{viewModel.actCounts}"
                     android:fontFamily="@font/exo2_regular"
                     android:textColor="#96000000"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/_15ssp" />
 
         </LinearLayout>
 

@@ -1,9 +1,11 @@
 package com.extra.cyclyx
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.extra.cyclyx.ui.pengenalan.registrasi.RegistrasiDataDiriFragment
 import com.extra.cyclyx.utils.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import java.util.*
@@ -33,6 +35,9 @@ class SignUpActivity : AppCompatActivity() {
             editor.putString(USER_TOKEN,RandomStringGenerator().getRandomString(32))
 
             editor.apply()
+
+            val intent =  Intent(this, RegistrasiDataDiriFragment::class.java)
+            startActivity(intent)
         }
 
         showdata.setOnClickListener {
