@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name="bersepeda"
+                type="com.extra.cyclyx.entity.Bersepeda" />
+        <variable
+                name="clickListener"
+                type="com.extra.cyclyx.utils.adapter.RiwayatClickListener" />
+        <variable
+                name="isFinished"
+                type="Boolean" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_300sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:background="@color/bg_tantangan"
+            app:cardElevation="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_5sdp">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="16 Januari 2020"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:fontFamily="@font/exo2_light"
+                android:layout_gravity="left"
+                android:id="@+id/TvRiwayatDate"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data tidak tersedia"
+                    android:fontFamily="@font/exo2_bold"
+                    android:textSize="@dimen/_20sdp"
+                    android:textColor="#E70000"/>
+            </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
