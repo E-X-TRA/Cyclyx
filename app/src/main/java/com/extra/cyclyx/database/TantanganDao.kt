@@ -12,6 +12,12 @@ interface TantanganDao {
     @Query("SELECT * FROM tantangan")
     fun getAllTantangan() : LiveData<List<Tantangan>>
 
+    @Query("SELECT * FROM tantangan WHERE id_tantangan = :id")
+    fun getTantangan(id :Long): LiveData<Tantangan>
+
+    @Query("SELECT * FROM tantangan WHERE progress_tantangan < 100")
+    fun getUnfinishedTantangan() : LiveData<List<Tantangan>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertTantangan(tantangan: Tantangan)
 }

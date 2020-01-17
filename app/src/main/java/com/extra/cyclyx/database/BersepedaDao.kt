@@ -9,7 +9,7 @@ import com.extra.cyclyx.entity.Bersepeda
 
 @Dao
 interface BersepedaDao {
-    @Query("SELECT * FROM bersepeda")
+    @Query("SELECT * FROM bersepeda WHERE bersepeda.route_string IS NOT NULL ORDER BY id DESC")
     fun getAll() : LiveData<List<Bersepeda>>
 
     @Query("SELECT * FROM bersepeda ORDER BY id DESC LIMIT 1")

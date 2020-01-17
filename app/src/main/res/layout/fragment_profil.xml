@@ -86,7 +86,7 @@
                 </LinearLayout>
             </RelativeLayout>
 
-            <ImageView
+            <ImageButton
                     android:id="@+id/BtnSettings"
                     android:layout_width="@dimen/_21sdp"
                     android:layout_height="@dimen/_21sdp"

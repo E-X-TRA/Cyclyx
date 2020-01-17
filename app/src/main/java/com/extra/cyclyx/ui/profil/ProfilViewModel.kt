@@ -5,7 +5,7 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.*
 import com.extra.cyclyx.repository.CyclyxRepository
-import com.extra.cyclyx.utils.cyclyxDateFormat
+import com.extra.cyclyx.utils.birthDateFormat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -35,7 +35,7 @@ class ProfilViewModel(app: Application) : AndroidViewModel(app) {
 
     fun convertDateStringtoAge(stringDate : String) : String{
         //parse string to date
-        val birthdate = cyclyxDateFormat.parse(stringDate)
+        val birthdate = birthDateFormat.parse(stringDate)
         val calendarBirth = Calendar.getInstance()
         calendarBirth.time = birthdate!!
         return calculateAge(calendarBirth, Calendar.getInstance())

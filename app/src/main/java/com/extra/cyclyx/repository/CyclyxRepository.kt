@@ -49,6 +49,8 @@ class CyclyxRepository(context: Context){
     //challenge related
     val allChallengeData : LiveData<List<Tantangan>> = database.tantanganDAO.getAllTantangan()
 
+
+
     suspend fun insertTantanganData(data : Tantangan){
         withContext(Dispatchers.IO){
             database.tantanganDAO.insertTantangan(data)

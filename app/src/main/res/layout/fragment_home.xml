@@ -16,13 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/bg_4">
-        <!--TODO Tambahin tombolnya dong untuk ke setting ! -->
+    
         <Button
-                android:id="@+id/BtnPengaturan"
+                android:id="@+id/BtnKonfigurasi"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
                 android:background="@drawable/ic_settings_black_24dp"
                 android:foreground="@drawable/ripple_effect"
+                android:onClick="@{() -> viewModel.onBtnKonfigurasiClicked()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_margin="@dimen/_10sdp"
@@ -86,7 +87,6 @@
                 android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_25sdp"
                 android:orientation="vertical"
                 android:padding="@dimen/_20sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -104,7 +104,9 @@
                     android:layout_height="wrap_content"
                     android:background="@color/cardview_light_background"
                     app:cardCornerRadius="@dimen/_7sdp"
-                    app:cardElevation="@dimen/_4sdp">
+                    app:cardElevation="@dimen/_4sdp"
+                    android:onClick="@{() -> viewModel.onActClicked(viewModel.firstRecentActs.id)}"
+                    >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -131,6 +133,7 @@
                                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                                 android:textColor="#B4E308"
                                 android:textSize="@dimen/_20ssp"
+                                app:formatDistance="@{viewModel.firstRecentActs.speed}"
                                 tools:text="78,9 KM" />
 
                         <TextView
@@ -164,7 +167,9 @@
                                 android:textAlignment="center"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                                 android:textColor="#E36E08"
-                                android:textSize="@dimen/_20ssp" />
+                                android:textSize="@dimen/_20ssp"
+                                app:formatDuration="@{viewModel.firstRecentActs}"
+                                tools:text="01:06:23" />
 
                         <TextView
                                 android:layout_width="wrap_content"
@@ -184,7 +189,9 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:background="@color/cardview_light_background"
                     app:cardCornerRadius="@dimen/_8sdp"
-                    app:cardElevation="@dimen/_4sdp">
+                    app:cardElevation="@dimen/_4sdp"
+                    android:onClick="@{() -> viewModel.onActClicked(viewModel.secondRecentActs.id)}"
+                    >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -206,10 +213,11 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/exo2_bold"
-                                android:text="12.43 km"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                                 android:textColor="#B4E308"
-                                android:textSize="@dimen/_20ssp" />
+                                android:textSize="@dimen/_20ssp"
+                                app:formatDistance="@{viewModel.secondRecentActs.speed}"
+                                tools:text="12.43 km" />
 
                         <TextView
                                 android:layout_width="match_parent"
@@ -239,10 +247,11 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/exo2_bold"
-                                android:text="01:23:43"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                                 android:textColor="#E36E08"
-                                android:textSize="@dimen/_20ssp" />
+                                android:textSize="@dimen/_20ssp"
+                                app:formatDuration="@{viewModel.secondRecentActs}"
+                                tools:text="01:23:43" />
 
                         <TextView
                                 android:layout_width="match_parent"
