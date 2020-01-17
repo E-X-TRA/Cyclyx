@@ -1,22 +1,43 @@
-package com.extra.cyclyx.ui.statistik.tantangan
+package com.extra.cyclyx.ui.pengenalan.registrasi
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.extra.cyclyx.database.seeder.TantanganSeeder
 import com.extra.cyclyx.repository.CyclyxRepository
+import com.extra.cyclyx.utils.SP_CYCLYX
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
-class TantanganViewModel(app : Application) :
-    AndroidViewModel(app) {
+class RegistrasiViewModel(val app: Application) : AndroidViewModel(app) {
     val repository = CyclyxRepository(app.applicationContext)
 
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    val challenges = repository.allChallengeData
+    val sharedPreferences = app.getSharedPreferences(SP_CYCLYX, Context.MODE_PRIVATE)
+
+    init {
+
+    }
+
+    private fun saveNewUserData(){
+        //simpan user data ke shared preferences
+
+    }
+
+    private fun seedTantanganData(){
+        val tantanganSeeder = TantanganSeeder(repository)
+
+        val uiScope = CoroutineScope(Dispatchers.Main)
+        uiScope.launch {
+            tantanganSeeder.seedTantanganData()
+        }
+    }
 
     override fun onCleared() {
         super.onCleared()
@@ -26,8 +47,8 @@ class TantanganViewModel(app : Application) :
     class Factory(val app: Application) : ViewModelProvider.Factory{
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             @Suppress("UNCHECKED_CAST")
-            if(modelClass.isAssignableFrom(TantanganViewModel::class.java)){
-                return TantanganViewModel(
+            if(modelClass.isAssignableFrom(RegistrasiViewModel::class.java)){
+                return RegistrasiViewModel(
                     app
                 ) as T
             }

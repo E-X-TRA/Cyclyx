@@ -25,7 +25,7 @@ class TantanganSeeder(val repo : CyclyxRepository){
 
             this.readJSONFile(bufferedReader)
         } catch (e: Exception) {
-            Log.d("TRACKING", "GEOID FAILED TO READ")
+            Log.d("TRACKING", "TANTANGANJSON READ!")
         }
     }
 

@@ -54,6 +54,13 @@ fun TextView.formatElevation(act : Bersepeda?){
     }
 }
 
+@BindingAdapter("formatProgression")
+fun TextView.formatProgression(progress : Int){
+    progress?.let {
+        text = "$progress"
+    }
+}
+
 @BindingAdapter("formatDate")
 fun TextView.formatDate(act : Bersepeda?){
     act?.let {
