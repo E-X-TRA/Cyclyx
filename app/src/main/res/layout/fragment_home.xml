@@ -17,6 +17,16 @@
             android:layout_height="match_parent"
             android:background="@drawable/bg_4">
         <!--TODO Tambahin tombolnya dong untuk ke setting ! -->
+        <Button
+                android:id="@+id/BtnPengaturan"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:background="@drawable/ic_settings_black_24dp"
+                android:foreground="@drawable/ripple_effect"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_margin="@dimen/_10sdp"
+                />
         <LinearLayout
                 android:id="@+id/main"
                 android:layout_width="@dimen/_200sdp"
@@ -81,6 +91,13 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="@dimen/_25sdp">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aktifitas terbaru"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/exo2_light"
+                    android:layout_margin="@dimen/_5sdp"/>
 
             <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
