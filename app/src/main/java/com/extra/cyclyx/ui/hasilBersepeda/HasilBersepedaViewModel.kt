@@ -36,7 +36,7 @@ class HasilBersepedaViewModel(
     fun decodeRoute(act: Bersepeda?) {
         uiScope.launch {
             act?.let {
-                Log.d("TRACKING","${act.toString()}")
+                Log.d("RESULT","${act.routeString}")
                 val decodedRoute = PolylineUtils.decode(act.routeString, 5)
                 _routeList.value = PolylineUtils.simplify(decodedRoute,0.00005)
             }
@@ -45,6 +45,7 @@ class HasilBersepedaViewModel(
 
     fun onMapAsyncFinished() {
         decodeRoute(act.value)
+        Log.d("RESULT","MapAync : ${act.value}")
     }
 
     fun onBackClicked() {

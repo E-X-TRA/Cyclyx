@@ -183,7 +183,7 @@
                                 android:layout_gravity="center"
                                 android:layout_margin="@dimen/_4sdp"
                                 android:fontFamily="@font/exo2_regular"
-                                android:text="200 M"
+                                app:formatDistance="@{viewModel.totalDistance}"
                                 android:textColor="#FFF"
                                 android:textSize="@dimen/_16ssp"
                                 android:textStyle="bold" />
@@ -226,7 +226,7 @@
                                 android:layout_gravity="center"
                                 android:layout_margin="@dimen/_4sdp"
                                 android:fontFamily="@font/exo2_regular"
-                                android:text="20 Km/H"
+                                app:formatSpeed="@{viewModel.speed}"
                                 android:textColor="#FFF"
                                 android:textSize="@dimen/_17ssp"
                                 android:textStyle="bold" />

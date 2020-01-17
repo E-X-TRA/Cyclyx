@@ -36,44 +36,46 @@
             android:id="@+id/form_data_diri"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:orientation="vertical"
             android:paddingLeft="@dimen/_60ssp"
             android:paddingRight="@dimen/_60ssp"
-            app:layout_constraintBottom_toTopOf="@id/btn_layout"
-            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title_layout">
 
         <EditText
                 android:id="@+id/edt_nama_depan"
                 style="@style/edit_text"
-                android:hint="@string/nama_depan" />
+                android:hint="Nama Depan"
+               />
 
         <EditText
                 android:id="@+id/edt_nama_belakang"
                 style="@style/edit_text"
-                android:hint="@string/nama_belakang" />
+                android:hint="Nama Belakang"
+                />
 
         <EditText
                 android:id="@+id/edt_tgl_lahir"
                 style="@style/edit_text"
-                android:layout_marginTop="32dp"
-                android:hint="@string/tanggal_lahir" />
+                android:hint="Tanggal Lahir"
+                android:layout_marginTop="32dp"/>
 
         <EditText
                 android:id="@+id/edt_berat"
                 style="@style/edit_text"
-                android:layout_marginTop="32dp"
-                android:hint="@string/berat_badan" />
+                android:hint="Berat Badan"
+                android:layout_marginTop="32dp"/>
 
         <EditText
                 android:id="@+id/edt_tinggi"
                 style="@style/edit_text"
-                android:hint="@string/tinggi_badan" />
+                android:hint="Tinggi Badan"
+                />
     </LinearLayout>
 
     <LinearLayout
-            android:id="@+id/btn_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -89,8 +91,8 @@
 
         <Button
                 style="@style/NextButton"
-                android:layout_weight="1.25"
-                android:text="Selanjutnya" />
+                android:text="Selanjutnya"
+                android:layout_weight="1.25" />
 
     </LinearLayout>
 

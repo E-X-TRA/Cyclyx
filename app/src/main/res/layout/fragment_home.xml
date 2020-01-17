@@ -16,11 +16,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/bg_4">
-
+        <!--TODO Tambahin tombolnya dong untuk ke setting ! -->
         <LinearLayout
                 android:id="@+id/main"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_200sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginBottom="@dimen/_40sdp"
                 android:orientation="vertical"
@@ -28,12 +28,25 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-            <Button
-                    android:id="@+id/btnGo"
-                    android:layout_width="@dimen/_125sdp"
-                    android:layout_height="@dimen/_125sdp"
-                    android:background="@drawable/circle_button"
-                    android:layout_gravity="center_horizontal"/>
+<!--            <com.gauravbhola.ripplepulsebackground.RipplePulseLayout-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    android:layout_width="@dimen/_125sdp"-->
+<!--                    android:layout_height="@dimen/_125sdp"-->
+<!--                    android:clipChildren="false"-->
+<!--                    app:rippleColor="@color/bg_tantangan"-->
+<!--                    app:rippleType="fill"-->
+<!--                    app:startRadius="@dimen/_125sdp"-->
+<!--                    app:endRadius="@dimen/_200sdp"-->
+<!--                    app:duration="1000"-->
+<!--                    android:id="@+id/layout_ripplepulse">-->
+                <Button
+                        android:id="@+id/btnGo"
+                        android:layout_width="@dimen/_125sdp"
+                        android:layout_height="@dimen/_125sdp"
+                        android:background="@drawable/circle_button"
+                        android:foreground="@drawable/ripple_effect"
+                        android:layout_gravity="center_horizontal"/>
+<!--            </com.gauravbhola.ripplepulsebackground.RipplePulseLayout>-->
 
             <TextView
                     android:id="@+id/TxtMonthNow"

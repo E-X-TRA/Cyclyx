@@ -13,8 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import androidx.navigation.fragment.findNavController
 import com.extra.cyclyx.R
-import com.extra.cyclyx.database.AppDatabase
 import com.extra.cyclyx.databinding.FragmentBersepedaBinding
 import com.extra.cyclyx.utils.*
 import com.extra.cyclyx.utils.service.TrackingService
@@ -105,10 +105,9 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
 
         binding.lifecycleOwner = this
         //init context for use within fragment
-        ctx = requireNotNull(this.context).applicationContext
+        ctx = activity?.applicationContext!!
         //init viewModel
         val application = requireNotNull(this.activity).application
-        val dataSource = AppDatabase.getInstance(application).bersepedaDAO
         viewModel =
             ViewModelProviders.of(this, BersepedaViewModel.Factory(application)).get(BersepedaViewModel::class.java)
 
@@ -124,7 +123,7 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
             }
         })
 
-        //init broadcast receiver
+        //register broadcast receiver
         LocalBroadcastManager.getInstance(ctx).registerReceiver(
             locationUpdateReceiver,
             IntentFilter("LocationUpdates")
@@ -165,7 +164,14 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
                 }
             }
         })
-        // Inflate the layout for this fragment
+
+        viewModel.navigateToResult.observe(this, Observer {act ->
+            act?.let{
+                navigateToResult(act.id)
+                viewModel.doneNavigatingToResult()
+            }
+        })
+            // Inflate the layout for this fragment
         return binding.root
     }
 
@@ -175,12 +181,17 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
         context?.startService(intent)
     }
 
+    private fun navigateToResult(id : Long){
+        this.findNavController().navigate(BersepedaFragmentDirections.navigateToHasilBersepedaFromBersepeda(id))
+    }
+
     //receive service location update
     private val locationUpdateReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent != null) {
-                val encodedString = intent.getStringExtra(ENCODED_STRING)
-                viewModel.decodePolyLine(encodedString!!)
+                val stringRoute = intent.getStringExtra(EXTRA_ROUTE)
+                val doubleAlt = intent.getDoubleExtra(EXTRA_ALT,0.0)
+                viewModel.processLocationUpdate(stringRoute!!,doubleAlt)
             }
         }
     }

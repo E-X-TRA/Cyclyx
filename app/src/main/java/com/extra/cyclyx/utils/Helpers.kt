@@ -30,6 +30,37 @@ fun convertDurationToString(duration: Long) : String{
     }
 }
 
+fun convertDurationToShortString(duration: Long) : String{
+    val durationInSeconds = (duration/1000).toInt()
+    val seconds = durationInSeconds % 60
+    val minutes = (durationInSeconds/60) % 60
+    val hours = (minutes/60) % 60
+    val days = hours/24
+    val stringSeconds : String = convertTimeUnitToString(seconds)
+    val stringMinutes : String = convertTimeUnitToString(minutes)
+    val stringHours : String = convertTimeUnitToString(hours)
+
+    return when{
+        days >= 1 ->{
+            "+${days} hari"
+        }
+        days < 1 -> {
+            if(hours > 0){
+                "+${hours} jam"
+            }else{
+                if(minutes > 0){
+                    "+${minutes} menit"
+                }else{
+                    "${seconds} detik"
+                }
+            }
+        }
+        else ->{
+            "${stringHours}:${stringMinutes}:${stringSeconds}"
+        }
+    }
+}
+
 // we use HH::MM::SS
 //make readable string from time unit eg. 2 minutes -> 02 not 2
 fun convertTimeUnitToString(unit: Int) : String{
@@ -103,4 +134,6 @@ fun determineZoomLevel(distanceBetweenPoint : Double) : Double{ //distance in km
     }
 }
 
-val cyclyxDateFormat = SimpleDateFormat("MM-DD-YYYY",Locale.US)
+val indonesianLocale = Locale("id")
+val cyclyxDateFormat = SimpleDateFormat("MM-DD-YYYY", indonesianLocale)
+

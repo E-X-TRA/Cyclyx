@@ -78,7 +78,7 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/whiteText</item>
         <item name="android:background">@drawable/rounded_btn_pengenalan</item>
-        <item name="android:layout_marginRight">@dimen/_25ssp</item>
+        <item name="android:layout_marginRight">@dimen/_40ssp</item>
         <item name="android:layout_marginLeft">@dimen/_20ssp</item>
     </style>
 

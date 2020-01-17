@@ -61,6 +61,7 @@ class BersepedaViewModel(
 
     var handler : Handler?=null
     val elevationHelper = ElevationHelper(app.applicationContext)
+    private val altitudeList = ArrayList<Double>()
 
     init {
         handler = Handler()
@@ -122,6 +123,7 @@ class BersepedaViewModel(
     }
 
     fun onStop() {
+        Log.d("TRACKING","Stopped!")
         uiScope.launch {
             stopTimer()
             val oldAct = thisAct.value ?: return@launch
@@ -137,7 +139,8 @@ class BersepedaViewModel(
             oldAct.elevationLoss = _elevationLoss
             oldAct.routeString = thisActRoute
             oldAct.finished = true
-            Log.d("TRACKING",oldAct.toString())
+            Log.d("TRACKING","$oldAct")
+
             update(oldAct)
 
             thisAct.value = oldAct
@@ -146,17 +149,17 @@ class BersepedaViewModel(
         }
     }
 
-    //decodePolylineString from fragments
-    fun decodePolyLine(route: String) {
+    //decodePolylineString from service and process the altitude
+    fun processLocationUpdate(route: String,alt : Double) {
         uiScope.launch {
             thisActRoute = route
             timeLog.add(System.currentTimeMillis())
             val tempListLatLng = PolylineUtils.decode(route, 5)
             _locationPoints.value = tempListLatLng
+            altitudeList.add(alt)
 
             viewModelScope.launch {
                 processMapsData()
-                Log.d("TRACKING","Speed : ${_speed.value}")
             }
         }
     }
@@ -196,7 +199,7 @@ class BersepedaViewModel(
             //summing things when moving for total sum and update UI
             if (pointsList.size >= 2 && distanceBetweenLastTwoPoints > 0) {
                 //duration until this point
-                val durationUntilThis = convertLongToHour(timeLog.last() - timeLog.first())
+                val durationUntilThis = convertLongToSecond(timeLog.last() - timeLog.first())
                 //total distance this point
                 _totalDistance.value = _totalDistance.value?.plus(distanceBetweenLastTwoPoints)
                 //average speed until this point

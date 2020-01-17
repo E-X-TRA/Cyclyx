@@ -94,7 +94,7 @@
                                 <TextView
                                         android:id="@+id/tvHasilDurasi"
                                         style="@style/card_font_right"
-                                        android:text="00:29:30" />
+                                        app:formatDuration="@{viewModel.act}" />
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -113,7 +113,7 @@
                                 <TextView
                                         android:id="@+id/tvHasilJarak"
                                         style="@style/card_font_right"
-                                        android:text="6.16 Km" />
+                                        app:formatDistance="@{viewModel.act.distance}" />
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -132,7 +132,7 @@
                                 <TextView
                                         android:id="@+id/tvHasiKecepatan"
                                         style="@style/card_font_right"
-                                        android:text="100 KM/H" />
+                                        app:formatSpeed="@{viewModel.act.speed}" />
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -151,7 +151,7 @@
                                 <TextView
                                         android:id="@+id/tvHasilKalori"
                                         style="@style/card_font_right"
-                                        android:text="1200kcal" />
+                                        app:formatCalorie="@{viewModel.act.calories}" />
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -170,7 +170,7 @@
                                 <TextView
                                         android:id="@+id/tvHasilElevasi"
                                         style="@style/card_font_right"
-                                        android:text="4 M" />
+                                        app:formatElevation="@{viewModel.act}" />
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -189,7 +189,7 @@
                                 <TextView
                                         android:id="@+id/tvHasilMaxSpeed"
                                         style="@style/card_font_right"
-                                        android:text="00:29:30" />
+                                        app:formatSpeed="@{viewModel.act.peakSpeed}" />
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>

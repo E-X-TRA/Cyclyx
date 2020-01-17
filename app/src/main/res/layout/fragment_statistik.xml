@@ -12,18 +12,6 @@
             android:layout_height="match_parent"
             tools:context=".ui.statistik.StatistikFragment">
 
-        <com.google.android.material.tabs.TabLayout
-
-                android:id="@+id/statistik_tab_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tabGravity="fill"
-                app:tabMode="fixed" />
-
         <androidx.viewpager.widget.ViewPager
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +19,22 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:id="@+id/statistik_view_pager"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="0dp"/>
+
+        <com.google.android.material.tabs.TabLayout
+
+                android:id="@+id/statistik_tab_layout"
+                android:layout_width="64dp"
+                android:layout_height="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/statistik_view_pager"
+                app:tabBackground="@drawable/vp_tab_selector"
+                app:tabIndicatorHeight="0dp"
+                app:tabPaddingStart="16dp"
+                android:orientation="horizontal"
+                />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

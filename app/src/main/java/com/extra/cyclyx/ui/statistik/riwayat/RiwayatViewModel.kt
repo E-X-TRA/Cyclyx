@@ -22,6 +22,12 @@ class RiwayatViewModel(app: Application) :
 
     val acts : LiveData<List<Bersepeda>> = repository.allCyclingData
 
+    val actCounts = Transformations.map(acts){actList ->
+        actList?.let {
+            "Tercatat ${it.size} kali anda melacak..."
+        }
+    }
+
     fun onActClicked(id: Long) {
         _navigateToResult.value = id
     }
