@@ -34,7 +34,6 @@ import com.mapbox.mapboxsdk.style.layers.LineLayer
 import com.mapbox.mapboxsdk.style.layers.Property.LINE_JOIN_ROUND
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory.*
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
-import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
@@ -124,6 +123,12 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
             }
         })
 
+        //register broadcast receiver
+        LocalBroadcastManager.getInstance(ctx).registerReceiver(
+            locationUpdateReceiver,
+            IntentFilter("LocationUpdates")
+        )
+
         modifyTrackingService(START_SERVICE)
         viewModel.onStart()
 
@@ -183,16 +188,13 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
     //receive service location update
     private val locationUpdateReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
-            Timber.d("TRACKING -> Receiving Location Update!")
             if (intent != null) {
-                val encodedString = intent.getStringExtra(ENCODED_STRING)
-                Timber.d("TRACKING -> DECODING ROUTE!")
-                viewModel.decodePolyLine(encodedString!!)
+                val stringRoute = intent.getStringExtra(EXTRA_ROUTE)
+                val doubleAlt = intent.getDoubleExtra(EXTRA_ALT,0.0)
+                viewModel.processLocationUpdate(stringRoute!!,doubleAlt)
             }
         }
     }
-
-
 
     //necessary for mapbox mapview to adapt lifecycle
     @SuppressWarnings("MissingPermission")
@@ -204,18 +206,10 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
     override fun onResume() {
         super.onResume()
         binding.mapView.onResume()
-
-        //register broadcast receiver
-        LocalBroadcastManager.getInstance(activity!!).registerReceiver(
-            locationUpdateReceiver,
-            IntentFilter("LocationUpdates")
-        )
     }
 
     override fun onPause() {
         super.onPause()
-        LocalBroadcastManager.getInstance(activity!!)
-            .unregisterReceiver(locationUpdateReceiver) // stop receiving broadcast
         binding.mapView.onPause()
     }
 
@@ -227,6 +221,8 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
     override fun onDestroy() {
         super.onDestroy()
         modifyTrackingService(STOP_SERVICE) //dont forget to stop service
+        LocalBroadcastManager.getInstance(ctx)
+            .unregisterReceiver(locationUpdateReceiver) // and stop receiving broadcast
         binding.mapView.onDestroy()
     }
 

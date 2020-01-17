@@ -20,7 +20,7 @@ class CyclyxRepository(context: Context){
 
     fun getLatestCyclingData() = database.bersepedaDAO.getLatestCycling()
 
-    fun getCyclingData(id : Long) = database.bersepedaDAO.getCyclingAct(id)
+    fun getCyclingData(id : Long) : LiveData<Bersepeda> = database.bersepedaDAO.getCyclingAct(id)
 
     suspend fun removeCyclingData(id : Long){
         withContext(Dispatchers.IO){

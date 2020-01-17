@@ -1,6 +1,7 @@
 package com.extra.cyclyx.ui.hasilBersepeda
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.extra.cyclyx.entity.Bersepeda
 import com.extra.cyclyx.repository.CyclyxRepository
@@ -10,7 +11,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class HasilBersepedaViewModel(
     actId: Long = 0L,
@@ -36,7 +36,7 @@ class HasilBersepedaViewModel(
     fun decodeRoute(act: Bersepeda?) {
         uiScope.launch {
             act?.let {
-                Timber.d("TRACKING -> ${act.routeString}")
+                Log.d("RESULT","${act.routeString}")
                 val decodedRoute = PolylineUtils.decode(act.routeString, 5)
                 _routeList.value = PolylineUtils.simplify(decodedRoute,0.00005)
             }
@@ -45,7 +45,7 @@ class HasilBersepedaViewModel(
 
     fun onMapAsyncFinished() {
         decodeRoute(act.value)
-        Timber.d("RESULT -> MapAync : ${act.value}")
+        Log.d("RESULT","MapAync : ${act.value}")
     }
 
     fun onBackClicked() {

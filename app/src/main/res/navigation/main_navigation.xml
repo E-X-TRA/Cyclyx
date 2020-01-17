@@ -29,4 +29,19 @@
             android:name="com.extra.cyclyx.ui.profil.ProfilFragment"
             android:label="Profil Saya"
             tools:layout="@layout/fragment_profil" />
+
+    <fragment
+            android:id="@+id/hasil_bersepeda"
+            android:name="com.extra.cyclyx.ui.hasilBersepeda.HasilBersepedaFragment"
+            android:label="fragment_hasil_bersepeda"
+            tools:layout="@layout/fragment_hasil_bersepeda">
+        <argument
+                android:name="bersepedaKey"
+                app:argType="long"/>
+        <action
+                android:id="@+id/navigate_to_statistik_from_hasil_bersepeda"
+                app:destination="@id/statistik"
+                app:popUpTo="@id/statistik"
+                />
+    </fragment>
 </navigation>

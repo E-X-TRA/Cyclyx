@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
-            android:name=".CyclyxApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -25,8 +24,7 @@
         <activity android:name=".BersepedaActivity" android:screenOrientation="portrait"/>
 
         <service
-                android:name=".utils.service.TrackingService"
-                android:process=":tracking_service" />
+                android:name=".utils.service.TrackingService" />
     </application>
 
 </manifest>
