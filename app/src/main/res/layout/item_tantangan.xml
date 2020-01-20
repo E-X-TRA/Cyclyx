@@ -24,10 +24,11 @@
             android:orientation="vertical">
 
         <LinearLayout
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_13sdp"
-                android:layout_marginBottom="@dimen/_13sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
                 android:orientation="horizontal"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintLeft_toRightOf="parent"
@@ -54,7 +55,7 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_4sdp"
@@ -84,7 +85,59 @@
                         android:textSize="@dimen/_13ssp"
                         tools:text="Bersepeda dalam kecepatan 15km/detik" />
 
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_gravity="center_horizontal">
+                    <TextView
+                            android:id="@+id/TvProgTantangan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_12sdp"
+                            android:text="3.4km"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:fontFamily="@font/exo2_regular"
+                            android:textColor="@color/font_bold_purple"/>
+
+                    <TextView
+                            android:id="@+id/Tvdari"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:textSize="@dimen/_12sdp"
+                            android:text="dari"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:fontFamily="@font/exo2_regular"
+                            android:textColor="@color/font_bold_purple"/>
+
+                    <TextView
+                            android:id="@+id/TvFullTantangan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_12sdp"
+                            android:text="30 km"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:fontFamily="@font/exo2_regular"
+                            android:textColor="@color/font_bold_purple"/>
+
+                    <TextView
+                            android:id="@+id/Tvterselesaikan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:textSize="@dimen/_12sdp"
+                            android:text="terselesaikan"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:fontFamily="@font/exo2_regular"
+                            android:textColor="@color/font_bold_purple"/>
+
+                </LinearLayout>
+
             </LinearLayout>
+
         </LinearLayout>
 
 

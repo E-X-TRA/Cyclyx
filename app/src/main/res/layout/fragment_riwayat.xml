@@ -76,6 +76,42 @@
 
         </LinearLayout>
 
+        <LinearLayout
+                android:id="@+id/emptyState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_17sdp"
+                android:layout_marginTop="@dimen/_17sdp"
+                android:layout_marginEnd="@dimen/_17sdp"
+                android:layout_marginBottom="@dimen/_17sdp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/head">
+            <ImageView
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="@dimen/_200sdp"
+                    android:src="@drawable/ic_emptystate"
+                    android:layout_gravity="center"
+                    android:tint="#949494"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Anda belum bersepeda"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:fontFamily="@font/exo2_bold"
+                android:textSize="@dimen/_25sdp"
+                android:layout_gravity="center"
+                android:textColor="#AE000000"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ayo mulai sekarang!"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:fontFamily="@font/exo2_bold"
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_gravity="center"
+                    android:textColor="#AE000000"/>
+        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

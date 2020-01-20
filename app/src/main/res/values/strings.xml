@@ -56,6 +56,8 @@
     <string name="txt_mengurangi_penggunaan_daya_ponsel">Mengurangi penggunaan daya ponsel</string>
     <string name="txt_matikan">matikan</string>
     <string name="txt_optimisasi">Optimisasi</string>
+    <string name="txt_menyalakan_gps">Meningkatkan akurasi gps</string>
+    <string name="txt_lokasi">Lokasi</string>
     <string name="txt_meningkatkan_performa_aplikasi">Meningkatkan performa aplikasi</string>
     <string name="txt_lengkapi_data_diri_anda">Lengkapi data diri anda</string>
     <string name="txt_sejauh_ini_anda_sudah_membakar_kalori">Sejauh ini anda sudah membakar kalori</string>
