@@ -29,7 +29,9 @@ const val LINE_WIDTH: Float = 7.5f
 const val SYMBOL_LAYER_RED_ID = "SYMBOL_LAYER_RED_ID"
 const val SYMBOL_LAYER_BLUE_ID = "SYMBOL_LAYER_BLUE_ID"
 const val ICON_ID = "icon_id"
-
+//item type
+const val RIWAYAT_ITEM_ERROR = 20
+const val RIWAYAT_ITEM_NORMAL = 21
 //onclick action
 const val DELETE_ITEM = "delete_item"
 const val DETAIL_ITEM = "detail_item"

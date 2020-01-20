@@ -1,5 +1,6 @@
 package com.extra.cyclyx.utils
 
+import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.extra.cyclyx.entity.Bersepeda
@@ -72,5 +73,14 @@ fun TextView.formatDate(act : Bersepeda?){
 fun TextView.showInt(int : Int?){
     int?.let {
         text = "$int"
+    }
+}
+
+@BindingAdapter("toggleVisibilityRiwayat")
+fun View.toogleVisibilityRiwayat(flag : Boolean){
+    if(flag){
+        visibility = View.VISIBLE
+    }else{
+        visibility = View.GONE
     }
 }

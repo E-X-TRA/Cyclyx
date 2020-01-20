@@ -14,7 +14,8 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.extra.cyclyx.ui.pengenalan.registrasi.RegistrasiDataDiriFragment
-import com.extra.cyclyx.utils.*
+import com.extra.cyclyx.utils.SP_CYCLYX
+import com.extra.cyclyx.utils.USER_TOKEN
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -32,8 +33,7 @@ class SignUpActivity : AppCompatActivity(){
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         }
 
-        setContentView(R.layout.activity_sign_up)
-    }
+            editor.putString(USER_TOKEN,RandomStringGenerator().getRandomString(32))
 
             editor.apply()
 
@@ -41,7 +41,12 @@ class SignUpActivity : AppCompatActivity(){
             startActivity(intent)
         }
 
+        showdata.setOnClickListener {
+            val token = sharedPreferences.getString(USER_TOKEN, "")
 
+            Log.d("TRACKING","Token : $token")
+        }
+    }
 
     class RandomStringGenerator{
         companion object {

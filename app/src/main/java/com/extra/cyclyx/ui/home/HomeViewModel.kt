@@ -32,16 +32,24 @@ class HomeViewModel(val app: Application) : AndroidViewModel(app) {
     val navigateToKonfigurasi : LiveData<Int>
         get() = _navigateToKonfigurasi
 
-    val firstRecentActs = Transformations.map(recentActs){act ->
-        act?.let {
-            it[0]
-        }
-    }
-    val secondRecentActs = Transformations.map(recentActs){act ->
-        act?.let {
-            it[1]
-        }
-    }
+//    val firstRecentActs = Transformations.map(recentActs){act ->
+//        act?.let {
+//            if(it[0] != null){
+//                it[0]
+//            }else{
+//                Bersepeda()
+//            }
+//        }
+//    }
+//    val secondRecentActs = Transformations.map(recentActs){act ->
+//        act?.let {
+//            if(it[1] != null){
+//                it[1]
+//            }else{
+//                Bersepeda()
+//            }
+//        }
+//    }
 
     fun onBtnKonfigurasiClicked(){
         _navigateToKonfigurasi.value = 1
