@@ -10,6 +10,7 @@ import com.extra.cyclyx.repository.CyclyxRepository
 import com.extra.cyclyx.utils.*
 import com.mapbox.geojson.Point
 import com.mapbox.geojson.utils.PolylineUtils
+import com.mapbox.turf.TurfConstants
 import com.mapbox.turf.TurfMeasurement
 import kotlinx.coroutines.*
 
@@ -126,27 +127,67 @@ class BersepedaViewModel(
         Log.d("TRACKING","Stopped!")
         uiScope.launch {
             stopTimer()
-            val oldAct = thisAct.value ?: return@launch
+            val latestAct = thisAct.value ?: return@launch
 
-            oldAct.endTime = System.currentTimeMillis()
-            oldAct.startPoint = _locationPoints.value?.first() ?: Point.fromLngLat(107.628550, -6.941557)
-            oldAct.endPoint = _locationPoints.value?.last() ?: oldAct.startPoint
-            oldAct.speed = _speed.value!!
-            oldAct.distance = _totalDistance.value!!
-            oldAct.calories = _calories.value!!
-            oldAct.peakSpeed = _peakSpeed
-            oldAct.elevationGain = _elevationGain
-            oldAct.elevationLoss = _elevationLoss
-            oldAct.routeString = thisActRoute
-            oldAct.finished = true
-            Log.d("TRACKING","$oldAct")
+            latestAct.endTime = System.currentTimeMillis()
+            latestAct.startPoint = _locationPoints.value?.first() ?: Point.fromLngLat(107.628550, -6.941557)
+            latestAct.endPoint = _locationPoints.value?.last() ?: latestAct.startPoint
+            latestAct.speed = _speed.value!!
+            latestAct.distance = _totalDistance.value!!
+            latestAct.calories = _calories.value!!
+            latestAct.peakSpeed = _peakSpeed
+            latestAct.elevationGain = _elevationGain
+            latestAct.elevationLoss = _elevationLoss
+            latestAct.routeString = thisActRoute
+            latestAct.finished = true
+            Log.d("CALCULATIONS","$latestAct")
 
-            update(oldAct)
+            update(latestAct)
+            modifyUserCyclingData(latestAct)
 
-            thisAct.value = oldAct
+            thisAct.value = latestAct
 
-            _navigateToResult.value = oldAct
+            _navigateToResult.value = latestAct
         }
+    }
+    //adding save data to shared preferences
+    private fun modifyUserCyclingData(act : Bersepeda){
+        val editor = repository.sharedPreferences.edit()
+
+        //sum total distance
+        val existingDistance = repository.sharedPreferences.getDouble(USER_TOTAL_DISTANCE, 0.0)
+        val thisActDistance = act.distance
+        val newDistance = existingDistance + thisActDistance
+        //put new total in SP
+        editor.putDouble(USER_TOTAL_DISTANCE,newDistance)
+
+        //sum total duration
+        val existingDuration = repository.sharedPreferences.getLong(USER_TOTAL_DURATION, 0L)
+        val thisActDuration = act.endTime - act.startTime
+        val newDuration = existingDuration + thisActDuration
+        //put new total in SP
+        editor.putLong(USER_TOTAL_DURATION,newDuration)
+
+        //compare max speed
+        val existingPeakSpeed = repository.sharedPreferences.getDouble(USER_MAX_PEAK_SPEED,0.0)
+        val thisActPeakSpeed = act.peakSpeed
+        val newPeakSpeed = if(thisActPeakSpeed > existingPeakSpeed){
+            thisActPeakSpeed
+        }else{
+            existingPeakSpeed
+        }
+        //put new max speed
+        editor.putDouble(USER_MAX_PEAK_SPEED,newPeakSpeed)
+
+        //sum total distance
+        val existingCalories = repository.sharedPreferences.getDouble(USER_TOTAL_CALORIES, 0.0)
+        val thisActCalories = act.calories
+        val newCalories = existingCalories + thisActCalories
+        //put new total in SP
+        editor.putDouble(USER_TOTAL_CALORIES,newCalories)
+
+
+        editor.apply()
     }
 
     //decodePolylineString from service and process the altitude
@@ -173,10 +214,12 @@ class BersepedaViewModel(
                 val oldPoint = pointsList.get(pointsList.size - 2) //one request before this location data
                 val newPoint = pointsList.get(pointsList.size - 1) //this request location data
                 //calculate distance
-                distanceBetweenLastTwoPoints = TurfMeasurement.distance(oldPoint, newPoint)
+                //assuming this was KILOMETRES
+                distanceBetweenLastTwoPoints = TurfMeasurement.distance(oldPoint, newPoint,TurfConstants.UNIT_KILOMETRES)
                 //calculate speed (for peak/max speed) in km/h
                 val duration = timeLog.get(timeLog.size - 1) - timeLog.get(timeLog.size - 2)
-                val speed = distanceBetweenLastTwoPoints / duration
+//                val speed = distanceBetweenLastTwoPoints / duration //in m/s
+                val speed = (distanceBetweenLastTwoPoints/1000) / convertLongToHour(duration) //in km/s
                 if (_peakSpeed < speed) {
                     _peakSpeed = speed
                 }
@@ -199,11 +242,16 @@ class BersepedaViewModel(
             //summing things when moving for total sum and update UI
             if (pointsList.size >= 2 && distanceBetweenLastTwoPoints > 0) {
                 //duration until this point
-                val durationUntilThis = convertLongToSecond(timeLog.last() - timeLog.first())
+                //assuming this was in HOURS
+                val durationUntilThis = convertLongToHour(timeLog.last() - timeLog.first())
+                Log.d("CALCULATIONS","Duration : $durationUntilThis")
+                Log.d("CALCULATIONS","Duration in Long : ${timeLog.last() - timeLog.first()}")
                 //total distance this point
                 _totalDistance.value = _totalDistance.value?.plus(distanceBetweenLastTwoPoints)
+                Log.d("CALCULATIONS","Total Distance : ${_totalDistance.value}")
                 //average speed until this point
                 val averageSpeed = _totalDistance.value?.div(durationUntilThis)
+                Log.d("CALCULATIONS","Average Speed : ${averageSpeed}")
                 _speed.value = averageSpeed
                 //calories burned until this point
                 // using https://captaincalculator.com/health/calorie/calories-burned-cycling-calculator/
@@ -216,7 +264,7 @@ class BersepedaViewModel(
     }
 
     //timer related
-    fun startTimer() {
+    private fun startTimer() {
         uiScope.launch {
             Log.d("TRACKING","Timer Started")
             startTime.value = System.currentTimeMillis() //set starttime value
@@ -227,7 +275,7 @@ class BersepedaViewModel(
         }
     }
 
-    fun pauseTimer(){
+    private fun pauseTimer(){
         uiScope.launch {
             Log.d("TRACKING","Timer Paused")
             _trackingStatus.value = TRACKING_PAUSED
@@ -237,7 +285,7 @@ class BersepedaViewModel(
         }
     }
 
-    fun resumeTimer(){
+    private fun resumeTimer(){
         uiScope.launch {
             Log.d("TRACKING","Timer Resumed")
             _trackingStatus.value = TRACKING_RESUMED
@@ -246,7 +294,7 @@ class BersepedaViewModel(
         }
     }
 
-    fun stopTimer(){
+    private fun stopTimer(){
         uiScope.launch {
             _trackingStatus.value = TRACKING_STOPPED
 
