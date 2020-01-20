@@ -22,8 +22,8 @@ class GambaranCoverFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_pengenalan_cover, container, false)
     }
 
-    fun setTitle(title: String){
-        fragment_title.text = title
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        tv_fragment_name.text = "Fragment 1"
     }
 
 
