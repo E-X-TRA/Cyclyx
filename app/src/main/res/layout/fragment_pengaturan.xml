@@ -150,7 +150,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                    android:id="@+id/optimisasi"
+                    android:id="@+id/lokasi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_17sdp"
@@ -166,7 +166,7 @@
                     app:layout_constraintBottom_toBottomOf="parent">
 
                 <ImageView
-                        android:id="@+id/imgStatOpt"
+                        android:id="@+id/imgStatLok"
                         android:layout_width="@dimen/_15sdp"
                         android:layout_height="@dimen/_15sdp"
                         android:src="@drawable/ic_check"
