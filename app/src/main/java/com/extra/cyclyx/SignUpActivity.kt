@@ -3,8 +3,6 @@ package com.extra.cyclyx
 import GambaranFiturFragment
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.icu.text.CaseMap
 import android.os.Bundle
 import android.os.Build
 import android.util.Log
@@ -15,14 +13,6 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import androidx.viewpager.widget.ViewPager
-import com.extra.cyclyx.ui.pengenalan.gambaran.GambaranAkunFragment
-import com.extra.cyclyx.ui.pengenalan.gambaran.GambaranCoverFragment
-import com.extra.cyclyx.ui.pengenalan.gambaran.PageAdapter
 import com.extra.cyclyx.ui.pengenalan.registrasi.RegistrasiDataDiriFragment
 import com.extra.cyclyx.utils.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
@@ -45,6 +35,11 @@ class SignUpActivity : AppCompatActivity(){
         setContentView(R.layout.activity_sign_up)
     }
 
+            editor.apply()
+
+            val intent =  Intent(this, RegistrasiDataDiriFragment::class.java)
+            startActivity(intent)
+        }
 
 
 

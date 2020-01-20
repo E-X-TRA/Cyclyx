@@ -35,8 +35,8 @@
 
                 <ImageView
                         android:id="@+id/icUser"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        android:layout_width="@dimen/_105sdp"
+                        android:layout_height="@dimen/_105sdp"
                         android:layout_centerHorizontal="true"
                         android:src="@drawable/user"
                         android:tint="#000" />
@@ -86,7 +86,7 @@
                 </LinearLayout>
             </RelativeLayout>
 
-            <ImageView
+            <ImageButton
                     android:id="@+id/BtnSettings"
                     android:layout_width="@dimen/_21sdp"
                     android:layout_height="@dimen/_21sdp"
@@ -129,7 +129,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/exo2_regular"
-                            android:text="Tantangan"
+                            android:text="@string/text_tantangan"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
                             android:textColor="#494949"
                             android:textSize="@dimen/_13ssp" />

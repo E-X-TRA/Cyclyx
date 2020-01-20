@@ -2,19 +2,18 @@ package com.extra.cyclyx.ui.home
 
 import android.Manifest
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import com.extra.cyclyx.BersepedaActivity
 import com.extra.cyclyx.R
 import com.extra.cyclyx.databinding.FragmentHomeBinding
-import com.extra.cyclyx.BersepedaActivity
 import com.extra.cyclyx.utils.PERMISSION_FINE_LOCATION_REQUEST
 import com.google.android.material.snackbar.Snackbar
 
@@ -28,8 +27,7 @@ class HomeFragment : Fragment() {
     ): View? {
         val binding = FragmentHomeBinding.inflate(inflater)
         val app = requireNotNull(activity).application
-        val viewModelFactory = HomeViewModelFactory(app)
-        viewModel = ViewModelProviders.of(this,viewModelFactory).get(HomeViewModel::class.java)
+        viewModel = ViewModelProviders.of(this,HomeViewModel.Factory(app)).get(HomeViewModel::class.java)
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
@@ -44,24 +42,24 @@ class HomeFragment : Fragment() {
             }
         }
 
-        if(viewModel.isBatteryOptimized){ //if optimized
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                val name = resources.getString(R.string.app_name)
-                Toast.makeText(
-                    app.applicationContext,
-                    "Battery optimization -> All apps -> $name -> Don't optimize",
-                    Toast.LENGTH_LONG
-                ).show()
-
-                val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
-                startActivity(intent)
-            }
-        }
-
         binding.btnGo.setOnClickListener {
             val intent = Intent(activity, BersepedaActivity::class.java)
             startActivity(intent)
         }
+
+        viewModel.navigateToResult.observe(this, Observer {actId ->
+            actId?.let{
+                this.findNavController().navigate(HomeFragmentDirections.navigateToHasilBersepedaFromHome(it))
+                viewModel.doneNavigateToHasilBersepeda()
+            }
+        })
+
+        viewModel.navigateToKonfigurasi.observe(this, Observer {
+            it?.let {
+                this.findNavController().navigate(HomeFragmentDirections.navigateToKonfigurasiFromHome())
+                viewModel.doneNavigateToKonfigurasi()
+            }
+        })
 
         return binding.root
     }

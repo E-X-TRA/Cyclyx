@@ -2,16 +2,16 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
 
-        <vector xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:aapt="http://schemas.android.com/aapt"
-                android:width="8dp"
-                android:height="4dp"
-                android:viewportWidth="16"
-                android:viewportHeight="8">
-            <path
-                    android:fillColor="@color/colorAccent"
-                    android:pathData="M4 0H12A4 4 0 0 1 16 4V4A4 4 0 0 1 12 8H4A4 4 0 0 1 0 4V4A4 4 0 0 1 4 0Z" />
-        </vector>
+        <shape
+                android:innerRadius="0dp"
+                android:shape="ring"
+                android:thickness="4dp"
+                android:useLevel="false">
+
+            <solid android:color="@color/colorAccent" />
+
+
+        </shape>
 
 
     </item>

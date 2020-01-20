@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
                 name="tantangan"
                 type="com.extra.cyclyx.entity.Tantangan" />
+
         <variable
                 name="clickListener"
                 type="com.extra.cyclyx.utils.adapter.TantanganClickListener" />
@@ -17,15 +19,16 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
         <LinearLayout
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_13sdp"
-                android:layout_marginBottom="@dimen/_13sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
                 android:orientation="horizontal"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintLeft_toRightOf="parent"
@@ -34,9 +37,9 @@
             <LinearLayout
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:background="@drawable/tantangancircle"
-                    android:layout_gravity="center"
                     android:gravity="center">
 
                 <TextView
@@ -44,15 +47,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/josefinsans_bold"
-                        tools:text="@string/txt_persentase"
+                        app:formatProgression="@{tantangan.progressTantangan}"
                         android:textAlignment="center"
-                        android:text="@{tantangan.progressTantangan}"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textSize="@dimen/_12ssp" />
+                        android:textSize="@dimen/_12ssp"
+                        tools:text="@string/txt_persentase" />
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_4sdp"
@@ -65,24 +68,76 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/exo2_bold"
-                        tools:text="@string/txt_kecepatan"
                         android:text="@{tantangan.tipeTantangan}"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="#0C1B44"
-                        android:textSize="@dimen/_18ssp" />
+                        android:textSize="@dimen/_18ssp"
+                        tools:text="@string/txt_kecepatan" />
 
                 <TextView
                         android:id="@+id/TxtTtgDesc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/exo2_regular"
-                        tools:text="Bersepeda dalam kecepatan 15km/detik"
                         android:text="@{tantangan.labelTantangan}"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="#96000000"
-                        android:textSize="@dimen/_13ssp" />
+                        android:textSize="@dimen/_13ssp"
+                        tools:text="Bersepeda dalam kecepatan 15km/detik" />
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_gravity="center_horizontal">
+                    <TextView
+                            android:id="@+id/TvProgTantangan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_12sdp"
+                            android:text="3.4km"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:fontFamily="@font/exo2_regular"
+                            android:textColor="@color/font_bold_purple"/>
+
+                    <TextView
+                            android:id="@+id/Tvdari"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:textSize="@dimen/_12sdp"
+                            android:text="dari"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:fontFamily="@font/exo2_regular"
+                            android:textColor="@color/font_bold_purple"/>
+
+                    <TextView
+                            android:id="@+id/TvFullTantangan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_12sdp"
+                            android:text="30 km"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:fontFamily="@font/exo2_regular"
+                            android:textColor="@color/font_bold_purple"/>
+
+                    <TextView
+                            android:id="@+id/Tvterselesaikan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:textSize="@dimen/_12sdp"
+                            android:text="terselesaikan"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:fontFamily="@font/exo2_regular"
+                            android:textColor="@color/font_bold_purple"/>
+
+                </LinearLayout>
 
             </LinearLayout>
+
         </LinearLayout>
 
 

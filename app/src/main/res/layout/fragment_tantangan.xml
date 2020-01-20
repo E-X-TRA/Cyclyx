@@ -6,82 +6,84 @@
     <data>
         <variable
                 name="viewModel"
-                type="com.extra.cyclyx.ui.statistik.riwayat.RiwayatViewModel" />
+                type="com.extra.cyclyx.ui.statistik.tantangan.TantanganViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_5">
+            android:background="@drawable/bg_5"
+            android:orientation="vertical">
 
         <LinearLayout
                 android:id="@+id/head"
-                android:layout_margin="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_margin="@dimen/_13sdp"
+                android:orientation="vertical"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:orientation="vertical">
+                app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:text="Tantangan"
                     android:fontFamily="@font/exo2_bold"
+                    android:text="@string/text_tantangan"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="#2962FF"
-                    android:textSize="32dp" />
+                    android:textSize="@dimen/_27ssp" />
 
             <TextView
+                    android:id="@+id/TxtTodayDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/TxtTodayDate"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:text="Hari ini, 14 November"
                     android:fontFamily="@font/exo2_regular"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="#96000000"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/_15ssp"
+                    tools:text="Hari ini, 14 November" />
 
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
-                app:layout_constraintTop_toBottomOf="@id/head"
                 android:id="@+id/card"
                 android:layout_width="match_parent"
-                android:layout_margin="10dp"
-                app:cardElevation="10dp"
-                app:cardCornerRadius="10dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
                 android:backgroundTint="@color/bg_tantangan"
-                android:layout_height="150dp">
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@id/head">
 
             <LinearLayout
-                    android:layout_marginVertical="20dp"
-                    android:layout_marginHorizontal="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_17sdp"
+                    android:layout_marginTop="@dimen/_17sdp"
+                    android:layout_marginEnd="@dimen/_17sdp"
+                    android:layout_marginBottom="@dimen/_17sdp"
                     android:orientation="vertical">
 
                 <TextView
+                        android:id="@+id/TxtCardHist"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/TxtCardHist"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:text="Sejauh ini anda sudah membakar kalori"
                         android:fontFamily="@font/exo2_bold"
+                        android:text="@string/txt_sejauh_ini_anda_sudah_membakar_kalori"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="#0C1B44"
-                        android:textSize="26dp" />
+                        android:textSize="@dimen/_22ssp" />
 
                 <TextView
+                        android:id="@+id/TxtCountKal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/TxtCountKal"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:text="65,356 kkal"
                         android:fontFamily="@font/exo2_bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="#00C80A"
-                        android:textSize="20dp" />
+                        android:textSize="@dimen/_17ssp"
+                        tools:text="65,356 kkal" />
 
             </LinearLayout>
 
@@ -107,12 +109,11 @@
                     android:textSize="@dimen/_18ssp" />
 
 
-
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvPencapaian"
-                    tools:listitem="@layout/item_tantangan"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/item_tantangan" />
 
         </LinearLayout>
 

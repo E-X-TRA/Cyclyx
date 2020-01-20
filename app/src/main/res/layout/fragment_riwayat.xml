@@ -17,7 +17,7 @@
 
         <LinearLayout
                 android:id="@+id/head"
-                android:layout_margin="15dp"
+                android:layout_margin="@dimen/_13sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
@@ -29,10 +29,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:text="Riwayat"
+                    android:text="@string/txt_riwayat"
                     android:fontFamily="@font/exo2_bold"
                     android:textColor="#2962FF"
-                    android:textSize="32dp" />
+                    android:textSize="@dimen/_27ssp" />
 
             <TextView
                     android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                     android:text="@{viewModel.actCounts}"
                     android:fontFamily="@font/exo2_regular"
                     android:textColor="#96000000"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/_15ssp" />
 
         </LinearLayout>
 
@@ -72,8 +72,44 @@
                     android:id="@+id/rvRiwayat"
                     tools:listitem="@layout/item_riwayat"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"/>
 
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/emptyState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_17sdp"
+                android:layout_marginTop="@dimen/_17sdp"
+                android:layout_marginEnd="@dimen/_17sdp"
+                android:layout_marginBottom="@dimen/_17sdp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/head">
+            <ImageView
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="@dimen/_200sdp"
+                    android:src="@drawable/ic_emptystate"
+                    android:layout_gravity="center"
+                    android:tint="#949494"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Anda belum bersepeda"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:fontFamily="@font/exo2_bold"
+                android:textSize="@dimen/_25sdp"
+                android:layout_gravity="center"
+                android:textColor="#AE000000"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ayo mulai sekarang!"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:fontFamily="@font/exo2_bold"
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_gravity="center"
+                    android:textColor="#AE000000"/>
         </LinearLayout>
 
 

@@ -6,12 +6,14 @@ import androidx.lifecycle.LiveData
 import com.extra.cyclyx.database.AppDatabase
 import com.extra.cyclyx.entity.Bersepeda
 import com.extra.cyclyx.entity.Tantangan
+import com.extra.cyclyx.utils.SP_CYCLYX
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class CyclyxRepository(context: Context){
     //init
     private val database = AppDatabase.getInstance(context)
+    val sharedPreferences = context.getSharedPreferences(SP_CYCLYX, Context.MODE_PRIVATE)
 
     //cycling related
     val allCyclingData : LiveData<List<Bersepeda>> = database.bersepedaDAO.getAll()
@@ -48,6 +50,8 @@ class CyclyxRepository(context: Context){
 
     //challenge related
     val allChallengeData : LiveData<List<Tantangan>> = database.tantanganDAO.getAllTantangan()
+
+
 
     suspend fun insertTantanganData(data : Tantangan){
         withContext(Dispatchers.IO){

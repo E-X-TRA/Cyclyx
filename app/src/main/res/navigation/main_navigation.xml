@@ -11,17 +11,23 @@
             android:label="Beranda"
             tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/navigate_to_bersepeda"
-            app:destination="@id/bersepeda"/>
+                android:id="@+id/navigate_to_bersepeda"
+                app:destination="@id/bersepeda" />
+        <action
+                android:id="@+id/navigate_to_hasil_bersepeda_from_home"
+                app:destination="@id/hasil_bersepeda" />
+        <action
+                android:id="@+id/navigate_to_konfigurasi_from_home"
+                app:destination="@id/konfigurasi" />
     </fragment>
 
     <fragment
-        android:id="@+id/statistik"
-        android:name="com.extra.cyclyx.ui.statistik.StatistikFragment"
-        android:label="Statistik">
+            android:id="@+id/statistik"
+            android:name="com.extra.cyclyx.ui.statistik.StatistikFragment"
+            android:label="Statistik">
         <action
                 android:id="@+id/navigate_to_hasil_bersepeda_from_statistik"
-                app:destination="@id/hasil_bersepeda"/>
+                app:destination="@id/hasil_bersepeda" />
     </fragment>
 
     <fragment
@@ -37,11 +43,15 @@
             tools:layout="@layout/fragment_hasil_bersepeda">
         <argument
                 android:name="bersepedaKey"
-                app:argType="long"/>
+                app:argType="long" />
         <action
                 android:id="@+id/navigate_to_statistik_from_hasil_bersepeda"
                 app:destination="@id/statistik"
-                app:popUpTo="@id/statistik"
-                />
+                app:popUpTo="@id/statistik" />
     </fragment>
+    <fragment
+            android:id="@+id/konfigurasi"
+            android:name="com.extra.cyclyx.ui.konfigurasi.KonfigurasiFragment"
+            android:label="PengaturanFragment"
+            tools:layout="@layout/fragment_konfigurasi" />
 </navigation>
