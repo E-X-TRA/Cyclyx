@@ -69,10 +69,10 @@ class RiwayatFragment : Fragment() {
         AlertDialog.Builder(context)
             .setTitle("Hapus Item Ini") // GPS not found
             .setMessage("Pada laman selanjutnya, bla bla bla") // Want to enable?
-            .setPositiveButton("Ya", DialogInterface.OnClickListener { dialog, id ->
+            .setPositiveButton("Ya", DialogInterface.OnClickListener { _, _->
                 viewModel.onDeleteClicked(actId)
             })
-            .setNegativeButton("Tidak",DialogInterface.OnClickListener { dialog, id ->
+            .setNegativeButton("Tidak",DialogInterface.OnClickListener { _, _ ->
                 Log.d("DELETE","Cancel")
             })
             .show()

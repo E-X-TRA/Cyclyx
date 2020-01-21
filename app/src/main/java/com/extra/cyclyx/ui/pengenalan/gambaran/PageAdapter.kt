@@ -29,9 +29,9 @@ class PageAdapter: PagerAdapter() {
         var title: TextView = layoutScreen.findViewById(R.id.intro_title)
         var description: TextView = layoutScreen.findViewById(R.id.intro_description)
 
-        title.setText(mListScreen[position].getTitle())
-        description.setText(mListScreen[position].getDescription())
-        imgSlide.setImageResource(mListScreen[position].getScreenImg())
+        title.setText(mListScreen[position].intro_title)
+        description.setText(mListScreen[position].intro_description)
+        imgSlide.setImageResource(mListScreen[position].intro_img)
 
         container.addView(layoutScreen)
 

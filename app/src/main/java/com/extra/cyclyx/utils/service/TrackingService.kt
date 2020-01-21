@@ -19,7 +19,6 @@ import com.extra.cyclyx.utils.*
 import com.mapbox.android.core.location.*
 import com.mapbox.geojson.Point
 import com.mapbox.geojson.utils.PolylineUtils
-import timber.log.Timber
 import java.lang.ref.WeakReference
 
 class TrackingService : Service(){
@@ -64,12 +63,12 @@ class TrackingService : Service(){
                     startForeground(1024, makeNotification("Tracking Your Trip"))
                     Toast.makeText(applicationContext, "Service Started!", Toast.LENGTH_SHORT)
                         .show()
-                    Timber.d("TRACKING -> Service Started")
+                    Log.d("TRACKING","Service Started")
                 }
                 PAUSE_SERVICE -> {
                     startForeground(1024,makeNotification("Trip Is Paused"))
                     cyclyxLocationEngine.removeLocationUpdates(callback)
-                    Timber.d("TRACKING -> Service Paused")
+                    Log.d("TRACKING","Service Paused")
                 }
                 STOP_SERVICE -> {
                     if(::cyclyxLocationEngine.isInitialized){
