@@ -17,7 +17,7 @@ class PageAdapter( private var mContext: Context, private var mListScreen: List<
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val inflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
-        val layoutScreen: View = inflater.inflate(R.layout.intro_screen2, null)
+        val layoutScreen: View = inflater.inflate(R.layout.intro_screen, null)
 
         var imgSlide: ImageView = layoutScreen.findViewById(R.id.intro_img)
         var title: TextView = layoutScreen.findViewById(R.id.intro_title)
