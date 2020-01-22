@@ -25,8 +25,7 @@
                 android:background="@color/bg_tantangan"
                 android:foreground="@drawable/ripple_effect"
                 app:cardElevation="@dimen/_1sdp"
-                app:cardCornerRadius="@dimen/_5sdp"
-                android:onClick="@{() -> clickListener.onClickResult(bersepeda)}">
+                app:cardCornerRadius="@dimen/_5sdp">
 
 
             <TextView

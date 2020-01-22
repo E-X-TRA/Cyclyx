@@ -219,7 +219,7 @@ class BersepedaViewModel(
                 //calculate speed (for peak/max speed) in km/h
                 val duration = timeLog.get(timeLog.size - 1) - timeLog.get(timeLog.size - 2)
 //                val speed = distanceBetweenLastTwoPoints / duration //in m/s
-                val speed = (distanceBetweenLastTwoPoints/1000) / convertLongToHour(duration) //in km/s
+                val speed = (distanceBetweenLastTwoPoints/1000) / convertLongToSecond(duration) //in m/s
                 if (_peakSpeed < speed) {
                     _peakSpeed = speed
                 }
@@ -243,21 +243,17 @@ class BersepedaViewModel(
             if (pointsList.size >= 2 && distanceBetweenLastTwoPoints > 0) {
                 //duration until this point
                 //assuming this was in HOURS
-                val durationUntilThis = convertLongToHour(timeLog.last() - timeLog.first())
-                Log.d("CALCULATIONS","Duration : $durationUntilThis")
-                Log.d("CALCULATIONS","Duration in Long : ${timeLog.last() - timeLog.first()}")
+                val durationUntilThis = timeLog.last() - timeLog.first()
                 //total distance this point
                 _totalDistance.value = _totalDistance.value?.plus(distanceBetweenLastTwoPoints)
-                Log.d("CALCULATIONS","Total Distance : ${_totalDistance.value}")
                 //average speed until this point
-                val averageSpeed = _totalDistance.value?.div(durationUntilThis)
-                Log.d("CALCULATIONS","Average Speed : ${averageSpeed}")
+                val averageSpeed = _totalDistance.value?.div(convertLongToHour(durationUntilThis))
                 _speed.value = averageSpeed
                 //calories burned until this point
                 // using https://captaincalculator.com/health/calorie/calories-burned-cycling-calculator/
                 val weightInKg = 50
                 val mets = determineMets(averageSpeed!!)
-                val caloriesCalc = ((mets * weightInKg * 3.5) / 200) * (durationUntilThis / 60)
+                val caloriesCalc = ((mets * weightInKg * 3.5) / 200) * (convertLongToMinute(durationUntilThis))
                 _calories.value = caloriesCalc
             }
         }

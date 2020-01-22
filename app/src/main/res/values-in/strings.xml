@@ -1,13 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cyclyx</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="mapbox_token" translatable="false">pk.eyJ1IjoiYWx2YXJvZHdpIiwiYSI6ImNrMWMzeGZ2aTBmdnUzY3BnZGoycjFqb3QifQ.jskeqgH_PzorKdFJuoJsfg</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_tantangan">Tantangan</string>
     <string name="permission_location_explanation">Cyclyx Need To Use Location Permission To Track Your Cycling</string>
     <string name="text_back">KEMBALI</string>
@@ -51,8 +49,7 @@
     <string name="tanggal_lahir">Tanggal Lahir</string>
     <string name="berat_badan">Berat Badan</string>
     <string name="tinggi_badan">Tinggi Badan</string>
-    <string name="txt_pegaturan">Konfigurasi</string>
-    <string name="txt_kesiapan">Kesiapan</string>
+    <string name="txt_pegaturan">Pegaturan</string>
     <string name="txt_mode_hemat_daya">Mode Hemat Daya</string>
     <string name="txt_mengurangi_penggunaan_daya_ponsel">Mengurangi penggunaan daya ponsel</string>
     <string name="txt_matikan">matikan</string>
@@ -62,5 +59,4 @@
     <string name="txt_meningkatkan_performa_aplikasi">Meningkatkan performa aplikasi</string>
     <string name="txt_lengkapi_data_diri_anda">Lengkapi data diri anda</string>
     <string name="txt_sejauh_ini_anda_sudah_membakar_kalori">Sejauh ini anda sudah membakar kalori</string>
-    <string name="txt_tipstitle">Tips</string>
 </resources>

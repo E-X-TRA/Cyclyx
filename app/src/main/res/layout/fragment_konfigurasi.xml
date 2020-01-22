@@ -16,114 +16,205 @@
                 android:id="@+id/judul"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_13sdp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/roboto_bold"
                 android:paddingStart="@dimen/_17sdp"
-                android:text="Konfigurasi"
+                android:text="@string/txt_pegaturan"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/_34ssp"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.cardview.widget.CardView
-                android:id="@+id/hemat_daya"
+        <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_17sdp"
-                android:layout_marginTop="@dimen/_59sdp"
-                android:layout_marginRight="@dimen/_17sdp"
-                android:background="@color/bg_card"
-                android:elevation="@dimen/_7sdp"
-                app:cardCornerRadius="@dimen/_7sdp"
-                app:cardElevation="@dimen/_8sdp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/judul">
-
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_13sdp">
-
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/exo2_bold"
-                        android:text="@string/txt_mode_hemat_daya"
-                        android:textSize="@dimen/_20ssp" />
-
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_12sdp"
-                        android:fontFamily="@font/exo2_regular"
-                        android:text="Matikan mode hemat daya bila dinyalakan."
-                        android:textColor="#868686"
-                        android:textSize="@dimen/_15ssp" />
-
-                <Button
+                    android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                        android:id="@+id/lokasi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_17sdp"
-                        android:background="@drawable/rounded_btn"
-                        android:fontFamily="@font/roboto_bold"
-                        android:text="@string/txt_matikan"
-                        android:textColor="@color/whiteText"
-                        android:textSize="@dimen/_20ssp" />
+                        android:layout_marginLeft="@dimen/_17sdp"
+                        android:layout_marginRight="@dimen/_17sdp"
+                        android:layout_marginBottom="@dimen/_16sdp"
+                        android:background="@color/bg_card"
+                        android:elevation="@dimen/_7sdp"
+                        app:cardCornerRadius="@dimen/_7sdp"
+                        app:cardElevation="@dimen/_8sdp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/hemat_daya"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                    <ImageView
+                            android:id="@+id/imgStatLok"
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:src="@drawable/ic_check"
+                            android:background="@color/transparent"
+                            android:layout_gravity="right"
+                            android:layout_margin="@dimen/_10sdp"/>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_13sdp">
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/exo2_bold"
+                                android:text="@string/txt_lokasi"
+                                android:textSize="@dimen/_20ssp" />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_12sdp"
+                                android:fontFamily="@font/exo2_regular"
+                                android:text="@string/txt_menyalakan_gps"
+                                android:textColor="#868686"
+                                android:textSize="@dimen/_15ssp" />
+
+                        <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_17sdp"
+                                android:background="@drawable/rounded_btn"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="@string/txt_matikan"
+                                android:textColor="@color/whiteText"
+                                android:textSize="@dimen/_20ssp" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                        android:id="@+id/hemat_daya"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_17sdp"
+                        android:layout_marginRight="@dimen/_17sdp"
+                        android:layout_marginBottom="@dimen/_16sdp"
+                        android:background="@color/bg_card"
+                        android:elevation="@dimen/_7sdp"
+                        app:cardCornerRadius="@dimen/_7sdp"
+                        app:cardElevation="@dimen/_8sdp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/judul">
+
+                    <ImageView
+                            android:id="@+id/imgStatBat"
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:src="@drawable/ic_check"
+                            android:background="@color/transparent"
+                            android:layout_gravity="right"
+                            android:layout_margin="@dimen/_10sdp"/>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_13sdp">
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/exo2_bold"
+                                android:text="@string/txt_mode_hemat_daya"
+                                android:textSize="@dimen/_20ssp" />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_12sdp"
+                                android:fontFamily="@font/exo2_regular"
+                                android:text="@string/txt_mengurangi_penggunaan_daya_ponsel"
+                                android:textColor="#868686"
+                                android:textSize="@dimen/_15ssp" />
+
+                        <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_17sdp"
+                                android:background="@drawable/rounded_btn"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="@string/txt_matikan"
+                                android:textColor="@color/whiteText"
+                                android:textSize="@dimen/_20ssp" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                        android:id="@+id/optimisasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_17sdp"
+                        android:layout_marginRight="@dimen/_17sdp"
+                        android:layout_marginBottom="@dimen/_16sdp"
+                        android:background="@color/bg_card"
+                        android:elevation="@dimen/_7sdp"
+                        app:cardCornerRadius="@dimen/_7sdp"
+                        app:cardElevation="@dimen/_8sdp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/hemat_daya"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                    <ImageView
+                            android:id="@+id/imgStatOpt"
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:src="@drawable/ic_check"
+                            android:background="@color/transparent"
+                            android:layout_gravity="right"
+                            android:layout_margin="@dimen/_10sdp"/>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_13sdp">
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/exo2_bold"
+                                android:text="@string/txt_optimisasi"
+                                android:textSize="@dimen/_20ssp" />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_12sdp"
+                                android:fontFamily="@font/exo2_regular"
+                                android:text="@string/txt_meningkatkan_performa_aplikasi"
+                                android:textColor="#868686"
+                                android:textSize="@dimen/_15ssp" />
+
+                        <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_17sdp"
+                                android:background="@drawable/rounded_btn"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="@string/txt_matikan"
+                                android:textColor="@color/whiteText"
+                                android:textSize="@dimen/_20ssp" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
             </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-                android:id="@+id/optimisasi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_17sdp"
-                android:layout_marginRight="@dimen/_17sdp"
-                android:background="@color/bg_card"
-                android:elevation="@dimen/_7sdp"
-                app:cardCornerRadius="@dimen/_7sdp"
-                app:cardElevation="@dimen/_8sdp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hemat_daya"
-                app:layout_constraintBottom_toBottomOf="parent">
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_13sdp">
-
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/exo2_bold"
-                        android:text="@string/txt_optimisasi"
-                        android:textSize="@dimen/_20ssp" />
-
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_12sdp"
-                        android:fontFamily="@font/exo2_regular"
-                        android:text="Matikan optimisasi baterai pada aplikasi Cyclyx"
-                        android:textColor="#868686"
-                        android:textSize="@dimen/_15ssp" />
-
-                <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_17sdp"
-                        android:background="@drawable/rounded_btn"
-                        android:fontFamily="@font/roboto_bold"
-                        android:text="@string/txt_matikan"
-                        android:textColor="@color/whiteText"
-                        android:textSize="@dimen/_20ssp" />
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

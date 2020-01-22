@@ -123,12 +123,6 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
             }
         })
 
-        //register broadcast receiver
-        LocalBroadcastManager.getInstance(ctx).registerReceiver(
-            locationUpdateReceiver,
-            IntentFilter("LocationUpdates")
-        )
-
         modifyTrackingService(START_SERVICE)
         viewModel.onStart()
 
@@ -206,11 +200,18 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
     override fun onResume() {
         super.onResume()
         binding.mapView.onResume()
+        //register broadcast receiver
+        LocalBroadcastManager.getInstance(ctx).registerReceiver(
+            locationUpdateReceiver,
+            IntentFilter("LocationUpdates")
+        )
     }
 
     override fun onPause() {
         super.onPause()
         binding.mapView.onPause()
+        LocalBroadcastManager.getInstance(ctx)
+            .unregisterReceiver(locationUpdateReceiver) // and stop receiving broadcast
     }
 
     override fun onStop() {
@@ -221,8 +222,6 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
     override fun onDestroy() {
         super.onDestroy()
         modifyTrackingService(STOP_SERVICE) //dont forget to stop service
-        LocalBroadcastManager.getInstance(ctx)
-            .unregisterReceiver(locationUpdateReceiver) // and stop receiving broadcast
         binding.mapView.onDestroy()
     }
 
@@ -235,4 +234,5 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
         super.onSaveInstanceState(outState)
         binding.mapView.onSaveInstanceState(outState)
     }
+
 }

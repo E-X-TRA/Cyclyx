@@ -30,6 +30,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:orientation="horizontal"
+                android:background="@color/whiteText"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintLeft_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
