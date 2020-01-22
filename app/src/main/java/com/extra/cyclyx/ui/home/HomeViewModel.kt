@@ -32,6 +32,10 @@ class HomeViewModel(val app: Application) : AndroidViewModel(app) {
     val navigateToKonfigurasi : LiveData<Int>
         get() = _navigateToKonfigurasi
 
+//    private val _isLatestActNull = MutableLiveData<Boolean>()
+//    val isLatestActNull : LiveData<Boolean>
+//        get() = _isLatestActNull
+
 //    val firstRecentActs = Transformations.map(recentActs){act ->
 //        act?.let {
 //            if(it[0] != null){
