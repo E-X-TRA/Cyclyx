@@ -10,28 +10,22 @@ import androidx.viewpager.widget.PagerAdapter
 import com.extra.cyclyx.R
 import com.extra.cyclyx.utils.IntroItem
 
-class PageAdapter: PagerAdapter() {
+class PageAdapter( private var mContext: Context, private var mListScreen: List<IntroItem>) : PagerAdapter() {
 
-    lateinit var mContext: Context
-    lateinit var mListScreen: List<IntroItem>
 
-    fun IntroViewPagerAdapter(mContext: Context, mListScreen: List<IntroItem>) {
-        this.mContext = mContext
-        this.mListScreen = mListScreen
-    }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val inflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
-        val layoutScreen: View = inflater.inflate(R.layout.intro_screen, null)
+        val layoutScreen: View = inflater.inflate(R.layout.intro_screen2, null)
 
         var imgSlide: ImageView = layoutScreen.findViewById(R.id.intro_img)
         var title: TextView = layoutScreen.findViewById(R.id.intro_title)
         var description: TextView = layoutScreen.findViewById(R.id.intro_description)
 
-        title.setText(mListScreen[position].getTitle())
-        description.setText(mListScreen[position].getDescription())
-        imgSlide.setImageResource(mListScreen[position].getScreenImg())
+        title.text = mListScreen[position].intro_title
+        description.text = mListScreen[position].intro_description
+        imgSlide.setImageResource(mListScreen[position].intro_img)
 
         container.addView(layoutScreen)
 
@@ -39,7 +33,7 @@ class PageAdapter: PagerAdapter() {
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
-        return view === `object`
+        return view == `object`
     }
 
     override fun getCount(): Int {

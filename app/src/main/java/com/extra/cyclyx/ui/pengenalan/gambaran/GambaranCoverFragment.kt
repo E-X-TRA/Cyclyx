@@ -23,7 +23,7 @@ class GambaranCoverFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        tv_fragment_name.text = "Fragment 1"
+
     }
 
 
