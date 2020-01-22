@@ -52,8 +52,8 @@
             <!--                    android:id="@+id/layout_ripplepulse">-->
             <Button
                     android:id="@+id/btnGo"
-                    android:layout_width="@dimen/_125sdp"
-                    android:layout_height="@dimen/_125sdp"
+                    android:layout_width="@dimen/_175sdp"
+                    android:layout_height="@dimen/_175sdp"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/circle_button"
                     android:foreground="@drawable/ripple_effect" />
@@ -71,17 +71,55 @@
                     android:textColor="#F0FFFFFF"
                     tools:text="November" />
 
-            <TextView
-                    android:id="@+id/TxtObj"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/exo2_light"
-                    android:text="Objective: 30 km"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                    android:textColor="#F0FFFFFF"
-                    android:textSize="@dimen/_15ssp" />
         </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/main"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_40sdp"
+                android:layout_marginEnd="@dimen/_40sdp"
+                android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                    android:id="@+id/CardTips"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp"
+                    app:cardElevation="@dimen/_1sdp"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    app:cardBackgroundColor="@color/bg_tantangan">
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="@dimen/_10sdp">
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_14sdp"
+                            android:textColor="@color/font_bold_purple"
+                            android:text="@string/txt_tipstitle"
+                            android:fontFamily="@font/exo2_bold"/>
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="#6F6F6F"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                            android:text="isi tips disini"
+                            android:fontFamily="@font/exo2_light"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvHomeTtg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    tools:listitem="@layout/item_tantangan" />
+        </LinearLayout>
+
+
 
 <!--        <LinearLayout-->
 <!--                android:id="@+id/content"-->
