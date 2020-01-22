@@ -31,7 +31,7 @@ class KonfigurasiFragment : Fragment() {
         AlertDialog.Builder(context)
             .setTitle("Hidupkan Pelacak Lokasi") // GPS not found
             .setMessage("Pada laman selanjutnya, bla bla bla") // Want to enable?
-            .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, id ->
+            .setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
                 activity?.startActivity(
                     Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                 )
@@ -43,7 +43,7 @@ class KonfigurasiFragment : Fragment() {
         AlertDialog.Builder(context)
             .setTitle("Matikan Optimisasi Baterai") // GPS not found
             .setMessage("Pada laman selanjutnya, bla bla bla") // Want to enable?
-            .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, id ->
+            .setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
                 activity?.startActivity(
                     Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                 )
@@ -55,7 +55,7 @@ class KonfigurasiFragment : Fragment() {
         AlertDialog.Builder(context)
             .setTitle("Matikan Optimisasi Baterai") // GPS not found
             .setMessage("Pada laman selanjutnya, bla bla bla") // Want to enable?
-            .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, id ->
+            .setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
                 activity?.startActivity(
                     Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                 )

@@ -59,7 +59,9 @@
                         android:layout_height="wrap_content"
                         style="@style/BackButton"
                         android:text="Hapus"
-                        android:textSize="@dimen/_10sdp"/>
+                        android:textSize="@dimen/_10sdp"
+                        android:onClick="@{()->clickListener.onDeleteResult(bersepeda)}"
+                        />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>

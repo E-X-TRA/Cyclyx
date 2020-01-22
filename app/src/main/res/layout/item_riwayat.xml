@@ -20,6 +20,7 @@
             android:layout_height="@dimen/_90sdp"
             android:gravity="center">
         <androidx.cardview.widget.CardView
+                android:id="@+id/cvRiwayat"
                 android:layout_width="@dimen/_270sdp"
                 android:layout_height="@dimen/_80sdp"
                 android:background="@color/bg_tantangan"
@@ -27,7 +28,6 @@
                 app:cardElevation="@dimen/_1sdp"
                 app:cardCornerRadius="@dimen/_5sdp"
                 android:onClick="@{() -> clickListener.onClickResult(bersepeda)}">
-
 
         <TextView
                 android:id="@+id/TvRiwayatDate"

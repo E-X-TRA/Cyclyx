@@ -12,9 +12,8 @@ import com.extra.cyclyx.ui.pengenalan.gambaran.PageAdapter
 import com.extra.cyclyx.utils.IntroItem
 import com.google.android.material.tabs.TabLayout
 import java.util.*
-import kotlin.collections.ArrayList
 
-class SignUpActivity : AppCompatActivity(){
+class SignUpActivity : AppCompatActivity() {
 
 
     lateinit var screenPager: ViewPager

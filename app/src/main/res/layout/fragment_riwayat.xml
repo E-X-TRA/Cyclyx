@@ -54,6 +54,7 @@
                 android:layout_marginTop="@dimen/_17sdp"
                 android:layout_marginEnd="@dimen/_17sdp"
                 android:layout_marginBottom="@dimen/_17sdp"
+                app:toggleVisibilityRiwayat="@{viewModel.acts.size() > 0}"
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@id/head">
 
@@ -61,7 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/exo2_bold"
-                    android:text="@string/txt_pencapaianmu"
+                    android:text="Riwayat Bersepeda Anda"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="#96000000"
                     android:textSize="@dimen/_18ssp" />
@@ -85,6 +86,7 @@
                 android:layout_marginEnd="@dimen/_17sdp"
                 android:layout_marginBottom="@dimen/_17sdp"
                 android:orientation="vertical"
+                app:toggleVisibilityRiwayat="@{viewModel.acts.size() == 0}"
                 app:layout_constraintTop_toBottomOf="@id/head">
             <ImageView
                     android:layout_width="@dimen/_200sdp"

@@ -1,5 +1,6 @@
 package com.extra.cyclyx.utils
 
+import android.content.SharedPreferences
 import android.util.Log
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -82,7 +83,7 @@ fun convertLongToSecond(time : Long) : Double{
 }
 
 fun convertLongToHour(time : Long) : Double{
-    return (time/3600000).toDouble()
+    return (time/1000)/3600.toDouble()
 }
 
 fun determineMets(speed : Double) : Double{
@@ -137,3 +138,9 @@ fun determineZoomLevel(distanceBetweenPoint : Double) : Double{ //distance in km
 val indonesianLocale = Locale("id")
 val birthDateFormat = SimpleDateFormat("DD-MM-YYYY",Locale.US)
 val cyclyxDateFormat = SimpleDateFormat("DD MMMM YYYY", indonesianLocale)
+
+fun SharedPreferences.Editor.putDouble(key: String, double: Double) =
+    putLong(key, java.lang.Double.doubleToRawLongBits(double))
+
+fun SharedPreferences.getDouble(key: String, default: Double) =
+    java.lang.Double.longBitsToDouble(getLong(key, java.lang.Double.doubleToRawLongBits(default)))

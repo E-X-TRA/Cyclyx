@@ -1,6 +1,7 @@
 package com.extra.cyclyx.ui.statistik.riwayat
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.extra.cyclyx.entity.Bersepeda
 import com.extra.cyclyx.repository.CyclyxRepository
@@ -24,7 +25,11 @@ class RiwayatViewModel(app: Application) :
 
     val actCounts = Transformations.map(acts){actList ->
         actList?.let {
-            "Tercatat ${it.size} kali anda melacak..."
+            if(it.size > 0){
+                "Tercatat ${it.size} kali anda melacak..."
+            }else{
+                    ""
+            }
         }
     }
 
@@ -35,6 +40,7 @@ class RiwayatViewModel(app: Application) :
     fun onDeleteClicked(id: Long) {
         uiScope.launch {
             deleteAct(id)
+            Log.d("STATISTIK","DELETE $id")
         }
     }
 

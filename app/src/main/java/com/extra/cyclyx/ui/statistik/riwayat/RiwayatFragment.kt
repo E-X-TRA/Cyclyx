@@ -1,6 +1,9 @@
 package com.extra.cyclyx.ui.statistik.riwayat
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.extra.cyclyx.databinding.FragmentRiwayatBinding
 import com.extra.cyclyx.ui.statistik.StatistikFragmentDirections
+import com.extra.cyclyx.utils.DELETE_ITEM
 import com.extra.cyclyx.utils.DETAIL_ITEM
 import com.extra.cyclyx.utils.adapter.RiwayatAdapter
 import com.extra.cyclyx.utils.adapter.RiwayatClickListener
@@ -37,6 +41,9 @@ class RiwayatFragment : Fragment() {
                 DETAIL_ITEM -> {
                     viewModel.onActClicked(actId)
                 }
+                DELETE_ITEM -> {
+                    showDeleteItemConfirmation(actId)
+                }
             }
         })
         binding.rvRiwayat.adapter = adapter
@@ -56,5 +63,18 @@ class RiwayatFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    private fun showDeleteItemConfirmation(actId :Long){
+        AlertDialog.Builder(context)
+            .setTitle("Hapus Item Ini") // GPS not found
+            .setMessage("Pada laman selanjutnya, bla bla bla") // Want to enable?
+            .setPositiveButton("Ya", DialogInterface.OnClickListener { _, _->
+                viewModel.onDeleteClicked(actId)
+            })
+            .setNegativeButton("Tidak",DialogInterface.OnClickListener { _, _ ->
+                Log.d("DELETE","Cancel")
+            })
+            .show()
     }
 }

@@ -69,6 +69,7 @@ class KonfigurasiViewModel(val app: Application) : AndroidViewModel(app) {
             locationManager.isLocationEnabled
         } else {
             // This is Deprecated in API 28
+            @Suppress("DEPRECATION")
             val mode : Int = Settings.Secure.getInt(context.getContentResolver(), Settings.Secure.LOCATION_MODE,
             Settings.Secure.LOCATION_MODE_OFF);
             (mode != Settings.Secure.LOCATION_MODE_OFF);
