@@ -86,6 +86,10 @@ fun convertLongToHour(time : Long) : Double{
     return (time/1000)/3600.toDouble()
 }
 
+fun convertLongToMinute(time : Long) : Double{
+    return (time/1000)/60.toDouble()
+}
+
 fun determineMets(speed : Double) : Double{
     return when{
         speed > 0.0 && speed <= 8.8 -> {
