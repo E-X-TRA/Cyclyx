@@ -21,20 +21,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"/>
 
-        <com.google.android.material.tabs.TabLayout
+<!--        <com.google.android.material.tabs.TabLayout-->
 
-                android:id="@+id/statistik_tab_layout"
-                android:layout_width="@dimen/_64sdp"
-                android:layout_height="@dimen/_8sdp"
-                app:layout_constraintBottom_toBottomOf="@id/statistik_view_pager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginBottom="@dimen/_5sdp"
-                app:tabBackground="@drawable/vp_tab_selector"
-                app:tabIndicatorHeight="0dp"
-                app:tabPaddingStart="@dimen/_16sdp"
-                android:orientation="horizontal"
-                />
+<!--                android:id="@+id/statistik_tab_layout"-->
+<!--                android:layout_width="@dimen/_64sdp"-->
+<!--                android:layout_height="@dimen/_8sdp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/statistik_view_pager"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                android:layout_marginBottom="@dimen/_5sdp"-->
+<!--                app:tabBackground="@drawable/vp_tab_selector"-->
+<!--                app:tabIndicatorHeight="0dp"-->
+<!--                app:tabPaddingStart="@dimen/_16sdp"-->
+<!--                android:orientation="horizontal"-->
+<!--                />-->
+            <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@id/statistik_view_pager"
+                    android:layout_marginBottom="@dimen/_12sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/statistik_tab_layout"
+                    app:dampingRatio="0.2"
+                    app:dotsColor="@color/colorAccent"
+                    app:dotsStrokeColor="@color/colorAccent"
+                    app:dotsCornerRadius="@dimen/_3sdp"
+                    app:dotsSize="@dimen/_10sdp"
+                    app:dotsSpacing="@dimen/_7sdp"
+                    app:dotsStrokeWidth="@dimen/_1sdp"
+                    app:stiffness="500"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
