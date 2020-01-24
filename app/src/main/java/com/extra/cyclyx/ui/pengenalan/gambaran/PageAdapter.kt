@@ -10,12 +10,12 @@ import androidx.viewpager.widget.PagerAdapter
 import com.extra.cyclyx.R
 import com.extra.cyclyx.utils.IntroItem
 
-class PageAdapter( private var mContext: Context, private var mListScreen: List<IntroItem>) : PagerAdapter() {
+class PageAdapter(private var mContext: Context?, private var mListScreen: List<IntroItem>) : PagerAdapter() {
 
 
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val inflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val inflater = mContext?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
         val layoutScreen: View = inflater.inflate(R.layout.intro_screen, null)
 
