@@ -1,8 +1,10 @@
 package com.extra.cyclyx.utils
 
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import com.extra.cyclyx.R
 import com.extra.cyclyx.entity.Bersepeda
 
 
@@ -82,5 +84,16 @@ fun View.toogleVisibilityRiwayat(flag : Boolean){
         visibility = View.VISIBLE
     }else{
         visibility = View.GONE
+    }
+}
+
+@BindingAdapter("determineStatus")
+fun ImageView.determineStatus(flag: Boolean?){
+    flag?.let {
+        if(flag){
+            this.setBackgroundResource(R.drawable.ic_check)
+        }else{
+            this.setBackgroundResource(R.drawable.ic_close)
+        }
     }
 }
