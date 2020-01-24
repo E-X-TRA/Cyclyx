@@ -2,6 +2,7 @@ package com.extra.cyclyx.ui.pengenalan.gambaran
 
 
 import android.os.Bundle
+import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +10,14 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.viewpager.widget.ViewPager
 import com.extra.cyclyx.R
+import com.extra.cyclyx.ui.pengenalan.registrasi.RegistrasiDataDiriFragment
 import com.extra.cyclyx.utils.IntroItem
 import com.google.android.material.tabs.TabLayout
 import java.util.ArrayList
+import android.content.Context as Context
 
 /**
  * A simple [Fragment] subclass.
@@ -32,14 +36,27 @@ class GambaranCoverFragment : Fragment() {
     lateinit var linearLayoutSkip: LinearLayout
 
     lateinit var linearLayoutGetStarted: LinearLayout
+
+    lateinit var mContext: Context
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view = inflater.inflate(R.layout.fragment_pengenalan_cover, container, false)
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_pengenalan_cover, container, false)
+    }
 
-        val view = inflater.inflate(R.layout.fragment_pengenalan_cover, container, false)
+    private fun loadLastScreen() {
+        linearLayoutSkip.visibility = View.INVISIBLE
+        linearLayoutGetStarted.visibility = View.VISIBLE
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         btnSkip = view.findViewById(R.id.btn_skip)
         btngetStarted = view.findViewById(R.id.btn_get_started)
@@ -61,7 +78,7 @@ class GambaranCoverFragment : Fragment() {
 
         //Setup View Pager
         screenPager = view.findViewById(R.id.screen_viewpager)
-        introViewPagerAdapter = PageAdapter(activity?.applicationContext, mList)
+        introViewPagerAdapter = PageAdapter(requireContext().applicationContext, mList)
         screenPager.adapter = introViewPagerAdapter
 
         //setup tab Indicator
@@ -76,6 +93,16 @@ class GambaranCoverFragment : Fragment() {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab!!.position == mList.size - 1) {
                     loadLastScreen()
+                    btngetStarted.setOnClickListener {
+
+                        val registrasiDataDiriFragment: RegistrasiDataDiriFragment = RegistrasiDataDiriFragment()
+
+                        fragmentManager?.beginTransaction()
+                            ?.replace(R.id.frame_content, registrasiDataDiriFragment)
+                            ?.addToBackStack(null)
+                            ?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            ?.commit()
+                    }
                 }
             }
 
@@ -87,15 +114,6 @@ class GambaranCoverFragment : Fragment() {
 
             }
         })
-    }
-
-    private fun loadLastScreen() {
-        linearLayoutSkip.visibility = View.INVISIBLE
-        linearLayoutGetStarted.visibility = View.VISIBLE
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
     }
 
 
