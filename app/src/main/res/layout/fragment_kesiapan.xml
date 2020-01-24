@@ -4,8 +4,8 @@
         xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-                name=""
-                type="" />
+                name="viewModel"
+                type="com.extra.cyclyx.ui.kesiapan.KesiapanViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -52,7 +52,7 @@
                                 android:layout_marginBottom="@dimen/_5sdp">
                             <TextView
                                     android:id="@+id/tvStatLokasi"
-                                    android:layout_gravity="left"
+                                    android:layout_gravity="start"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="@dimen/_14sdp"
@@ -73,7 +73,7 @@
                                 android:layout_marginBottom="@dimen/_5sdp">
                             <TextView
                                     android:id="@+id/tvStatDaya"
-                                    android:layout_gravity="left"
+                                    android:layout_gravity="start"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="@dimen/_14sdp"
@@ -94,7 +94,7 @@
                                 android:layout_marginBottom="@dimen/_5sdp">
                             <TextView
                                     android:id="@+id/tvStatOpt"
-                                    android:layout_gravity="left"
+                                    android:layout_gravity="start"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="@dimen/_14sdp"
