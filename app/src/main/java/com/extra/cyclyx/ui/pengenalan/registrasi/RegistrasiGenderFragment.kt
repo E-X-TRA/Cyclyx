@@ -29,19 +29,10 @@ class RegistrasiGenderFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var sharedPreferences = activity!!.getSharedPreferences(SP_CYCLYX, Context.MODE_PRIVATE)
 
-        val firstname = sharedPreferences.getString(USER_FIRST_NAME, "")
-        val lasstname = sharedPreferences.getString(USER_LAST_NAME, "")
-        val birth = sharedPreferences.getString(USER_BIRTHDATE, "")
-        val height = sharedPreferences.getString(USER_HEIGHT, "")
-        val weight = sharedPreferences.getString(USER_WEIGHT, "")
+        RandomStringGenerator.getRandomString(30)
 
-        tvfirst.text = " $firstname "
-        tvlast.text = " $lasstname "
-        tvbirth.text = " $birth "
-        tvheight.text = " $height "
-        tvweight.text = " $weight "
+
     }
 
 
