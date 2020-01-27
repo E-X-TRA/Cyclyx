@@ -3,7 +3,10 @@ package com.extra.cyclyx.ui.pengenalan.registrasi
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +15,8 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.extra.cyclyx.R
+import com.extra.cyclyx.SignUpActivity
+import com.extra.cyclyx.ui.home.HomeFragment
 import com.extra.cyclyx.utils.*
 import kotlinx.android.synthetic.main.fragment_registrasi_gender.*
 
@@ -52,8 +57,12 @@ class RegistrasiGenderFragment : Fragment() {
             var editor : SharedPreferences.Editor = sharedPreferences.edit()
 
             editor.putString(USER_GENDER, gender)
+            editor.putString(USER_TOKEN,RandomStringGenerator.getRandomString(30))
 
             editor.commit()
+
+            val intent = Intent(context, HomeFragment::class.java)
+            startActivity(intent)
 
         }
 
@@ -71,7 +80,6 @@ class RegistrasiGenderFragment : Fragment() {
 
 
 
-        @SuppressLint("ResourceAsColor")
         fun selectGender(btnClicked: Int){
             when(btnClicked){
                 0 ->{
@@ -82,14 +90,14 @@ class RegistrasiGenderFragment : Fragment() {
                 1 ->{
                     btn_lelaki.setBackgroundResource(R.drawable.rounded_btn_pengenalan)
                     btn_perempuan.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
-                    btn_lelaki.setTextColor(R.color.whiteText)
+                    btn_lelaki.setTextColor(Color.WHITE)
                     dataGender = "Laki-Laki"
                 }
 
                 2 -> {
                     btn_perempuan.setBackgroundResource(R.drawable.rounded_btn_pengenalan)
                     btn_lelaki.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
-                    btn_perempuan.setTextColor(R.color.whiteText)
+                    btn_perempuan.setTextColor(Color.WHITE)
                     dataGender = "Perempuan"
                 }
             }

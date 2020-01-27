@@ -56,18 +56,21 @@
         <EditText
                 android:id="@+id/edt_thn_lahir"
                 style="@style/edit_text"
+                android:inputType="numberDecimal"
                 android:layout_marginTop="@dimen/_27ssp"
                 android:hint="Tahun Lahir" />
 
         <EditText
                 android:id="@+id/edt_berat"
                 style="@style/edit_text"
+                android:inputType="numberDecimal"
                 android:layout_marginTop="@dimen/_27sdp"
                 android:hint="@string/berat_badan" />
 
         <EditText
                 android:id="@+id/edt_tinggi"
                 style="@style/edit_text"
+                android:inputType="numberDecimal"
                 android:hint="@string/tinggi_badan" />
     </LinearLayout>
 
