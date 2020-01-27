@@ -1,6 +1,7 @@
 package com.extra.cyclyx.ui.home
 
 import android.Manifest
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.extra.cyclyx.BersepedaActivity
 import com.extra.cyclyx.R
 import com.extra.cyclyx.SettingsActivity
 import com.extra.cyclyx.databinding.FragmentHomeBinding
@@ -49,7 +51,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.BtnKonfigurasi.setOnClickListener {
-            val intent = Intent (activity, SettingsActivity::class.java)
+            val intent = Intent(activity, SettingsActivity::class.java)
             startActivity(intent)
         }
 
