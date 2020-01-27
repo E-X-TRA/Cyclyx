@@ -9,13 +9,6 @@
                 name="tantangan"
                 type="com.extra.cyclyx.entity.Tantangan" />
 
-        <variable
-                name="clickListener"
-                type="com.extra.cyclyx.utils.adapter.TantanganClickListener" />
-
-        <variable
-                name="viewModel"
-                type="com.extra.cyclyx.ui.statistik.tantangan.TantanganViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

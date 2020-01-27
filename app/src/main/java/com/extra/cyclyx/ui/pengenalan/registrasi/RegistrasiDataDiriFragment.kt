@@ -61,7 +61,7 @@ class RegistrasiDataDiriFragment : Fragment() {
 
             editor.putString(USER_FIRST_NAME, first_name)
             editor.putString(USER_LAST_NAME, last_name)
-            editor.putString(USER_BIRTHDATE, birth_year)
+            editor.putString(USER_BIRTHYEAR, birth_year)
             editor.putString(USER_WEIGHT, user_weight)
             editor.putString(USER_HEIGHT, user_height)
 
