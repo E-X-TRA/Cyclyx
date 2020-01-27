@@ -13,9 +13,11 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.extra.cyclyx.BersepedaActivity
 import com.extra.cyclyx.R
+import com.extra.cyclyx.SettingsActivity
 import com.extra.cyclyx.databinding.FragmentHomeBinding
 import com.extra.cyclyx.utils.PERMISSION_FINE_LOCATION_REQUEST
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
@@ -44,6 +46,11 @@ class HomeFragment : Fragment() {
 
         binding.btnGo.setOnClickListener {
             val intent = Intent(activity, BersepedaActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.BtnKonfigurasi.setOnClickListener {
+            val intent = Intent (activity, SettingsActivity::class.java)
             startActivity(intent)
         }
 

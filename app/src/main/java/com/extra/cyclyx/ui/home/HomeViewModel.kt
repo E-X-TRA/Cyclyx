@@ -22,8 +22,7 @@ class HomeViewModel(val app: Application) : AndroidViewModel(app) {
     var isLocationPermissionGranted: Boolean = false
     var isLocationSettingsEnabled : Boolean = false
 
-    val stringMonth : String = (Calendar.getInstance()).getDisplayName(Calendar.MONTH,Calendar.LONG, indonesianLocale) ?: "ERROR"
-    val recentActs = repository.recentsCyclingData
+//    val stringMonth : String = (Calendar.getInstance()).getDisplayName(Calendar.MONTH,Calendar.LONG, indonesianLocale) ?: "ERROR"
     private val _navigateToResult = MutableLiveData<Long>()
     val navigateToResult: LiveData<Long>
         get() = _navigateToResult

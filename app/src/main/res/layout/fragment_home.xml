@@ -23,7 +23,6 @@
                 android:layout_height="@dimen/_25sdp"
                 android:background="@drawable/ic_settings_black_24dp"
                 android:foreground="@drawable/ripple_effect"
-                android:onClick="@{() -> viewModel.onBtnKonfigurasiClicked()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_margin="@dimen/_10sdp"
@@ -59,17 +58,17 @@
                     android:foreground="@drawable/ripple_effect" />
             <!--            </com.gauravbhola.ripplepulsebackground.RipplePulseLayout>-->
 
-            <TextView
-                    android:id="@+id/TxtMonthNow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/exo2_bold"
-                    android:text="@{viewModel.stringMonth}"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:textColor="#F0FFFFFF"
-                    tools:text="November" />
+<!--            <TextView-->
+<!--                    android:id="@+id/TxtMonthNow"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="@dimen/_5sdp"-->
+<!--                    android:fontFamily="@font/exo2_bold"-->
+<!--                    android:text="@{viewModel.stringMonth}"-->
+<!--                    android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+<!--                    android:textColor="#F0FFFFFF"-->
+<!--                    tools:text="November" />-->
 
         </LinearLayout>
 
