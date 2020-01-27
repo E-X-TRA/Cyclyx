@@ -61,21 +61,6 @@
                      />
             <!--            </com.gauravbhola.ripplepulsebackground.RipplePulseLayout>-->
 
-<<<<<<< HEAD
-<!--            <TextView-->
-<!--                    android:id="@+id/TxtMonthNow"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_marginTop="@dimen/_5sdp"-->
-<!--                    android:fontFamily="@font/exo2_bold"-->
-<!--                    android:text="@{viewModel.stringMonth}"-->
-<!--                    android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
-<!--                    android:textColor="#F0FFFFFF"-->
-<!--                    tools:text="November" />-->
-=======
->>>>>>> 80412b20f15710fc17737be6113aa1b05b798f19
-
         </LinearLayout>
 
         <LinearLayout
