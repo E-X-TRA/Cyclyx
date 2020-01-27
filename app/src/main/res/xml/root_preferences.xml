@@ -1,0 +1,63 @@
+<!--
+  ~ Copyright 2018 The app Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ListPreference
+            android:dialogTitle="Pilih Waktu"
+            android:entries="@array/sebelum_mulai"
+            android:entryValues="@array/sebelum_mulai"
+            android:key="sebelum_mulai"
+            android:defaultValue="3"
+            android:summary="Waktu Hitung Mundur Sebelum Mulai Bersepeda"
+            android:title="Hitung Mundur" />
+    <SwitchPreference
+            android:key="remider"
+            android:title="Reminder"
+            android:summary="Pengingat ketika Anda Ingin Bersepeda"
+            android:summaryOn="Pengingat Telah Dinyalakan"
+            android:summaryOff="Pengingat Telah Dimatikan"
+            android:defaultValue="false" />
+    <Preference
+        android:summary="Untuk Mengubah Data Diri"
+        android:title="Edit Profile">
+    </Preference>
+    <ListPreference
+            android:dialogTitle="Pilih Tipe"
+            android:entries="@array/tipe_peta"
+            android:entryValues="@array/tipe_peta"
+            android:key="tipe_peta"
+            android:summary="Mengubah Tampilan Pada Peta"
+            android:title="Tipe Peta" />
+    <ListPreference
+            android:dialogTitle="Pilih Unit"
+            android:entries="@array/unit"
+            android:entryValues="@array/unit"
+            android:key="unit"
+            android:summary="Menentukan Bagaimana Keluaran Unit nya"
+            android:title="Unit" />
+    <Preference
+        android:title="Tentang Kami">
+    </Preference>
+    <SwitchPreference
+            android:key="screen_on"
+            android:title="Tetap Nyalakan Perangkat"
+            android:summary="Perangkat Akan Tetap Nyala Ketika Aplikasi Di Jalankan"
+            android:summaryOff="Perangkat Tidak Akan Tetap Nyala"
+            android:summaryOn="Perangkat Akan Tetap Nyala" />
+
+</PreferenceScreen>

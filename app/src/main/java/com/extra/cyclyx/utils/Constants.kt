@@ -11,6 +11,13 @@ const val START_SERVICE = "start_service"
 const val PAUSE_SERVICE = "pause_service"
 const val STOP_SERVICE = "stop_service"
 
+object MAPBOX_STYLE{
+    const val DEFAULT = "Default"
+    const val STREETS = "Mapbox Streets"
+    const val OUTDOORS = "Mapbox Outdoors"
+    const val TRAFFIC = "Mapbox Traffic"
+}
+
 const val TRACKING_STARTED = "tracking_started"
 const val TRACKING_PAUSED = "tracking_paused"
 const val TRACKING_RESUMED = "tracking_resumed"
@@ -37,9 +44,10 @@ const val DELETE_ITEM = "delete_item"
 const val DETAIL_ITEM = "detail_item"
 //shared preferences key
 const val SP_CYCLYX = "CYCLYX_PROFILE"
+const val SP_SETTING = "com.extra.cyclyx_preferences"
 const val USER_FIRST_NAME = "first_name"
 const val USER_LAST_NAME = "last_name"
-const val USER_BIRTHDATE = "birthdate"
+const val USER_BIRTHYEAR = "birthdate"
 const val USER_HEIGHT = "height"
 const val USER_WEIGHT = "weight"
 const val USER_GENDER = "gender"

@@ -19,5 +19,9 @@ class GambaranFiturFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_pengenalan_fitur, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+    }
+
 
 }

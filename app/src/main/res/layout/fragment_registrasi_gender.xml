@@ -56,7 +56,7 @@
                     android:src="@drawable/ic_female" />
 
             <Button
-
+                    android:id="@+id/btn_perempuan"
                     style="@style/GenderButton"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_20sdp"
@@ -78,13 +78,21 @@
                     android:src="@drawable/ic_gender_male" />
 
             <Button
-
+                    android:id="@+id/btn_lelaki"
                     style="@style/GenderButton"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:text="@string/txt_laki_laki" />
         </LinearLayout>
     </RelativeLayout>
+
+    <EditText
+            android:id="@+id/edt_jk"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/relativeGender"/>
 
     <RelativeLayout
             android:id="@+id/linearAction"
@@ -98,11 +106,13 @@
             app:layout_constraintRight_toRightOf="parent">
 
         <Button
+                android:id="@+id/btnBack"
                 style="@style/BackButton"
                 android:layout_alignParentStart="true"
                 android:text="@string/txt_kembali" />
 
         <Button
+                android:id="@+id/btnNext"
                 style="@style/NextButton"
                 android:layout_alignParentEnd="true"
                 android:text="@string/txt_selanjutnya" />

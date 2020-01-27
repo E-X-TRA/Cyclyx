@@ -54,20 +54,23 @@
                 android:hint="@string/nama_belakang" />
 
         <EditText
-                android:id="@+id/edt_tgl_lahir"
+                android:id="@+id/edt_thn_lahir"
                 style="@style/edit_text"
+                android:inputType="numberDecimal"
                 android:layout_marginTop="@dimen/_27ssp"
-                android:hint="@string/tanggal_lahir" />
+                android:hint="Tahun Lahir" />
 
         <EditText
                 android:id="@+id/edt_berat"
                 style="@style/edit_text"
+                android:inputType="numberDecimal"
                 android:layout_marginTop="@dimen/_27sdp"
                 android:hint="@string/berat_badan" />
 
         <EditText
                 android:id="@+id/edt_tinggi"
                 style="@style/edit_text"
+                android:inputType="numberDecimal"
                 android:hint="@string/tinggi_badan" />
     </LinearLayout>
 
@@ -82,11 +85,13 @@
             app:layout_constraintRight_toRightOf="parent">
 
         <Button
+                android:id="@+id/btnBack"
                 style="@style/BackButton"
                 android:layout_alignParentStart="true"
                 android:text="@string/txt_kembali" />
 
         <Button
+                android:id="@+id/btnNext"
                 style="@style/NextButton"
                 android:layout_alignParentEnd="true"
                 android:text="@string/txt_selanjutnya" />

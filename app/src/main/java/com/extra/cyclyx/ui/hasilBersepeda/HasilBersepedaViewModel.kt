@@ -29,7 +29,10 @@ class HasilBersepedaViewModel(
     val backToMenu: LiveData<Boolean>
         get() = _backToMenu
 
+    val mapStyle = repository.settingsPreferences.getString("tipe_peta","Default")
+
     init {
+        Log.d("MAP","Style : $mapStyle")
         act = repository.getCyclingData(actId)
     }
 

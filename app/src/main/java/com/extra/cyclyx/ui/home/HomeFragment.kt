@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.extra.cyclyx.BersepedaActivity
 import com.extra.cyclyx.R
+import com.extra.cyclyx.SettingsActivity
 import com.extra.cyclyx.databinding.FragmentHomeBinding
 import com.extra.cyclyx.utils.PERMISSION_FINE_LOCATION_REQUEST
 import com.google.android.material.snackbar.Snackbar
@@ -42,22 +43,19 @@ class HomeFragment : Fragment() {
             }
         }
 
-        binding.btnGo.setOnClickListener {
-            val intent = Intent(activity, BersepedaActivity::class.java)
-            startActivity(intent)
-        }
-
-        viewModel.navigateToResult.observe(this, Observer {actId ->
-            actId?.let{
-                this.findNavController().navigate(HomeFragmentDirections.navigateToHasilBersepedaFromHome(it))
-                viewModel.doneNavigateToHasilBersepeda()
+        viewModel.navigateToKesiapan.observe(this, Observer {
+            it?.let {
+                this.findNavController().navigate(HomeFragmentDirections.navigateToKesiapanFromHome())
+                viewModel.doneNavigateToKesiapan()
             }
         })
 
-        viewModel.navigateToKonfigurasi.observe(this, Observer {
+
+        viewModel.navigateToPengaturan.observe(this, Observer {
             it?.let {
-                this.findNavController().navigate(HomeFragmentDirections.navigateToKonfigurasiFromHome())
-                viewModel.doneNavigateToKonfigurasi()
+                val intent = Intent(activity, SettingsActivity::class.java)
+                startActivity(intent)
+                viewModel.doneNavigateToPengaturan()
             }
         })
 

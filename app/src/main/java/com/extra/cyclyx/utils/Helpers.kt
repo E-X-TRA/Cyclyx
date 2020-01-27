@@ -2,6 +2,7 @@ package com.extra.cyclyx.utils
 
 import android.content.SharedPreferences
 import android.util.Log
+import com.mapbox.mapboxsdk.maps.Style
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
@@ -120,6 +121,16 @@ fun determineMets(speed : Double) : Double{
     }
 }
 
+fun determineMapStyle(stylePref :String?) : String{
+    Log.d("MAP","Style : $stylePref")
+    return when (stylePref){
+        MAPBOX_STYLE.OUTDOORS -> Style.OUTDOORS
+        MAPBOX_STYLE.STREETS -> Style.MAPBOX_STREETS
+        MAPBOX_STYLE.TRAFFIC -> Style.TRAFFIC_DAY
+        else -> Style.LIGHT
+    }
+}
+
 fun formatDouble(double : Double,pattern : String) : String{
     val df = DecimalFormat(pattern)
     df.roundingMode = RoundingMode.CEILING
@@ -148,3 +159,17 @@ fun SharedPreferences.Editor.putDouble(key: String, double: Double) =
 
 fun SharedPreferences.getDouble(key: String, default: Double) =
     java.lang.Double.longBitsToDouble(getLong(key, java.lang.Double.doubleToRawLongBits(default)))
+
+class RandomStringGenerator{
+    companion object {
+        private val ALLOWED_CHARACTERS = "0123456789qwertyuiopasdfghjklzxcvbnm"
+
+        fun getRandomString(sizeOfRandomString: Int): String {
+            val random = Random()
+            val sb = StringBuilder(sizeOfRandomString)
+            for (i in 0 until sizeOfRandomString)
+                sb.append(ALLOWED_CHARACTERS[random.nextInt(ALLOWED_CHARACTERS.length)])
+            return sb.toString()
+        }
+    }
+}

@@ -54,13 +54,29 @@
     <string name="txt_pegaturan">Konfigurasi</string>
     <string name="txt_kesiapan">Kesiapan</string>
     <string name="txt_mode_hemat_daya">Mode Hemat Daya</string>
-    <string name="txt_mengurangi_penggunaan_daya_ponsel">Mengurangi penggunaan daya ponsel</string>
+    <string name="txt_mengurangi_penggunaan_daya_ponsel">Matikan Mode Hemat Daya</string>
     <string name="txt_matikan">matikan</string>
     <string name="txt_optimisasi">Optimisasi</string>
-    <string name="txt_menyalakan_gps">Meningkatkan akurasi gps</string>
+    <string name="txt_menyalakan_gps">Hidupkan GPS</string>
     <string name="txt_lokasi">Lokasi</string>
-    <string name="txt_meningkatkan_performa_aplikasi">Meningkatkan performa aplikasi</string>
+    <string name="txt_meningkatkan_performa_aplikasi">Matikan Optimisasi Baterai untuk Cyclyx</string>
     <string name="txt_lengkapi_data_diri_anda">Lengkapi data diri anda</string>
     <string name="txt_sejauh_ini_anda_sudah_membakar_kalori">Sejauh ini anda sudah membakar kalori</string>
     <string name="txt_tipstitle">Tips</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

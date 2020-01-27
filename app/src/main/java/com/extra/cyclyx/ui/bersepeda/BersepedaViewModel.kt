@@ -143,7 +143,7 @@ class BersepedaViewModel(
             Log.d("CALCULATIONS","$latestAct")
 
             update(latestAct)
-            modifyUserCyclingData(latestAct)
+//            modifyUserCyclingData(latestAct)
 
             thisAct.value = latestAct
 
@@ -243,7 +243,7 @@ class BersepedaViewModel(
             if (pointsList.size >= 2 && distanceBetweenLastTwoPoints > 0) {
                 //duration until this point
                 //assuming this was in HOURS
-                val durationUntilThis = timeLog.last() - timeLog.first()
+                val durationUntilThis : Long = timeLog.last() - timeLog.first()
                 //total distance this point
                 _totalDistance.value = _totalDistance.value?.plus(distanceBetweenLastTwoPoints)
                 //average speed until this point

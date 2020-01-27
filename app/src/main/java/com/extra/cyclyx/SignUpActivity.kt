@@ -1,39 +1,53 @@
 package com.extra.cyclyx
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager.widget.ViewPager
-import com.extra.cyclyx.ui.pengenalan.registrasi.RegistrasiDataDiriFragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import com.extra.cyclyx.ui.pengenalan.gambaran.GambaranCoverFragment
 import java.util.*
+
 
 class SignUpActivity : AppCompatActivity() {
 
-    lateinit var screenPage: ViewPager
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_sign_up)
 
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        
-        val intent = Intent(this, RegistrasiDataDiriFragment::class.java)
-        startActivity(intent)
-    }
+        val fragmentManager: FragmentManager = supportFragmentManager
+//        supportFragmentManager inisialisasi nilai FragmentManager untuk berinteraksi dengan Activity saat ini
 
-    class RandomStringGenerator {
-        companion object {
-            private val ALLOWED_CHARACTERS = "0123456789qwertyuiopasdfghjklzxcvbnm"
-        }
 
-        fun getRandomString(sizeOfRandomString: Int): String {
-            val random = Random()
-            val sb = StringBuilder(sizeOfRandomString)
-            for (i in 0 until sizeOfRandomString)
-                sb.append(ALLOWED_CHARACTERS[random.nextInt(ALLOWED_CHARACTERS.length)])
-            return sb.toString()
-        }
+
+        val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+//        Memulai transaction fragment manager
+
+        val gambaranCoverFragment : GambaranCoverFragment = GambaranCoverFragment()
+//        membuat objek fragment
+
+        transaction.add(R.id.frame_content, gambaranCoverFragment)
+//        menambahkan fragment
+
+        transaction.addToBackStack("gambaranCoverFragment")
+//        dapat menyimpan fragment ke dalam state ,ketika tombol back diklik
+
+        transaction.commit()
+//        mengeksekusi fragment transaction
+
+
+
     }
 
 
 }
+
+
+
+
+
+
+

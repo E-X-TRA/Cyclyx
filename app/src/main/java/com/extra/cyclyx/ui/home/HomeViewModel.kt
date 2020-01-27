@@ -20,55 +20,29 @@ class HomeViewModel(val app: Application) : AndroidViewModel(app) {
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     //init permission related
     var isLocationPermissionGranted: Boolean = false
-    var isLocationSettingsEnabled : Boolean = false
+    
+    private val _navigateToKesiapan = MutableLiveData<Boolean>()
+    val navigateToKesiapan : LiveData<Boolean>
+        get() = _navigateToKesiapan
 
-    val stringMonth : String = (Calendar.getInstance()).getDisplayName(Calendar.MONTH,Calendar.LONG, indonesianLocale) ?: "ERROR"
-    val recentActs = repository.recentsCyclingData
-    private val _navigateToResult = MutableLiveData<Long>()
-    val navigateToResult: LiveData<Long>
-        get() = _navigateToResult
+    private val _navigateToPengaturan = MutableLiveData<Boolean>()
+    val navigateToPengaturan : LiveData<Boolean>
+        get() = _navigateToPengaturan
 
-    private val _navigateToKonfigurasi = MutableLiveData<Int>()
-    val navigateToKonfigurasi : LiveData<Int>
-        get() = _navigateToKonfigurasi
-
-//    private val _isLatestActNull = MutableLiveData<Boolean>()
-//    val isLatestActNull : LiveData<Boolean>
-//        get() = _isLatestActNull
-
-//    val firstRecentActs = Transformations.map(recentActs){act ->
-//        act?.let {
-//            if(it[0] != null){
-//                it[0]
-//            }else{
-//                Bersepeda()
-//            }
-//        }
-//    }
-//    val secondRecentActs = Transformations.map(recentActs){act ->
-//        act?.let {
-//            if(it[1] != null){
-//                it[1]
-//            }else{
-//                Bersepeda()
-//            }
-//        }
-//    }
-
-    fun onBtnKonfigurasiClicked(){
-        _navigateToKonfigurasi.value = 1
+    fun onBtnPengaturanClicked(){
+        _navigateToPengaturan.value = true
     }
 
-    fun onActClicked(id: Long) {
-        _navigateToResult.value = id
+    fun onBtnGoClicked(){
+        _navigateToKesiapan.value = true
     }
 
-    fun doneNavigateToHasilBersepeda() {
-        _navigateToResult.value = null
+    fun doneNavigateToPengaturan(){
+        _navigateToPengaturan.value = null
     }
 
-    fun doneNavigateToKonfigurasi() {
-        _navigateToResult.value = null
+    fun doneNavigateToKesiapan(){
+        _navigateToKesiapan.value = null
     }
 
     init {
@@ -83,10 +57,6 @@ class HomeViewModel(val app: Application) : AndroidViewModel(app) {
     private fun checkLocationPermission(){
         isLocationPermissionGranted =
             ContextCompat.checkSelfPermission(app.applicationContext,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-    }
-
-    private fun checkLocationSettings(){
-
     }
 
     override fun onCleared() {

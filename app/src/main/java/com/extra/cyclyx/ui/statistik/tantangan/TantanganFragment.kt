@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.extra.cyclyx.databinding.FragmentTantanganBinding
 import com.extra.cyclyx.utils.adapter.TantanganAdapter
-import com.extra.cyclyx.utils.adapter.TantanganClickListener
 
 /**
  * A simple [Fragment] subclass.
@@ -34,7 +33,7 @@ class TantanganFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.rvPencapaian.layoutManager = LinearLayoutManager(context)
-        val adapter = TantanganAdapter(TantanganClickListener{ actId, action -> id })
+        val adapter = TantanganAdapter()
         binding.rvPencapaian.adapter = adapter
 
 

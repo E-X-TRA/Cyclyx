@@ -1,0 +1,18 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="sebelum_mulai">
+        <item>5 Detik</item>
+        <item>10 Detik</item>
+        <item>Tidak ada</item>
+    </string-array>
+    <string-array name="tipe_peta">
+        <item>Default</item>
+        <item>Mapbox Streets</item>
+        <item>Mapbox Outdoors</item>
+        <item>Mapbox Traffic</item>
+    </string-array>
+    <string-array name="unit">
+        <item>Satuan Internasional</item>
+        <item>Satuan Amerika</item>
+    </string-array>
+</resources>
