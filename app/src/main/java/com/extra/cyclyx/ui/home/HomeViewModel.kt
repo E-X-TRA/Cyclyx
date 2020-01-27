@@ -20,9 +20,7 @@ class HomeViewModel(val app: Application) : AndroidViewModel(app) {
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     //init permission related
     var isLocationPermissionGranted: Boolean = false
-
-    val stringMonth : String = (Calendar.getInstance()).getDisplayName(Calendar.MONTH,Calendar.LONG, indonesianLocale) ?: "ERROR"
-
+    
     private val _navigateToKesiapan = MutableLiveData<Boolean>()
     val navigateToKesiapan : LiveData<Boolean>
         get() = _navigateToKesiapan

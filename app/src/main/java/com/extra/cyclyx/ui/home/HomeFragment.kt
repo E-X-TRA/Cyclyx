@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.extra.cyclyx.BersepedaActivity
 import com.extra.cyclyx.R
 import com.extra.cyclyx.SettingsActivity
 import com.extra.cyclyx.databinding.FragmentHomeBinding

@@ -60,7 +60,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/exo2_regular"
-                                android:text="@{viewModel.profil.userName}"
+                                android:text="@{viewModel.profil.firstName}"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                                 android:textColor="#494949"
                                 android:textSize="@dimen/_27ssp" />
@@ -93,8 +93,7 @@
                     android:layout_margin="@dimen/_8sdp"
                     android:src="@drawable/ic_settings_black_24dp"
                     app:layout_constraintBottom_toTopOf="@id/div"
-                    app:layout_constraintRight_toRightOf="parent"
-                    android:onClick=""/>
+                    app:layout_constraintRight_toRightOf="parent" />
 
             <View
                     android:id="@+id/div"
