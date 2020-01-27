@@ -1,17 +1,16 @@
 package com.extra.cyclyx.ui.home
 
 import android.Manifest
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import com.extra.cyclyx.BersepedaActivity
 import com.extra.cyclyx.R
 import com.extra.cyclyx.SettingsActivity
 import com.extra.cyclyx.databinding.FragmentHomeBinding
@@ -54,17 +53,18 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        viewModel.navigateToResult.observe(this, Observer {actId ->
-            actId?.let{
-                this.findNavController().navigate(HomeFragmentDirections.navigateToHasilBersepedaFromHome(it))
-                viewModel.doneNavigateToHasilBersepeda()
+        viewModel.navigateToKesiapan.observe(this, Observer {
+            it?.let {
+                this.findNavController().navigate(HomeFragmentDirections.navigateToKesiapanFromHome())
+                viewModel.doneNavigateToKesiapan()
             }
         })
 
-        viewModel.navigateToKonfigurasi.observe(this, Observer {
+
+        viewModel.navigateToPengaturan.observe(this, Observer {
             it?.let {
-                this.findNavController().navigate(HomeFragmentDirections.navigateToKonfigurasiFromHome())
-                viewModel.doneNavigateToKonfigurasi()
+                Toast.makeText(this.context,"Pengaturan!",Toast.LENGTH_SHORT).show()
+                viewModel.doneNavigateToPengaturan()
             }
         })
 

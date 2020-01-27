@@ -55,6 +55,7 @@ dependencies {
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.gauravbhola.ripplepulsebackground:library:1.0.1'
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
     //navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'

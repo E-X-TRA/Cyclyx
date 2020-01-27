@@ -98,11 +98,13 @@
             app:layout_constraintRight_toRightOf="parent">
 
         <Button
+                android:id="@+id/btnBack"
                 style="@style/BackButton"
                 android:layout_alignParentStart="true"
                 android:text="@string/txt_kembali" />
 
         <Button
+                android:id="@+id/btnNext"
                 style="@style/NextButton"
                 android:layout_alignParentEnd="true"
                 android:text="@string/txt_selanjutnya" />

@@ -5,7 +5,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:ignore="MissingDefaultResource">
+        tools:ignore="MissingDefaultResource"
+        android:background="@color/whiteText">
 
     <ImageView
             android:id="@+id/intro_img"
@@ -16,16 +17,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/mountain_1"/>
+            app:layout_constraintBottom_toTopOf="@id/guideline"
+            tools:srcCompat="@drawable/mountain_3"/>
 
     <TextView
             android:id="@+id/intro_description"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
+            android:maxHeight="100dp"
             android:layout_margin="32dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
             android:letterSpacing="0.1"
             android:singleLine="false"
             android:text="TextView"
@@ -34,25 +38,24 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/intro_title"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/intro_title"/>
 
     <TextView
             android:id="@+id/intro_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="38dp"
             android:layout_marginEnd="32dp"
+            android:gravity="center"
             android:fontFamily="@font/roboto_regular"
             android:text="TextView"
             android:textAlignment="center"
             android:textColor="#0D1904"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline" />
+            app:layout_constraintTop_toBottomOf="@id/guideline"/>
 
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"

@@ -15,14 +15,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_4">
-    
+            android:background="@drawable/bg_5">
+
         <Button
                 android:id="@+id/BtnKonfigurasi"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
                 android:background="@drawable/ic_settings_black_24dp"
-                android:foreground="@drawable/ripple_effect"
+                android:foreground="@drawable/rounded_ripple_effect"
+                android:onClick="@{() -> viewModel.onBtnPengaturanClicked()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_margin="@dimen/_10sdp"
@@ -55,9 +56,12 @@
                     android:layout_height="@dimen/_175sdp"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/circle_button"
-                    android:foreground="@drawable/ripple_effect" />
+                    android:foreground="@drawable/rounded_ripple_effect"
+                    android:onClick="@{()->viewModel.onBtnGoClicked()}"
+                     />
             <!--            </com.gauravbhola.ripplepulsebackground.RipplePulseLayout>-->
 
+<<<<<<< HEAD
 <!--            <TextView-->
 <!--                    android:id="@+id/TxtMonthNow"-->
 <!--                    android:layout_width="wrap_content"-->
@@ -69,10 +73,13 @@
 <!--                    android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
 <!--                    android:textColor="#F0FFFFFF"-->
 <!--                    tools:text="November" />-->
+=======
+>>>>>>> 80412b20f15710fc17737be6113aa1b05b798f19
 
         </LinearLayout>
 
         <LinearLayout
+                android:padding="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/main"
@@ -80,13 +87,49 @@
                 android:layout_marginStart="@dimen/_40sdp"
                 android:layout_marginEnd="@dimen/_40sdp"
                 android:orientation="vertical">
+
             <androidx.cardview.widget.CardView
-                    android:id="@+id/CardTips"
+                android:id="@+id/CardTips"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_margin="@dimen/_5sdp"
+                app:cardBackgroundColor="@color/bg_tantangan"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_2sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo2_bold"
+                        android:text="@string/txt_tipstitle"
+                        android:textColor="@color/font_bold_purple"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo2_light"
+                        android:text="isi tips disini"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="#6F6F6F"
+                        android:textSize="@dimen/_12sdp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_margin="@dimen/_10sdp"
+                    android:id="@+id/CardTtg"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_100sdp"
-                    app:cardElevation="@dimen/_1sdp"
+                    app:cardElevation="@dimen/_2sdp"
                     app:cardCornerRadius="@dimen/_5sdp"
-                    app:cardBackgroundColor="@color/bg_tantangan">
+                    app:cardBackgroundColor="@color/colorAccent">
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -96,212 +139,72 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/_14sdp"
-                            android:textColor="@color/font_bold_purple"
-                            android:text="@string/txt_tipstitle"
+                            android:textColor="@color/whiteText"
+                            android:text="Tantangan"
                             android:fontFamily="@font/exo2_bold"/>
-                    <TextView
-                            android:layout_width="match_parent"
+                    <LinearLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_12sdp"
-                            android:textColor="#6F6F6F"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:text="isi tips disini"
-                            android:fontFamily="@font/exo2_light"/>
+                            android:orientation="horizontal"
+                            android:layout_gravity="center">
+                        <RelativeLayout
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:id="@+id/sudah"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                            <TextView
+                                    android:id="@+id/titlesdh"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:textColor="@color/whiteText"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                    android:text="Terselesaikan"
+                                    android:fontFamily="@font/exo2_light"/>
+
+                            <TextView
+                                    android:layout_below="@id/titlesdh"
+                                    android:layout_width="wrap_content"
+                                    android:textAlignment="center"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_20sdp"
+                                    android:textColor="@color/whiteText"
+                                    android:text="5"
+                                    android:layout_centerHorizontal="true"
+                                    android:fontFamily="@font/exo2_bold"/>
+
+                        </RelativeLayout>
+                        <RelativeLayout
+                                android:id="@+id/belum"
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                            <TextView
+                                    android:id="@+id/titleblm"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:textColor="@color/whiteText"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                    android:text="Belum Selesai"
+                                    android:fontFamily="@font/exo2_light"/>
+
+                            <TextView
+                                    android:layout_below="@id/titleblm"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_20sdp"
+                                    android:textColor="@color/whiteText"
+                                    android:text="5"
+                                    android:fontFamily="@font/exo2_bold"
+                                    android:layout_centerHorizontal="true"/>
+
+                        </RelativeLayout>
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvHomeTtg"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    tools:listitem="@layout/item_tantangan" />
         </LinearLayout>
-
-
-
-<!--        <LinearLayout-->
-<!--                android:id="@+id/content"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical"-->
-<!--                android:padding="@dimen/_20sdp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                android:layout_marginBottom="@dimen/_25sdp">-->
-<!--            <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Aktifitas terbaru"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:fontFamily="@font/exo2_light"-->
-<!--                    android:layout_margin="@dimen/_5sdp"/>-->
-
-<!--            <androidx.cardview.widget.CardView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:background="@color/cardview_light_background"-->
-<!--                    app:cardCornerRadius="@dimen/_7sdp"-->
-<!--                    app:cardElevation="@dimen/_4sdp"-->
-<!--                    android:onClick="@{() -> viewModel.onActClicked(viewModel.firstRecentActs.id)}"-->
-<!--                    >-->
-
-<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="108dp">-->
-
-<!--                    <LinearLayout-->
-<!--                            android:id="@+id/LinearDurasi"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginStart="@dimen/_20sdp"-->
-<!--                            android:layout_marginTop="@dimen/_15sdp"-->
-<!--                            android:layout_marginBottom="@dimen/_15sdp"-->
-<!--                            android:orientation="vertical"-->
-<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                            app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                            app:layout_constraintTop_toTopOf="parent">-->
-
-<!--                        <TextView-->
-<!--                                android:id="@+id/TxtRecentJarak"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:fontFamily="@font/exo2_bold"-->
-<!--                                android:textAlignment="center"-->
-<!--                                android:textAppearance="@style/TextAppearance.AppCompat.Title"-->
-<!--                                android:textColor="#B4E308"-->
-<!--                                android:textSize="@dimen/_20ssp"-->
-<!--                                app:formatDistance="@{viewModel.firstRecentActs.speed}"-->
-<!--                                tools:text="78,9 KM" />-->
-
-<!--                        <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_gravity="center"-->
-<!--                                android:fontFamily="@font/exo2_regular"-->
-<!--                                android:text="@string/txt_distance"-->
-<!--                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"-->
-<!--                                android:textColor="#858585" />-->
-<!--                    </LinearLayout>-->
-
-<!--                    <LinearLayout-->
-<!--                            android:id="@+id/LinearDurasi2"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginTop="@dimen/_15sdp"-->
-<!--                            android:layout_marginEnd="@dimen/_20sdp"-->
-<!--                            android:layout_marginBottom="@dimen/_15sdp"-->
-<!--                            android:orientation="vertical"-->
-<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                            app:layout_constraintRight_toRightOf="parent"-->
-<!--                            app:layout_constraintTop_toTopOf="parent">-->
-
-<!--                        <TextView-->
-<!--                                android:id="@+id/TxtRecentDur"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:fontFamily="@font/exo2_bold"-->
-<!--                                android:text="1d 00:00:01"-->
-<!--                                android:textAlignment="center"-->
-<!--                                android:textAppearance="@style/TextAppearance.AppCompat.Title"-->
-<!--                                android:textColor="#E36E08"-->
-<!--                                android:textSize="@dimen/_20ssp"-->
-<!--                                app:formatDuration="@{viewModel.firstRecentActs}"-->
-<!--                                tools:text="01:06:23" />-->
-
-<!--                        <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_gravity="center"-->
-<!--                                android:fontFamily="@font/exo2_regular"-->
-<!--                                android:text="@string/txt_duration"-->
-<!--                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"-->
-<!--                                android:textColor="#858585" />-->
-<!--                    </LinearLayout>-->
-<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--            </androidx.cardview.widget.CardView>-->
-
-<!--            <androidx.cardview.widget.CardView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="@dimen/_10sdp"-->
-<!--                    android:background="@color/cardview_light_background"-->
-<!--                    app:cardCornerRadius="@dimen/_8sdp"-->
-<!--                    app:cardElevation="@dimen/_4sdp"-->
-<!--                    android:onClick="@{() -> viewModel.onActClicked(viewModel.secondRecentActs.id)}"-->
-<!--                    >-->
-
-<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content">-->
-
-<!--                    <LinearLayout-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginStart="@dimen/_20sdp"-->
-<!--                            android:layout_marginTop="@dimen/_15sdp"-->
-<!--                            android:layout_marginBottom="@dimen/_15sdp"-->
-<!--                            android:orientation="vertical"-->
-<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                            app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                            app:layout_constraintTop_toTopOf="parent">-->
-
-<!--                        <TextView-->
-<!--                                android:id="@+id/TxtOldJarak"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:fontFamily="@font/exo2_bold"-->
-<!--                                android:textAppearance="@style/TextAppearance.AppCompat.Title"-->
-<!--                                android:textColor="#B4E308"-->
-<!--                                android:textSize="@dimen/_20ssp"-->
-<!--                                app:formatDistance="@{viewModel.secondRecentActs.speed}"-->
-<!--                                tools:text="12.43 km" />-->
-
-<!--                        <TextView-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:fontFamily="@font/exo2_regular"-->
-<!--                                android:gravity="center"-->
-<!--                                android:text="@string/txt_distance"-->
-<!--                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"-->
-<!--                                android:textColor="#858585" />-->
-<!--                    </LinearLayout>-->
-
-<!--                    <LinearLayout-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginTop="@dimen/_15sdp"-->
-<!--                            android:layout_marginEnd="@dimen/_20sdp"-->
-<!--                            android:layout_marginBottom="@dimen/_15sdp"-->
-<!--                            android:orientation="vertical"-->
-
-<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                            app:layout_constraintRight_toRightOf="parent"-->
-<!--                            app:layout_constraintTop_toTopOf="parent">-->
-
-
-<!--                        <TextView-->
-<!--                                android:id="@+id/TxtOldDur"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:fontFamily="@font/exo2_bold"-->
-<!--                                android:textAppearance="@style/TextAppearance.AppCompat.Title"-->
-<!--                                android:textColor="#E36E08"-->
-<!--                                android:textSize="@dimen/_20ssp"-->
-<!--                                app:formatDuration="@{viewModel.secondRecentActs}"-->
-<!--                                tools:text="01:23:43" />-->
-
-<!--                        <TextView-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:fontFamily="@font/exo2_regular"-->
-<!--                                android:gravity="center"-->
-<!--                                android:text="@string/txt_duration"-->
-<!--                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"-->
-<!--                                android:textColor="#858585" />-->
-<!--                    </LinearLayout>-->
-<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--            </androidx.cardview.widget.CardView>-->
-<!--        </LinearLayout>-->
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

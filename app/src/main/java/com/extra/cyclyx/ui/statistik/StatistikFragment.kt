@@ -24,7 +24,7 @@ class StatistikFragment : Fragment() {
 
         val statistikViewPager = StatistikViewPager(activity.applicationContext,childFragmentManager)
         binding.statistikViewPager.adapter = statistikViewPager
-        binding.statistikTabLayout.setupWithViewPager(binding.statistikViewPager)
+        binding.statistikTabLayout.setViewPager(binding.statistikViewPager)
 
         return binding.root
     }

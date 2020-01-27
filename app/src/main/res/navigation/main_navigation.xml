@@ -17,8 +17,8 @@
                 android:id="@+id/navigate_to_hasil_bersepeda_from_home"
                 app:destination="@id/hasil_bersepeda" />
         <action
-                android:id="@+id/navigate_to_konfigurasi_from_home"
-                app:destination="@id/konfigurasi" />
+                android:id="@+id/navigate_to_kesiapan_from_home"
+                app:destination="@id/kesiapan" />
     </fragment>
 
     <fragment
@@ -33,13 +33,13 @@
     <fragment
             android:id="@+id/profil"
             android:name="com.extra.cyclyx.ui.profil.ProfilFragment"
-            android:label="Profil Saya"
+            android:label="Profil"
             tools:layout="@layout/fragment_profil" />
 
     <fragment
             android:id="@+id/hasil_bersepeda"
             android:name="com.extra.cyclyx.ui.hasilBersepeda.HasilBersepedaFragment"
-            android:label="fragment_hasil_bersepeda"
+            android:label="Hasil Bersepeda"
             tools:layout="@layout/fragment_hasil_bersepeda">
         <argument
                 android:name="bersepedaKey"
@@ -52,6 +52,14 @@
     <fragment
             android:id="@+id/konfigurasi"
             android:name="com.extra.cyclyx.ui.konfigurasi.KonfigurasiFragment"
-            android:label="PengaturanFragment"
+            android:label="Konfigurasi"
             tools:layout="@layout/fragment_konfigurasi" />
+    <fragment
+        android:id="@+id/kesiapan"
+        android:name="com.extra.cyclyx.ui.kesiapan.KesiapanFragment"
+        android:label="Kesiapan">
+        <action
+            android:id="@+id/navigate_to_konfigurasi_from_kesiapan"
+            app:destination="@id/konfigurasi" />
+    </fragment>
 </navigation>
