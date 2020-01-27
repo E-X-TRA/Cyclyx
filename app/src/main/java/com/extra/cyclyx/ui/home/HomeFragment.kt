@@ -1,11 +1,11 @@
 package com.extra.cyclyx.ui.home
 
 import android.Manifest
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -16,7 +16,6 @@ import com.extra.cyclyx.SettingsActivity
 import com.extra.cyclyx.databinding.FragmentHomeBinding
 import com.extra.cyclyx.utils.PERMISSION_FINE_LOCATION_REQUEST
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
@@ -43,16 +42,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-        binding.btnGo.setOnClickListener {
-            val intent = Intent(activity, BersepedaActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.BtnKonfigurasi.setOnClickListener {
-            val intent = Intent (activity, SettingsActivity::class.java)
-            startActivity(intent)
-        }
-
         viewModel.navigateToKesiapan.observe(this, Observer {
             it?.let {
                 this.findNavController().navigate(HomeFragmentDirections.navigateToKesiapanFromHome())
@@ -63,7 +52,8 @@ class HomeFragment : Fragment() {
 
         viewModel.navigateToPengaturan.observe(this, Observer {
             it?.let {
-                Toast.makeText(this.context,"Pengaturan!",Toast.LENGTH_SHORT).show()
+                val intent = Intent(activity, SettingsActivity::class.java)
+                startActivity(intent)
                 viewModel.doneNavigateToPengaturan()
             }
         })

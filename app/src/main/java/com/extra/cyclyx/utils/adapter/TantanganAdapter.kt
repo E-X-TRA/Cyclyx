@@ -7,10 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.extra.cyclyx.databinding.ItemTantanganBinding
 import com.extra.cyclyx.entity.Tantangan
-import com.extra.cyclyx.utils.DELETE_ITEM
-import com.extra.cyclyx.utils.DETAIL_ITEM
 
-class TantanganAdapter(val clickListener: TantanganClickListener) : ListAdapter<Tantangan, TantanganAdapter.TantanganVH>(TrackingDiffUtil){
+class TantanganAdapter() : ListAdapter<Tantangan, TantanganAdapter.TantanganVH>(TrackingDiffUtil){
     companion object TrackingDiffUtil : DiffUtil.ItemCallback<Tantangan>(){
         override fun areItemsTheSame(oldItem: Tantangan, newItem: Tantangan): Boolean {
             return oldItem == newItem
@@ -28,14 +26,13 @@ class TantanganAdapter(val clickListener: TantanganClickListener) : ListAdapter<
 
     override fun onBindViewHolder(holder: TantanganVH, position: Int) {
         val act = getItem(position)
-        holder.bind(act,clickListener)
+        holder.bind(act)
     }
 
 
     class TantanganVH(private var binding : ItemTantanganBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(act: Tantangan, clickListener : TantanganClickListener){
+        fun bind(act: Tantangan){
             binding.tantangan = act
-            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -47,9 +44,4 @@ class TantanganAdapter(val clickListener: TantanganClickListener) : ListAdapter<
             }
         }
     }
-}
-
-class TantanganClickListener(val clickListener : (actsId : Int,action : String) -> Unit){
-    fun onClickResult(acts : Tantangan) = clickListener(acts.id, DETAIL_ITEM)
-    fun onDeleteResult(acts: Tantangan) = clickListener(acts.id, DELETE_ITEM)
 }

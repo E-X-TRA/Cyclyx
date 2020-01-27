@@ -20,7 +20,9 @@
     <ListPreference
             android:dialogTitle="Pilih Waktu"
             android:entries="@array/sebelum_mulai"
-            android:key="sebelum_Mulai"
+            android:entryValues="@array/sebelum_mulai"
+            android:key="sebelum_mulai"
+            android:defaultValue="3"
             android:summary="Waktu Hitung Mundur Sebelum Mulai Bersepeda"
             android:title="Hitung Mundur" />
     <SwitchPreference
@@ -37,12 +39,14 @@
     <ListPreference
             android:dialogTitle="Pilih Tipe"
             android:entries="@array/tipe_peta"
+            android:entryValues="@array/tipe_peta"
             android:key="tipe_peta"
             android:summary="Mengubah Tampilan Pada Peta"
             android:title="Tipe Peta" />
     <ListPreference
             android:dialogTitle="Pilih Unit"
             android:entries="@array/unit"
+            android:entryValues="@array/unit"
             android:key="unit"
             android:summary="Menentukan Bagaimana Keluaran Unit nya"
             android:title="Unit" />

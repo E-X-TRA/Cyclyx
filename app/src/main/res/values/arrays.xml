@@ -7,9 +7,9 @@
     </string-array>
     <string-array name="tipe_peta">
         <item>Default</item>
-        <item>Tipe 1</item>
-        <item>Tipe 2</item>
-        <item>Tipe 3</item>
+        <item>Mapbox Streets</item>
+        <item>Mapbox Outdoors</item>
+        <item>Mapbox Traffic</item>
     </string-array>
     <string-array name="unit">
         <item>Satuan Internasional</item>

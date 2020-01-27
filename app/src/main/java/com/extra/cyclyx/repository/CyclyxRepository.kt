@@ -14,6 +14,7 @@ import com.extra.cyclyx.database.AppDatabase
 import com.extra.cyclyx.entity.Bersepeda
 import com.extra.cyclyx.entity.Tantangan
 import com.extra.cyclyx.utils.SP_CYCLYX
+import com.extra.cyclyx.utils.SP_SETTING
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.Dispatchers
@@ -23,13 +24,12 @@ class CyclyxRepository(val context: Context){
     //init
     private val database = AppDatabase.getInstance(context)
     val sharedPreferences = context.getSharedPreferences(SP_CYCLYX, Context.MODE_PRIVATE)
+    val settingsPreferences = context.getSharedPreferences(SP_SETTING,Context.MODE_PRIVATE)
     val firebaseDB = FirebaseDatabase.getInstance()
     val firebaseReference : DatabaseReference = firebaseDB.reference
 
     //cycling related
     val allCyclingData : LiveData<List<Bersepeda>> = database.bersepedaDAO.getAll()
-
-    val recentsCyclingData : LiveData<List<Bersepeda>> = database.bersepedaDAO.getRecentsCycling()
 
     fun getLatestCyclingData() = database.bersepedaDAO.getLatestCycling()
 

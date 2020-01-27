@@ -2,6 +2,7 @@ package com.extra.cyclyx.utils
 
 import android.content.SharedPreferences
 import android.util.Log
+import com.mapbox.mapboxsdk.maps.Style
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
@@ -117,6 +118,16 @@ fun determineMets(speed : Double) : Double{
                 0.0 //not moving
             }
         }
+    }
+}
+
+fun determineMapStyle(stylePref :String?) : String{
+    Log.d("MAP","Style : $stylePref")
+    return when (stylePref){
+        MAPBOX_STYLE.OUTDOORS -> Style.OUTDOORS
+        MAPBOX_STYLE.STREETS -> Style.MAPBOX_STREETS
+        MAPBOX_STYLE.TRAFFIC -> Style.TRAFFIC_DAY
+        else -> Style.LIGHT
     }
 }
 
