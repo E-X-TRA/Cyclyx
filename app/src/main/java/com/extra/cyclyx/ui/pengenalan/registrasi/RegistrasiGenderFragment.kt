@@ -1,6 +1,7 @@
 package com.extra.cyclyx.ui.pengenalan.registrasi
 
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -22,6 +23,7 @@ class RegistrasiGenderFragment : Fragment() {
     lateinit var btnMale: Button
     lateinit var btnFemale: Button
     lateinit var dataGender: String
+    lateinit var btnNext: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,12 +32,29 @@ class RegistrasiGenderFragment : Fragment() {
         // Inflate the layout for this fragment
         var view =  inflater.inflate(R.layout.fragment_registrasi_gender, container, false)
 
-        btn_lelaki.setOnClickListener {
+        btnMale = view.findViewById(R.id.btn_lelaki)
+        btnFemale = view.findViewById(R.id.btn_perempuan)
+        btnNext = view.findViewById(R.id.btnNext)
+
+        btnMale.setOnClickListener {
             selectGender(1)
         }
 
-        btn_perempuan.setOnClickListener {
+        btnFemale.setOnClickListener {
             selectGender(2)
+        }
+
+        btnNext.setOnClickListener {
+            var sharedPreferences = activity!!.getSharedPreferences(SP_CYCLYX, Context.MODE_PRIVATE)
+
+            var gender: String = dataGender
+
+            var editor : SharedPreferences.Editor = sharedPreferences.edit()
+
+            editor.putString(USER_GENDER, gender)
+
+            editor.commit()
+
         }
 
 
@@ -52,6 +71,7 @@ class RegistrasiGenderFragment : Fragment() {
 
 
 
+        @SuppressLint("ResourceAsColor")
         fun selectGender(btnClicked: Int){
             when(btnClicked){
                 0 ->{
@@ -61,11 +81,15 @@ class RegistrasiGenderFragment : Fragment() {
 
                 1 ->{
                     btn_lelaki.setBackgroundResource(R.drawable.rounded_btn_pengenalan)
+                    btn_perempuan.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
+                    btn_lelaki.setTextColor(R.color.whiteText)
                     dataGender = "Laki-Laki"
                 }
 
                 2 -> {
                     btn_perempuan.setBackgroundResource(R.drawable.rounded_btn_pengenalan)
+                    btn_lelaki.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
+                    btn_perempuan.setTextColor(R.color.whiteText)
                     dataGender = "Perempuan"
                 }
             }
