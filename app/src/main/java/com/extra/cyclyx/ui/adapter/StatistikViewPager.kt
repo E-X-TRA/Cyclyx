@@ -1,4 +1,4 @@
-package com.extra.cyclyx.utils.adapter
+package com.extra.cyclyx.ui.adapter
 
 import android.content.Context
 import androidx.fragment.app.Fragment

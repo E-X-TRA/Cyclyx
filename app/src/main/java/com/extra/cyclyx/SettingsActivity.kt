@@ -1,5 +1,6 @@
 package com.extra.cyclyx
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -51,6 +52,19 @@ class SettingsActivity : AppCompatActivity() {
                 true
             }
 
+            var editProfile: Preference? = findPreference("EditProfile")
+            editProfile?.setOnPreferenceClickListener {
+
+                val editProfileFragment: Fragment = EditProfileFragment()
+
+                fragmentManager?.beginTransaction()
+                    ?.replace(R.id.settingsFrame, editProfileFragment)
+                    ?.addToBackStack(null)
+                    ?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    ?.commit()
+
+                true
+            }
         }
     }
 }

@@ -12,11 +12,14 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import com.extra.cyclyx.database.AppDatabase
 import com.extra.cyclyx.entity.Bersepeda
+import com.extra.cyclyx.entity.ReferenceItem
 import com.extra.cyclyx.entity.Tantangan
+import com.extra.cyclyx.utils.RandomDataGenerator
 import com.extra.cyclyx.utils.SP_CYCLYX
 import com.extra.cyclyx.utils.SP_SETTING
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.extra.cyclyx.utils.FIREBASE_CONSTANTS.BASE_KEY
+import com.extra.cyclyx.utils.FIREBASE_CONSTANTS.REFERENSI_KEY
+import com.google.firebase.database.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -27,6 +30,47 @@ class CyclyxRepository(val context: Context){
     val settingsPreferences = context.getSharedPreferences(SP_SETTING,Context.MODE_PRIVATE)
     val firebaseDB = FirebaseDatabase.getInstance()
     val firebaseReference : DatabaseReference = firebaseDB.reference
+
+    fun getAllReference(type : String) :List<ReferenceItem>{
+        val list = ArrayList<ReferenceItem>()
+        firebaseReference.child(BASE_KEY).child(REFERENSI_KEY).child(type).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(p0: DataSnapshot) {
+                if (list.isNotEmpty()) list.clear()
+                for (i in p0.children) {
+                    val model = i.getValue(ReferenceItem::class.java)
+                    model?.let {
+                        list.add(it)
+                    }
+                }
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                Log.e("ERR", "onCancelled: $p0")
+            }
+        })
+        return list
+    }
+
+    fun getRandomItemReference(list : List<ReferenceItem>) : ReferenceItem{
+        return list[RandomDataGenerator.getRandomListItem(list.size)]
+    }
+
+    fun getItemReference(type : String,uid : String) : ReferenceItem?{
+        var item : ReferenceItem ?= null
+        firebaseReference.child(BASE_KEY).child(REFERENSI_KEY).child(type).child(uid).addListenerForSingleValueEvent(
+            object : ValueEventListener {
+                override fun onDataChange(p0: DataSnapshot) {
+                    item = p0.getValue(ReferenceItem::class.java)
+                }
+
+                override fun onCancelled(p0: DatabaseError) {
+                    Log.e("ERR", "onCancelled: $p0")
+                }
+            }
+        )
+        Log.d("ADD","Item -> $item")
+        return item
+    }
 
     //cycling related
     val allCyclingData : LiveData<List<Bersepeda>> = database.bersepedaDAO.getAll()

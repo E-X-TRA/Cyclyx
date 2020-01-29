@@ -33,8 +33,10 @@
             android:summaryOn="Pengingat Telah Dinyalakan"
             android:title="Reminder" />
     <Preference
+            android:key="EditProfile"
             android:summary="Untuk Mengubah Data Diri"
-            android:title="Edit Profile"/>
+            android:title="Edit Profile">
+    </Preference>
     <ListPreference
             android:dialogTitle="Pilih Tipe"
             android:entries="@array/tipe_peta"

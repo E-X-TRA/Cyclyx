@@ -6,7 +6,7 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="3dp"
         android:layout_marginRight="3dp"
-        tools:context=".ui.pengenalan.gambaran.GambaranCoverFragment">
+        tools:context=".ui.pengenalan.gambaran.GambaranFragment">
 
 
     <LinearLayout
@@ -25,6 +25,7 @@
                 android:layout_height="48dp"
                 android:background="@null"
                 android:fontFamily="@font/roboto_bold"
+                android:layout_marginRight="@dimen/_10sdp"
                 android:text="Next"
                 android:textAllCaps="false"
                 android:textSize="18sp" />
@@ -49,6 +50,7 @@
                 android:background="@null"
                 android:fontFamily="@font/roboto_regular"
                 android:text="Ayo Mulai"
+                android:layout_marginRight="@dimen/_10sdp"
                 android:textAllCaps="false"
                 android:textSize="18sp" />
 
@@ -64,6 +66,23 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+            android:id="@+id/worm_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:dotsColor="@color/actionTrasnsparent"
+            app:dotsCornerRadius="@dimen/_5sdp"
+            app:dotsSize="@dimen/_10sdp"
+            app:dotsSpacing="@dimen/_2sdp"
+            app:dotsWidthFactor="2.5"
+            app:selectedDotColor="@color/colorAccent"
+            app:progressMode="false"
+            android:layout_marginBottom="@dimen/_18sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
     <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_indicator"
             android:layout_width="64dp"
@@ -75,5 +94,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:tabBackground="@drawable/indicator_selector"
             app:tabIndicatorHeight="0dp"
-            app:tabPaddingStart="16dp"/>
+            app:tabPaddingStart="16dp"
+            android:visibility="invisible"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

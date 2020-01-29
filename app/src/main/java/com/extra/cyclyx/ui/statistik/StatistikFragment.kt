@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.extra.cyclyx.databinding.FragmentStatistikBinding
-import com.extra.cyclyx.utils.adapter.StatistikViewPager
+import com.extra.cyclyx.ui.adapter.StatistikViewPager
 
 /**
  * A simple [Fragment] subclass.

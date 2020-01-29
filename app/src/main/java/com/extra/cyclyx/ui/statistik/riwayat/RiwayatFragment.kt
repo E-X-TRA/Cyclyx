@@ -16,8 +16,8 @@ import com.extra.cyclyx.databinding.FragmentRiwayatBinding
 import com.extra.cyclyx.ui.statistik.StatistikFragmentDirections
 import com.extra.cyclyx.utils.DELETE_ITEM
 import com.extra.cyclyx.utils.DETAIL_ITEM
-import com.extra.cyclyx.utils.adapter.RiwayatAdapter
-import com.extra.cyclyx.utils.adapter.RiwayatClickListener
+import com.extra.cyclyx.ui.adapter.RiwayatAdapter
+import com.extra.cyclyx.ui.adapter.RiwayatClickListener
 
 class RiwayatFragment : Fragment() {
     private lateinit var binding: FragmentRiwayatBinding
