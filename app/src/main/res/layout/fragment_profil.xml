@@ -60,7 +60,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/exo2_regular"
-                                android:text="@{viewModel.profil.firstName}"
+                                app:showFullName="@{viewModel.profil}"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                                 android:textColor="#494949"
                                 android:textSize="@dimen/_27ssp" />
