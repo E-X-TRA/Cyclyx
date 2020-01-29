@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.extra.cyclyx.R
 import com.extra.cyclyx.entity.Bersepeda
+import com.extra.cyclyx.ui.profil.ProfilViewModel
 
 
 @BindingAdapter("timerValue")
@@ -26,6 +27,13 @@ fun TextView.formatShortDuration(act : Bersepeda?){
     act?.let{
         val duration = act.endTime - act.startTime
         text = convertDurationToShortString(duration)
+    }
+}
+
+@BindingAdapter("showFullName")
+fun TextView.showFullName(data : ProfilViewModel.Profil?){
+    data?.let{
+        text = "${it.firstName} ${it.lastName}"
     }
 }
 

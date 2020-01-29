@@ -16,8 +16,10 @@ import com.extra.cyclyx.ui.adapter.GambaranPageAdapter
 import com.extra.cyclyx.ui.pengenalan.registrasi.RegistrasiDataDiriFragment
 import com.extra.cyclyx.utils.IntroItem
 import com.google.android.material.tabs.TabLayout
-import java.util.*
-
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+import java.util.ArrayList
+import android.content.Context as Context
 /**
  * A simple [Fragment] subclass.
  */
@@ -35,6 +37,8 @@ class GambaranFragment : Fragment() {
     lateinit var linearLayoutSkip: LinearLayout
 
     lateinit var linearLayoutGetStarted: LinearLayout
+
+    lateinit var dotsIndicatorIn : DotsIndicator
 
     lateinit var mContext: Context
 
@@ -65,6 +69,7 @@ class GambaranFragment : Fragment() {
 
         tabIndicator = view.findViewById(R.id.tab_indicator)
 
+        dotsIndicatorIn = view.findViewById(R.id.worm_dot)
 
         // Fill data description
         val mList: ArrayList<IntroItem> = ArrayList<IntroItem>()
@@ -83,9 +88,11 @@ class GambaranFragment : Fragment() {
                 mList
             )
         screenPager.adapter = introViewPagerAdapterGambaran
-
+        
         //setup tab Indicator
         tabIndicator.setupWithViewPager(screenPager)
+        tabIndicator.isClickable = false
+        dotsIndicatorIn.setViewPager(screenPager)
 
         btnSkip.setOnClickListener {
             screenPager.setCurrentItem(screenPager.currentItem+1, true)
