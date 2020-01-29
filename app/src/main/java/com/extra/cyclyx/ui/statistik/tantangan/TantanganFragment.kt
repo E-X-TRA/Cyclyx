@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.extra.cyclyx.databinding.FragmentTantanganBinding
-import com.extra.cyclyx.utils.adapter.TantanganAdapter
+import com.extra.cyclyx.ui.adapter.TantanganAdapter
 
 /**
  * A simple [Fragment] subclass.

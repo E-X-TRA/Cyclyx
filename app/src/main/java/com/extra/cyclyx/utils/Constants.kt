@@ -18,6 +18,12 @@ object MAPBOX_STYLE{
     const val TRAFFIC = "Mapbox Traffic"
 }
 
+object GENDER{
+    const val MALE = "male"
+    const val FEMALE = "female"
+    const val UNSELECTED = ""
+}
+
 const val TRACKING_STARTED = "tracking_started"
 const val TRACKING_PAUSED = "tracking_paused"
 const val TRACKING_RESUMED = "tracking_resumed"
@@ -61,3 +67,13 @@ const val USER_TOTAL_CALORIES = "total_calories"
 //service
 const val EXTRA_ROUTE = "extra_route"
 const val EXTRA_ALT = "extra_alt"
+
+object FIREBASE_CONSTANTS{
+    const val BASE_KEY = "base"
+    const val REFERENSI_KEY = "referensi"
+    const val TANTANGAN_KEY = "tantangan"
+
+    const val TIPS_ITEM = "tips"
+    const val TUTORIAL_ITEM = "tutorial"
+    const val MOTIVASI_ITEM = "motivasi"
+}

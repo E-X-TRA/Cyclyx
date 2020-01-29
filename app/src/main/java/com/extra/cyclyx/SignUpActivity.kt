@@ -4,8 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.extra.cyclyx.ui.pengenalan.gambaran.GambaranCoverFragment
-import java.util.*
+import com.extra.cyclyx.ui.pengenalan.gambaran.GambaranFragment
 
 
 class SignUpActivity : AppCompatActivity() {
@@ -26,10 +25,10 @@ class SignUpActivity : AppCompatActivity() {
         val transaction: FragmentTransaction = fragmentManager.beginTransaction()
 //        Memulai transaction fragment manager
 
-        val gambaranCoverFragment : GambaranCoverFragment = GambaranCoverFragment()
+        val gambaranFragment : GambaranFragment = GambaranFragment()
 //        membuat objek fragment
 
-        transaction.add(R.id.frame_content, gambaranCoverFragment)
+        transaction.add(R.id.frame_content, gambaranFragment)
 //        menambahkan fragment
 
         transaction.addToBackStack("gambaranCoverFragment")

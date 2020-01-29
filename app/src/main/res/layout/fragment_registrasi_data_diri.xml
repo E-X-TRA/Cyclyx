@@ -1,101 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_5"
-        tools:context=".ui.pengenalan.registrasi.RegistrasiDataDiriFragment">
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-            android:id="@+id/title_layout"
+    <data>
+    <variable
+            name="viewModel"
+            type="com.extra.cyclyx.ui.pengenalan.registrasi.RegistrasiViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/_17sdp"
-            android:paddingRight="@dimen/_17sdp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_5"
+            tools:context=".ui.pengenalan.registrasi.RegistrasiDataDiriFragment">
 
-        <TextView
-                style="@style/TextViewTitle"
-                android:text="@string/txt_buat" />
+        <LinearLayout
+                android:id="@+id/title_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/_17sdp"
+                android:paddingRight="@dimen/_17sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-                style="@style/TextViewTitle.Blue"
-                android:text="@string/txt_akun" />
+            <TextView
+                    style="@style/TextViewTitle"
+                    android:text="@string/txt_buat" />
 
-        <TextView
-                style="@style/TextViewSubTitle"
-                android:text="@string/txt_lengkapi_data_diri_anda" />
-    </LinearLayout>
+            <TextView
+                    style="@style/TextViewTitle.Blue"
+                    android:text="@string/txt_akun" />
 
-    <LinearLayout
-            android:id="@+id/form_data_diri"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/_60ssp"
-            android:paddingRight="@dimen/_60ssp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_layout"
-            app:layout_constraintBottom_toTopOf="@id/relativeBack">
+            <TextView
+                    style="@style/TextViewSubTitle"
+                    android:text="@string/txt_lengkapi_data_diri_anda" />
+        </LinearLayout>
 
-        <EditText
-                android:id="@+id/edt_nama_depan"
-                style="@style/edit_text"
-                android:hint="@string/nama_depan" />
+        <LinearLayout
+                android:id="@+id/form_data_diri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/_60ssp"
+                android:paddingRight="@dimen/_60ssp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title_layout"
+                app:layout_constraintBottom_toTopOf="@id/relativeBack">
 
-        <EditText
-                android:id="@+id/edt_nama_belakang"
-                style="@style/edit_text"
-                android:hint="@string/nama_belakang" />
+            <EditText
+                    android:id="@+id/edt_nama_depan"
+                    style="@style/edit_text"
+                    android:hint="@string/nama_depan" />
 
-        <EditText
-                android:id="@+id/edt_thn_lahir"
-                style="@style/edit_text"
-                android:inputType="numberDecimal"
-                android:layout_marginTop="@dimen/_27ssp"
-                android:hint="Tahun Lahir" />
+            <EditText
+                    android:id="@+id/edt_nama_belakang"
+                    style="@style/edit_text"
+                    android:hint="@string/nama_belakang" />
 
-        <EditText
-                android:id="@+id/edt_berat"
-                style="@style/edit_text"
-                android:inputType="numberDecimal"
-                android:layout_marginTop="@dimen/_27sdp"
-                android:hint="@string/berat_badan" />
+            <EditText
+                    android:id="@+id/edt_thn_lahir"
+                    style="@style/edit_text"
+                    android:inputType="numberDecimal"
+                    android:layout_marginTop="@dimen/_27ssp"
+                    android:hint="Tahun Lahir" />
 
-        <EditText
-                android:id="@+id/edt_tinggi"
-                style="@style/edit_text"
-                android:inputType="numberDecimal"
-                android:hint="@string/tinggi_badan" />
-    </LinearLayout>
+            <EditText
+                    android:id="@+id/edt_berat"
+                    style="@style/edit_text"
+                    android:inputType="numberDecimal"
+                    android:layout_marginTop="@dimen/_27sdp"
+                    android:hint="@string/berat_badan" />
 
-    <RelativeLayout
-            android:id="@+id/relativeBack"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/_20sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
+            <EditText
+                    android:id="@+id/edt_tinggi"
+                    style="@style/edit_text"
+                    android:inputType="numberDecimal"
+                    android:hint="@string/tinggi_badan" />
+        </LinearLayout>
 
-        <Button
-                android:id="@+id/btnBack"
-                style="@style/BackButton"
-                android:layout_alignParentStart="true"
-                android:text="@string/txt_kembali" />
+        <RelativeLayout
+                android:id="@+id/relativeBack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_20sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
 
-        <Button
-                android:id="@+id/btnNext"
-                style="@style/NextButton"
-                android:layout_alignParentEnd="true"
-                android:text="@string/txt_selanjutnya" />
+            <Button
+                    android:id="@+id/btnBack"
+                    style="@style/BackButton"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/txt_kembali" />
 
-    </RelativeLayout>
+            <Button
+                    android:id="@+id/btnNext"
+                    style="@style/NextButton"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/txt_selanjutnya" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

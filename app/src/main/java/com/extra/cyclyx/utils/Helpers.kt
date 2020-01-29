@@ -160,7 +160,7 @@ fun SharedPreferences.Editor.putDouble(key: String, double: Double) =
 fun SharedPreferences.getDouble(key: String, default: Double) =
     java.lang.Double.longBitsToDouble(getLong(key, java.lang.Double.doubleToRawLongBits(default)))
 
-class RandomStringGenerator{
+class RandomDataGenerator{
     companion object {
         private val ALLOWED_CHARACTERS = "0123456789qwertyuiopasdfghjklzxcvbnm"
 
@@ -170,6 +170,10 @@ class RandomStringGenerator{
             for (i in 0 until sizeOfRandomString)
                 sb.append(ALLOWED_CHARACTERS[random.nextInt(ALLOWED_CHARACTERS.length)])
             return sb.toString()
+        }
+
+        fun getRandomListItem(listSize : Int) : Int{
+            return (0..listSize-1).random()
         }
     }
 }

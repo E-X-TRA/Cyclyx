@@ -1,121 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.pengenalan.registrasi.RegistrasiGenderFragment">
+        xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+                name="viewModel"
+                type="com.extra.cyclyx.ui.pengenalan.registrasi.RegistrasiViewModel" />
+    </data>
 
-    <LinearLayout
-            android:id="@+id/linearTopGender"
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/_17sdp"
-            android:paddingRight="@dimen/_17sdp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent"
+            tools:context=".ui.pengenalan.registrasi.RegistrasiGenderFragment">
 
-        <TextView
-                style="@style/TextViewTitle"
-                android:text="@string/txt_buat" />
-
-        <TextView
-                style="@style/TextViewTitle.Blue"
-                android:text="@string/txt_akun" />
-
-        <TextView
-                style="@style/TextViewSubTitle"
-                android:text="@string/titled_jenis_kelamin_anda" />
-    </LinearLayout>
-
-    <RelativeLayout
-            android:id="@+id/relativeGender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/linearAction"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linearTopGender">
 
         <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/linearTopGender"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/_35sdp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/_17sdp"
+                android:paddingRight="@dimen/_17sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
+            <TextView
+                    style="@style/TextViewTitle"
+                    android:text="@string/txt_buat" />
 
-                    android:id="@+id/ivIcFemale"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_75sdp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_female" />
+            <TextView
+                    style="@style/TextViewTitle.Blue"
+                    android:text="@string/txt_akun" />
 
-            <Button
-                    android:id="@+id/btn_perempuan"
-                    style="@style/GenderButton"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:gravity="center"
-                    android:text="@string/txt_perempuan" />
+            <TextView
+                    style="@style/TextViewSubTitle"
+                    android:text="@string/titled_jenis_kelamin_anda" />
         </LinearLayout>
 
-        <LinearLayout
-                android:layout_width="wrap_content"
+        <RelativeLayout
+                android:id="@+id/relativeGender"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_35sdp"
-                android:orientation="vertical">
+                app:layout_constraintBottom_toTopOf="@id/linearAction"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linearTopGender">
 
-            <ImageView
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/_35sdp"
+                    android:orientation="vertical">
 
-                    android:id="@+id/ivIcMale"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_75sdp"
-                    android:src="@drawable/ic_gender_male" />
+                <ImageView
+
+                        android:id="@+id/ivIcFemale"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_75sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_female" />
+
+                <Button
+                        android:id="@+id/btn_perempuan"
+                        style="@style/GenderButton"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:gravity="center"
+                        android:text="@string/txt_perempuan" />
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_35sdp"
+                    android:orientation="vertical">
+
+                <ImageView
+
+                        android:id="@+id/ivIcMale"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_75sdp"
+                        android:src="@drawable/ic_gender_male" />
+
+                <Button
+                        android:id="@+id/btn_lelaki"
+                        style="@style/GenderButton"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:text="@string/txt_laki_laki" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <EditText
+                android:id="@+id/edt_jk"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/relativeGender" />
+
+        <RelativeLayout
+                android:id="@+id/linearAction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:orientation="horizontal"
+                android:padding="@dimen/_20sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
 
             <Button
-                    android:id="@+id/btn_lelaki"
-                    style="@style/GenderButton"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:text="@string/txt_laki_laki" />
-        </LinearLayout>
-    </RelativeLayout>
+                    android:id="@+id/btnBack"
+                    style="@style/BackButton"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/txt_kembali" />
 
-    <EditText
-            android:id="@+id/edt_jk"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/relativeGender"/>
+            <Button
+                    android:id="@+id/btnNext"
+                    style="@style/NextButton"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/txt_selanjutnya" />
 
-    <RelativeLayout
-            android:id="@+id/linearAction"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_30sdp"
-            android:orientation="horizontal"
-            android:padding="@dimen/_20sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
-
-        <Button
-                android:id="@+id/btnBack"
-                style="@style/BackButton"
-                android:layout_alignParentStart="true"
-                android:text="@string/txt_kembali" />
-
-        <Button
-                android:id="@+id/btnNext"
-                style="@style/NextButton"
-                android:layout_alignParentEnd="true"
-                android:text="@string/txt_selanjutnya" />
-
-    </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,4 +1,4 @@
-package com.extra.cyclyx.ui.pengenalan.gambaran
+package com.extra.cyclyx.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,18 +10,15 @@ import androidx.viewpager.widget.PagerAdapter
 import com.extra.cyclyx.R
 import com.extra.cyclyx.utils.IntroItem
 
-class PageAdapter(private var mContext: Context, private var mListScreen: List<IntroItem>) : PagerAdapter() {
-
-
-
+class GambaranPageAdapter(private var mContext: Context, private var mListScreen: List<IntroItem>) : PagerAdapter() {
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val inflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
         val layoutScreen: View = inflater.inflate(R.layout.intro_screen, null)
 
-        var imgSlide: ImageView = layoutScreen.findViewById(R.id.intro_img)
-        var title: TextView = layoutScreen.findViewById(R.id.intro_title)
-        var description: TextView = layoutScreen.findViewById(R.id.intro_description)
+        val imgSlide: ImageView = layoutScreen.findViewById(R.id.intro_img)
+        val title: TextView = layoutScreen.findViewById(R.id.intro_title)
+        val description: TextView = layoutScreen.findViewById(R.id.intro_description)
 
         title.text = mListScreen[position].intro_title
         description.text = mListScreen[position].intro_description
@@ -43,6 +40,4 @@ class PageAdapter(private var mContext: Context, private var mListScreen: List<I
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as View)
     }
-
-
 }

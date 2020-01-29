@@ -1,31 +1,30 @@
 package com.extra.cyclyx.ui.pengenalan.gambaran
 
 
+import android.content.Context
 import android.os.Bundle
-import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.viewpager.widget.ViewPager
 import com.extra.cyclyx.R
+import com.extra.cyclyx.ui.adapter.GambaranPageAdapter
 import com.extra.cyclyx.ui.pengenalan.registrasi.RegistrasiDataDiriFragment
 import com.extra.cyclyx.utils.IntroItem
 import com.google.android.material.tabs.TabLayout
-import java.util.ArrayList
-import android.content.Context as Context
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class GambaranCoverFragment : Fragment() {
+class GambaranFragment : Fragment() {
     lateinit var screenPager: ViewPager
 
-    lateinit var introViewPagerAdapter: PageAdapter
+    lateinit var introViewPagerAdapterGambaran: GambaranPageAdapter
 
     lateinit var tabIndicator: TabLayout
 
@@ -43,11 +42,11 @@ class GambaranCoverFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_pengenalan_cover, container, false)
+        val view = inflater.inflate(R.layout.fragment_pengenalan, container, false)
 
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pengenalan_cover, container, false)
+        return inflater.inflate(R.layout.fragment_pengenalan, container, false)
     }
 
     private fun loadLastScreen() {
@@ -78,8 +77,12 @@ class GambaranCoverFragment : Fragment() {
 
         //Setup View Pager
         screenPager = view.findViewById(R.id.screen_viewpager)
-        introViewPagerAdapter = PageAdapter(requireContext().applicationContext, mList)
-        screenPager.adapter = introViewPagerAdapter
+        introViewPagerAdapterGambaran =
+            GambaranPageAdapter(
+                requireContext().applicationContext,
+                mList
+            )
+        screenPager.adapter = introViewPagerAdapterGambaran
 
         //setup tab Indicator
         tabIndicator.setupWithViewPager(screenPager)
