@@ -1,232 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="viewModel"
-            type="com.extra.cyclyx.ui.home.KonfigurasiViewModel" />
+                name="viewModel"
+                type="com.extra.cyclyx.ui.home.KonfigurasiViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_6">
-
-        <TextView
-            android:id="@+id/judul"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/roboto_bold"
-            android:paddingStart="@dimen/_17sdp"
-            android:text="@string/txt_pegaturan"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/_34ssp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_6">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/judul">
+
+        <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/lokasi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_17sdp"
-                    android:layout_marginTop="@dimen/_17sdp"
-                    android:layout_marginRight="@dimen/_17sdp"
-                    android:layout_marginBottom="@dimen/_16sdp"
-                    android:background="@color/bg_card"
-                    android:elevation="@dimen/_7sdp"
-                    app:cardCornerRadius="@dimen/_7sdp"
-                    app:cardElevation="@dimen/_8sdp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/hemat_daya">
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp">
+
+                <TextView
+                        android:id="@+id/judul"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:paddingStart="@dimen/_17sdp"
+                        android:paddingEnd="@dimen/_17sdp"
+                        android:text="@string/txt_pegaturan"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/_34ssp" />
+
+                <androidx.cardview.widget.CardView
+                        android:id="@+id/lokasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:background="@color/bg_card"
+                        android:elevation="@dimen/_7sdp"
+                        app:cardCornerRadius="@dimen/_7sdp"
+                        app:cardElevation="@dimen/_8sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/hemat_daya">
 
                     <ImageView
-                        android:id="@+id/imgStatLok"
-                        android:layout_width="@dimen/_15sdp"
-                        android:layout_height="@dimen/_15sdp"
-                        android:layout_gravity="right"
-                        android:layout_margin="@dimen/_10sdp"
-                        android:background="@color/transparent"
-                        app:determineStatus="@{viewModel.locationSettingsEnabled}"
-                        tools:src="@drawable/ic_check" />
+                            android:id="@+id/imgStatLok"
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_gravity="right"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:background="@color/transparent"
+                            app:determineStatus="@{viewModel.locationSettingsEnabled}"
+                            tools:src="@drawable/ic_check" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:padding="@dimen/_13sdp">
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_13sdp">
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/exo2_bold"
-                            android:text="@string/txt_lokasi"
-                            android:textSize="@dimen/_20ssp" />
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/exo2_bold"
+                                android:text="@string/txt_lokasi"
+                                android:textSize="@dimen/_20ssp" />
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_12sdp"
-                            android:fontFamily="@font/exo2_regular"
-                            android:text="@string/txt_menyalakan_gps"
-                            android:textColor="#868686"
-                            android:textSize="@dimen/_15ssp" />
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_12sdp"
+                                android:fontFamily="@font/exo2_regular"
+                                android:text="@string/txt_menyalakan_gps"
+                                android:textColor="#868686"
+                                android:textSize="@dimen/_15ssp" />
 
                         <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_17sdp"
-                            android:background="@drawable/rounded_btn"
-                            android:fontFamily="@font/roboto_bold"
-                            android:text="hidupkan"
-                            android:onClick="@{()->viewModel.onBtnLocationClicked()}"
-                            android:textColor="@color/whiteText"
-                            android:textSize="@dimen/_20ssp" />
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_17sdp"
+                                android:background="@drawable/rounded_btn"
+                                android:fontFamily="@font/roboto_bold"
+                                android:onClick="@{()->viewModel.onBtnLocationClicked()}"
+                                android:text="hidupkan"
+                                android:textColor="@color/whiteText"
+                                android:textSize="@dimen/_20ssp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/hemat_daya"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_17sdp"
-                    android:layout_marginRight="@dimen/_17sdp"
-                    android:layout_marginBottom="@dimen/_16sdp"
-                    android:background="@color/bg_card"
-                    android:elevation="@dimen/_7sdp"
-                    app:cardCornerRadius="@dimen/_7sdp"
-                    app:cardElevation="@dimen/_8sdp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/judul">
+                        android:id="@+id/hemat_daya"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:background="@color/bg_card"
+                        android:elevation="@dimen/_7sdp"
+                        app:cardCornerRadius="@dimen/_7sdp"
+                        app:cardElevation="@dimen/_8sdp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/judul">
 
                     <ImageView
-                        android:id="@+id/imgStatBat"
-                        android:layout_width="@dimen/_15sdp"
-                        android:layout_height="@dimen/_15sdp"
-                        android:layout_gravity="right"
-                        android:layout_margin="@dimen/_10sdp"
-                        android:background="@color/transparent"
-                        app:determineStatus="@{!viewModel.powerSaverModeOn}"
-                        tools:src="@drawable/ic_check" />
+                            android:id="@+id/imgStatBat"
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_gravity="right"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:background="@color/transparent"
+                            app:determineStatus="@{!viewModel.powerSaverModeOn}"
+                            tools:src="@drawable/ic_check" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:padding="@dimen/_13sdp">
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_13sdp">
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/exo2_bold"
-                            android:text="@string/txt_mode_hemat_daya"
-                            android:textSize="@dimen/_20ssp" />
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/exo2_bold"
+                                android:text="@string/txt_mode_hemat_daya"
+                                android:textSize="@dimen/_20ssp" />
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_12sdp"
-                            android:fontFamily="@font/exo2_regular"
-                            android:text="@string/txt_mengurangi_penggunaan_daya_ponsel"
-                            android:textColor="#868686"
-                            android:textSize="@dimen/_15ssp" />
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_12sdp"
+                                android:fontFamily="@font/exo2_regular"
+                                android:text="@string/txt_mengurangi_penggunaan_daya_ponsel"
+                                android:textColor="#868686"
+                                android:textSize="@dimen/_15ssp" />
 
                         <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_17sdp"
-                            android:background="@drawable/rounded_btn"
-                            android:fontFamily="@font/roboto_bold"
-                            android:text="@string/txt_matikan"
-                            android:onClick="@{()->viewModel.onBtnPowerSaverClicked()}"
-                            android:textColor="@color/whiteText"
-                            android:textSize="@dimen/_20ssp" />
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_17sdp"
+                                android:background="@drawable/rounded_btn"
+                                android:fontFamily="@font/roboto_bold"
+                                android:onClick="@{()->viewModel.onBtnPowerSaverClicked()}"
+                                android:text="@string/txt_matikan"
+                                android:textColor="@color/whiteText"
+                                android:textSize="@dimen/_20ssp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/optimisasi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_17sdp"
-                    android:layout_marginRight="@dimen/_17sdp"
-                    android:layout_marginBottom="@dimen/_16sdp"
-                    android:background="@color/bg_card"
-                    android:elevation="@dimen/_7sdp"
-                    app:cardCornerRadius="@dimen/_7sdp"
-                    app:cardElevation="@dimen/_8sdp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/hemat_daya">
+                        android:id="@+id/optimisasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:background="@color/bg_card"
+                        android:elevation="@dimen/_7sdp"
+                        app:cardCornerRadius="@dimen/_7sdp"
+                        app:cardElevation="@dimen/_8sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/hemat_daya">
 
                     <ImageView
-                        android:id="@+id/imgStatOpt"
-                        android:layout_width="@dimen/_15sdp"
-                        android:layout_height="@dimen/_15sdp"
-                        android:layout_gravity="right"
-                        android:layout_margin="@dimen/_10sdp"
-                        android:background="@color/transparent"
-                        app:determineStatus="@{!viewModel.batteryOptimized}"
-                        tools:src="@drawable/ic_check" />
+                            android:id="@+id/imgStatOpt"
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_gravity="right"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:background="@color/transparent"
+                            app:determineStatus="@{!viewModel.batteryOptimized}"
+                            tools:src="@drawable/ic_check" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:padding="@dimen/_13sdp">
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_13sdp">
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/exo2_bold"
-                            android:text="@string/txt_optimisasi"
-                            android:textSize="@dimen/_20ssp" />
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/exo2_bold"
+                                android:text="@string/txt_optimisasi"
+                                android:textSize="@dimen/_20ssp" />
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_12sdp"
-                            android:fontFamily="@font/exo2_regular"
-                            android:text="@string/txt_meningkatkan_performa_aplikasi"
-                            android:textColor="#868686"
-                            android:textSize="@dimen/_15ssp" />
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_12sdp"
+                                android:fontFamily="@font/exo2_regular"
+                                android:text="@string/txt_meningkatkan_performa_aplikasi"
+                                android:textColor="#868686"
+                                android:textSize="@dimen/_15ssp" />
 
                         <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_17sdp"
-                            android:background="@drawable/rounded_btn"
-                            android:fontFamily="@font/roboto_bold"
-                            android:text="@string/txt_matikan"
-                            android:onClick="@{()->viewModel.onBtnBatteryOptimizationClicked()}"
-                            android:textColor="@color/whiteText"
-                            android:textSize="@dimen/_20ssp" />
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_17sdp"
+                                android:background="@drawable/rounded_btn"
+                                android:fontFamily="@font/roboto_bold"
+                                android:onClick="@{()->viewModel.onBtnBatteryOptimizationClicked()}"
+                                android:text="@string/txt_matikan"
+                                android:textColor="@color/whiteText"
+                                android:textSize="@dimen/_20ssp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
