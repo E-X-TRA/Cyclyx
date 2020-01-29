@@ -33,8 +33,9 @@
             android:summaryOff="Pengingat Telah Dimatikan"
             android:defaultValue="false" />
     <Preference
-        android:summary="Untuk Mengubah Data Diri"
-        android:title="Edit Profile">
+            android:key="EditProfile"
+            android:summary="Untuk Mengubah Data Diri"
+            android:title="Edit Profile">
     </Preference>
     <ListPreference
             android:dialogTitle="Pilih Tipe"

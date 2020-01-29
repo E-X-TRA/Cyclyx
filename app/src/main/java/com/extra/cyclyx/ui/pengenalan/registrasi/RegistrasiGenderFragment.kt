@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import com.extra.cyclyx.MainActivity
 import com.extra.cyclyx.R
 import com.extra.cyclyx.SignUpActivity
 import com.extra.cyclyx.ui.home.HomeFragment
@@ -61,7 +62,7 @@ class RegistrasiGenderFragment : Fragment() {
 
             editor.commit()
 
-            val intent = Intent(context, HomeFragment::class.java)
+            val intent = Intent(context, MainActivity::class.java)
             startActivity(intent)
 
         }
@@ -80,6 +81,7 @@ class RegistrasiGenderFragment : Fragment() {
 
 
 
+        @SuppressLint("ResourceAsColor")
         fun selectGender(btnClicked: Int){
             when(btnClicked){
                 0 ->{
@@ -91,6 +93,7 @@ class RegistrasiGenderFragment : Fragment() {
                     btn_lelaki.setBackgroundResource(R.drawable.rounded_btn_pengenalan)
                     btn_perempuan.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
                     btn_lelaki.setTextColor(Color.WHITE)
+                    btn_perempuan.setTextColor(R.color.font_light_blue)
                     dataGender = "Laki-Laki"
                 }
 
@@ -98,6 +101,7 @@ class RegistrasiGenderFragment : Fragment() {
                     btn_perempuan.setBackgroundResource(R.drawable.rounded_btn_pengenalan)
                     btn_lelaki.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
                     btn_perempuan.setTextColor(Color.WHITE)
+                    btn_lelaki.setTextColor(R.color.font_light_blue)
                     dataGender = "Perempuan"
                 }
             }
