@@ -1,82 +1,91 @@
 package com.extra.cyclyx.ui.pengenalan.registrasi
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.extra.cyclyx.R
-import com.extra.cyclyx.utils.*
+import com.extra.cyclyx.databinding.FragmentRegistrasiDataDiriBinding
+import com.extra.cyclyx.entity.User
+import com.extra.cyclyx.utils.WARNING_TYPES
 
 /**
  * A simple [Fragment] subclass.
  */
 class RegistrasiDataDiriFragment : Fragment() {
-
-    lateinit var firstName : EditText
-    lateinit var lastName : EditText
-    lateinit var birthYear : EditText
-    lateinit var weight : EditText
-    lateinit var height : EditText
-    lateinit var btnRegister : Button
+    private lateinit var binding : FragmentRegistrasiDataDiriBinding
+    private lateinit var viewModel : RegistrasiViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_registrasi_data_diri, container, false)
+        binding = FragmentRegistrasiDataDiriBinding.inflate(inflater)
+        binding.lifecycleOwner = this
 
-        firstName   = view.findViewById(R.id.edt_nama_depan)
-        lastName    = view.findViewById(R.id.edt_nama_belakang)
-        birthYear   = view.findViewById(R.id.edt_thn_lahir)
-        weight      = view.findViewById(R.id.edt_berat)
-        height      = view.findViewById(R.id.edt_tinggi)
-        btnRegister = view.findViewById(R.id.btnNext)
+        val app = activity?.application
+        viewModel = ViewModelProviders.of(this,RegistrasiViewModel.Factory(app!!)).get(RegistrasiViewModel::class.java)
+        binding.viewModel = viewModel
 
-
-        return view
-
-
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btnRegister.setOnClickListener {
-            var sharedPreferences = activity!!.getSharedPreferences(SP_CYCLYX, Context.MODE_PRIVATE)
+        binding.btnNext.setOnClickListener {
+            val userModel = User()
+            userModel.firstName = binding.edtNamaDepan.text.toString()
+            userModel.lastName = binding.edtNamaBelakang.text.toString()
+            userModel.birthYear = binding.edtThnLahir.text.toString()
+            userModel.weight = binding.edtBerat.text.toString()
+            userModel.height = binding.edtTinggi.text.toString()
 
-            var first_name: String = firstName.text.toString()
-            var last_name: String = lastName.text.toString()
-            var birth_year: String = birthYear.text.toString()
-            var user_weight: String = weight.text.toString()
-            var user_height: String = height.text.toString()
-
-            var editor : SharedPreferences.Editor = sharedPreferences.edit()
-
-            editor.putString(USER_FIRST_NAME, first_name)
-            editor.putString(USER_LAST_NAME, last_name)
-            editor.putInt(USER_BIRTHYEAR, Integer.parseInt(birth_year))
-            editor.putInt(USER_WEIGHT, Integer.parseInt(user_weight))
-            editor.putInt(USER_HEIGHT, Integer.parseInt(user_height))
-
-
-            editor.commit()
-
-            val registrasiGenderFragment = RegistrasiGenderFragment()
-
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.frame_content, registrasiGenderFragment)
-                ?.addToBackStack(null)
-                ?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                ?.commit()
-
+            viewModel.onSaveUserData(userModel)
         }
+
+        binding.btnBack.setOnClickListener {
+            moveToPreviousFragment()
+        }
+
+        viewModel.navigateNext.observe(this, Observer {
+            it?.let {
+                if (it) {
+                    this.moveToNextRegistration()
+                }
+            }
+        })
+
+        viewModel.showWarning.observe(this, Observer {
+            it?.let{
+                when(it){
+                    WARNING_TYPES.REGISTRATION_MUST_NOT_NULL -> {
+                        Toast.makeText(context,"Anda Harus Mengisi Semua Data!", Toast.LENGTH_LONG).show()
+                    }
+                    else -> {
+                        Toast.makeText(context,"Terjadi Sebuah Kesalahan", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        })
+    }
+
+    private fun moveToNextRegistration(){
+        val registrasiGenderFragment = RegistrasiGenderFragment()
+        fragmentManager?.beginTransaction()
+            ?.replace(R.id.frame_content, registrasiGenderFragment)
+            ?.addToBackStack(null)
+            ?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            ?.commit()
+    }
+
+    private fun moveToPreviousFragment(){
+        activity?.onBackPressed()
     }
 
 }

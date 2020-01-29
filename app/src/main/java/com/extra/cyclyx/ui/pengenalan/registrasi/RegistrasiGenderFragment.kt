@@ -1,111 +1,127 @@
 package com.extra.cyclyx.ui.pengenalan.registrasi
 
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.extra.cyclyx.MainActivity
 import com.extra.cyclyx.R
-import com.extra.cyclyx.SignUpActivity
-import com.extra.cyclyx.ui.home.HomeFragment
-import com.extra.cyclyx.utils.*
-import kotlinx.android.synthetic.main.fragment_registrasi_gender.*
+import com.extra.cyclyx.databinding.FragmentRegistrasiGenderBinding
+import com.extra.cyclyx.ui.pengenalan.gambaran.GambaranSelesaiFragment
+import com.extra.cyclyx.utils.GENDER.FEMALE
+import com.extra.cyclyx.utils.GENDER.MALE
+import com.extra.cyclyx.utils.GENDER.UNSELECTED
+import com.extra.cyclyx.utils.WARNING_TYPES
 
 /**
  * A simple [Fragment] subclass.
  */
 class RegistrasiGenderFragment : Fragment() {
-
-    lateinit var btnMale: Button
-    lateinit var btnFemale: Button
-    lateinit var dataGender: String
-    lateinit var btnNext: Button
+    private lateinit var binding: FragmentRegistrasiGenderBinding
+    private lateinit var viewModel: RegistrasiViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        var view =  inflater.inflate(R.layout.fragment_registrasi_gender, container, false)
+        binding = FragmentRegistrasiGenderBinding.inflate(inflater)
+        binding.lifecycleOwner = this
 
-        btnMale = view.findViewById(R.id.btn_lelaki)
-        btnFemale = view.findViewById(R.id.btn_perempuan)
-        btnNext = view.findViewById(R.id.btnNext)
+        val app = activity?.application
+        viewModel = ViewModelProviders.of(this, RegistrasiViewModel.Factory(app!!))
+            .get(RegistrasiViewModel::class.java)
+        binding.viewModel = viewModel
 
-        btnMale.setOnClickListener {
-            selectGender(1)
-        }
-
-        btnFemale.setOnClickListener {
-            selectGender(2)
-        }
-
-        btnNext.setOnClickListener {
-            var sharedPreferences = activity!!.getSharedPreferences(SP_CYCLYX, Context.MODE_PRIVATE)
-
-            var gender: String = dataGender
-
-            var editor : SharedPreferences.Editor = sharedPreferences.edit()
-
-            editor.putString(USER_GENDER, gender)
-            editor.putString(USER_TOKEN,RandomStringGenerator.getRandomString(30))
-
-            editor.commit()
-
-            val intent = Intent(context, MainActivity::class.java)
-            startActivity(intent)
-
-        }
-
-
-
-        return view
-
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-    }
-
-
-
-        @SuppressLint("ResourceAsColor")
-        fun selectGender(btnClicked: Int){
-            when(btnClicked){
-                0 ->{
-                    btn_lelaki.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
-                    btn_perempuan.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
-                }
-
-                1 ->{
-                    btn_lelaki.setBackgroundResource(R.drawable.rounded_btn_pengenalan)
-                    btn_perempuan.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
-                    btn_lelaki.setTextColor(Color.WHITE)
-                    btn_perempuan.setTextColor(R.color.font_light_blue)
-                    dataGender = "Laki-Laki"
-                }
-
-                2 -> {
-                    btn_perempuan.setBackgroundResource(R.drawable.rounded_btn_pengenalan)
-                    btn_lelaki.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
-                    btn_perempuan.setTextColor(Color.WHITE)
-                    btn_lelaki.setTextColor(R.color.font_light_blue)
-                    dataGender = "Perempuan"
+        viewModel.gender.observe(this, Observer { gender ->
+            gender?.let {
+                when (it) {
+                    MALE -> {
+                        binding.btnLelaki.setBackgroundResource(R.drawable.rounded_btn_pengenalan)
+                        binding.btnPerempuan.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
+                        binding.btnLelaki.setTextColor(Color.WHITE)
+                        binding.btnPerempuan.setTextColor(R.color.font_light_blue)
+                    }
+                    FEMALE -> {
+                        binding.btnPerempuan.setBackgroundResource(R.drawable.rounded_btn_pengenalan)
+                        binding.btnLelaki.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
+                        binding.btnPerempuan.setTextColor(Color.WHITE)
+                        binding.btnLelaki.setTextColor(R.color.font_light_blue)
+                    }
+                    UNSELECTED -> {
+                        binding.btnLelaki.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
+                        binding.btnPerempuan.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
+                        binding.btnLelaki.setTextColor(R.color.font_light_blue)
+                        binding.btnPerempuan.setTextColor(R.color.font_light_blue)
+                    }
                 }
             }
+        })
+
+        binding.btnPerempuan.setOnClickListener {
+            viewModel.onClickGenderButton(FEMALE)
         }
+
+        binding.btnLelaki.setOnClickListener {
+            viewModel.onClickGenderButton(MALE)
+        }
+
+        binding.btnNext.setOnClickListener {
+            viewModel.onSaveGenderUserData()
+        }
+
+        binding.btnBack.setOnClickListener {
+            this.moveToPreviousFragment()
+        }
+
+        viewModel.showWarning.observe(this, Observer {
+            it?.let{
+                when(it){
+                    WARNING_TYPES.REGISTRATION_MUST_NOT_NULL -> {
+                        Toast.makeText(context,"Anda Harus Mengisi Semua Data!", Toast.LENGTH_LONG).show()
+                    }
+                    else -> {
+                        Toast.makeText(context,"Terjadi Sebuah Kesalahan", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        })
+
+        viewModel.navigateNext.observe(this, Observer {
+            it?.let {
+                if (it) {
+                    val intent = Intent(context, MainActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+        })
+    }
+
+    private fun moveToLastFragment() {
+        val gambaranSelesaiFragment = GambaranSelesaiFragment()
+        fragmentManager?.beginTransaction()
+            ?.replace(R.id.frame_content, gambaranSelesaiFragment)
+            ?.addToBackStack(null)
+            ?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            ?.commit()
+    }
+
+    private fun moveToPreviousFragment(){
+        activity?.onBackPressed()
+    }
 
 
 }

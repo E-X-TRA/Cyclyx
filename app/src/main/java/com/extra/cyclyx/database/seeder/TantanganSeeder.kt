@@ -32,7 +32,9 @@ class TantanganSeeder(val repo : CyclyxRepository){
     suspend fun seedTantanganData(){
             Log.d("SEEDING",".:: JSON -> $tantanganList ::.")
             for(tantangan in tantanganList){
-                repo.insertTantanganData(tantangan)
+                if(tantangan != null){
+                    repo.insertTantanganData(tantangan)
+                }
             }
     }
 

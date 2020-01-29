@@ -6,7 +6,7 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="3dp"
         android:layout_marginRight="3dp"
-        tools:context=".ui.pengenalan.gambaran.GambaranCoverFragment">
+        tools:context=".ui.pengenalan.gambaran.GambaranFragment">
 
 
     <LinearLayout
