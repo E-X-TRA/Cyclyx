@@ -18,24 +18,23 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ListPreference
+            android:defaultValue="3"
             android:dialogTitle="Pilih Waktu"
             android:entries="@array/sebelum_mulai"
             android:entryValues="@array/sebelum_mulai"
             android:key="sebelum_mulai"
-            android:defaultValue="3"
             android:summary="Waktu Hitung Mundur Sebelum Mulai Bersepeda"
             android:title="Hitung Mundur" />
     <SwitchPreference
+            android:defaultValue="false"
             android:key="remider"
-            android:title="Reminder"
             android:summary="Pengingat ketika Anda Ingin Bersepeda"
-            android:summaryOn="Pengingat Telah Dinyalakan"
             android:summaryOff="Pengingat Telah Dimatikan"
-            android:defaultValue="false" />
+            android:summaryOn="Pengingat Telah Dinyalakan"
+            android:title="Reminder" />
     <Preference
-        android:summary="Untuk Mengubah Data Diri"
-        android:title="Edit Profile">
-    </Preference>
+            android:summary="Untuk Mengubah Data Diri"
+            android:title="Edit Profile"/>
     <ListPreference
             android:dialogTitle="Pilih Tipe"
             android:entries="@array/tipe_peta"
@@ -51,13 +50,13 @@
             android:summary="Menentukan Bagaimana Keluaran Unit nya"
             android:title="Unit" />
     <Preference
-        android:title="Tentang Kami">
-    </Preference>
+            android:key="about_us"
+            android:title="Tentang Kami"/>
     <SwitchPreference
             android:key="screen_on"
-            android:title="Tetap Nyalakan Perangkat"
             android:summary="Perangkat Akan Tetap Nyala Ketika Aplikasi Di Jalankan"
             android:summaryOff="Perangkat Tidak Akan Tetap Nyala"
-            android:summaryOn="Perangkat Akan Tetap Nyala" />
+            android:summaryOn="Perangkat Akan Tetap Nyala"
+            android:title="Tetap Nyalakan Perangkat" />
 
 </PreferenceScreen>

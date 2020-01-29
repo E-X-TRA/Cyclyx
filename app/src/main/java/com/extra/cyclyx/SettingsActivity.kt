@@ -2,6 +2,9 @@ package com.extra.cyclyx
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import kotlinx.android.synthetic.main.settings_activity.*
 
@@ -12,7 +15,7 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.settings_activity)
 
         setSupportActionBar(settingActionBar)
-        supportActionBar?.let{
+        supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
             it.setDisplayShowHomeEnabled(true)
         }
@@ -32,6 +35,22 @@ class SettingsActivity : AppCompatActivity() {
     class SettingsFragment : PreferenceFragmentCompat() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
+
+
+            val aboutUs: Preference? = findPreference("about_us")
+            aboutUs?.setOnPreferenceClickListener {
+
+
+                val fragmentAboutUs: Fragment = AboutUsFragment()
+
+                fragmentManager?.beginTransaction()
+                    ?.replace(R.id.settingsFrame, fragmentAboutUs)
+                    ?.addToBackStack(null)
+                    ?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    ?.commit()
+                true
+            }
+
         }
     }
 }
