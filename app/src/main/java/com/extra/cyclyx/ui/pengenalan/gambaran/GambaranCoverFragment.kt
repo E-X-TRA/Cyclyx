@@ -16,6 +16,8 @@ import com.extra.cyclyx.R
 import com.extra.cyclyx.ui.pengenalan.registrasi.RegistrasiDataDiriFragment
 import com.extra.cyclyx.utils.IntroItem
 import com.google.android.material.tabs.TabLayout
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 import java.util.ArrayList
 import android.content.Context as Context
 
@@ -36,6 +38,8 @@ class GambaranCoverFragment : Fragment() {
     lateinit var linearLayoutSkip: LinearLayout
 
     lateinit var linearLayoutGetStarted: LinearLayout
+
+    lateinit var dotsIndicatorIn : DotsIndicator
 
     lateinit var mContext: Context
 
@@ -66,6 +70,7 @@ class GambaranCoverFragment : Fragment() {
 
         tabIndicator = view.findViewById(R.id.tab_indicator)
 
+        dotsIndicatorIn = view.findViewById(R.id.worm_dot)
 
         // Fill data description
         val mList: ArrayList<IntroItem> = ArrayList<IntroItem>()
@@ -78,11 +83,13 @@ class GambaranCoverFragment : Fragment() {
 
         //Setup View Pager
         screenPager = view.findViewById(R.id.screen_viewpager)
-        introViewPagerAdapter = PageAdapter(requireContext().applicationContext, mList)
+        val introViewPagerAdapter = PageAdapter(requireContext().applicationContext, mList)
         screenPager.adapter = introViewPagerAdapter
 
         //setup tab Indicator
         tabIndicator.setupWithViewPager(screenPager)
+        tabIndicator.isClickable = false
+        dotsIndicatorIn.setViewPager(screenPager)
 
         btnSkip.setOnClickListener {
             screenPager.setCurrentItem(screenPager.currentItem+1, true)
