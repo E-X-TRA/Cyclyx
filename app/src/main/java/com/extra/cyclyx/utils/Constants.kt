@@ -24,6 +24,10 @@ object GENDER{
     const val UNSELECTED = ""
 }
 
+object WARNING_TYPES{
+    const val REGISTRATION_MUST_NOT_NULL = 101
+}
+
 const val TRACKING_STARTED = "tracking_started"
 const val TRACKING_PAUSED = "tracking_paused"
 const val TRACKING_RESUMED = "tracking_resumed"

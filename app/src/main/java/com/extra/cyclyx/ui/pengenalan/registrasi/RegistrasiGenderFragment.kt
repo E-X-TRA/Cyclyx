@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
@@ -18,6 +19,7 @@ import com.extra.cyclyx.ui.pengenalan.gambaran.GambaranSelesaiFragment
 import com.extra.cyclyx.utils.GENDER.FEMALE
 import com.extra.cyclyx.utils.GENDER.MALE
 import com.extra.cyclyx.utils.GENDER.UNSELECTED
+import com.extra.cyclyx.utils.WARNING_TYPES
 
 /**
  * A simple [Fragment] subclass.
@@ -81,6 +83,23 @@ class RegistrasiGenderFragment : Fragment() {
             viewModel.onSaveGenderUserData()
         }
 
+        binding.btnBack.setOnClickListener {
+            this.moveToPreviousFragment()
+        }
+
+        viewModel.showWarning.observe(this, Observer {
+            it?.let{
+                when(it){
+                    WARNING_TYPES.REGISTRATION_MUST_NOT_NULL -> {
+                        Toast.makeText(context,"Anda Harus Mengisi Semua Data!", Toast.LENGTH_LONG).show()
+                    }
+                    else -> {
+                        Toast.makeText(context,"Terjadi Sebuah Kesalahan", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        })
+
         viewModel.navigateNext.observe(this, Observer {
             it?.let {
                 if (it) {
@@ -98,6 +117,10 @@ class RegistrasiGenderFragment : Fragment() {
             ?.addToBackStack(null)
             ?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             ?.commit()
+    }
+
+    private fun moveToPreviousFragment(){
+        activity?.onBackPressed()
     }
 
 

@@ -31,22 +31,44 @@ class RegistrasiViewModel(val app: Application) : AndroidViewModel(app) {
     val navigateNext: LiveData<Boolean>
         get() = _navigateNext
 
+    private val _showWarning = MutableLiveData<Int>()
+    val showWarning: LiveData<Int>
+        get() = _showWarning
+
     init {
         _gender.value = UNSELECTED
     }
 
+    private fun checkUserData(model: User) : Boolean{
+        val (fname,lname,gender,year,weight,height) = model
+        Log.d("INTRO","Check : $fname $lname $gender $year $weight $height")
+
+        return when{
+            fname == "" -> false
+            lname == "" -> false
+            year == "" -> false
+            weight == "" -> false
+            height == "" -> false
+            else -> true
+        }
+    }
+
     fun onSaveUserData(model: User) {
-        //simpan user data ke shared preferences
-        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        if(checkUserData(model)){
+            //simpan user data ke shared preferences
+            val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
-        editor.putString(USER_FIRST_NAME, model.firstName)
-        editor.putString(USER_LAST_NAME, model.lastName)
-        editor.putInt(USER_BIRTHYEAR, model.birthYear)
-        editor.putInt(USER_WEIGHT, model.weight)
-        editor.putInt(USER_HEIGHT, model.height)
+            editor.putString(USER_FIRST_NAME, model.firstName)
+            editor.putString(USER_LAST_NAME, model.lastName)
+            editor.putInt(USER_BIRTHYEAR, Integer.parseInt(model.birthYear))
+            editor.putInt(USER_WEIGHT, Integer.parseInt(model.weight))
+            editor.putInt(USER_HEIGHT, Integer.parseInt(model.height))
 
-
-        editor.apply()
+            editor.apply()
+            _navigateNext.value = true
+        }else{
+            _showWarning.value = WARNING_TYPES.REGISTRATION_MUST_NOT_NULL
+        }
     }
 
     fun onClickGenderButton(value: String) {
@@ -68,6 +90,8 @@ class RegistrasiViewModel(val app: Application) : AndroidViewModel(app) {
             editor.apply()
             this.seedTantanganData()
             _navigateNext.value = true
+        }else{
+            _showWarning.value = WARNING_TYPES.REGISTRATION_MUST_NOT_NULL
         }
     }
 
