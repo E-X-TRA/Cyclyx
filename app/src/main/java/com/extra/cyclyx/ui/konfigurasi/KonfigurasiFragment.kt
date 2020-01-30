@@ -58,7 +58,7 @@ class KonfigurasiFragment : Fragment() {
     private fun showLocationDialog() {
         AlertDialog.Builder(context)
             .setTitle("Hidupkan Pelacak Lokasi") // GPS not found
-            .setMessage("Pada laman selanjutnya, bla bla bla") // Want to enable?
+            .setMessage("Hidupkan Pengaturan Lokasi supaya CYCLYX bisa mengetahui posisi anda saat bersepeda") // Want to enable?
             .setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
                 activity?.startActivity(
                     Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
@@ -70,7 +70,7 @@ class KonfigurasiFragment : Fragment() {
     private fun showBatteryOptimizationDialog() {
         AlertDialog.Builder(context)
             .setTitle("Matikan Optimisasi Baterai") // GPS not found
-            .setMessage("Pada laman selanjutnya, bla bla bla") // Want to enable?
+            .setMessage("Hilangkan CYCLYX dari Optimisasi Baterai supaya aplikasi dapat berjalan dengan baik") // Want to enable?
             .setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
                 activity?.startActivity(
                     Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
@@ -82,7 +82,7 @@ class KonfigurasiFragment : Fragment() {
     private fun showPowerSaverDialog(){
         AlertDialog.Builder(context)
             .setTitle("Matikan Mode Hemat Daya") // GPS not found
-            .setMessage("Pada laman selanjutnya, bla bla bla") // Want to enable?
+            .setMessage("Matikan Mode Hemat Daya supaya CYCLYX dapat berjalan dengan baik") // Want to enable?
             .setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
                 activity?.startActivity(
                         Intent(Settings.ACTION_BATTERY_SAVER_SETTINGS)

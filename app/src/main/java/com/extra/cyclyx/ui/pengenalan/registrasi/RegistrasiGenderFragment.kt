@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.extra.cyclyx.MainActivity
 import com.extra.cyclyx.R
 import com.extra.cyclyx.databinding.FragmentRegistrasiGenderBinding
-import com.extra.cyclyx.ui.pengenalan.gambaran.GambaranSelesaiFragment
+import com.extra.cyclyx.ui.pengenalan.PengenalanSelesaiFragment
 import com.extra.cyclyx.utils.GENDER.FEMALE
 import com.extra.cyclyx.utils.GENDER.MALE
 import com.extra.cyclyx.utils.GENDER.UNSELECTED
@@ -111,7 +111,8 @@ class RegistrasiGenderFragment : Fragment() {
     }
 
     private fun moveToLastFragment() {
-        val gambaranSelesaiFragment = GambaranSelesaiFragment()
+        val gambaranSelesaiFragment =
+            PengenalanSelesaiFragment()
         fragmentManager?.beginTransaction()
             ?.replace(R.id.frame_content, gambaranSelesaiFragment)
             ?.addToBackStack(null)

@@ -1,4 +1,4 @@
-package com.extra.cyclyx.ui.pengenalan.gambaran
+package com.extra.cyclyx.ui.pengenalan
 
 
 import android.os.Bundle
@@ -11,14 +11,14 @@ import com.extra.cyclyx.R
 /**
  * A simple [Fragment] subclass.
  */
-class GambaranSelesaiFragment : Fragment() {
+class PengenalanSelesaiFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gambaran_selesai, container, false)
+        return inflater.inflate(R.layout.fragment_pengenalan_selesai, container, false)
     }
 
 

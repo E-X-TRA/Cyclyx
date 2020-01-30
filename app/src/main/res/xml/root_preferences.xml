@@ -33,7 +33,7 @@
             android:summaryOn="Pengingat Telah Dinyalakan"
             android:title="Reminder" />
     <Preference
-            android:key="EditProfile"
+            android:key="edit_profile"
             android:summary="Untuk Mengubah Data Diri"
             android:title="Edit Profile">
     </Preference>

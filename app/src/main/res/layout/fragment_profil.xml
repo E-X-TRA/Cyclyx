@@ -61,6 +61,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/exo2_regular"
                                 app:showFullName="@{viewModel.profil}"
+                                tools:text="John Doe"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                                 android:textColor="#494949"
                                 android:textSize="@dimen/_27ssp" />
@@ -87,11 +88,11 @@
             </RelativeLayout>
 
             <ImageButton
-                    android:id="@+id/BtnSettings"
+                    android:id="@+id/BtnEditProfil"
                     android:layout_width="@dimen/_21sdp"
                     android:layout_height="@dimen/_21sdp"
                     android:layout_margin="@dimen/_8sdp"
-                    android:src="@drawable/ic_settings_black_24dp"
+                    android:src="@drawable/ic_edit"
                     app:layout_constraintBottom_toTopOf="@id/div"
                     app:layout_constraintRight_toRightOf="parent" />
 
@@ -120,7 +121,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/exo2_bold"
-                            android:text="14"
+                            tools:text="14"
+                            android:text="@{viewModel.displayUserTantangan}"
                             android:textAppearance="@style/TextAppearance.AppCompat.Large"
                             android:textColor="#E30808"
                             android:textSize="@dimen/_18ssp" />
@@ -146,7 +148,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/exo2_bold"
-                            android:text="42"
+                            tools:text="42"
+                            android:text="@{viewModel.displayUserDistance}"
                             android:textAppearance="@style/TextAppearance.AppCompat.Large"
                             android:textColor="#B4E308"
                             android:textSize="@dimen/_18ssp" />
@@ -172,7 +175,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/exo2_bold"
-                            android:text="8"
+                            tools:text="8"
+                            android:text="@{viewModel.displayUserUsage[0]}"
                             android:textAppearance="@style/TextAppearance.AppCompat.Large"
                             android:textColor="#E36E08"
                             android:textSize="@dimen/_18ssp" />
@@ -181,7 +185,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/exo2_regular"
-                            android:text="@string/txt_jam"
+                            tools:text="@string/txt_jam"
+                            android:text="@{viewModel.displayUserUsage[1]}"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
                             android:textColor="#494949"
                             android:textSize="@dimen/_13ssp" />

@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.extra.cyclyx.EditProfileFragment
-import com.extra.cyclyx.R
+import androidx.navigation.fragment.findNavController
 import com.extra.cyclyx.databinding.FragmentProfilBinding
 
 class ProfilFragment : Fragment() {
@@ -26,8 +25,11 @@ class ProfilFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         viewModel = ViewModelProviders.of(this, ProfilViewModel.Factory(application)).get(
             ProfilViewModel::class.java)
-
         binding.viewModel = viewModel
+
+        binding.BtnEditProfil.setOnClickListener{
+            this.findNavController().navigate(ProfilFragmentDirections.navigateToEditProfile())
+        }
         return binding.root
     }
 

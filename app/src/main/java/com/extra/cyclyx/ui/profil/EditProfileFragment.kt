@@ -1,17 +1,21 @@
-package com.extra.cyclyx
+package com.extra.cyclyx.ui.profil
 
 
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
-import com.extra.cyclyx.utils.*
+import androidx.fragment.app.Fragment
+import com.extra.cyclyx.MainActivity
+import com.extra.cyclyx.R
+import com.extra.cyclyx.utils.SP_CYCLYX
+import com.extra.cyclyx.utils.USER_BIRTHYEAR
+import com.extra.cyclyx.utils.USER_FIRST_NAME
+import com.extra.cyclyx.utils.USER_LAST_NAME
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 /**

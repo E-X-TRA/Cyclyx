@@ -125,6 +125,7 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
             viewModel.act.observe(this, Observer {act ->
                 act?.let{
                     viewModel.onMapAsyncFinished()
+                    viewModel.onActLoaded(it)
                 }
             })
         }

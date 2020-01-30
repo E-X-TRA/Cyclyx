@@ -14,11 +14,10 @@ import com.extra.cyclyx.database.AppDatabase
 import com.extra.cyclyx.entity.Bersepeda
 import com.extra.cyclyx.entity.ReferenceItem
 import com.extra.cyclyx.entity.Tantangan
-import com.extra.cyclyx.utils.RandomDataGenerator
-import com.extra.cyclyx.utils.SP_CYCLYX
-import com.extra.cyclyx.utils.SP_SETTING
 import com.extra.cyclyx.utils.FIREBASE_CONSTANTS.BASE_KEY
 import com.extra.cyclyx.utils.FIREBASE_CONSTANTS.REFERENSI_KEY
+import com.extra.cyclyx.utils.SP_CYCLYX
+import com.extra.cyclyx.utils.SP_SETTING
 import com.google.firebase.database.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -31,11 +30,10 @@ class CyclyxRepository(val context: Context){
     val firebaseDB = FirebaseDatabase.getInstance()
     val firebaseReference : DatabaseReference = firebaseDB.reference
 
-    fun getAllReference(type : String) :List<ReferenceItem>{
+    fun getAllReferenceByType(type : String) :List<ReferenceItem>{
         val list = ArrayList<ReferenceItem>()
         firebaseReference.child(BASE_KEY).child(REFERENSI_KEY).child(type).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
-                if (list.isNotEmpty()) list.clear()
                 for (i in p0.children) {
                     val model = i.getValue(ReferenceItem::class.java)
                     model?.let {
@@ -49,10 +47,6 @@ class CyclyxRepository(val context: Context){
             }
         })
         return list
-    }
-
-    fun getRandomItemReference(list : List<ReferenceItem>) : ReferenceItem{
-        return list[RandomDataGenerator.getRandomListItem(list.size)]
     }
 
     fun getItemReference(type : String,uid : String) : ReferenceItem?{
@@ -105,7 +99,9 @@ class CyclyxRepository(val context: Context){
 
     //challenge related
     val allChallengeData : LiveData<List<Tantangan>> = database.tantanganDAO.getAllTantangan()
-
+    val challengeCount : LiveData<Int> = database.tantanganDAO.getAllTantanganCount()
+    val finishedCount : LiveData<Int> = database.tantanganDAO.getFinishedTantanganCount()
+    val unfinishedCount : LiveData<Int> = database.tantanganDAO.getUnfinishedTantanganCount()
 
 
     suspend fun insertTantanganData(data : Tantangan){

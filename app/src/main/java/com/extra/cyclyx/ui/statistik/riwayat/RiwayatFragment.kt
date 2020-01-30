@@ -13,11 +13,11 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.extra.cyclyx.databinding.FragmentRiwayatBinding
+import com.extra.cyclyx.ui.adapter.RiwayatAdapter
+import com.extra.cyclyx.ui.adapter.RiwayatClickListener
 import com.extra.cyclyx.ui.statistik.StatistikFragmentDirections
 import com.extra.cyclyx.utils.DELETE_ITEM
 import com.extra.cyclyx.utils.DETAIL_ITEM
-import com.extra.cyclyx.ui.adapter.RiwayatAdapter
-import com.extra.cyclyx.ui.adapter.RiwayatClickListener
 
 class RiwayatFragment : Fragment() {
     private lateinit var binding: FragmentRiwayatBinding
@@ -68,7 +68,7 @@ class RiwayatFragment : Fragment() {
     private fun showDeleteItemConfirmation(actId :Long){
         AlertDialog.Builder(context)
             .setTitle("Hapus Item Ini") // GPS not found
-            .setMessage("Pada laman selanjutnya, bla bla bla") // Want to enable?
+            .setMessage("Anda Yakin untuk Menghapus Item Ini ?") // Want to enable?
             .setPositiveButton("Ya", DialogInterface.OnClickListener { _, _->
                 viewModel.onDeleteClicked(actId)
             })

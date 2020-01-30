@@ -33,8 +33,8 @@ class BersepedaActivity : AppCompatActivity(){
 
     private fun showConfirmationDialog(){
         AlertDialog.Builder(this)
-            .setTitle("Anda Yakin Untuk Kembali Ke Home") // GPS not found
-            .setMessage("Pada laman selanjutnya, bla bla bla") // Want to enable?
+            .setTitle("Anda Yakin Untuk Kembali Ke Home ?")
+            .setMessage("Data yang anda lakukan akan ditampilkan dengan label error di riwayat bersepeda")
             .setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
                 this.finish()
             })

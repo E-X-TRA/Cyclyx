@@ -6,12 +6,13 @@ import android.content.pm.PackageManager
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
+import com.extra.cyclyx.entity.ReferenceItem
 import com.extra.cyclyx.repository.CyclyxRepository
-import com.extra.cyclyx.utils.indonesianLocale
+import com.extra.cyclyx.utils.FIREBASE_CONSTANTS.TIPS_ITEM
+import com.extra.cyclyx.utils.RandomDataGenerator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import java.util.*
 
 class HomeViewModel(val app: Application) : AndroidViewModel(app) {
     val repository = CyclyxRepository(app.applicationContext)
@@ -20,6 +21,31 @@ class HomeViewModel(val app: Application) : AndroidViewModel(app) {
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     //init permission related
     var isLocationPermissionGranted: Boolean = false
+
+    private val _finishedTantanganCount = MutableLiveData<Int>()
+    private val _allTantanganCount = MutableLiveData<Int>()
+
+    val finishedCount = Transformations.map(_finishedTantanganCount){
+        it?.let {
+            "$it"
+        }
+    }
+    val allCount = Transformations.map(_allTantanganCount){
+        it?.let {
+            "$it"
+        }
+    }
+
+    private val _referenceTips = MutableLiveData<List<ReferenceItem>>()
+    val tipsItem = Transformations.map(_referenceTips){
+        it?.let{
+            if(it.size != 0){
+                it[RandomDataGenerator.getRandomListItem(it.size)]
+            }else{
+                ReferenceItem(content = "Tidak Ada Tips Untuk Ditampilkan")
+            }
+        }
+    }
     
     private val _navigateToKesiapan = MutableLiveData<Boolean>()
     val navigateToKesiapan : LiveData<Boolean>
@@ -48,9 +74,9 @@ class HomeViewModel(val app: Application) : AndroidViewModel(app) {
     init {
         //checkLocationPermission
         checkLocationPermission()
-        //checkLocationSettings
 
-        Log.d("TRACKING","Location Permission = ${isLocationPermissionGranted}")
+        _referenceTips.value = repository.getAllReferenceByType(TIPS_ITEM)
+        Log.d("HOME","${_referenceTips.value}")
     }
 
     //return true if granted and false if not granted

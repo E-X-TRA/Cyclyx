@@ -1,12 +1,12 @@
 package com.extra.cyclyx
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.extra.cyclyx.ui.profil.EditProfileFragment
 import kotlinx.android.synthetic.main.settings_activity.*
 
 class SettingsActivity : AppCompatActivity() {
@@ -52,10 +52,11 @@ class SettingsActivity : AppCompatActivity() {
                 true
             }
 
-            var editProfile: Preference? = findPreference("EditProfile")
+            var editProfile: Preference? = findPreference("edit_profile")
             editProfile?.setOnPreferenceClickListener {
 
-                val editProfileFragment: Fragment = EditProfileFragment()
+                val editProfileFragment: Fragment =
+                    EditProfileFragment()
 
                 fragmentManager?.beginTransaction()
                     ?.replace(R.id.settingsFrame, editProfileFragment)

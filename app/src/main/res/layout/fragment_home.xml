@@ -99,7 +99,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/exo2_light"
-                            android:text="isi tips disini"
+                            tools:text="isi tips disini"
+                            android:text="@{viewModel.tipsItem.content}"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
                             android:textColor="#6F6F6F"
                             android:textSize="@dimen/_12sdp" />
@@ -162,6 +163,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:fontFamily="@font/exo2_bold"
                                     tools:text="5"
+                                    android:text="@{viewModel.finishedCount}"
                                     android:textAlignment="center"
                                     android:textColor="@color/whiteText"
                                     android:textSize="@dimen/_20sdp" />
@@ -194,6 +196,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:fontFamily="@font/exo2_bold"
                                     tools:text="5"
+                                    android:text="@{viewModel.allCount}"
                                     android:textColor="@color/whiteText"
                                     android:textSize="@dimen/_20sdp" />
 

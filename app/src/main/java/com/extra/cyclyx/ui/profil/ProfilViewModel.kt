@@ -21,13 +21,41 @@ class ProfilViewModel(app: Application) : AndroidViewModel(app) {
     val profil: LiveData<Profil>
         get() = _profil
 
+    val unfinishedTantanganCount = repository.unfinishedCount
+
+    private val _totalUserDistance = MutableLiveData<Double>()
+    val totalUserDistance : LiveData<Double>
+        get() = _totalUserDistance
+
+    val displayUserDistance = Transformations.map(totalUserDistance){
+        it?.let{
+            formatDouble(it,"#.#")
+        }
+    }
+
+    private val _totalUserUsage = MutableLiveData<Long>()
+    val totalUserUsage : LiveData<Long>
+        get() = _totalUserUsage
+
+    val displayUserUsage = Transformations.map(totalUserUsage){
+        it?.let{
+            convertDurationToShortestString(it)
+        }
+    }
+
+    val displayUserTantangan = Transformations.map(unfinishedTantanganCount){
+        it?.let {
+            "$it"
+        }
+    }
+
     private val tempProfil = Profil(
-        repository.sharedPreferences.getString(USER_FIRST_NAME, "."),
-        repository.sharedPreferences.getString(USER_LAST_NAME, "."),
+        repository.sharedPreferences.getString(USER_FIRST_NAME, "Sample"),
+        repository.sharedPreferences.getString(USER_LAST_NAME, "User"),
         "L",
-        repository.sharedPreferences.getInt(USER_BIRTHYEAR, 2001),
-        repository.sharedPreferences.getInt(USER_HEIGHT, 0),
-        repository.sharedPreferences.getInt(USER_WEIGHT, 0)
+        repository.sharedPreferences.getInt(USER_BIRTHYEAR, 1999),
+        repository.sharedPreferences.getInt(USER_HEIGHT, 50),
+        repository.sharedPreferences.getInt(USER_WEIGHT, 170)
     )
 
     fun convertDateStringtoAge(stringDate: Int): String {
@@ -44,6 +72,8 @@ class ProfilViewModel(app: Application) : AndroidViewModel(app) {
 
     init {
         _profil.value = tempProfil
+        _totalUserDistance.value = repository.sharedPreferences.getDouble(USER_TOTAL_DISTANCE,0.0)
+        _totalUserUsage.value = repository.sharedPreferences.getLong(USER_TOTAL_DURATION,0L)
     }
 
     override fun onCleared() {
