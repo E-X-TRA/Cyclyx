@@ -65,6 +65,9 @@ dependencies {
     kapt 'android.arch.persistence.room:compiler:1.1.1'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+
+    implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
+
     //maps
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.0.0-alpha.1'
     implementation 'com.mapbox.mapboxsdk:mapbox-sdk-turf:5.0.0'

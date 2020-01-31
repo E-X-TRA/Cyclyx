@@ -28,15 +28,28 @@
                 app:layout_constraintLeft_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
+            <RelativeLayout
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
-                    android:background="@drawable/tantangancircle"
                     android:gravity="center">
 
+                <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:layout_centerInParent="true"
+                        android:id="@+id/progress_circular"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cpb_background_progressbar_color="@color/actionTrasnsparent"
+                        app:cpb_background_progressbar_width="@dimen/_3sdp"
+                        app:cpb_progressbar_color="@color/colorAccent"
+                        app:cpb_progress_direction="to_right"
+                        app:cpb_progressbar_width="@dimen/_7sdp"
+                        app:cpb_progress_max="100"
+                        />
+
                 <TextView
+                        android:layout_centerInParent="true"
                         android:id="@+id/TxtTtgPercentage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -46,7 +59,7 @@
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textSize="@dimen/_12ssp"
                         tools:text="@string/txt_persentase" />
-            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                     android:layout_width="match_parent"
