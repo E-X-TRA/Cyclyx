@@ -34,6 +34,9 @@ class TantanganAdapter() : ListAdapter<Tantangan, TantanganAdapter.TantanganVH>(
         fun bind(act: Tantangan){
             binding.tantangan = act
             binding.executePendingBindings()
+            binding.progressCircular.apply {
+                setProgressWithAnimation(act.progressTantangan.toFloat(), 2000)
+            }
         }
 
         companion object {

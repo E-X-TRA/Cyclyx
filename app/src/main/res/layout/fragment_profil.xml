@@ -93,6 +93,7 @@
                     android:layout_height="@dimen/_21sdp"
                     android:layout_margin="@dimen/_8sdp"
                     android:src="@drawable/ic_edit"
+                    android:background="@null"
                     app:layout_constraintBottom_toTopOf="@id/div"
                     app:layout_constraintRight_toRightOf="parent" />
 
