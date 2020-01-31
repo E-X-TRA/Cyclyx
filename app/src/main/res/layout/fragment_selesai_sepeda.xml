@@ -27,6 +27,7 @@
     </RelativeLayout>
 
     <TextView
+            android:id="@+id/tvText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/roundback"
@@ -38,13 +39,25 @@
             android:text="Anda telah bersepeda"/>
 
     <Button
+            android:id="@+id/btnHasil"
             style="@style/NextButton"
             android:background="@color/colorAccent"
-            android:text="Selesai"
+            android:text="Lihat hasil anda"
             android:textAllCaps="false"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvText"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="@dimen/_20sdp"/>
+            app:layout_constraintEnd_toStartOf="@id/btnSelesai"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+            android:id="@+id/btnSelesai"
+            style="@style/WhiteButton"
+            android:text="Selesai"
+            android:textSize="@dimen/_18sdp"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="@id/btnHasil"
+            app:layout_constraintStart_toEndOf="@id/btnHasil"
+            app:layout_constraintTop_toTopOf="@id/btnHasil"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
