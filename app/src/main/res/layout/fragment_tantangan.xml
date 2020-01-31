@@ -4,6 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
                 name="viewModel"
                 type="com.extra.cyclyx.ui.statistik.tantangan.TantanganViewModel" />
@@ -19,11 +20,11 @@
                 android:id="@+id/head"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_13sdp"
                 android:orientation="vertical"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/card">
 
             <TextView
                     android:layout_width="match_parent"
@@ -50,11 +51,17 @@
                 android:id="@+id/card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_3sdp"
                 android:backgroundTint="@color/bg_tantangan"
                 app:cardCornerRadius="@dimen/_8sdp"
                 app:cardElevation="@dimen/_8sdp"
-                app:layout_constraintTop_toBottomOf="@id/head">
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/head"
+                app:layout_constraintBottom_toTopOf="@id/LinearData">
 
             <LinearLayout
                     android:layout_width="wrap_content"
@@ -90,16 +97,22 @@
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
+
+                android:id="@+id/LinearData"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_250sdp"
                 android:layout_marginStart="@dimen/_17sdp"
                 android:layout_marginTop="@dimen/_17sdp"
                 android:layout_marginEnd="@dimen/_17sdp"
                 android:layout_marginBottom="@dimen/_17sdp"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/card">
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card"
+                app:layout_constraintBottom_toBottomOf="parent">
 
             <TextView
+                    android:id="@+id/txtPencapaianmu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/exo2_bold"
@@ -112,7 +125,7 @@
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvPencapaian"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     tools:listitem="@layout/item_tantangan" />
 
         </LinearLayout>
