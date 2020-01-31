@@ -176,7 +176,7 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun navigateToResult(id : Long){
-        this.findNavController().navigate(BersepedaFragmentDirections.navigateToHasilBersepedaFromBersepeda(id))
+        this.findNavController().navigate(BersepedaFragmentDirections.navigateToSelesaiBersepedaFromBersepeda(id))
     }
 
     //receive service location update

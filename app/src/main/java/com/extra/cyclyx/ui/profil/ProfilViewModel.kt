@@ -21,7 +21,7 @@ class ProfilViewModel(app: Application) : AndroidViewModel(app) {
     val profil: LiveData<Profil>
         get() = _profil
 
-    val unfinishedTantanganCount = repository.unfinishedCount
+    val finsihedTantanganCount = repository.finishedCount
 
     private val _totalUserDistance = MutableLiveData<Double>()
     val totalUserDistance : LiveData<Double>
@@ -43,7 +43,7 @@ class ProfilViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
-    val displayUserTantangan = Transformations.map(unfinishedTantanganCount){
+    val displayUserTantangan = Transformations.map(finsihedTantanganCount){
         it?.let {
             "$it"
         }

@@ -22,15 +22,15 @@ class HomeViewModel(val app: Application) : AndroidViewModel(app) {
     //init permission related
     var isLocationPermissionGranted: Boolean = false
 
-    private val _finishedTantanganCount = MutableLiveData<Int>()
-    private val _allTantanganCount = MutableLiveData<Int>()
+    private val _finishedTantanganCount = repository.finishedCount
+    private val _unfinisehdTantanganCount = repository.unfinishedCount
 
     val finishedCount = Transformations.map(_finishedTantanganCount){
         it?.let {
             "$it"
         }
     }
-    val allCount = Transformations.map(_allTantanganCount){
+    val unfinishedCount = Transformations.map(_unfinisehdTantanganCount){
         it?.let {
             "$it"
         }

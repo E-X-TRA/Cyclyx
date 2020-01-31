@@ -42,7 +42,7 @@ class KesiapanViewModel(val app: Application) : AndroidViewModel(app) {
             if(it.size != 0){
                 it[RandomDataGenerator.getRandomListItem(it.size)]
             }else{
-                ReferenceItem(content = "Tidak Ada Tips Untuk Ditampilkan")
+                ReferenceItem(content = "Tidak Ada Apapun Untuk Ditampilkan")
             }
         }
     }

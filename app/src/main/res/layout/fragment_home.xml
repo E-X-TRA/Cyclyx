@@ -196,7 +196,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:fontFamily="@font/exo2_bold"
                                     tools:text="5"
-                                    android:text="@{viewModel.allCount}"
+                                    android:text="@{viewModel.unfinishedCount}"
                                     android:textColor="@color/whiteText"
                                     android:textSize="@dimen/_20sdp" />
 

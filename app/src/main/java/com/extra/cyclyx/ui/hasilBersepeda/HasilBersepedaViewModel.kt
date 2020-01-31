@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.extra.cyclyx.entity.Bersepeda
 import com.extra.cyclyx.repository.CyclyxRepository
-import com.extra.cyclyx.utils.*
 import com.mapbox.geojson.Point
 import com.mapbox.geojson.utils.PolylineUtils
 import kotlinx.coroutines.CoroutineScope
@@ -35,51 +34,6 @@ class HasilBersepedaViewModel(
     init {
         Log.d("MAP","Style : $mapStyle")
         act = repository.getCyclingData(actId)
-    }
-
-    fun onActLoaded(act : Bersepeda){
-        Log.d("TRACKING","Act Loaded")
-        modifyUserCyclingData(act)
-    }
-
-    //adding save data to shared preferences
-    private fun modifyUserCyclingData(act : Bersepeda){
-        val editor = repository.sharedPreferences.edit()
-
-        //sum total distance
-        val existingDistance = repository.sharedPreferences.getDouble(USER_TOTAL_DISTANCE, 0.0)
-        val thisActDistance = act.distance
-        val newDistance = existingDistance + thisActDistance
-        //put new total in SP
-        editor.putDouble(USER_TOTAL_DISTANCE,newDistance)
-
-        //sum total duration
-        val existingDuration = repository.sharedPreferences.getLong(USER_TOTAL_DURATION, 0L)
-        val thisActDuration = act.endTime - act.startTime
-        val newDuration = existingDuration + thisActDuration
-        //put new total in SP
-        editor.putLong(USER_TOTAL_DURATION,newDuration)
-
-        //compare max speed
-        val existingPeakSpeed = repository.sharedPreferences.getDouble(USER_MAX_PEAK_SPEED,0.0)
-        val thisActPeakSpeed = act.peakSpeed
-        val newPeakSpeed = if(thisActPeakSpeed > existingPeakSpeed){
-            thisActPeakSpeed
-        }else{
-            existingPeakSpeed
-        }
-        //put new max speed
-        editor.putDouble(USER_MAX_PEAK_SPEED,newPeakSpeed)
-
-        //sum total distance
-        val existingCalories = repository.sharedPreferences.getDouble(USER_TOTAL_CALORIES, 0.0)
-        val thisActCalories = act.calories
-        val newCalories = existingCalories + thisActCalories
-        //put new total in SP
-        editor.putDouble(USER_TOTAL_CALORIES,newCalories)
-
-
-        editor.apply()
     }
 
     fun decodeRoute(act: Bersepeda?) {

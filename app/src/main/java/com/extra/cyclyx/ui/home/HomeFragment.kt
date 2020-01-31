@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import com.extra.cyclyx.BersepedaActivity
 import com.extra.cyclyx.R
 import com.extra.cyclyx.SettingsActivity
 import com.extra.cyclyx.databinding.FragmentHomeBinding
@@ -33,12 +32,12 @@ class HomeFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         if(!viewModel.isLocationPermissionGranted){
-            if(ActivityCompat.shouldShowRequestPermissionRationale(activity!!,Manifest.permission.ACCESS_FINE_LOCATION)){
-                Snackbar.make(view!!,getString(R.string.permission_location_explanation),Snackbar.LENGTH_INDEFINITE).show()
-                ActivityCompat.requestPermissions(activity!!, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+            if(ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),Manifest.permission.ACCESS_FINE_LOCATION)){
+                Snackbar.make(requireView(),getString(R.string.permission_location_explanation),Snackbar.LENGTH_INDEFINITE).show()
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     PERMISSION_FINE_LOCATION_REQUEST)
             }else{
-                ActivityCompat.requestPermissions(activity!!, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     PERMISSION_FINE_LOCATION_REQUEST)
             }
         }

@@ -2,6 +2,10 @@ package com.extra.cyclyx.utils
 
 import android.content.SharedPreferences
 import android.util.Log
+import androidx.lifecycle.LiveData
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.Query
 import com.mapbox.mapboxsdk.maps.Style
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -217,4 +221,8 @@ class RandomDataGenerator {
             return (0..listSize - 1).random()
         }
     }
+}
+
+class FireBaseQueryLiveData(val query : Query?=null,val databaseReference: DatabaseReference?=null) : LiveData<DataSnapshot>(){
+
 }
