@@ -51,35 +51,107 @@
                 app:layout_constraintTop_toBottomOf="@id/title_layout"
                 app:layout_constraintBottom_toTopOf="@id/relativeBack">
 
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextAppearance.AppCompat.Caption"
+                    android:text="@string/nama_depan"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="@dimen/_5sdp"/>
             <EditText
                     android:id="@+id/edt_nama_depan"
                     style="@style/edit_text"
                     android:hint="@string/nama_depan" />
 
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextAppearance.AppCompat.Caption"
+                    android:text="@string/nama_belakang"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="@dimen/_5sdp"/>
             <EditText
                     android:id="@+id/edt_nama_belakang"
                     style="@style/edit_text"
                     android:hint="@string/nama_belakang" />
 
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextAppearance.AppCompat.Caption"
+                    android:text="@string/tanggal_lahir"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="@dimen/_5sdp"/>
             <EditText
                     android:id="@+id/edt_thn_lahir"
                     style="@style/edit_text"
                     android:inputType="numberDecimal"
-                    android:layout_marginTop="@dimen/_27ssp"
                     android:hint="Tahun Lahir" />
 
-            <EditText
-                    android:id="@+id/edt_berat"
-                    style="@style/edit_text"
-                    android:inputType="numberDecimal"
-                    android:layout_marginTop="@dimen/_27sdp"
-                    android:hint="@string/berat_badan" />
+            <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_12sdp">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.AppCompat.Caption"
+                        android:text="@string/berat_badan"
+                        android:layout_alignParentTop="true"
+                        android:id="@+id/tvTBerat"
+                        android:layout_marginBottom="@dimen/_5sdp"/>
+                <EditText
+                        android:layout_below="@id/tvTBerat"
+                        android:id="@+id/edt_berat"
+                        style="@style/edit_text"
+                        android:layout_width="@dimen/_150sdp"
+                        android:inputType="numberDecimal"
+                        android:hint="@string/berat_badan"
+                        android:layout_centerVertical="true"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kg"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:fontFamily="@font/exo2_regular"
+                        style="@style/CardView"
+                        android:layout_toRightOf="@id/edt_berat"
+                        android:layout_centerVertical="true"/>
 
-            <EditText
-                    android:id="@+id/edt_tinggi"
-                    style="@style/edit_text"
-                    android:inputType="numberDecimal"
-                    android:hint="@string/tinggi_badan" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.AppCompat.Caption"
+                        android:text="@string/tinggi_badan"
+                        android:layout_alignParentTop="true"
+                        android:id="@+id/tvTTinggi"
+                        android:layout_marginBottom="@dimen/_5sdp"/>
+                <EditText
+                        android:layout_below="@id/tvTTinggi"
+                        android:id="@+id/edt_tinggi"
+                        style="@style/edit_text"
+                        android:inputType="numberDecimal"
+                        android:hint="@string/tinggi_badan"
+                        android:layout_centerVertical="true"
+                        android:layout_width="@dimen/_150sdp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cm"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:fontFamily="@font/exo2_regular"
+                        style="@style/CardView"
+                        android:layout_toRightOf="@id/edt_tinggi"
+                        android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
         </LinearLayout>
 
         <RelativeLayout
