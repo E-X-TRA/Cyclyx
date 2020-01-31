@@ -1,0 +1,495 @@
+[33mcommit 4e267f4163748e5cd52f87d89810c81617354dcb[m[33m ([m[1;36mHEAD -> [m[1;32mdev[m[33m, [m[1;31morigin/dev[m[33m)[m
+Author: raihan putra ramadhan <raihanputraramd@gmail.com>
+Date:   Fri Jan 31 13:15:11 2020 +0700
+
+     fix recyclerview
+
+[33mcommit 21e61f8b1a1f0739b2fb841cc1e809a0bc6b6b1e[m
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Fri Jan 31 11:14:20 2020 +0700
+
+    31/01/2020 - update SelesaiBerspeda
+
+[33mcommit 85ae5dad5364ff307242e20991b9c7535a5f9656[m
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Fri Jan 31 11:02:40 2020 +0700
+
+    31/01/2020 - Layout Selesai Bersepeda & fixed other Layout
+
+[33mcommit 195aebcccce99ddf0736f8d6de1d0af74bc08f6e[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Thu Jan 30 22:51:40 2020 +0700
+
+    30/01/2020 - Commit Daily Sebelum Bobo
+    
+    - Profil Data, yang belom udah ok
+    - Edit profil dari profil
+    - Tips ama Motivasi dari firebase -> masi error
+    - Jumlah Tantangan di home dan profil
+
+[33mcommit e5a64aeb390c349ad682ecda012be79abf0ad5fd[m
+Merge: c53442f f8576f8
+Author: raihan putra ramadhan <raihanputraramd@gmail.com>
+Date:   Wed Jan 29 10:41:56 2020 +0700
+
+     29/01/2020 - conflict merge fix & about us
+
+[33mcommit c53442f5cb64b3cace521b4b1a3e1d6e33f73d5b[m
+Author: raihan putra ramadhan <raihanputraramd@gmail.com>
+Date:   Wed Jan 29 10:34:19 2020 +0700
+
+     commit for fix
+
+[33mcommit f8576f8825373f484e5571d562ab2682b95728c5[m
+Merge: b067c46 6e5ae7d
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Wed Jan 29 10:26:25 2020 +0700
+
+    Merge branch 'dev' of https://github.com/raihanputraramd/Cyclyx into dev
+
+[33mcommit 6e5ae7d29e32e4cca11431f92f910d57e919b069[m
+Merge: 9a7cf43 cab51fc
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Wed Jan 29 10:24:27 2020 +0700
+
+    Merge branch 'dev' of https://github.com/raihanputraramd/Cyclyx into dev
+    
+    # Conflicts:
+    #       app/src/main/java/com/extra/cyclyx/ui/pengenalan/gambaran/GambaranFragment.kt
+
+[33mcommit 9a7cf4327eb0e2dd4cf3486beade09c70dbdec8e[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Wed Jan 29 10:20:59 2020 +0700
+
+    29/01/2020 - Validation inside Registrasi
+
+[33mcommit b067c46b8ffe074f8f5569488acc4a5458189914[m
+Merge: a3d81d7 cab51fc
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Wed Jan 29 10:05:55 2020 +0700
+
+    Merge branch 'dev' of https://github.com/raihanputraramd/Cyclyx into dev
+
+[33mcommit a3d81d76a61d3d1398217161bc436693bd021b98[m
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Wed Jan 29 10:05:41 2020 +0700
+
+    29/01/2020- Edit Profile
+
+[33mcommit cab51fcc837fcf79c80f77c9311ff57c3a4dc461[m
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Wed Jan 29 09:34:14 2020 +0700
+
+    29/01/2020 - added dots indicator, fixed icon
+
+[33mcommit b46f6a07f6e00f5d940bebf6d2172111632557ef[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Wed Jan 29 09:27:14 2020 +0700
+
+    29/01/2020 - Registrasi Finalize!
+    
+    Tapi diarahinnya ke main langsung, gambaranselesaifragmentnya gak kepake
+
+[33mcommit d9c982e5c4e1acc6379d0d266fb0eb737c293a1d[m
+Author: raihan putra ramadhan <raihanputraramd@gmail.com>
+Date:   Wed Jan 29 08:18:33 2020 +0700
+
+    29/01/2020 - konfig, home, profil
+
+[33mcommit 7b952eb4bad30ba1298bc3ffcc69001c6d9b867a[m
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Mon Jan 27 13:52:22 2020 +0700
+
+    27/01/2020 - iconupdate
+
+[33mcommit 9980c36ab0115ad754ada1e323fa38e7a29823b7[m
+Merge: 235c580 70077c4
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Mon Jan 27 13:43:12 2020 +0700
+
+    Merge branch 'dev' of https://github.com/raihanputraramd/Cyclyx into dev
+
+[33mcommit 70077c487d657425ec5f1dee22c2fcb01e02ce3a[m
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Mon Jan 27 13:28:52 2020 +0700
+
+     Registrasi Gender
+
+[33mcommit 6fffc4b39c1ede54bea42dad205cf0d62df46877[m
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Mon Jan 27 12:54:45 2020 +0700
+
+    Update RegistrasiGenderFragment.kt
+    
+    1/27/
+
+[33mcommit 8a3291730918e7d6d4c33091b1b9dedfb9649706[m
+Merge: 728291c 5c3b25f
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Mon Jan 27 12:24:53 2020 +0700
+
+    Merge branch 'dev' of https://github.com/raihanputraramd/Cyclyx into dev
+
+[33mcommit 5c3b25f6802f2b17f2d8ea0e649c60e7a02b75ec[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Mon Jan 27 11:48:50 2020 +0700
+
+    27/01/2020 - Shared Preferences Token
+
+[33mcommit 728291c4c78ef3ccff2ebf5cd9605ca57d13faa5[m
+Merge: 4ff5cfa 13326b8
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Mon Jan 27 10:43:53 2020 +0700
+
+    Merge branch 'dev' of https://github.com/raihanputraramd/Cyclyx into dev
+
+[33mcommit 13326b808987f3faf11a22a333e5234aa01433ae[m
+Merge: 7631e67 02b7f0a
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Mon Jan 27 10:17:52 2020 +0700
+
+    27/01/2020 - Yes, Conflict!
+    
+    # Conflicts:
+    #       app/src/main/java/com/extra/cyclyx/ui/home/HomeFragment.kt
+
+[33mcommit 4ff5cfa8c0af47257908f7cbadb4efe246fc0fac[m
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Mon Jan 27 10:16:51 2020 +0700
+
+    commit
+
+[33mcommit 7631e67ede62ae4b77a7e721a4fb6a942303b187[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Mon Jan 27 10:16:03 2020 +0700
+
+    27/01/2020 - Settings Backend phase 1
+
+[33mcommit 02b7f0a17703267393a8fed9fa65d9d31664cac5[m
+Author: raihan putra ramadhan <raihanputraramd@gmail.com>
+Date:   Mon Jan 27 09:41:18 2020 +0700
+
+     27/01/2020 - fix profile
+
+[33mcommit 52c35468a1bdcc88d5b99ec87e9ca3e0b295078a[m
+Merge: a848012 20da2b3
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Mon Jan 27 09:13:35 2020 +0700
+
+    Merge branch 'dev' of https://github.com/raihanputraramd/Cyclyx into dev
+
+[33mcommit a84801203d1a1dca643806ca223c2e0944ce1751[m
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Mon Jan 27 09:13:19 2020 +0700
+
+    27/01/2020- gender
+
+[33mcommit 235c58041c4bbd5e5271e775ae1792038c039658[m
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Mon Jan 27 08:21:46 2020 +0700
+
+    27/02/2020 - Updated icon
+
+[33mcommit 20da2b3d6598b8793d5d42d24e18f8624038e09b[m
+Author: raihan putra ramadhan <raihanputraramd@gmail.com>
+Date:   Mon Jan 27 07:58:20 2020 +0700
+
+     27/01/2020 - membenarkan conflict
+
+[33mcommit 37debee2e101f862f2d5e5a2671f7f3471d8129b[m
+Merge: a751219 80412b2
+Author: raihan putra ramadhan <raihanputraramd@gmail.com>
+Date:   Mon Jan 27 07:53:10 2020 +0700
+
+     fix conflict
+
+[33mcommit a75121909ea7f16c26419fd3417d23c52f7e977c[m
+Author: raihan putra ramadhan <raihanputraramd@gmail.com>
+Date:   Mon Jan 27 07:45:01 2020 +0700
+
+     setting
+
+[33mcommit 80412b20f15710fc17737be6113aa1b05b798f19[m
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Fri Jan 24 15:16:17 2020 +0700
+
+    24/01/2020- commit
+
+[33mcommit 78b86c5b466dcc1fe6d23de650047e05766ec729[m
+Merge: 668567b 7a96a6c
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Fri Jan 24 15:16:01 2020 +0700
+
+    Merge branch 'dev' of https://github.com/raihanputraramd/Cyclyx into dev
+
+[33mcommit 668567bbaef9c31e9d66e60877c7ddae7700100e[m
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Fri Jan 24 15:05:32 2020 +0700
+
+    24/01/2020- registrasi data diri
+
+[33mcommit 7a96a6c121e67a48f2bf6eb85109b5309a0df323[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Fri Jan 24 14:32:23 2020 +0700
+
+    24/01/2020 - Kesiapan Status dan Intent Settings
+
+[33mcommit 3799059bc9e6316de572455c79e529b819d666bf[m
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Fri Jan 24 14:12:29 2020 +0700
+
+    24/01/2020 - Update Home, tab selector
+
+[33mcommit a89de6d1bdfa2b9482d87927bec4f7038b6fa963[m
+Merge: e6d5190 3c6c3f6
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Fri Jan 24 10:28:30 2020 +0700
+
+    Merge branch 'dev' of https://github.com/raihanputraramd/Cyclyx into dev
+
+[33mcommit e6d51903a494e2967b372d145696a348567956ac[m
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Fri Jan 24 10:28:23 2020 +0700
+
+    24/01/2020- pindah fragment
+
+[33mcommit 938b3935e0c91f684c65bb0611312c078f0f19b3[m
+Merge: 88c8027 3c6c3f6
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Fri Jan 24 10:24:57 2020 +0700
+
+    Merge branch 'dev' of https://github.com/raihanputraramd/Cyclyx into dev
+
+[33mcommit 88c80272037d9136ad0c753583af8cccf184bd26[m
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Fri Jan 24 10:24:49 2020 +0700
+
+    24/01/2020 - EditProfile
+
+[33mcommit 3c6c3f62ae40802f53e3f3f07274fac0399104f9[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Thu Jan 23 22:24:42 2020 +0700
+
+    23/01/2020 - Added Data Binding for Kesiapan
+    
+    Belom di link ke home ama bersepeda, besok aja
+
+[33mcommit bfc2a43ddc0be43e7b5ae8c5dbc8f6dc4845fa1a[m
+Merge: b99b52d 6fda38d
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Wed Jan 22 10:00:45 2020 +0700
+
+    Merge branch 'dev' of https://github.com/raihanputraramd/Cyclyx into dev
+
+[33mcommit b99b52d033878678dcc8edc1cd9b1466d634a1ae[m
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Wed Jan 22 10:00:10 2020 +0700
+
+    22/01/2020- Intro
+
+[33mcommit 6fda38db9dcfbfa528621a5b3841e207bc24a632[m
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Wed Jan 22 09:48:27 2020 +0700
+
+    22/01/2020 - kesiapanlayout,updated home
+
+[33mcommit a58b73e8df71e3248b24db0efb2cc9498cf351e6[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Wed Jan 22 09:39:08 2020 +0700
+
+    22/01/2020 - Updating Calculation (for testing)
+
+[33mcommit 4ce290fb51e990ef04a44f8c30707530a7f53387[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Wed Jan 22 09:27:54 2020 +0700
+
+    22/01/2020 - Firebase Testing!
+    
+    Sebenernya ini kebalik commitnya ,maap
+
+[33mcommit d934f7c9f95c96f1c31b23dacfc472736371ba8b[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Wed Jan 22 09:26:04 2020 +0700
+
+    22/01/2020 - Added Dialog on Bersepeda On Back Pressed
+
+[33mcommit 0c5e45a97c059f29bc834fb73c4f1fcdcf24747d[m
+Merge: 003ce1c 5df554c
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Wed Jan 22 08:52:24 2020 +0700
+
+    Merge branch 'dev' of https://github.com/raihanputraramd/Cyclyx into dev
+
+[33mcommit 003ce1c6b3c41e4e60b1f5da6ca4521a428d3576[m
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Wed Jan 22 08:46:58 2020 +0700
+
+    22/01/2020 intro
+
+[33mcommit 5df554cef260883418262a6f7d663467fcec9784[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Tue Jan 21 21:44:20 2020 +0700
+
+    21/01/2020 - Initializing Firebase (?)
+    
+    Maaf pijey, urang gatau kalo firebase teh udah ada dari kamu....
+
+[33mcommit 2f86b65f60f47305996f44398b2785d350a79c6e[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Mon Jan 20 13:15:41 2020 +0700
+
+    20/01/2020 - Riwayat Item Interaction
+    
+    Delete, Error and Empty State
+
+[33mcommit a48cfce57c9089f8a01870e905fc297a1dfd3ba9[m
+Merge: c77d7df 8a84cb6
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Mon Jan 20 13:12:37 2020 +0700
+
+    Merge branch 'dev' of https://github.com/raihanputraramd/Cyclyx into dev
+
+[33mcommit c77d7dfdcde3c3115b71eaf6eb92a6673a2865ca[m
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Mon Jan 20 13:07:12 2020 +0700
+
+    20/01/2020 - intro
+
+[33mcommit 8a84cb62a6ba36133b5431e47b66a95fe0120327[m
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Mon Jan 20 11:15:48 2020 +0700
+
+    Update fragment_pengaturan.xml
+
+[33mcommit d46a1b0f2c3e48a9c617ed44ca6ea79ec3c70e68[m
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Mon Jan 20 11:04:02 2020 +0700
+
+    20/01/2020 - updated items
+
+[33mcommit 7615d8082eca56d61896e33dba23e7e7e96b3f74[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Mon Jan 20 10:49:47 2020 +0700
+
+    20/01/2020 - Save Data Bersepeda into SharedPref
+    
+    Baru functionnya =(
+
+[33mcommit 01b5de8fdba5f5dc3b0c25f625c0d073f1b370ca[m
+Author: raihan putra ramadhan <raihanputraramd@gmail.com>
+Date:   Mon Jan 20 09:51:45 2020 +0700
+
+     20/01/2020 data tantangan
+
+[33mcommit acff5426dcee7d492cee9f81b2a2e29fe2916a88[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Fri Jan 17 21:43:42 2020 +0700
+
+    17/01/2020 - Tantangan List + Registrasi ViewModel
+    
+    Untuk pijey, ini viewmodel templatenya, mau dipake mau engga juga gpp
+
+[33mcommit f24ed144b56139cc051a2877b3f00b879690a047[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Fri Jan 17 15:02:24 2020 +0700
+
+    17/01/2020 - Merging + Settings and Home!
+
+[33mcommit 0176addd8d3fed25ebccb6772106ed7509bdeb1a[m
+Merge: bd96dc3 9b2d1b8
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Fri Jan 17 14:53:14 2020 +0700
+
+    Merge branch 'dev' of https://github.com/raihanputraramd/Cyclyx into dev
+
+[33mcommit bd96dc35f6104175f16a43b7ba6b03f8dbe3acfc[m
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Fri Jan 17 14:51:39 2020 +0700
+
+    17/01/2019 - iconadded
+
+[33mcommit 9b2d1b8764b294b75e29df2ed9101ca337c0e4b6[m
+Author: raihan putra ramadhan <raihanputraramd@gmail.com>
+Date:   Fri Jan 17 14:36:24 2020 +0700
+
+    responsive almost all layout
+
+[33mcommit bae3875b63fa59ac1caa667c5408eb52e45ab1aa[m
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Fri Jan 17 14:03:41 2020 +0700
+
+    17/01/2020 - feat/addediconapp, fixed items, added options btn in home
+
+[33mcommit 0592658992a98fd73446a1bf8b461bd29c4502bb[m
+Merge: 7d7f740 5a5ac29
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Fri Jan 17 12:59:33 2020 +0700
+
+    Merge branch 'dev' of https://github.com/raihanputraramd/Cyclyx into dev
+
+[33mcommit 7d7f74043d4601a1c03b005a9391f7b3d0b034b0[m
+Author: Fajar Faturrahman <52985772+FajarFaturrahman@users.noreply.github.com>
+Date:   Fri Jan 17 12:53:24 2020 +0700
+
+    commit halaman pengenalan
+
+[33mcommit 5a5ac29e5cb52f54f0d2afa8a01a51eccaf689f9[m
+Author: raihan putra ramadhan <raihanputraramd@gmail.com>
+Date:   Fri Jan 17 11:24:51 2020 +0700
+
+     registrasi gender / ada todo di signUpActivity
+
+[33mcommit 497fdb49e97cf08e293281ad548ff47a9225c862[m
+Merge: 3135a46 923fc1f
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Fri Jan 17 09:45:16 2020 +0700
+
+    Merge branch 'dev' of https://github.com/raihanputraramd/Cyclyx into dev
+
+[33mcommit 3135a4600b65338e768b11ceda91402588458c76[m
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Fri Jan 17 09:45:08 2020 +0700
+
+    17/01/2020 - change icon
+
+[33mcommit 923fc1f4bfaf34e6601fc1b3fa3c22b41f735583[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Fri Jan 17 09:42:10 2020 +0700
+
+    17/01/2020 - Editing XML ViewPager
+
+[33mcommit 1a7b2b135efcfefceefae5a8ca5f07715c241b30[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Thu Jan 16 23:10:25 2020 +0700
+
+    16/01/2020 - Riwayat Sepedahan RecyclerView!
+
+[33mcommit 464ab08428873c40891340f54e45a37d58fd397d[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Thu Jan 16 22:23:47 2020 +0700
+
+    16/01/2020 - Hasil Bersepeda Backend!
+
+[33mcommit 4301af2b611326b007b6f93e8775309420aabbe8[m
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Thu Jan 16 19:34:49 2020 +0700
+
+    16/01/2020 - Update riwayat_item
+
+[33mcommit eff5263a1ed65fa5557e2f825b0ee2483b895fbf[m
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Thu Jan 16 19:33:17 2020 +0700
+
+    16/1/2020 - update item_riwayat
+
+[33mcommit 5782ed7eb26383c0d1c49734ac05e1305777a3ac[m
+Author: AlvaroDwi <varoalvaro493@gmail.com>
+Date:   Wed Jan 15 10:44:10 2020 +0700
+
+    15/01/2020 - Updating Logging Means->Timber!
+
+[33mcommit 4e71226a1e8a7d135eb453a02d2a0c70a700f65e[m
+Author: Haikal Firdaus <haikal.firdaus.m@gmail.com>
+Date:   Wed Jan 15 10:26:21 2020 +0700
+
+    15/01/2019 - fix/bottomnavicon

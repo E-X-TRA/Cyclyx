@@ -61,7 +61,8 @@
     <string name="txt_lokasi">Lokasi</string>
     <string name="txt_meningkatkan_performa_aplikasi">Matikan Optimisasi Baterai untuk Cyclyx</string>
     <string name="txt_lengkapi_data_diri_anda">Lengkapi data diri anda</string>
-    <string name="txt_sejauh_ini_anda_sudah_membakar_kalori">Sejauh ini anda sudah membakar kalori</string>
+    <string name="txt_sejauh_ini_anda_sudah">Sejauh ini anda sudah</string>
+
     <string name="txt_tipstitle">Tips</string>
     <string name="title_activity_settings">Settings</string>
 

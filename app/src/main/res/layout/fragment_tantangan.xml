@@ -21,11 +21,13 @@
                 android:layout_margin="@dimen/_13sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
                 android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@id/card"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/card">
+                app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                     android:layout_width="match_parent"
@@ -52,17 +54,16 @@
                 android:id="@+id/card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_8sdp"
-                android:layout_marginBottom="@dimen/_3sdp"
                 android:backgroundTint="@color/bg_tantangan"
                 app:cardCornerRadius="@dimen/_8sdp"
+
                 app:cardElevation="@dimen/_8sdp"
+                app:layout_constraintBottom_toTopOf="@id/LinearData"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/head"
-                app:layout_constraintBottom_toTopOf="@id/LinearData">
+                app:layout_constraintTop_toBottomOf="@id/head">
 
             <LinearLayout
                     android:layout_width="wrap_content"
@@ -78,10 +79,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/exo2_bold"
-                        android:text="@string/txt_sejauh_ini_anda_sudah_membakar_kalori"
+                        android:text="@string/txt_sejauh_ini_anda_sudah"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="#0C1B44"
                         android:textSize="@dimen/_22ssp" />
+
+                <TextView
+                        android:id="@+id/TxtCardIsi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo2_bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="#0C1B44"
+                        android:textSize="@dimen/_22ssp"
+                        tools:text="Bersepeda Selama" />
 
                 <TextView
                         android:id="@+id/TxtCountKal"
@@ -103,14 +114,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_250sdp"
                 android:layout_marginStart="@dimen/_17sdp"
-                android:layout_marginTop="@dimen/_17sdp"
                 android:layout_marginEnd="@dimen/_17sdp"
-                android:layout_marginBottom="@dimen/_17sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
                 android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/card"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/card">
 
             <TextView
                     android:id="@+id/txtPencapaianmu"
