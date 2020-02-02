@@ -3,9 +3,8 @@ package com.extra.cyclyx.utils
 import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.LiveData
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.Query
+import androidx.lifecycle.map
+import com.google.firebase.database.*
 import com.mapbox.mapboxsdk.maps.Style
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -223,6 +222,108 @@ class RandomDataGenerator {
     }
 }
 
-class FireBaseQueryLiveData(val query : Query?=null,val databaseReference: DatabaseReference?=null) : LiveData<DataSnapshot>(){
+object FirebaseHelpers{
+    //Based on :
+    //https://blog.usejournal.com/android-architecture-components-livedata-in-idiomatic-kotlin-cc626819db96
+    sealed class FirebaseResource<out T>{
+        data class Success<out T>(val data : T) : FirebaseResource<T>()
+        data class Loading<out T>(val partialData : T? = null) : FirebaseResource<T>()
+        data class Failure<out T>(val throwable : Throwable? = null) : FirebaseResource<T>()
 
+        val extractData : T? get() = when(this){
+            is Success -> data
+            is Loading -> partialData
+            is Failure -> null
+        }
+
+        inline fun <Y> mapResource(crossinline transform: (T) -> Y): FirebaseResource<Y> = try {
+            when (this) {
+                is Success<T> -> Success<Y>(transform(data))
+                is Loading<T> -> Loading<Y>(partialData?.let { transform(it) })
+                is Failure<T> -> Failure<Y>(throwable)
+            }
+        } catch (e: Throwable) {
+            FirebaseResource.Failure<Y>(e)
+        }
+
+        fun onSuccess(onSuccess: (data: T) -> Unit): FirebaseResource<T> {
+            if (this is Success)
+                onSuccess(data)
+
+            return this
+        }
+
+        fun onLoading(onLoading: (partialData: T?) -> Unit): FirebaseResource<T> {
+            if (this is Loading)
+                onLoading(partialData)
+
+            return this
+        }
+
+        fun onFailure(onFailure: (throwable: Throwable?) -> Unit): FirebaseResource<T> {
+            if (this is Failure)
+                onFailure(throwable)
+
+            return this
+        }
+    }
+
+    open class FireBaseResourceLiveData :
+        LiveData<FirebaseResource<DataSnapshot>> {
+        init {
+            value = FirebaseResource.Loading()
+        }
+
+        constructor(query : Query){
+            this.query = query
+        }
+
+        constructor(path : String){
+            query = FirebaseDatabase.getInstance().getReference(path)
+        }
+
+        constructor(ref: DatabaseReference){
+            query = ref
+        }
+
+        private val query : Query
+        private val listener = FirebaseValueEventListener()
+
+        override fun onActive() {
+            value = FirebaseResource.Loading(value?.extractData)
+            query.addValueEventListener(listener)
+        }
+
+        override fun onInactive() {
+            query.removeEventListener(listener)
+        }
+
+        private inner class FirebaseValueEventListener : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                value = FirebaseResource.Success(p0)
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                val e = p0.toException()
+                value = FirebaseResource.Failure(e)
+            }
+        }
+    }
+
+    inline fun <X,Y> LiveData<FirebaseResource<X>>.mapLiveDataResource(
+        crossinline transform : (X) -> Y
+    ): LiveData<FirebaseResource<Y>> = map { it.mapResource(transform) }
+
+    inline fun <reified T> DataSnapshot.getTypedValue() : T{
+        val genericTypeIndicator = object : GenericTypeIndicator<T>(){}
+        return getValue(genericTypeIndicator)!!
+    }
+
+    inline fun <reified T> LiveData<FirebaseResource<DataSnapshot>>.mapGetValue() : LiveData<FirebaseResource<T>> = map {
+        it.getTypedValueResource<T>()
+    }
+
+    inline fun <reified T> FirebaseResource<DataSnapshot>.getTypedValueResource() : FirebaseResource<T> = mapResource{
+        it.getTypedValue<T>()
+    }
 }
