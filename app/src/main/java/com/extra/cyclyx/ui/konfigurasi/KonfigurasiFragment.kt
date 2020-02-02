@@ -11,7 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.extra.cyclyx.databinding.FragmentKonfigurasiBinding
 import com.extra.cyclyx.ui.home.KonfigurasiViewModel
 
@@ -28,7 +28,7 @@ class KonfigurasiFragment : Fragment() {
     ): View? {
         val binding = FragmentKonfigurasiBinding.inflate(inflater)
         val app = requireNotNull(activity).application
-        viewModel = ViewModelProviders.of(this, KonfigurasiViewModel.Factory(app)).get(KonfigurasiViewModel::class.java)
+        viewModel = ViewModelProvider(this, KonfigurasiViewModel.Factory(app)).get(KonfigurasiViewModel::class.java)
         binding.viewModel = viewModel
 
         viewModel.intentForLocation.observe(this, Observer {

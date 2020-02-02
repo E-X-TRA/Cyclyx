@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.extra.cyclyx.R
 import com.extra.cyclyx.databinding.FragmentSelesaiSepedaBinding
@@ -31,7 +31,7 @@ class SelesaiBersepedaFragment : Fragment() {
         val app = requireActivity().application
         val arguments = SelesaiBersepedaFragmentArgs.fromBundle(arguments!!)
         Log.d("RESULT","${arguments.bersepedaKey}")
-        viewModel = ViewModelProviders.of(this,SelesaiBersepedaViewModel.Factory(arguments.bersepedaKey,app)).get(SelesaiBersepedaViewModel::class.java)
+        viewModel = ViewModelProvider(this,SelesaiBersepedaViewModel.Factory(arguments.bersepedaKey,app)).get(SelesaiBersepedaViewModel::class.java)
         binding.viewModel = viewModel
 
         return binding.root

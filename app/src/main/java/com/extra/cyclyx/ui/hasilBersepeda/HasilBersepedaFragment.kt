@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.extra.cyclyx.R
 import com.extra.cyclyx.databinding.FragmentHasilBersepedaBinding
@@ -56,7 +56,7 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
         binding.mapView.getMapAsync(this)
 
         viewModel =
-            ViewModelProviders.of(this, HasilBersepedaViewModel.Factory(arguments.bersepedaKey, application)).get(HasilBersepedaViewModel::class.java)
+            ViewModelProvider(this, HasilBersepedaViewModel.Factory(arguments.bersepedaKey, application)).get(HasilBersepedaViewModel::class.java)
         binding.viewModel = viewModel
 
         viewModel.routeList.observe(this, Observer { route ->

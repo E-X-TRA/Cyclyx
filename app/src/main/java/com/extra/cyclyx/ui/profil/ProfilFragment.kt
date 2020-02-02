@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.extra.cyclyx.databinding.FragmentProfilBinding
 
@@ -23,7 +23,7 @@ class ProfilFragment : Fragment() {
         binding = FragmentProfilBinding.inflate(inflater)
         binding.lifecycleOwner = this
         val application = requireNotNull(this.activity).application
-        viewModel = ViewModelProviders.of(this, ProfilViewModel.Factory(application)).get(
+        viewModel = ViewModelProvider(this, ProfilViewModel.Factory(application)).get(
             ProfilViewModel::class.java)
         binding.viewModel = viewModel
 

@@ -3,13 +3,13 @@ package com.extra.cyclyx.ui.home
 import android.Manifest
 import android.app.Application
 import android.content.pm.PackageManager
-import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
 import com.extra.cyclyx.entity.ReferenceItem
 import com.extra.cyclyx.repository.CyclyxRepository
-import com.extra.cyclyx.utils.FIREBASE_CONSTANTS.TIPS_ITEM
+import com.extra.cyclyx.utils.FIREBASE_CONSTANTS
 import com.extra.cyclyx.utils.RandomDataGenerator
+import com.google.firebase.database.DataSnapshot
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -36,12 +36,13 @@ class HomeViewModel(val app: Application) : AndroidViewModel(app) {
         }
     }
 
-    private val _referenceTips = MutableLiveData<List<ReferenceItem>>()
-    val tipsItem = Transformations.map(_referenceTips){
+    val tipsLiveData : LiveData<DataSnapshot> = repository.getLiveDataByType(FIREBASE_CONSTANTS.TIPS_ITEM)
+    private val _tipsList = MutableLiveData<List<ReferenceItem>>()
+    val tipsItem = Transformations.map(_tipsList){
         it?.let{
-            if(it.size != 0){
+            if (it.size != 0) {
                 it[RandomDataGenerator.getRandomListItem(it.size)]
-            }else{
+            } else {
                 ReferenceItem(content = "Tidak Ada Tips Untuk Ditampilkan")
             }
         }
@@ -54,6 +55,10 @@ class HomeViewModel(val app: Application) : AndroidViewModel(app) {
     private val _navigateToPengaturan = MutableLiveData<Boolean>()
     val navigateToPengaturan : LiveData<Boolean>
         get() = _navigateToPengaturan
+
+    fun addItemsToList(item : ArrayList<ReferenceItem>){
+        _tipsList.value = item
+    }
 
     fun onBtnPengaturanClicked(){
         _navigateToPengaturan.value = true
@@ -74,9 +79,6 @@ class HomeViewModel(val app: Application) : AndroidViewModel(app) {
     init {
         //checkLocationPermission
         checkLocationPermission()
-
-        _referenceTips.value = repository.getAllReferenceByType(TIPS_ITEM)
-        Log.d("HOME","${_referenceTips.value}")
     }
 
     //return true if granted and false if not granted

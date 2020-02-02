@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.extra.cyclyx.databinding.FragmentTantanganBinding
 import com.extra.cyclyx.ui.adapter.TantanganAdapter
@@ -27,7 +27,7 @@ class TantanganFragment : Fragment() {
         binding = FragmentTantanganBinding.inflate(inflater)
         binding.lifecycleOwner = this
         val application = requireNotNull(this.activity).application
-        viewModel = ViewModelProviders.of(this, TantanganViewModel.Factory(application)).get(
+        viewModel = ViewModelProvider(this, TantanganViewModel.Factory(application)).get(
             TantanganViewModel::class.java)
 
         binding.viewModel = viewModel

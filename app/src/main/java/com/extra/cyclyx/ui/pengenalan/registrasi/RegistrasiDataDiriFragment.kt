@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.extra.cyclyx.R
 import com.extra.cyclyx.databinding.FragmentRegistrasiDataDiriBinding
 import com.extra.cyclyx.entity.User
@@ -29,7 +29,7 @@ class RegistrasiDataDiriFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val app = activity?.application
-        viewModel = ViewModelProviders.of(this,RegistrasiViewModel.Factory(app!!)).get(RegistrasiViewModel::class.java)
+        viewModel = ViewModelProvider(this,RegistrasiViewModel.Factory(app!!)).get(RegistrasiViewModel::class.java)
         binding.viewModel = viewModel
 
         return binding.root

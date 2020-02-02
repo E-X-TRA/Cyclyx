@@ -5,8 +5,9 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.extra.cyclyx.entity.ReferenceItem
 import com.extra.cyclyx.repository.CyclyxRepository
-import com.extra.cyclyx.utils.FIREBASE_CONSTANTS.MOTIVASI_ITEM
+import com.extra.cyclyx.utils.FIREBASE_CONSTANTS
 import com.extra.cyclyx.utils.RandomDataGenerator
+import com.google.firebase.database.DataSnapshot
 import kotlinx.coroutines.Job
 
 
@@ -36,22 +37,26 @@ class KesiapanViewModel(val app: Application) : AndroidViewModel(app) {
         true == it
     }
 
-    private val _referenceMotivasi = MutableLiveData<List<ReferenceItem>>()
-    val motivasiItem = Transformations.map(_referenceMotivasi){
+    val motivasiLiveData : LiveData<DataSnapshot> = repository.getLiveDataByType(FIREBASE_CONSTANTS.MOTIVASI_ITEM)
+    private val _motivasiList = MutableLiveData<List<ReferenceItem>>()
+    val motivasiItem = Transformations.map(_motivasiList){
         it?.let{
-            if(it.size != 0){
+            if (it.size != 0) {
                 it[RandomDataGenerator.getRandomListItem(it.size)]
-            }else{
-                ReferenceItem(content = "Tidak Ada Apapun Untuk Ditampilkan")
+            } else {
+                ReferenceItem(content = "Tidak Ada Tips Untuk Ditampilkan")
             }
         }
     }
 
     init {
-        _referenceMotivasi.value = repository.getAllReferenceByType(MOTIVASI_ITEM)
         Log.d("TRACKING","Location Settings = ${isLocationSettingsEnabled}")
         Log.d("TRACKING","Power Saver Mode  = ${isPowerSaverModeOn}")
         Log.d("TRACKING","Battery Optimized = ${isBatteryOptimized}")
+    }
+
+    fun addItemsToList(item : ArrayList<ReferenceItem>){
+        _motivasiList.value = item
     }
 
     fun onBtnKonfigurasiClicked(){

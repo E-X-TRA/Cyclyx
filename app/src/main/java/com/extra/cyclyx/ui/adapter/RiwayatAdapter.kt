@@ -96,9 +96,9 @@ class RiwayatAdapter(val clickListener: RiwayatClickListener) : ListAdapter<Bers
             }
         }
     }
-}
 
-class RiwayatClickListener(val clickListener : (actsId : Long,action : String) -> Unit){
-    fun onClickResult(acts : Bersepeda) = clickListener(acts.id, DETAIL_ITEM)
-    fun onDeleteResult(acts: Bersepeda) = clickListener(acts.id, DELETE_ITEM)
+    class RiwayatClickListener(val clickListener : (actsId : Long,action : String) -> Unit){
+        fun onClickResult(acts : Bersepeda) = clickListener(acts.id, DETAIL_ITEM)
+        fun onDeleteResult(acts: Bersepeda) = clickListener(acts.id, DELETE_ITEM)
+    }
 }

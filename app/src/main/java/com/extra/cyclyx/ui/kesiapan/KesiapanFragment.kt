@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.extra.cyclyx.BersepedaActivity
 import com.extra.cyclyx.databinding.FragmentKesiapanBinding
+import com.extra.cyclyx.entity.ReferenceItem
+import com.google.firebase.database.DataSnapshot
 
 class KesiapanFragment : Fragment() {
     private lateinit var viewModel : KesiapanViewModel
@@ -23,7 +25,7 @@ class KesiapanFragment : Fragment() {
         val binding = FragmentKesiapanBinding.inflate(inflater)
         binding.lifecycleOwner = this
         val app = requireNotNull(activity).application
-        viewModel = ViewModelProviders.of(this, KesiapanViewModel.Factory(app)).get(KesiapanViewModel::class.java)
+        viewModel = ViewModelProvider(this, KesiapanViewModel.Factory(app)).get(KesiapanViewModel::class.java)
         binding.viewModel = viewModel
 
         viewModel.navigateToKonfigurasi.observe(this, Observer {
@@ -38,6 +40,19 @@ class KesiapanFragment : Fragment() {
                 val intent = Intent(activity, BersepedaActivity::class.java)
                 startActivity(intent)
                 viewModel.doneNavigateToBersepeda()
+            }
+        })
+
+        viewModel.motivasiLiveData.observe(this, Observer<DataSnapshot>{
+            it?.let {
+                val arrayItem = ArrayList<ReferenceItem>()
+                for(i in it.children){
+                    val model = i.getValue(ReferenceItem::class.java)
+                    model?.let {
+                        arrayItem.add(it)
+                    }
+                }
+                viewModel.addItemsToList(arrayItem)
             }
         })
 

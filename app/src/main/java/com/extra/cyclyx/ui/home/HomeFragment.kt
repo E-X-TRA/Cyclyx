@@ -9,13 +9,15 @@ import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.extra.cyclyx.R
 import com.extra.cyclyx.SettingsActivity
 import com.extra.cyclyx.databinding.FragmentHomeBinding
+import com.extra.cyclyx.entity.ReferenceItem
 import com.extra.cyclyx.utils.PERMISSION_FINE_LOCATION_REQUEST
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.database.DataSnapshot
 
 class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
@@ -27,7 +29,7 @@ class HomeFragment : Fragment() {
     ): View? {
         val binding = FragmentHomeBinding.inflate(inflater)
         val app = requireNotNull(activity).application
-        viewModel = ViewModelProviders.of(this,HomeViewModel.Factory(app)).get(HomeViewModel::class.java)
+        viewModel = ViewModelProvider(this,HomeViewModel.Factory(app)).get(HomeViewModel::class.java)
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
@@ -55,6 +57,19 @@ class HomeFragment : Fragment() {
                 val intent = Intent(activity, SettingsActivity::class.java)
                 startActivity(intent)
                 viewModel.doneNavigateToPengaturan()
+            }
+        })
+
+        viewModel.tipsLiveData.observe(this, Observer<DataSnapshot>{
+            it?.let {
+                val arrayItem = ArrayList<ReferenceItem>()
+                for(i in it.children){
+                    val model = i.getValue(ReferenceItem::class.java)
+                    model?.let {
+                        arrayItem.add(it)
+                    }
+                }
+                viewModel.addItemsToList(arrayItem)
             }
         })
 

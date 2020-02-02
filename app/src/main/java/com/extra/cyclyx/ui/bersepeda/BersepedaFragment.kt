@@ -11,7 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.fragment.findNavController
 import com.extra.cyclyx.R
@@ -109,7 +109,7 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
         //init viewModel
         val application = requireNotNull(this.activity).application
         viewModel =
-            ViewModelProviders.of(this, BersepedaViewModel.Factory(application)).get(BersepedaViewModel::class.java)
+            ViewModelProvider(this, BersepedaViewModel.Factory(application)).get(BersepedaViewModel::class.java)
 
         //bind viewmodel
         binding.viewModel = viewModel

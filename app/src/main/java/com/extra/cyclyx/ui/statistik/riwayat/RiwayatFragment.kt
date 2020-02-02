@@ -9,12 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.extra.cyclyx.databinding.FragmentRiwayatBinding
 import com.extra.cyclyx.ui.adapter.RiwayatAdapter
-import com.extra.cyclyx.ui.adapter.RiwayatClickListener
 import com.extra.cyclyx.ui.statistik.StatistikFragmentDirections
 import com.extra.cyclyx.utils.DELETE_ITEM
 import com.extra.cyclyx.utils.DETAIL_ITEM
@@ -31,13 +30,13 @@ class RiwayatFragment : Fragment() {
         binding = FragmentRiwayatBinding.inflate(inflater)
         binding.lifecycleOwner = this
         val application = requireNotNull(this.activity).application
-        viewModel = ViewModelProviders.of(this, RiwayatViewModel.Factory(application)).get(RiwayatViewModel::class.java)
+        viewModel = ViewModelProvider(this, RiwayatViewModel.Factory(application)).get(RiwayatViewModel::class.java)
 
         binding.viewModel = viewModel
 
         binding.rvRiwayat.layoutManager = LinearLayoutManager(context)
-        val adapter = RiwayatAdapter(RiwayatClickListener{ actId, action ->
-            when(action){
+        val adapter = RiwayatAdapter(RiwayatAdapter.RiwayatClickListener { actId, action ->
+            when (action) {
                 DETAIL_ITEM -> {
                     viewModel.onActClicked(actId)
                 }

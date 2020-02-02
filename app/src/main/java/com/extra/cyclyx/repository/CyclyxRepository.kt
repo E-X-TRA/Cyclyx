@@ -16,7 +16,6 @@ import com.extra.cyclyx.entity.ReferenceItem
 import com.extra.cyclyx.entity.Tantangan
 import com.extra.cyclyx.utils.FIREBASE_CONSTANTS.BASE_KEY
 import com.extra.cyclyx.utils.FIREBASE_CONSTANTS.REFERENSI_KEY
-import com.extra.cyclyx.utils.FIREBASE_CONSTANTS.TIPS_ITEM
 import com.extra.cyclyx.utils.FirebaseHelpers
 import com.extra.cyclyx.utils.SP_CYCLYX
 import com.extra.cyclyx.utils.SP_SETTING
@@ -32,7 +31,13 @@ class CyclyxRepository(val context: Context){
     val firebaseDB = FirebaseDatabase.getInstance()
     val firebaseReference : DatabaseReference = firebaseDB.reference
 
-    class TipsSnapLiveData : FirebaseHelpers.FireBaseResourceLiveData(FirebaseDatabase.getInstance().reference.child(BASE_KEY).child(REFERENSI_KEY).child(TIPS_ITEM))
+    fun getReferencePathByType(type : String) : DatabaseReference{
+        return firebaseReference.child(BASE_KEY).child(REFERENSI_KEY).child(type)
+    }
+
+    fun getLiveDataByType(type : String): FirebaseHelpers.FirebaseQueryLiveData{
+        return FirebaseHelpers.FirebaseQueryLiveData(getReferencePathByType(type))
+    }
 
     fun getAllReferenceByType(type : String) :List<ReferenceItem>{
         val list = ArrayList<ReferenceItem>()
