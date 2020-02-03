@@ -79,6 +79,9 @@ class EditProfileFragment : Fragment() {
                 first_name == "" -> profileValidate()
                 last_name == "" -> profileValidate()
                 birth_year == "" -> profileValidate()
+                body_weight == "" -> profileValidate()
+                body_height == "" -> profileValidate()
+
                 else -> {
                     editor.putString(USER_FIRST_NAME, first_name)
                     editor.putString(USER_LAST_NAME, last_name)
@@ -99,17 +102,19 @@ class EditProfileFragment : Fragment() {
         namaDepanValidate()
         namaBelakangValidate()
         tahunValidate()
+        beratValidate()
+        tinggiValidate()
     }
 
     fun namaDepanValidate() {
 
         if (firstName.text.toString() == "") {
-            tvValidateNamaDepan.isVisible
+            tvValidateNamaDepan.visibility = View.VISIBLE
             tvNamaDepan.setTextColor(resources.getColor(R.color.redDanger))
             edtNamaDepan.setLinkTextColor(resources.getColor(R.color.redDanger))
 
         } else {
-            tvValidateNamaDepan.isInvisible
+            tvValidateNamaDepan.visibility = View.INVISIBLE
             tvNamaDepan.setTextColor(resources.getColor(R.color.FontColorBlack))
             edtNamaDepan.setLinkTextColor(resources.getColor(R.color.FontColorBlack))
         }
@@ -118,11 +123,11 @@ class EditProfileFragment : Fragment() {
     fun namaBelakangValidate() {
 
         if (lastName.text.toString() == "") {
-            tvValidateNamaBelakang.isVisible
+            tvValidateNamaBelakang.visibility = View.VISIBLE
             tvNamaBelakang.setTextColor(resources.getColor(R.color.redDanger))
             edtNamaBelakang.setLinkTextColor(resources.getColor(R.color.redDanger))
         } else {
-            tvValidateNamaBelakang.isInvisible
+            tvValidateNamaBelakang.visibility = View.INVISIBLE
             tvNamaBelakang.setTextColor(resources.getColor(R.color.FontColorBlack))
             edtNamaBelakang.setLinkTextColor(resources.getColor(R.color.FontColorBlack))
         }
@@ -130,13 +135,37 @@ class EditProfileFragment : Fragment() {
 
     fun tahunValidate() {
         if (birthYear.text.toString() == "") {
-            tvValidateTahunLahir.isVisible
+            tvValidateTahunLahir.visibility = View.VISIBLE
             tvTahunLahir.setTextColor(resources.getColor(R.color.redDanger))
             edtTahunLahir.setLinkTextColor(resources.getColorStateList(R.color.redDanger))
         } else {
-            tvValidateTahunLahir.isInvisible
+            tvValidateTahunLahir.visibility = View.INVISIBLE
             tvTahunLahir.setTextColor(resources.getColor(R.color.FontColorBlack))
             edtTahunLahir.setLinkTextColor(resources.getColorStateList(R.color.FontColorBlack))
+        }
+    }
+
+    fun beratValidate() {
+        if (bodyWeight.text.toString() == "") {
+            tvValidateBerat.visibility = View.VISIBLE
+            tvTBerat.setTextColor(resources.getColor(R.color.redDanger))
+            edtBerat.setLinkTextColor(resources.getColor(R.color.redDanger))
+        } else {
+            tvValidateBerat.visibility = View.INVISIBLE
+            tvTBerat.setTextColor(resources.getColor(R.color.FontColorBlack))
+            edtBerat.setLinkTextColor(resources.getColor(R.color.FontColorBlack))
+        }
+    }
+
+    fun tinggiValidate() {
+        if (bodyHeight.text.toString() == "") {
+            tvValidatetinggi.visibility = View.VISIBLE
+            tvTTinggi.setTextColor(resources.getColor(R.color.redDanger))
+            edtTinggi.setLinkTextColor(resources.getColor(R.color.redDanger))
+        } else {
+            tvValidatetinggi.visibility = View.INVISIBLE
+            tvTTinggi.setTextColor(resources.getColor(R.color.FontColorBlack))
+            edtTinggi.setLinkTextColor(resources.getColor(R.color.FontColorBlack))
         }
     }
 

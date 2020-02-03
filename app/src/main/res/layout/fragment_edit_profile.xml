@@ -163,6 +163,7 @@
                         android:text="@string/kg" />
 
                 <TextView
+                        android:id="@+id/tvValidateBerat"
                         style="@style/TextAppearance.AppCompat.Caption"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -205,6 +206,7 @@
                         android:text="@string/cm" />
 
                 <TextView
+                        android:id="@+id/tvValidatetinggi"
                         style="@style/TextAppearance.AppCompat.Caption"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
