@@ -159,7 +159,6 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginEnd="@id/edtBerat"
                         android:layout_toRightOf="@id/edtBerat"
                         android:text="@string/kg" />
 

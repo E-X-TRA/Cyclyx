@@ -14,7 +14,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.extra.cyclyx.MainActivity
 import com.extra.cyclyx.R
-import com.extra.cyclyx.entity.User
 import com.extra.cyclyx.utils.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
@@ -55,9 +54,9 @@ class EditProfileFragment : Fragment() {
 
         firstName.setText(FirstName)
         lastName.setText(LastName)
-        birthYear.setText(BirthYear)
-        bodyWeight.setText(UserWeight)
-        bodyHeight.setText(UserHeight)
+        birthYear.setText(whatToDoWhenNumberIsZero(BirthYear))
+        bodyWeight.setText(whatToDoWhenNumberIsZero(UserWeight))
+        bodyHeight.setText(whatToDoWhenNumberIsZero(UserHeight))
 
 
         return view
@@ -138,6 +137,17 @@ class EditProfileFragment : Fragment() {
             tvValidateTahunLahir.isInvisible
             tvTahunLahir.setTextColor(resources.getColor(R.color.FontColorBlack))
             edtTahunLahir.setLinkTextColor(resources.getColorStateList(R.color.FontColorBlack))
+        }
+    }
+
+    fun whatToDoWhenNumberIsZero(num: Int): String {
+        return when (num) {
+            0 -> {
+                ""
+            }
+            else -> {
+                num.toString()
+            }
         }
     }
 
