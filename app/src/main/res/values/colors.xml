@@ -18,4 +18,5 @@
     <color name="font_green">#3FC600</color>
     <color name="bg_list">#F1FEFF</color>
     <color name="bg_card_tantangan">#FFFFFF</color>
+    <color name="redDanger">#FF0000</color>
 </resources>

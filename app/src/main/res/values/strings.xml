@@ -82,4 +82,8 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="txt_terselesaikan">Terselesaikan</string>
     <string name="txt_belum_selesai">Belum Selesai</string>
+    <string name="edit_profil">Edit Profil</string>
+    <string name="tahun_lahir">Tahun Lahir</string>
+    <string name="kg">Kg</string>
+    <string name="cm">Cm</string>
 </resources>

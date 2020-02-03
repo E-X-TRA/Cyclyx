@@ -1,158 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@drawable/bg_5"
         tools:context=".ui.profil.EditProfileFragment">
 
     <TextView
-            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/edtprofile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
             android:fontFamily="@font/exo2_bold"
-            android:id="@+id/edtprofile"
-            android:textSize="@dimen/_24sdp"
+            android:text="@string/edit_profil"
             android:textAlignment="viewStart"
-            android:text="Edit Profil"
             android:textColor="@color/font_bold_purple"
-            android:layout_margin="@dimen/_10sdp"/>
+            android:textSize="@dimen/_24sdp"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnSaveEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/main"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="@dimen/_20sdp"
             android:src="@drawable/ic_save_black_24dp"
-            android:tint="@color/whiteText"/>
+            android:tint="@color/whiteText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main" />
 
     <LinearLayout
             android:id="@+id/main"
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/edtprofile"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/_10sdp"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="@dimen/_10sdp">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtprofile">
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="@dimen/_5sdp">
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:orientation="vertical">
+
             <TextView
+                    android:id="@+id/tvNamaDepan"
+                    style="@style/TextAppearance.AppCompat.Caption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/TextAppearance.AppCompat.Caption"
                     android:fontFamily="@font/exo2_regular"
-                    android:text="Nama Depan"/>
+                    android:text="@string/nama_depan" />
+
             <EditText
+                    android:id="@+id/edtNamaDepan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/exo2_regular" />
+
+            <TextView
+                    android:id="@+id/tvValidateNamaDepan"
+                    style="@style/TextAppearance.AppCompat.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/exo2_regular"
-                    android:id="@+id/edtNamaDepan"/>
+                    android:text="Mohon Mengisi Nama Depan nya !"
+                    android:visibility="invisible" />
         </LinearLayout>
+
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="@dimen/_5sdp">
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:orientation="vertical">
+
             <TextView
+                    android:id="@+id/tvNamaBelakang"
+                    style="@style/TextAppearance.AppCompat.Caption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/TextAppearance.AppCompat.Caption"
                     android:fontFamily="@font/exo2_regular"
-                    android:text="Nama Belakang"/>
+                    android:text="@string/nama_belakang" />
+
             <EditText
+                    android:id="@+id/edtNamaBelakang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/exo2_regular" />
+
+            <TextView
+                    android:id="@+id/tvValidateNamaBelakang"
+                    style="@style/TextAppearance.AppCompat.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/exo2_regular"
-                    android:id="@+id/edtNamaBelakang"/>
+                    android:text="Mohon Mengisi Nama Belakang nya !"
+                    android:visibility="invisible" />
         </LinearLayout>
+
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="@dimen/_5sdp">
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:orientation="vertical">
+
             <TextView
+                    android:id="@+id/tvTahunLahir"
+                    style="@style/TextAppearance.AppCompat.Caption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/TextAppearance.AppCompat.Caption"
                     android:fontFamily="@font/exo2_regular"
-                    android:text="Tahun Lahir"/>
+                    android:text="@string/tahun_lahir" />
+
             <EditText
+                    android:id="@+id/edtTahunLahir"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/exo2_regular"
-                    android:inputType="number"
-                    android:id="@+id/edtTahunLahir"/>
+                    android:inputType="number" />
+
+            <TextView
+                    android:id="@+id/tvValidateTahunLahir"
+                    style="@style/TextAppearance.AppCompat.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/exo2_regular"
+                    android:text="Mohon Mengisi Tahun Lahir nya !"
+                    android:visibility="invisible" />
 
             <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                 <TextView
+                        android:id="@+id/tvTBerat"
+                        style="@style/TextAppearance.AppCompat.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:id="@+id/tvTBerat"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextAppearance.AppCompat.Caption"
                         android:fontFamily="@font/exo2_regular"
-                        android:text="Berat Badan"/>
+                        android:text="@string/berat_badan" />
+
                 <EditText
-                        android:layout_below="@id/tvTBerat"
+                        android:id="@+id/edtBerat"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/tvTBerat"
                         android:fontFamily="@font/exo2_regular"
-                        android:inputType="number"
-                        android:id="@+id/edtBerat"/>
+                        android:inputType="number" />
+
                 <TextView
+                        style="@style/TextAppearance.AppCompat.Caption"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kg"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        style="@style/TextAppearance.AppCompat.Caption"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@id/edtBerat"
                         android:layout_toRightOf="@id/edtBerat"
-                        android:layout_centerVertical="true"/>
+                        android:text="@string/kg" />
+
+                <TextView
+                        style="@style/TextAppearance.AppCompat.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/edtBerat"
+                        android:fontFamily="@font/exo2_regular"
+                        android:text="Mohon Mengisi Nama Depan nya !"
+                        android:visibility="invisible" />
             </RelativeLayout>
+
             <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                 <TextView
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentStart="true"
                         android:id="@+id/tvTTinggi"
+                        style="@style/TextAppearance.AppCompat.Caption"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/TextAppearance.AppCompat.Caption"
-                        android:fontFamily="@font/exo2_regular"
-                        android:text="Tinggi Badan"/>
-                <EditText
                         android:layout_alignParentStart="true"
-                        android:layout_below="@id/tvTTinggi"
+                        android:layout_alignParentTop="true"
+                        android:fontFamily="@font/exo2_regular"
+                        android:text="@string/tinggi_badan" />
+
+                <EditText
+                        android:id="@+id/edtTinggi"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/tvTTinggi"
+                        android:layout_alignParentStart="true"
                         android:fontFamily="@font/exo2_regular"
-                        android:inputType="number"
-                        android:id="@+id/edtTinggi"/>
+                        android:inputType="number" />
+
                 <TextView
+                        style="@style/TextAppearance.AppCompat.Caption"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cm"
-                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_toEndOf="@id/edtTinggi"
+                        android:text="@string/cm" />
+
+                <TextView
                         style="@style/TextAppearance.AppCompat.Caption"
-                        android:layout_toRightOf="@id/edtTinggi"
-                        android:layout_centerVertical="true"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/edtTinggi"
+                        android:fontFamily="@font/exo2_regular"
+                        android:text="Mohon Mengisi Nama Depan nya !"
+                        android:visibility="invisible" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
