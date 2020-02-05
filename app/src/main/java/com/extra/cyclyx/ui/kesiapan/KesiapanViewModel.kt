@@ -7,6 +7,8 @@ import com.extra.cyclyx.entity.ReferenceItem
 import com.extra.cyclyx.repository.CyclyxRepository
 import com.extra.cyclyx.utils.FIREBASE_CONSTANTS
 import com.extra.cyclyx.utils.RandomDataGenerator
+import com.extra.cyclyx.utils.WARNING_TYPES.IS_REFRESHING
+import com.extra.cyclyx.utils.WARNING_TYPES.NOT_ELIGIBLE_BERSEPEDA
 import com.google.firebase.database.DataSnapshot
 import kotlinx.coroutines.Job
 
@@ -16,9 +18,19 @@ class KesiapanViewModel(val app: Application) : AndroidViewModel(app) {
 
     private val viewModelJob = Job()
     //init permission related
-    var isPowerSaverModeOn : Boolean = repository.checkPowerSaverMode()
-    var isBatteryOptimized: Boolean = repository.checkBatteryOptimization()
-    var isLocationSettingsEnabled : Boolean = repository.checkLocationSettings(app.applicationContext)
+
+    private val _isPowerSaverModeOn = MutableLiveData<Boolean>()
+    val isPowerSaverModeOn : LiveData<Boolean>
+        get() = _isPowerSaverModeOn
+
+    private val _isBatteryOptimized = MutableLiveData<Boolean>()
+    val isBatteryOptimized : LiveData<Boolean>
+        get() = _isBatteryOptimized
+
+    private val _isLocationSettingsEnabled = MutableLiveData<Boolean>()
+    val isLocationSettingsEnabled : LiveData<Boolean>
+        get() = _isLocationSettingsEnabled
+
 
     //init navigation live data
     private val _navigateToBersepeda = MutableLiveData<Boolean>()
@@ -29,8 +41,8 @@ class KesiapanViewModel(val app: Application) : AndroidViewModel(app) {
     val navigateToKonfigurasi: LiveData<Boolean>
         get() = _navigateToKonfigurasi
 
-    private val _showWarning = MutableLiveData<Boolean>()
-    val showWarning : LiveData<Boolean>
+    private val _showWarning = MutableLiveData<Int>()
+    val showWarning : LiveData<Int>
         get() = _showWarning
 
     val startButtonEnabled = Transformations.map(navigateToBersepeda){
@@ -49,10 +61,22 @@ class KesiapanViewModel(val app: Application) : AndroidViewModel(app) {
         }
     }
 
+    private fun initializePrerequisite(){
+        _isPowerSaverModeOn.value = repository.checkPowerSaverMode()
+        _isBatteryOptimized.value = repository.checkBatteryOptimization()
+        _isLocationSettingsEnabled.value = repository.checkLocationSettings(app.applicationContext)
+        _showWarning.value = IS_REFRESHING
+    }
+
     init {
+        initializePrerequisite()
         Log.d("TRACKING","Location Settings = ${isLocationSettingsEnabled}")
         Log.d("TRACKING","Power Saver Mode  = ${isPowerSaverModeOn}")
         Log.d("TRACKING","Battery Optimized = ${isBatteryOptimized}")
+    }
+
+    fun onRefresh(){
+        initializePrerequisite()
     }
 
     fun addItemsToList(item : ArrayList<ReferenceItem>){
@@ -68,19 +92,15 @@ class KesiapanViewModel(val app: Application) : AndroidViewModel(app) {
     }
 
     fun onBtnMulaiClicked(){
-        if(isLocationSettingsEnabled && !isBatteryOptimized && !isPowerSaverModeOn){
+        if(isLocationSettingsEnabled.value!! && !isBatteryOptimized.value!! && !isPowerSaverModeOn.value!!){
             _navigateToBersepeda.value = true
         }else{
-            _showWarning.value = true
+            _showWarning.value = NOT_ELIGIBLE_BERSEPEDA
         }
     }
 
     fun doneNavigateToBersepeda(){
         _navigateToBersepeda.value = null
-    }
-
-    fun doneShowWarning(){
-        _showWarning.value = null
     }
 
     override fun onCleared() {
