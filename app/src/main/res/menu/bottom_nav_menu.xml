@@ -3,13 +3,13 @@
 
     <item
             android:id="@+id/home"
-            android:icon="@drawable/home"
+            android:icon="@drawable/ic_home_thin"
             android:title="@string/title_home"/>
 
     <item
-            android:id="@+id/riwayat"
-            android:icon="@drawable/history"
-            android:title="Riwayat"/>
+            android:id="@+id/statistik"
+            android:icon="@drawable/ic_metrics"
+            android:title="Statistik"/>
 
     <item
             android:id="@+id/profil"

@@ -1,0 +1,78 @@
+[
+  {
+    "tipe_tantangan": "Total Jarak",
+    "label_tantangan": "Mencapai 7Km"
+  },
+  {
+    "tipe_tantangan": "Total Jarak",
+    "label_tantangan": "Mencapai 18Km"
+  },
+  {
+    "tipe_tantangan": "Total Jarak",
+    "label_tantangan": "Mencapai 34Km"
+  },
+  {
+    "tipe_tantangan": "Total Jarak",
+    "label_tantangan": "Mencapai 58Km"
+  },
+  {
+    "tipe_tantangan": "Total Jarak",
+    "label_tantangan": "Mencapai 98Km"
+  },
+  {
+    "tipe_tantangan": "Total Waktu",
+    "label_tantangan": "Mencapai 24 Jam"
+  },
+  {
+    "tipe_tantangan": "Total Waktu",
+    "label_tantangan": "Mencapai 64 Jam"
+  },
+  {
+    "tipe_tantangan": "Total Waktu",
+    "label_tantangan": "Mencapai 100 Jam"
+  },
+  {
+    "tipe_tantangan": "Total Waktu",
+    "label_tantangan": "Mencapai 265 Jam"
+  },
+  {
+    "tipe_tantangan": "Total Waktu",
+    "label_tantangan": "Mencapai 465 Jam"
+  },
+  {
+    "tipe_tantangan": "Peak Speed Tertinggi",
+    "label_tantangan": "Mencapai 15Kmph"
+  },
+  {
+     "tipe_tantangan": "Peak Speed Tertinggi",
+     "label_tantangan": "Mencapai 20kmph"
+   },
+   {
+      "tipe_tantangan": "Peak Speed Tertinggi",
+      "label_tantangan": "Mencapai 25kmph"
+   },
+   {
+      "tipe_tantangan": "Peak Speed Tertinggi",
+      "label_tantangan": "Mencapai 30kmph"
+   },
+   {
+      "tipe_tantangan": "Total Kalori",
+      "label_tantangan": "Membakar 272Kcal"
+   },
+   {
+      "tipe_tantangan": "Total Kalori",
+      "label_tantangan": "Membakar 408Kcal"
+   },
+   {
+      "tipe_tantangan": "Total Kalori",
+      "label_tantangan": "Membakar 544Kcal"
+   },
+   {
+      "tipe_tantangan": "Total Kalori",
+      "label_tantangan": "Membakar 680Kcal"
+   },
+   {
+      "tipe_tantangan": "Total Kalori",
+      "label_tantangan": "Membakar 1088 Kcal"
+   },
+]

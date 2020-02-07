@@ -1,11 +1,10 @@
 package com.extra.cyclyx.ui.hasilBersepeda
 
+import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.extra.cyclyx.database.BersepedaDao
+import androidx.lifecycle.*
 import com.extra.cyclyx.entity.Bersepeda
+import com.extra.cyclyx.repository.CyclyxRepository
 import com.mapbox.geojson.Point
 import com.mapbox.geojson.utils.PolylineUtils
 import kotlinx.coroutines.CoroutineScope
@@ -15,9 +14,9 @@ import kotlinx.coroutines.launch
 
 class HasilBersepedaViewModel(
     actId: Long = 0L,
-    dataSource: BersepedaDao
-) : ViewModel(){
-    val database = dataSource
+    app: Application
+) : AndroidViewModel(app){
+    val repository = CyclyxRepository(app.applicationContext)
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     val act: LiveData<Bersepeda>
@@ -30,14 +29,17 @@ class HasilBersepedaViewModel(
     val backToMenu: LiveData<Boolean>
         get() = _backToMenu
 
+    val mapStyle = repository.settingsPreferences.getString("tipe_peta","Default")
+
     init {
-        act = database.getCyclingAct(actId)
+        Log.d("MAP","Style : $mapStyle")
+        act = repository.getCyclingData(actId)
     }
 
     fun decodeRoute(act: Bersepeda?) {
         uiScope.launch {
             act?.let {
-                Log.d("TRACKING","${act.toString()}")
+                Log.d("RESULT","${act.routeString}")
                 val decodedRoute = PolylineUtils.decode(act.routeString, 5)
                 _routeList.value = PolylineUtils.simplify(decodedRoute,0.00005)
             }
@@ -46,6 +48,7 @@ class HasilBersepedaViewModel(
 
     fun onMapAsyncFinished() {
         decodeRoute(act.value)
+        Log.d("RESULT","MapAync : ${act.value}")
     }
 
     fun onBackClicked() {
@@ -59,5 +62,19 @@ class HasilBersepedaViewModel(
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    class Factory(val actId : Long,val app: Application) : ViewModelProvider.Factory{
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            @Suppress("UNCHECKED_CAST")
+            if(modelClass.isAssignableFrom(HasilBersepedaViewModel::class.java)){
+                return HasilBersepedaViewModel(
+                    actId,
+                    app
+                ) as T
+            }
+            throw IllegalArgumentException("Unable To Construct ViewModel")
+        }
+
     }
 }

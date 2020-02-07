@@ -1,50 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/activity_vertical_margin">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <data>
+
+        <variable
+                name="tantangan"
+                type="com.extra.cyclyx.entity.Tantangan" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            card_view:cardCornerRadius="2dp"
-            card_view:cardUseCompatPadding="true">
+            android:orientation="vertical">
 
-        <GridLayout
+        <LinearLayout
+                android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:rowCount="2"
-                android:columnCount="2" >
-            <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/ic_home_black_24dp"
-                    android:layout_rowSpan="2"/>
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Kamu adalah Pemula"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center"
-                    android:layout_gravity="center"/>
-            <ProgressBar
-                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:progress="50"
-                android:layout_gravity="center"/>
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:orientation="horizontal"
+                android:background="@color/whiteText"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintLeft_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:gravity="center">
+
+                <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:layout_centerInParent="true"
+                        android:id="@+id/progress_circular"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cpb_background_progressbar_color="@color/actionTrasnsparent"
+                        app:cpb_background_progressbar_width="@dimen/_3sdp"
+                        app:cpb_progressbar_color="@color/colorAccent"
+                        app:cpb_progress_direction="to_right"
+                        app:cpb_progressbar_width="@dimen/_7sdp"
+                        app:cpb_progress_max="100"
+                        />
+
+                <TextView
+                        android:layout_centerInParent="true"
+                        android:id="@+id/TxtTtgPercentage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/josefinsans_bold"
+                        app:formatProgression="@{tantangan.progressTantangan}"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textSize="@dimen/_12ssp"
+                        tools:text="@string/txt_persentase" />
+            </RelativeLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:id="@+id/TxtTtgTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo2_bold"
+                        android:text="@{tantangan.tipeTantangan}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="#0C1B44"
+                        android:textSize="@dimen/_18ssp"
+                        tools:text="@string/txt_kecepatan" />
+
+                <TextView
+                        android:id="@+id/TxtTtgDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo2_regular"
+                        android:text="@{tantangan.labelTantangan}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="#96000000"
+                        android:textSize="@dimen/_13ssp"
+                        tools:text="Bersepeda dalam kecepatan 15km/detik" />
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_gravity="center_horizontal">
+                    <TextView
+                            android:id="@+id/TvProgTantangan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_12sdp"
+                            android:text="3.4km"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:fontFamily="@font/exo2_regular"
+                            android:textColor="@color/font_bold_purple"/>
+
+                    <TextView
+                            android:id="@+id/Tvdari"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:textSize="@dimen/_12sdp"
+                            android:text="dari"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:fontFamily="@font/exo2_regular"
+                            android:textColor="@color/font_bold_purple"/>
+
+                    <TextView
+                            android:id="@+id/TvFullTantangan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_12sdp"
+                            android:text="30 km"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:fontFamily="@font/exo2_regular"
+                            android:textColor="@color/font_bold_purple"/>
+
+                    <TextView
+                            android:id="@+id/Tvterselesaikan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:textSize="@dimen/_12sdp"
+                            android:text="terselesaikan"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:fontFamily="@font/exo2_regular"
+                            android:textColor="@color/font_bold_purple"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
 
-        </GridLayout>
-
-
-    </androidx.cardview.widget.CardView>
-
-
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

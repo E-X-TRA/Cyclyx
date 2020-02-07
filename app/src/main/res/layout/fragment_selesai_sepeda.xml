@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+                name="viewModel"
+                type="com.extra.cyclyx.ui.selesaiSepeda.SelesaiBersepedaViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.selesaiSepeda.SelesaiBersepedaFragment">
+
+        <RelativeLayout
+                android:id="@+id/roundback"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_200sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/circleback"
+                android:layout_marginTop="@dimen/_50sdp"
+                android:visibility="invisible">
+
+            <ImageView
+                    android:layout_centerInParent="true"
+                    android:tint="@color/whiteText"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:src="@drawable/ic_check" />
+
+        </RelativeLayout>
+
+        <TextView
+                android:id="@+id/tvText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/roundback"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/_50sdp"
+                android:textSize="@dimen/_24sdp"
+                android:fontFamily="@font/exo2_regular"
+                android:text="Anda telah bersepeda" />
+
+        <Button
+                android:id="@+id/btnHasil"
+                style="@style/NextButton"
+                android:background="@color/colorAccent"
+                android:text="Lihat hasil anda"
+                android:onClick="@{() -> viewModel.onBtnHasilClick()}"
+                android:textAllCaps="false"
+                app:layout_constraintTop_toBottomOf="@id/tvText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnSelesai"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        <Button
+                android:id="@+id/btnSelesai"
+                style="@style/WhiteButton"
+                android:text="Selesai"
+                android:onClick="@{() -> viewModel.onBtnHomeClick()}"
+                android:textSize="@dimen/_18sdp"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="@id/btnHasil"
+                app:layout_constraintStart_toEndOf="@id/btnHasil"
+                app:layout_constraintTop_toTopOf="@id/btnHasil"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

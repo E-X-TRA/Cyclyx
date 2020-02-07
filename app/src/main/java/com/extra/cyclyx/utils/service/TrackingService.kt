@@ -63,12 +63,12 @@ class TrackingService : Service(){
                     startForeground(1024, makeNotification("Tracking Your Trip"))
                     Toast.makeText(applicationContext, "Service Started!", Toast.LENGTH_SHORT)
                         .show()
-                    Log.d("TRACKING", "Service Started!")
+                    Log.d("TRACKING","Service Started")
                 }
                 PAUSE_SERVICE -> {
                     startForeground(1024,makeNotification("Trip Is Paused"))
                     cyclyxLocationEngine.removeLocationUpdates(callback)
-                    Log.d("TRACKING", "Service Paused!")
+                    Log.d("TRACKING","Service Paused")
                 }
                 STOP_SERVICE -> {
                     if(::cyclyxLocationEngine.isInitialized){
@@ -78,7 +78,8 @@ class TrackingService : Service(){
                     stopSelf()
                     Toast.makeText(applicationContext, "Service Stopped!", Toast.LENGTH_SHORT)
                         .show()
-                    Log.d("TRACKING", "Service Stopped!")
+                    Log.d("TRACKING","Service Stopped")
+
                 }
             }
         }
@@ -121,15 +122,17 @@ class TrackingService : Service(){
                 val location = result?.lastLocation ?: return
                 service.pointList.add(Point.fromLngLat(location.longitude, location.latitude,location.altitude))
                 val routeString = service.encodePointToString(service.pointList)
-                Log.d("TRACKING", "RouteString : $routeString")
-                service.sendBroadcast(routeString)
+                Log.d("TRACKING","RouteString = $routeString")
+
+                service.sendBroadcast(routeString,location.altitude)
             } else {
-                Log.d("TRACKING", "Service Reference Null")
+                Log.d("TRACKING","Service Reference Null")
             }
         }
 
         override fun onFailure(exception: Exception) {
-            Log.d("TRACKING", "Location Update Failed")
+            Log.d("TRACKING","Location Update Failed")
+
         }
     }
 
@@ -139,9 +142,10 @@ class TrackingService : Service(){
     }
 
     //send the data via broadcast
-    private fun sendBroadcast(route: String) {
+    private fun sendBroadcast(route: String,alt : Double) {
         val intentSendLocationRoute = Intent("LocationUpdates")
-        intentSendLocationRoute.putExtra(ENCODED_STRING, route)
+        intentSendLocationRoute.putExtra(EXTRA_ROUTE, route)
+        intentSendLocationRoute.putExtra(EXTRA_ALT,alt)
         LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intentSendLocationRoute)
     }
 

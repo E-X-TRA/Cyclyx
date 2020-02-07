@@ -1,14 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.tantangan.TantanganFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.extra.cyclyx.ui.statistik.tantangan.TantanganViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:background="@drawable/bg_5"
+            android:orientation="vertical">
 
-</FrameLayout>
+        <LinearLayout
+                android:id="@+id/head"
+                android:layout_margin="@dimen/_13sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@id/card"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/exo2_bold"
+                    android:text="@string/text_tantangan"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="#2962FF"
+                    android:textSize="@dimen/_27ssp" />
+
+            <TextView
+                    android:id="@+id/TxtTodayDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/exo2_regular"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="#96000000"
+                    android:textSize="@dimen/_15ssp"
+                    tools:text="Hari ini, 14 November" />
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:backgroundTint="@color/bg_tantangan"
+                app:cardCornerRadius="@dimen/_8sdp"
+
+                app:cardElevation="@dimen/_8sdp"
+                app:layout_constraintBottom_toTopOf="@id/LinearData"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/head">
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_17sdp"
+                    android:layout_marginTop="@dimen/_17sdp"
+                    android:layout_marginEnd="@dimen/_17sdp"
+                    android:layout_marginBottom="@dimen/_17sdp"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:id="@+id/TxtCardHist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo2_bold"
+                        android:text="@string/txt_sejauh_ini_anda_sudah"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="#0C1B44"
+                        android:textSize="@dimen/_22ssp" />
+
+                <TextView
+                        android:id="@+id/TxtCardIsi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo2_bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="#0C1B44"
+                        android:textSize="@dimen/_22ssp"
+                        android:text="@{viewModel.randomDescription}"
+                        tools:text="Bersepeda Selama" />
+
+                <TextView
+                        android:id="@+id/TxtCountKal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/exo2_bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="#00C80A"
+                        android:textSize="@dimen/_17ssp"
+                        android:text="@{viewModel.randomUserRecords}"
+                        tools:text="65,356 kkal" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+
+                android:id="@+id/LinearData"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_250sdp"
+                android:layout_marginStart="@dimen/_17sdp"
+                android:layout_marginEnd="@dimen/_17sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card">
+
+            <TextView
+                    android:id="@+id/txtPencapaianmu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/exo2_bold"
+                    android:text="@string/txt_pencapaianmu"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="#96000000"
+                    android:textSize="@dimen/_18ssp" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPencapaian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_tantangan" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -2,21 +2,22 @@ package com.extra.cyclyx.ui.home
 
 import android.Manifest
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.extra.cyclyx.R
+import com.extra.cyclyx.SettingsActivity
 import com.extra.cyclyx.databinding.FragmentHomeBinding
-import com.extra.cyclyx.BersepedaActivity
+import com.extra.cyclyx.entity.ReferenceItem
 import com.extra.cyclyx.utils.PERMISSION_FINE_LOCATION_REQUEST
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.database.DataSnapshot
 
 class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
@@ -28,40 +29,49 @@ class HomeFragment : Fragment() {
     ): View? {
         val binding = FragmentHomeBinding.inflate(inflater)
         val app = requireNotNull(activity).application
-        val viewModelFactory = HomeViewModelFactory(app)
-        viewModel = ViewModelProviders.of(this,viewModelFactory).get(HomeViewModel::class.java)
+        viewModel = ViewModelProvider(this,HomeViewModel.Factory(app)).get(HomeViewModel::class.java)
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         if(!viewModel.isLocationPermissionGranted){
-            if(ActivityCompat.shouldShowRequestPermissionRationale(activity!!,Manifest.permission.ACCESS_FINE_LOCATION)){
-                Snackbar.make(view!!,getString(R.string.permission_location_explanation),Snackbar.LENGTH_INDEFINITE).show()
-                ActivityCompat.requestPermissions(activity!!, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+            if(ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),Manifest.permission.ACCESS_FINE_LOCATION)){
+                Snackbar.make(requireView(),getString(R.string.permission_location_explanation),Snackbar.LENGTH_INDEFINITE).show()
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     PERMISSION_FINE_LOCATION_REQUEST)
             }else{
-                ActivityCompat.requestPermissions(activity!!, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     PERMISSION_FINE_LOCATION_REQUEST)
             }
         }
 
-        if(viewModel.isBatteryOptimized){ //if optimized
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                val name = resources.getString(R.string.app_name)
-                Toast.makeText(
-                    app.applicationContext,
-                    "Battery optimization -> All apps -> $name -> Don't optimize",
-                    Toast.LENGTH_LONG
-                ).show()
-
-                val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
-                startActivity(intent)
+        viewModel.navigateToKesiapan.observe(this, Observer {
+            it?.let {
+                this.findNavController().navigate(HomeFragmentDirections.navigateToKesiapanFromHome())
+                viewModel.doneNavigateToKesiapan()
             }
-        }
+        })
 
-        binding.btnGo.setOnClickListener {
-            val intent = Intent(activity, BersepedaActivity::class.java)
-            startActivity(intent)
-        }
+
+        viewModel.navigateToPengaturan.observe(this, Observer {
+            it?.let {
+                val intent = Intent(activity, SettingsActivity::class.java)
+                startActivity(intent)
+                viewModel.doneNavigateToPengaturan()
+            }
+        })
+
+        viewModel.tipsLiveData.observe(this, Observer<DataSnapshot>{
+            it?.let {
+                val arrayItem = ArrayList<ReferenceItem>()
+                for(i in it.children){
+                    val model = i.getValue(ReferenceItem::class.java)
+                    model?.let {
+                        arrayItem.add(it)
+                    }
+                }
+                viewModel.addItemsToList(arrayItem)
+            }
+        })
 
         return binding.root
     }

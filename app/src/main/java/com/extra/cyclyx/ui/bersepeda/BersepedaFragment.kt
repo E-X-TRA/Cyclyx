@@ -11,10 +11,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import androidx.navigation.fragment.findNavController
 import com.extra.cyclyx.R
-import com.extra.cyclyx.database.AppDatabase
 import com.extra.cyclyx.databinding.FragmentBersepedaBinding
 import com.extra.cyclyx.utils.*
 import com.extra.cyclyx.utils.service.TrackingService
@@ -105,13 +105,11 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
 
         binding.lifecycleOwner = this
         //init context for use within fragment
-        ctx = requireNotNull(this.context).applicationContext
+        ctx = activity?.applicationContext!!
         //init viewModel
         val application = requireNotNull(this.activity).application
-        val dataSource = AppDatabase.getInstance(application).bersepedaDAO
-        val viewModelFactory = BersepedaViewModelFactory(dataSource, application)
         viewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(BersepedaViewModel::class.java)
+            ViewModelProvider(this, BersepedaViewModel.Factory(application)).get(BersepedaViewModel::class.java)
 
         //bind viewmodel
         binding.viewModel = viewModel
@@ -124,12 +122,6 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
                 addPointToMap(it)
             }
         })
-
-        //init broadcast receiver
-        LocalBroadcastManager.getInstance(ctx).registerReceiver(
-            locationUpdateReceiver,
-            IntentFilter("LocationUpdates")
-        )
 
         modifyTrackingService(START_SERVICE)
         viewModel.onStart()
@@ -166,7 +158,14 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
                 }
             }
         })
-        // Inflate the layout for this fragment
+
+        viewModel.navigateToResult.observe(this, Observer {act ->
+            act?.let{
+                navigateToResult(act.id)
+                viewModel.doneNavigatingToResult()
+            }
+        })
+            // Inflate the layout for this fragment
         return binding.root
     }
 
@@ -176,12 +175,17 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
         context?.startService(intent)
     }
 
+    private fun navigateToResult(id : Long){
+        this.findNavController().navigate(BersepedaFragmentDirections.navigateToSelesaiBersepedaFromBersepeda(id))
+    }
+
     //receive service location update
     private val locationUpdateReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent != null) {
-                val encodedString = intent.getStringExtra(ENCODED_STRING)
-                viewModel.decodePolyLine(encodedString!!)
+                val stringRoute = intent.getStringExtra(EXTRA_ROUTE)
+                val doubleAlt = intent.getDoubleExtra(EXTRA_ALT,0.0)
+                viewModel.processLocationUpdate(stringRoute!!,doubleAlt)
             }
         }
     }
@@ -196,11 +200,18 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
     override fun onResume() {
         super.onResume()
         binding.mapView.onResume()
+        //register broadcast receiver
+        LocalBroadcastManager.getInstance(ctx).registerReceiver(
+            locationUpdateReceiver,
+            IntentFilter("LocationUpdates")
+        )
     }
 
     override fun onPause() {
         super.onPause()
         binding.mapView.onPause()
+        LocalBroadcastManager.getInstance(ctx)
+            .unregisterReceiver(locationUpdateReceiver) // and stop receiving broadcast
     }
 
     override fun onStop() {
@@ -211,8 +222,6 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
     override fun onDestroy() {
         super.onDestroy()
         modifyTrackingService(STOP_SERVICE) //dont forget to stop service
-        LocalBroadcastManager.getInstance(ctx)
-            .unregisterReceiver(locationUpdateReceiver) // and stop receiving broadcast
         binding.mapView.onDestroy()
     }
 
@@ -225,4 +234,5 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
         super.onSaveInstanceState(outState)
         binding.mapView.onSaveInstanceState(outState)
     }
+
 }

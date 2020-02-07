@@ -10,8 +10,8 @@
             android:label="BersepedaFragment"
             tools:layout="@layout/fragment_bersepeda">
         <action
-                android:id="@+id/navigate_to_hasil_bersepeda_from_bersepeda"
-                app:destination="@+id/hasil_bersepeda"/>
+                android:id="@+id/navigate_to_selesai_bersepeda_from_bersepeda"
+                app:destination="@+id/selesai_bersepeda"/>
     </fragment>
     <fragment
             android:id="@+id/hasil_bersepeda"
@@ -21,10 +21,21 @@
         <argument
                 android:name="bersepedaKey"
                 app:argType="long"/>
+    </fragment>
+    <fragment
+            android:id="@+id/selesai_bersepeda"
+            android:name="com.extra.cyclyx.ui.selesaiSepeda.SelesaiBersepedaFragment"
+            android:label="SelesaiSepedaFragment" >
+        <argument
+                android:name="bersepedaKey"
+                app:argType="long"/>
         <action
-                android:id="@+id/navigate_to_riwayat_from_hasil_bersepeda"
-                app:destination="@id/riwayat"
-                app:popUpTo="@id/riwayat"
+                android:id="@+id/navigate_to_hasil_bersepeda_from_selesai_bersepeda"
+                app:destination="@+id/hasil_bersepeda"/>
+        <action
+                android:id="@+id/navigate_to_home_from_selesai_bersepeda"
+                app:destination="@id/home"
+                app:popUpTo="@id/home"
                 />
     </fragment>
 </navigation>

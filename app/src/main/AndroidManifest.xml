@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="com.extra.cyclyx">
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -11,17 +13,28 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".BersepedaActivity"
-                android:label="Bersepeda"/>
-        <activity android:name=".ui.pendaftaran.PendaftaranActivity" />
-        <activity android:name=".MainActivity">
+                android:name=".SettingsActivity"
+                android:label="@string/title_activity_settings"></activity>
+        <activity
+                android:name=".SplashActivity"
+                android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".utils.service.TrackingService" android:process=":tracking_service"/>
+        <activity
+                android:name=".SignUpActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".MainActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".BersepedaActivity"
+                android:screenOrientation="portrait" />
+
+        <service android:name=".utils.service.TrackingService" />
     </application>
 
 </manifest>

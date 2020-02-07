@@ -18,4 +18,72 @@
     <string name="txt_waktu_kalori">1 hour and 856 kal</string>
     <string name="txt_pencapaianmu">Pencapaianmu</string>
     <string name="txt_persentase">100%</string>
+    <string name="txt_pesepeda">Pesepeda</string>
+    <string name="txt_tantangan">Tantangan</string>
+    <string name="txt_kilometer">Kilometer</string>
+    <string name="txt_jam">Jam</string>
+    <string name="txt_usia">Usia</string>
+    <string name="txt_kilogram">Kilogram</string>
+    <string name="txt_centimeter">Centimeter</string>
+    <string name="txt_distance">Jarak</string>
+    <string name="txt_duration">Durasi</string>
+    <string name="txt_caps_tantangan">TANTANGAN</string>
+    <string name="txt_riwayat">Riwayat</string>
+    <string name="txt_membakar_kalori">Sejauh ini anda sudah membakar kalori</string>
+    <string name="txt_kecepatan_tercepat">Kecepatan tercepat</string>
+    <string name="txt_total_waktu_bersepeda">Total waktu bersepeda</string>
+    <string name="txt_total_jarak_bersepeda">Total jarak bersepeda</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="txt_kalori">Kalori</string>
+    <string name="txt_elevasi">Elevasi</string>
+    <string name="txt_buat">Buat</string>
+    <string name="txt_akun">Akun</string>
+    <string name="txt_perempuan">Perempuan</string>
+    <string name="txt_laki_laki">Laki - Laki</string>
+    <string name="txt_kembali">Kembali</string>
+    <string name="txt_selanjutnya">Selanjutnya</string>
+    <string name="titled_jenis_kelamin_anda">Jenis Kelamin Anda</string>
+    <string name="nama_depan">Nama Depan</string>
+    <string name="nama_belakang">Nama Belakang</string>
+    <string name="tanggal_lahir">Tanggal Lahir</string>
+    <string name="berat_badan">Berat Badan</string>
+    <string name="tinggi_badan">Tinggi Badan</string>
+    <string name="txt_pegaturan">Konfigurasi</string>
+    <string name="txt_kesiapan">Kesiapan</string>
+    <string name="txt_mode_hemat_daya">Mode Hemat Daya</string>
+    <string name="txt_mengurangi_penggunaan_daya_ponsel">Matikan Mode Hemat Daya</string>
+    <string name="txt_matikan">matikan</string>
+    <string name="txt_optimisasi">Optimisasi</string>
+    <string name="txt_menyalakan_gps">Hidupkan GPS</string>
+    <string name="txt_lokasi">Lokasi</string>
+    <string name="txt_meningkatkan_performa_aplikasi">Matikan Optimisasi Baterai untuk Cyclyx</string>
+    <string name="txt_lengkapi_data_diri_anda">Lengkapi data diri anda</string>
+    <string name="txt_sejauh_ini_anda_sudah">Sejauh ini anda sudah</string>
+
+    <string name="txt_tipstitle">Tips</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="txt_terselesaikan">Terselesaikan</string>
+    <string name="txt_belum_selesai">Belum Selesai</string>
+    <string name="edit_profil">Edit Profil</string>
+    <string name="tahun_lahir">Tahun Lahir</string>
+    <string name="kg">Kg</string>
+    <string name="cm">Cm</string>
 </resources>

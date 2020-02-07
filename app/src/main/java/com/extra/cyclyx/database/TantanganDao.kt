@@ -1,11 +1,32 @@
 package com.extra.cyclyx.database
 
-import androidx.room.Dao
-import androidx.room.Query
+import androidx.lifecycle.LiveData
+import androidx.room.*
 import com.extra.cyclyx.entity.Tantangan
 
 @Dao
 interface TantanganDao {
     @Query("SELECT * FROM tantangan")
-    fun getAllTantangan() : List<Tantangan>
+    fun getAllTantangan() : LiveData<List<Tantangan>>
+
+    @Query("SELECT * FROM tantangan WHERE id_tantangan = :id")
+    fun getTantangan(id :Long): LiveData<Tantangan>
+
+    @Query("SELECT * FROM tantangan WHERE progress_tantangan < 100")
+    fun getUnfinishedTantangan() : LiveData<List<Tantangan>>
+
+    @Query("SELECT COUNT(*) FROM tantangan")
+    fun getAllTantanganCount() : LiveData<Int>
+
+    @Query("SELECT COUNT(*) FROM tantangan WHERE progress_tantangan = 100")
+    fun getFinishedTantanganCount() : LiveData<Int>
+
+    @Query("SELECT COUNT(*) FROM tantangan WHERE progress_tantangan < 100")
+    fun getUnfinishedTantanganCount() : LiveData<Int>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertTantangan(tantangan: Tantangan)
+
+    @Update
+    fun updateTantangan(tantangan : Tantangan)
 }

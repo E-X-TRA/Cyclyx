@@ -4,23 +4,20 @@ import android.app.Application
 import android.os.Handler
 import android.os.SystemClock
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.extra.cyclyx.database.BersepedaDao
+import androidx.lifecycle.*
 import com.extra.cyclyx.entity.Bersepeda
+import com.extra.cyclyx.repository.CyclyxRepository
 import com.extra.cyclyx.utils.*
 import com.mapbox.geojson.Point
 import com.mapbox.geojson.utils.PolylineUtils
+import com.mapbox.turf.TurfConstants
 import com.mapbox.turf.TurfMeasurement
 import kotlinx.coroutines.*
 
 class BersepedaViewModel(
-    dataSource : BersepedaDao,
     val app : Application
 ) : AndroidViewModel(app){
-    val database = dataSource
+    val repository = CyclyxRepository(app.applicationContext)
     //coroutine
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -65,6 +62,7 @@ class BersepedaViewModel(
 
     var handler : Handler?=null
     val elevationHelper = ElevationHelper(app.applicationContext)
+    private val altitudeList = ArrayList<Double>()
 
     init {
         handler = Handler()
@@ -88,7 +86,7 @@ class BersepedaViewModel(
 
     private suspend fun getLatestBersepeda(): Bersepeda? {
         return withContext(Dispatchers.IO) {
-            var cycling = database.getLatestCycling()
+            var cycling = repository.getLatestCyclingData()
             if (cycling?.endTime != cycling?.startTime) {
                 cycling = null
             }
@@ -97,15 +95,11 @@ class BersepedaViewModel(
     }
 
     private suspend fun insert(cycling: Bersepeda) {
-        withContext(Dispatchers.IO) {
-            database.insert(cycling)
-        }
+        repository.insertCyclingData(cycling)
     }
 
-    private suspend fun update(cycling: Bersepeda) {
-        withContext(Dispatchers.IO) {
-            database.update(cycling)
-        }
+    private suspend fun update(cycling: Bersepeda){
+        repository.updateCyclingData(cycling)
     }
 
     fun onStart() {
@@ -130,42 +124,44 @@ class BersepedaViewModel(
     }
 
     fun onStop() {
+        Log.d("TRACKING","Stopped!")
         uiScope.launch {
             stopTimer()
-            val oldAct = thisAct.value ?: return@launch
+            val latestAct = thisAct.value ?: return@launch
 
-            oldAct.endTime = System.currentTimeMillis()
-            oldAct.startPoint = _locationPoints.value?.first() ?: Point.fromLngLat(107.628550, -6.941557)
-            oldAct.endPoint = _locationPoints.value?.last() ?: oldAct.startPoint
-            oldAct.speed = _speed.value!!
-            oldAct.distance = _totalDistance.value!!
-            oldAct.calories = _calories.value!!
-            oldAct.peakSpeed = _peakSpeed
-            oldAct.elevationGain = _elevationGain
-            oldAct.elevationLoss = _elevationLoss
-            oldAct.calories = _calories.value!!
-            oldAct.routeString = thisActRoute
-            oldAct.finished = true
-            Log.d("TRACKING",oldAct.toString())
-            update(oldAct)
+            latestAct.endTime = System.currentTimeMillis()
+            latestAct.startPoint = _locationPoints.value?.first() ?: Point.fromLngLat(107.628550, -6.941557)
+            latestAct.endPoint = _locationPoints.value?.last() ?: latestAct.startPoint
+            latestAct.speed = _speed.value!!
+            latestAct.distance = _totalDistance.value!!
+            latestAct.calories = _calories.value!!
+            latestAct.peakSpeed = _peakSpeed
+            latestAct.elevationGain = _elevationGain
+            latestAct.elevationLoss = _elevationLoss
+            latestAct.routeString = thisActRoute
+            latestAct.finished = true
+            Log.d("CALCULATIONS","$latestAct")
 
-            thisAct.value = oldAct
+            update(latestAct)
+//            modifyUserCyclingData(latestAct)
 
-            _navigateToResult.value = oldAct
+            thisAct.value = latestAct
+
+            _navigateToResult.value = latestAct
         }
     }
 
-    //decodePolylineString from fragments
-    fun decodePolyLine(route: String) {
+    //decodePolylineString from service and process the altitude
+    fun processLocationUpdate(route: String,alt : Double) {
         uiScope.launch {
             thisActRoute = route
             timeLog.add(System.currentTimeMillis())
             val tempListLatLng = PolylineUtils.decode(route, 5)
             _locationPoints.value = tempListLatLng
+            altitudeList.add(alt)
 
             viewModelScope.launch {
                 processMapsData()
-                Log.d("TRACKING","Speed : ${_speed.value}")
             }
         }
     }
@@ -179,10 +175,12 @@ class BersepedaViewModel(
                 val oldPoint = pointsList.get(pointsList.size - 2) //one request before this location data
                 val newPoint = pointsList.get(pointsList.size - 1) //this request location data
                 //calculate distance
-                distanceBetweenLastTwoPoints = TurfMeasurement.distance(oldPoint, newPoint)
+                //assuming this was KILOMETRES
+                distanceBetweenLastTwoPoints = TurfMeasurement.distance(oldPoint, newPoint,TurfConstants.UNIT_KILOMETRES)
                 //calculate speed (for peak/max speed) in km/h
                 val duration = timeLog.get(timeLog.size - 1) - timeLog.get(timeLog.size - 2)
-                val speed = distanceBetweenLastTwoPoints / duration
+                //        val speed = distanceBetweenLastTwoPoints / duration //in m/s
+                val speed = (distanceBetweenLastTwoPoints/1000) / convertLongToSecond(duration) //in m/s
                 if (_peakSpeed < speed) {
                     _peakSpeed = speed
                 }
@@ -205,24 +203,25 @@ class BersepedaViewModel(
             //summing things when moving for total sum and update UI
             if (pointsList.size >= 2 && distanceBetweenLastTwoPoints > 0) {
                 //duration until this point
-                val durationUntilThis = convertLongToHour(timeLog.last() - timeLog.first())
+                //assuming this was in HOURS
+                val durationUntilThis : Long = timeLog.last() - timeLog.first()
                 //total distance this point
                 _totalDistance.value = _totalDistance.value?.plus(distanceBetweenLastTwoPoints)
                 //average speed until this point
-                val averageSpeed = _totalDistance.value?.div(durationUntilThis)
+                val averageSpeed = _totalDistance.value?.div(convertLongToHour(durationUntilThis))
                 _speed.value = averageSpeed
                 //calories burned until this point
                 // using https://captaincalculator.com/health/calorie/calories-burned-cycling-calculator/
                 val weightInKg = 50
                 val mets = determineMets(averageSpeed!!)
-                val caloriesCalc = ((mets * weightInKg * 3.5) / 200) * (durationUntilThis / 60)
+                val caloriesCalc = ((mets * weightInKg * 3.5) / 200) * (convertLongToMinute(durationUntilThis))
                 _calories.value = caloriesCalc
             }
         }
     }
 
     //timer related
-    fun startTimer() {
+    private fun startTimer() {
         uiScope.launch {
             Log.d("TRACKING","Timer Started")
             startTime.value = System.currentTimeMillis() //set starttime value
@@ -233,7 +232,7 @@ class BersepedaViewModel(
         }
     }
 
-    fun pauseTimer(){
+    private fun pauseTimer(){
         uiScope.launch {
             Log.d("TRACKING","Timer Paused")
             _trackingStatus.value = TRACKING_PAUSED
@@ -243,7 +242,7 @@ class BersepedaViewModel(
         }
     }
 
-    fun resumeTimer(){
+    private fun resumeTimer(){
         uiScope.launch {
             Log.d("TRACKING","Timer Resumed")
             _trackingStatus.value = TRACKING_RESUMED
@@ -252,7 +251,7 @@ class BersepedaViewModel(
         }
     }
 
-    fun stopTimer(){
+    private fun stopTimer(){
         uiScope.launch {
             _trackingStatus.value = TRACKING_STOPPED
 
@@ -271,5 +270,18 @@ class BersepedaViewModel(
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    class Factory(val app: Application) : ViewModelProvider.Factory{
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            @Suppress("UNCHECKED_CAST")
+            if(modelClass.isAssignableFrom(BersepedaViewModel::class.java)){
+                return BersepedaViewModel(
+                    app
+                ) as T
+            }
+            throw IllegalArgumentException("Unable To Construct ViewModel")
+        }
+
     }
 }
