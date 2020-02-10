@@ -141,7 +141,7 @@
                 <androidx.cardview.widget.CardView
                         android:id="@+id/CardTips"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_100sdp"
+                        android:layout_height="@dimen/_140sdp"
                         android:layout_margin="@dimen/_10sdp"
                         app:cardBackgroundColor="@color/bg_tantangan"
                         app:cardCornerRadius="@dimen/_5sdp"
