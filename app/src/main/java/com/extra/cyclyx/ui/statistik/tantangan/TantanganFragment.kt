@@ -37,7 +37,7 @@ class TantanganFragment : Fragment() {
         binding.rvPencapaian.adapter = adapter
 
 
-        viewModel.challenges.observe(this, Observer {
+        viewModel.challenges.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
             }

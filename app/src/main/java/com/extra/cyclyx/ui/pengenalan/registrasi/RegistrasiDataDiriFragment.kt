@@ -53,7 +53,7 @@ class RegistrasiDataDiriFragment : Fragment() {
             moveToPreviousFragment()
         }
 
-        viewModel.navigateNext.observe(this, Observer {
+        viewModel.navigateNext.observe(viewLifecycleOwner, Observer {
             it?.let {
                 if (it) {
                     this.moveToNextRegistration()
@@ -61,7 +61,7 @@ class RegistrasiDataDiriFragment : Fragment() {
             }
         })
 
-        viewModel.showWarning.observe(this, Observer {
+        viewModel.showWarning.observe(viewLifecycleOwner, Observer {
             it?.let{
                 when(it){
                     WARNING_TYPES.REGISTRATION_MUST_NOT_NULL -> {

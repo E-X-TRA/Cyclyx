@@ -4,7 +4,6 @@ package com.extra.cyclyx.ui.hasilBersepeda
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -58,7 +57,7 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
             ViewModelProvider(this, HasilBersepedaViewModel.Factory(arguments.bersepedaKey, application)).get(HasilBersepedaViewModel::class.java)
         binding.viewModel = viewModel
 
-        viewModel.routeList.observe(this, Observer { route ->
+        viewModel.routeList.observe(viewLifecycleOwner, Observer { route ->
             route?.let {
                 if (::map.isInitialized) {
                     addPointToMap(route)
@@ -76,7 +75,7 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
             }
         })
 
-        viewModel.backToMenu.observe(this, Observer { status ->
+        viewModel.backToMenu.observe(viewLifecycleOwner, Observer { status ->
             status?.let {
                 if (it) {
                     this.findNavController()
@@ -119,7 +118,7 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
                 )
             )
 
-            viewModel.act.observe(this, Observer {act ->
+            viewModel.act.observe(viewLifecycleOwner, Observer {act ->
                 act?.let{
                     viewModel.onMapAsyncFinished()
                 }

@@ -143,7 +143,7 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
         binding.mapView.getMapAsync(this)
 
         //observe changes
-        viewModel.locationPoints.observe(this, Observer {
+        viewModel.locationPoints.observe(viewLifecycleOwner, Observer {
             it?.let {
                 addPointToMap(it)
             }
@@ -152,7 +152,7 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
         modifyTrackingService(START_SERVICE)
         viewModel.onStart()
 
-        viewModel.trackingStatus.observe(this, Observer { status ->
+        viewModel.trackingStatus.observe(viewLifecycleOwner, Observer { status ->
             when (status) {
                 TRACKING_STARTED, TRACKING_RESUMED -> {
                     binding.imgPause.setBackgroundResource(R.drawable.pause)
@@ -185,7 +185,7 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
             }
         })
 
-        viewModel.navigateToResult.observe(this, Observer {act ->
+        viewModel.navigateToResult.observe(viewLifecycleOwner, Observer {act ->
             act?.let{
                 navigateToResult(act.id)
                 viewModel.doneNavigatingToResult()

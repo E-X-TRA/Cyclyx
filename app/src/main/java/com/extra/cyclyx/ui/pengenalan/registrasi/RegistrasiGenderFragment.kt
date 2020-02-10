@@ -46,26 +46,26 @@ class RegistrasiGenderFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.gender.observe(this, Observer { gender ->
+        viewModel.gender.observe(viewLifecycleOwner, Observer { gender ->
             gender?.let {
                 when (it) {
                     MALE -> {
                         binding.btnLelaki.setBackgroundResource(R.drawable.rounded_btn_pengenalan)
                         binding.btnPerempuan.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
                         binding.btnLelaki.setTextColor(Color.WHITE)
-                        binding.btnPerempuan.setTextColor(R.color.font_light_blue)
+                        binding.btnPerempuan.setTextColor(resources.getColor(R.color.font_light_blue,activity?.theme))
                     }
                     FEMALE -> {
                         binding.btnPerempuan.setBackgroundResource(R.drawable.rounded_btn_pengenalan)
                         binding.btnLelaki.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
                         binding.btnPerempuan.setTextColor(Color.WHITE)
-                        binding.btnLelaki.setTextColor(R.color.font_light_blue)
+                        binding.btnLelaki.setTextColor(resources.getColor(R.color.font_light_blue,activity?.theme))
                     }
                     UNSELECTED -> {
                         binding.btnLelaki.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
                         binding.btnPerempuan.setBackgroundResource(R.drawable.rounded_btn_pengenalan2)
-                        binding.btnLelaki.setTextColor(R.color.font_light_blue)
-                        binding.btnPerempuan.setTextColor(R.color.font_light_blue)
+                        binding.btnLelaki.setTextColor(resources.getColor(R.color.font_light_blue,activity?.theme))
+                        binding.btnPerempuan.setTextColor(resources.getColor(R.color.font_light_blue,activity?.theme))
                     }
                 }
             }
@@ -87,7 +87,7 @@ class RegistrasiGenderFragment : Fragment() {
             this.moveToPreviousFragment()
         }
 
-        viewModel.showWarning.observe(this, Observer {
+        viewModel.showWarning.observe(viewLifecycleOwner, Observer {
             it?.let{
                 when(it){
                     WARNING_TYPES.REGISTRATION_MUST_NOT_NULL -> {
@@ -100,7 +100,7 @@ class RegistrasiGenderFragment : Fragment() {
             }
         })
 
-        viewModel.navigateNext.observe(this, Observer {
+        viewModel.navigateNext.observe(viewLifecycleOwner, Observer {
             it?.let {
                 if (it) {
                     val intent = Intent(context, MainActivity::class.java)

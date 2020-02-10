@@ -47,13 +47,13 @@ class RiwayatFragment : Fragment() {
         binding.rvRiwayat.adapter = adapter
 
 
-        viewModel.acts.observe(this, Observer {
+        viewModel.acts.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
             }
         })
 
-        viewModel.navigateToResult.observe(this, Observer {actId ->
+        viewModel.navigateToResult.observe(viewLifecycleOwner, Observer {actId ->
             actId?.let{
                 this.findNavController().navigate(StatistikFragmentDirections.navigateToHasilBersepedaFromStatistik(it))
                 viewModel.doneNavigateToHasilBersepeda()

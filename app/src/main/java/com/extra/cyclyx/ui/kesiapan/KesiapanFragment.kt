@@ -30,14 +30,14 @@ class KesiapanFragment : Fragment() {
         viewModel = ViewModelProvider(this, KesiapanViewModel.Factory(app)).get(KesiapanViewModel::class.java)
         binding.viewModel = viewModel
 
-        viewModel.navigateToKonfigurasi.observe(this, Observer {
+        viewModel.navigateToKonfigurasi.observe(viewLifecycleOwner, Observer {
             it?.let{
                 this.findNavController().navigate(KesiapanFragmentDirections.navigateToKonfigurasiFromKesiapan())
                 viewModel.doneNavigateToKonfigurasi()
             }
         })
 
-        viewModel.navigateToBersepeda.observe(this, Observer {
+        viewModel.navigateToBersepeda.observe(viewLifecycleOwner, Observer {
             it?.let {
                 val intent = Intent(activity, BersepedaActivity::class.java)
                 startActivity(intent)
@@ -49,7 +49,7 @@ class KesiapanFragment : Fragment() {
             viewModel.onRefresh()
         }
 
-        viewModel.showWarning.observe(this, Observer {
+        viewModel.showWarning.observe(viewLifecycleOwner, Observer {
             it?.let{
                 when(it){
                     WARNING_TYPES.NOT_ELIGIBLE_BERSEPEDA -> {
@@ -67,7 +67,7 @@ class KesiapanFragment : Fragment() {
             }
         })
 
-        viewModel.motivasiLiveData.observe(this, Observer<DataSnapshot>{
+        viewModel.motivasiLiveData.observe(viewLifecycleOwner, Observer<DataSnapshot>{
             it?.let {
                 val arrayItem = ArrayList<ReferenceItem>()
                 for(i in it.children){

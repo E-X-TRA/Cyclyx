@@ -51,7 +51,6 @@
                 android:layout_height="@dimen/_100sdp"
                 android:src="@drawable/github_image" />
     </LinearLayout>
-0
     <TextView
             android:id="@+id/copyright"
             android:layout_width="match_parent"

@@ -60,7 +60,7 @@
                             tools:text="13KPH"
                             android:fontFamily="@font/exo2_bold"
                             android:textColor="#304FFE"
-                            android:textSize="22dp" />
+                            android:textSize="22sp" />
 
                     <TextView
                             android:layout_width="match_parent"
@@ -69,7 +69,7 @@
                             android:text="Kecepatan"
                             android:fontFamily="@font/exo2_regular"
                             android:textColor="#96000000"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
                 </LinearLayout>
                 <LinearLayout
                         android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
                             tools:text="2 jam"
                             android:fontFamily="@font/exo2_bold"
                             android:textColor="#304FFE"
-                            android:textSize="22dp" />
+                            android:textSize="22sp" />
 
                     <TextView
                             android:layout_width="match_parent"
@@ -94,7 +94,7 @@
                             android:text="Waktu"
                             android:fontFamily="@font/exo2_regular"
                             android:textColor="#96000000"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
                 </LinearLayout>
                 <LinearLayout
                         android:layout_width="wrap_content"
@@ -111,7 +111,7 @@
                             tools:text="5 Km"
                             android:textAppearance="@style/TextAppearance.AppCompat.Large"
                             android:textColor="#304FFE"
-                            android:textSize="22dp" />
+                            android:textSize="22sp" />
 
                     <TextView
                             android:layout_width="match_parent"
@@ -120,7 +120,7 @@
                             android:text="Jarak"
                             android:fontFamily="@font/exo2_regular"
                             android:textColor="#96000000"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

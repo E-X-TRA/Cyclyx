@@ -32,21 +32,21 @@ class KonfigurasiFragment : Fragment() {
         viewModel = ViewModelProvider(this, KonfigurasiViewModel.Factory(app)).get(KonfigurasiViewModel::class.java)
         binding.viewModel = viewModel
 
-        viewModel.intentForLocation.observe(this, Observer {
+        viewModel.intentForLocation.observe(viewLifecycleOwner, Observer {
             it?.let{
                 showLocationDialog()
                 viewModel.doneIntentLocation()
             }
         })
 
-        viewModel.intentForBatteryOptimization.observe(this, Observer {
+        viewModel.intentForBatteryOptimization.observe(viewLifecycleOwner, Observer {
             it?.let{
                 showBatteryOptimizationDialog()
                 viewModel.doneIntentBatteryOptimization()
             }
         })
 
-        viewModel.intentForPowerSaver.observe(this, Observer {
+        viewModel.intentForPowerSaver.observe(viewLifecycleOwner, Observer {
             it?.let{
                 showPowerSaverDialog()
                 viewModel.doneIntentPowerSaver()

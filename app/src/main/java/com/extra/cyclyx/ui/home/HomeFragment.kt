@@ -44,7 +44,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        viewModel.navigateToKesiapan.observe(this, Observer {
+        viewModel.navigateToKesiapan.observe(viewLifecycleOwner, Observer {
             it?.let {
                 this.findNavController().navigate(HomeFragmentDirections.navigateToKesiapanFromHome())
                 viewModel.doneNavigateToKesiapan()
@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
         })
 
 
-        viewModel.navigateToPengaturan.observe(this, Observer {
+        viewModel.navigateToPengaturan.observe(viewLifecycleOwner, Observer {
             it?.let {
                 val intent = Intent(activity, SettingsActivity::class.java)
                 startActivity(intent)
@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
             }
         })
 
-        viewModel.tipsLiveData.observe(this, Observer<DataSnapshot>{
+        viewModel.tipsLiveData.observe(viewLifecycleOwner, Observer<DataSnapshot>{
             it?.let {
                 val arrayItem = ArrayList<ReferenceItem>()
                 for(i in it.children){

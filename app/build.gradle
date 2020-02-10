@@ -47,12 +47,12 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.preference:preference:1.1.0'
-    implementation 'com.google.firebase:firebase-ads:17.0.0'
-    implementation 'com.google.android.gms:play-services-ads:12.0.1'
+    implementation 'com.google.firebase:firebase-ads:18.3.0'
+    implementation 'com.google.android.gms:play-services-ads:18.3.0'
     testImplementation 'junit:junit:4.13'
 
     //noinspection GradleCompatible
@@ -60,15 +60,15 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     //ui ux
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0'
     implementation 'com.sothree.slidinguppanel:library:3.4.0'
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.gauravbhola.ripplepulsebackground:library:1.0.1'
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
     //navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.2.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
     //lifecycle,room and coroutines
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"

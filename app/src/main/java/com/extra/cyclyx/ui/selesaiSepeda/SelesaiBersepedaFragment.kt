@@ -47,19 +47,19 @@ class SelesaiBersepedaFragment : Fragment() {
         binding.roundback.visibility = View.VISIBLE
         binding.roundback.startAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.fab_open))
 
-        viewModel.act.observe(this, Observer {act ->
+        viewModel.act.observe(viewLifecycleOwner, Observer {act ->
             act?.let{
                 viewModel.onActLoaded(it)
             }
         })
 
-        viewModel.goToHasil.observe(this, Observer {
+        viewModel.goToHasil.observe(viewLifecycleOwner, Observer {
             it?.let {
                 this.navigateToResult(it.id)
             }
         })
 
-        viewModel.goToHome.observe(this, Observer {
+        viewModel.goToHome.observe(viewLifecycleOwner, Observer {
             it?.let {
 //                val intent = Intent(requireActivity(),MainActivity::class.java)
 //                startActivity(intent)
