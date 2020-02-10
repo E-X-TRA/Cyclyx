@@ -41,7 +41,6 @@ class RegistrasiViewModel(val app: Application) : AndroidViewModel(app) {
 
     private fun checkUserData(model: User) : Boolean{
         val (fname,lname,gender,year,weight,height) = model
-        Log.d("INTRO","Check : $fname $lname $gender $year $weight $height")
 
         return when{
             fname == "" -> false

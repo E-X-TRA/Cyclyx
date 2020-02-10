@@ -1,78 +1,97 @@
 [
   {
     "tipe_tantangan": "Total Jarak",
-    "label_tantangan": "Mencapai 7Km"
+    "label_tantangan": "Mencapai 7Km",
+	"ambang_tantangan": 7.0
   },
   {
     "tipe_tantangan": "Total Jarak",
-    "label_tantangan": "Mencapai 18Km"
+    "label_tantangan": "Mencapai 18Km",
+	"ambang_tantangan": 18.0
   },
   {
     "tipe_tantangan": "Total Jarak",
-    "label_tantangan": "Mencapai 34Km"
+    "label_tantangan": "Mencapai 34Km",
+	"ambang_tantangan": 34.0
   },
   {
     "tipe_tantangan": "Total Jarak",
-    "label_tantangan": "Mencapai 58Km"
+    "label_tantangan": "Mencapai 58Km",
+	"ambang_tantangan": 58.0
   },
   {
     "tipe_tantangan": "Total Jarak",
-    "label_tantangan": "Mencapai 98Km"
+    "label_tantangan": "Mencapai 98Km",
+	"ambang_tantangan": 98.0
   },
   {
     "tipe_tantangan": "Total Waktu",
-    "label_tantangan": "Mencapai 24 Jam"
+    "label_tantangan": "Mencapai 24 Jam",
+	"ambang_tantangan": 24.0
   },
   {
     "tipe_tantangan": "Total Waktu",
-    "label_tantangan": "Mencapai 64 Jam"
+    "label_tantangan": "Mencapai 64 Jam",
+	"ambang_tantangan": 64.0
   },
   {
     "tipe_tantangan": "Total Waktu",
-    "label_tantangan": "Mencapai 100 Jam"
+    "label_tantangan": "Mencapai 100 Jam",
+	"ambang_tantangan": 100.0
   },
   {
     "tipe_tantangan": "Total Waktu",
-    "label_tantangan": "Mencapai 265 Jam"
+    "label_tantangan": "Mencapai 265 Jam",
+	"ambang_tantangan": 265.0
   },
   {
     "tipe_tantangan": "Total Waktu",
-    "label_tantangan": "Mencapai 465 Jam"
+    "label_tantangan": "Mencapai 465 Jam",
+	"ambang_tantangan": 465.0
   },
   {
     "tipe_tantangan": "Peak Speed Tertinggi",
-    "label_tantangan": "Mencapai 15Kmph"
+    "label_tantangan": "Mencapai 15Kmph",
+	"ambang_tantangan": 15.0
   },
   {
-     "tipe_tantangan": "Peak Speed Tertinggi",
-     "label_tantangan": "Mencapai 20kmph"
+    "tipe_tantangan": "Peak Speed Tertinggi",
+    "label_tantangan": "Mencapai 20kmph",
+	"ambang_tantangan": 20.0
    },
    {
       "tipe_tantangan": "Peak Speed Tertinggi",
-      "label_tantangan": "Mencapai 25kmph"
+      "label_tantangan": "Mencapai 25kmph",
+	"ambang_tantangan": 25.0
    },
    {
       "tipe_tantangan": "Peak Speed Tertinggi",
-      "label_tantangan": "Mencapai 30kmph"
+      "label_tantangan": "Mencapai 30kmph",
+	"ambang_tantangan": 30.0
    },
    {
       "tipe_tantangan": "Total Kalori",
-      "label_tantangan": "Membakar 272Kcal"
+      "label_tantangan": "Membakar 272Kcal",
+	"ambang_tantangan": 272.0
    },
    {
       "tipe_tantangan": "Total Kalori",
-      "label_tantangan": "Membakar 408Kcal"
+      "label_tantangan": "Membakar 408Kcal",
+	"ambang_tantangan": 408.0
    },
    {
       "tipe_tantangan": "Total Kalori",
-      "label_tantangan": "Membakar 544Kcal"
+      "label_tantangan": "Membakar 544Kcal",
+	"ambang_tantangan": 544.0
    },
    {
       "tipe_tantangan": "Total Kalori",
-      "label_tantangan": "Membakar 680Kcal"
+      "label_tantangan": "Membakar 680Kcal",
+	"ambang_tantangan": 680.0
    },
    {
       "tipe_tantangan": "Total Kalori",
-      "label_tantangan": "Membakar 1088 Kcal"
+      "label_tantangan": "Membakar 1088 Kcal",
+	"ambang_tantangan": 1088.0
    },
 ]

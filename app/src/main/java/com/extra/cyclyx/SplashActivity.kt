@@ -33,7 +33,6 @@ class SplashActivity : AppCompatActivity() {
     private fun determineNextPage() : Intent{
         val sharedPreferences = getSharedPreferences(SP_CYCLYX, Context.MODE_PRIVATE)
         val token = sharedPreferences.getString(USER_TOKEN,"")
-        Log.d("TOKEN","User Token => '$token'")
         if(!token.equals("")){
             return Intent(applicationContext,MainActivity::class.java)
         }else{

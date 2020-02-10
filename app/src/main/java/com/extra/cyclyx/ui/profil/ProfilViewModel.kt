@@ -1,7 +1,6 @@
 package com.extra.cyclyx.ui.profil
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.extra.cyclyx.repository.CyclyxRepository
 import com.extra.cyclyx.utils.*
@@ -66,7 +65,6 @@ class ProfilViewModel(app: Application) : AndroidViewModel(app) {
     private fun calculateAge(birth: Int, now: Int): String {
         val age = now - birth
 
-        Log.d("PROFIL", "age")
         return "$age"
     }
 

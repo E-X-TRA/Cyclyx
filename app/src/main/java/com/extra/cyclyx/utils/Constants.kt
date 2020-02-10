@@ -26,6 +26,20 @@ object GENDER{
 
 object WARNING_TYPES{
     const val REGISTRATION_MUST_NOT_NULL = 101
+    const val NOT_ELIGIBLE_BERSEPEDA = 102
+    const val IS_REFRESHING = 103
+}
+
+object STATUSES{
+    const val LOADING = "loading"
+    const val DONE = "done"
+}
+
+object TANTANGAN_CONSTANTS{
+    const val TIPE_JARAK = "Total Jarak"
+    const val TIPE_WAKTU = "Total Waktu"
+    const val TIPE_SPEED = "Peak Speed Tertinggi"
+    const val TIPE_KALORI = "Total Kalori"
 }
 
 const val TRACKING_STARTED = "tracking_started"

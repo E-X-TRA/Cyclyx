@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.extra.cyclyx.BersepedaActivity
 import com.extra.cyclyx.databinding.FragmentKesiapanBinding
 import com.extra.cyclyx.entity.ReferenceItem
+import com.extra.cyclyx.utils.WARNING_TYPES
 import com.google.firebase.database.DataSnapshot
 
 class KesiapanFragment : Fragment() {
@@ -43,6 +45,28 @@ class KesiapanFragment : Fragment() {
             }
         })
 
+        binding.srlKesiapan.setOnRefreshListener {
+            viewModel.onRefresh()
+        }
+
+        viewModel.showWarning.observe(this, Observer {
+            it?.let{
+                when(it){
+                    WARNING_TYPES.NOT_ELIGIBLE_BERSEPEDA -> {
+                        Toast.makeText(context,"Mohon Cek Kesiapan Perangkat Anda!", Toast.LENGTH_LONG).show()
+                        viewModel.onRefresh()
+                    }
+                    WARNING_TYPES.IS_REFRESHING -> {
+                        //do nothing here!
+                    }
+                    else -> {
+                        Toast.makeText(context,"Terjadi Sebuah Kesalahan", Toast.LENGTH_LONG).show()
+                    }
+                }
+                binding.srlKesiapan.isRefreshing = false
+            }
+        })
+
         viewModel.motivasiLiveData.observe(this, Observer<DataSnapshot>{
             it?.let {
                 val arrayItem = ArrayList<ReferenceItem>()
@@ -57,5 +81,10 @@ class KesiapanFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.onRefresh()
     }
 }

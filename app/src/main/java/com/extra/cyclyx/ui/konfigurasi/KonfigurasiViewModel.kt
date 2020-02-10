@@ -11,9 +11,17 @@ class KonfigurasiViewModel(val app: Application) : AndroidViewModel(app) {
 
     private val viewModelJob = Job()
     //init permission related
-    var isPowerSaverModeOn : Boolean = repository.checkPowerSaverMode()
-    var isBatteryOptimized: Boolean = repository.checkBatteryOptimization()
-    var isLocationSettingsEnabled : Boolean = repository.checkLocationSettings(app.applicationContext)
+    private val _isPowerSaverModeOn = MutableLiveData<Boolean>()
+    val isPowerSaverModeOn : LiveData<Boolean>
+        get() = _isPowerSaverModeOn
+
+    private val _isBatteryOptimized = MutableLiveData<Boolean>()
+    val isBatteryOptimized : LiveData<Boolean>
+        get() = _isBatteryOptimized
+
+    private val _isLocationSettingsEnabled = MutableLiveData<Boolean>()
+    val isLocationSettingsEnabled : LiveData<Boolean>
+        get() = _isLocationSettingsEnabled
 
     private val _intentForLocation = MutableLiveData<Boolean>()
     val intentForLocation : LiveData<Boolean>
@@ -26,6 +34,20 @@ class KonfigurasiViewModel(val app: Application) : AndroidViewModel(app) {
     private val _intentForPowerSaver = MutableLiveData<Boolean>()
     val intentForPowerSaver : LiveData<Boolean>
         get() = _intentForPowerSaver
+
+    private fun initializePrerequisite(){
+        _isPowerSaverModeOn.value = repository.checkPowerSaverMode()
+        _isBatteryOptimized.value = repository.checkBatteryOptimization()
+        _isLocationSettingsEnabled.value = repository.checkLocationSettings(app.applicationContext)
+    }
+
+    init {
+        initializePrerequisite()
+    }
+
+    fun onRefresh(){
+        initializePrerequisite()
+    }
 
     fun onBtnLocationClicked(){
         _intentForLocation.value = true

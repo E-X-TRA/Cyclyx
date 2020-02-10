@@ -10,7 +10,6 @@ import android.os.Build
 import android.os.IBinder
 import android.os.Looper
 import android.util.Log
-import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.extra.cyclyx.BersepedaActivity
@@ -44,7 +43,6 @@ class TrackingService : Service(){
         val pendingIntent =
             PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
-        Log.d("TRACKING", "Notification Compat")
         val bBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
         val color = 0xFF297FC3
         bBuilder.setContentTitle("My Trip")
@@ -61,14 +59,10 @@ class TrackingService : Service(){
                 START_SERVICE -> {
                     initializeLocationEngine()
                     startForeground(1024, makeNotification("Tracking Your Trip"))
-                    Toast.makeText(applicationContext, "Service Started!", Toast.LENGTH_SHORT)
-                        .show()
-                    Log.d("TRACKING","Service Started")
                 }
                 PAUSE_SERVICE -> {
                     startForeground(1024,makeNotification("Trip Is Paused"))
                     cyclyxLocationEngine.removeLocationUpdates(callback)
-                    Log.d("TRACKING","Service Paused")
                 }
                 STOP_SERVICE -> {
                     if(::cyclyxLocationEngine.isInitialized){
@@ -76,10 +70,6 @@ class TrackingService : Service(){
                     }
                     stopForeground(true)
                     stopSelf()
-                    Toast.makeText(applicationContext, "Service Stopped!", Toast.LENGTH_SHORT)
-                        .show()
-                    Log.d("TRACKING","Service Stopped")
-
                 }
             }
         }
@@ -122,7 +112,6 @@ class TrackingService : Service(){
                 val location = result?.lastLocation ?: return
                 service.pointList.add(Point.fromLngLat(location.longitude, location.latitude,location.altitude))
                 val routeString = service.encodePointToString(service.pointList)
-                Log.d("TRACKING","RouteString = $routeString")
 
                 service.sendBroadcast(routeString,location.altitude)
             } else {
@@ -132,7 +121,6 @@ class TrackingService : Service(){
 
         override fun onFailure(exception: Exception) {
             Log.d("TRACKING","Location Update Failed")
-
         }
     }
 

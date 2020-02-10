@@ -50,7 +50,6 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
 
         val application = requireNotNull(this.activity).application
         val arguments = HasilBersepedaFragmentArgs.fromBundle(arguments!!)
-        Log.d("RESULT","${arguments.bersepedaKey}")
 
         binding.mapView.onCreate(savedInstanceState)
         binding.mapView.getMapAsync(this)
@@ -61,9 +60,7 @@ class HasilBersepedaFragment : Fragment(), OnMapReadyCallback {
 
         viewModel.routeList.observe(this, Observer { route ->
             route?.let {
-                Log.d("RESULT","OBSERVED ROUTE LIST")
                 if (::map.isInitialized) {
-                    Log.d("RESULT","UPDATE MAPS FROM ROUTE LIST")
                     addPointToMap(route)
                     val envelope = TurfMeasurement.envelope(
                         FeatureCollection.fromFeature(

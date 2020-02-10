@@ -237,12 +237,10 @@ object FirebaseHelpers{
         }
 
         override fun onActive() {
-            Log.d(LOG_TAG, "onActive")
             query.addValueEventListener(listener)
         }
 
         override fun onInactive() {
-            Log.d(LOG_TAG, "onInactive")
             query.removeEventListener(listener)
         }
 

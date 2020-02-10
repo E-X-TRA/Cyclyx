@@ -40,7 +40,6 @@ class RiwayatViewModel(app: Application) :
     fun onDeleteClicked(id: Long) {
         uiScope.launch {
             deleteAct(id)
-            Log.d("STATISTIK","DELETE $id")
         }
     }
 
