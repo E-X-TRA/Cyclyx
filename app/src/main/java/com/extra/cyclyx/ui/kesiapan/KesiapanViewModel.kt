@@ -70,9 +70,6 @@ class KesiapanViewModel(val app: Application) : AndroidViewModel(app) {
 
     init {
         initializePrerequisite()
-        Log.d("TRACKING","Location Settings = ${isLocationSettingsEnabled}")
-        Log.d("TRACKING","Power Saver Mode  = ${isPowerSaverModeOn}")
-        Log.d("TRACKING","Battery Optimized = ${isBatteryOptimized}")
     }
 
     fun onRefresh(){

@@ -25,12 +25,11 @@ class TantanganSeeder(val repo : CyclyxRepository){
 
             this.readJSONFile(bufferedReader)
         } catch (e: Exception) {
-            Log.d("TRACKING", "TANTANGANJSON READ!")
+            Log.d("TRACKING", "TANTANGANJSON FAILED TO READ!")
         }
     }
 
     suspend fun seedTantanganData(){
-            Log.d("SEEDING",".:: JSON -> $tantanganList ::.")
             for(tantangan in tantanganList){
                 if(tantangan != null){
                     repo.insertTantanganData(tantangan)

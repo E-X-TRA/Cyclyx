@@ -2,7 +2,6 @@ package com.extra.cyclyx.ui.selesaiSepeda
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +29,6 @@ class SelesaiBersepedaFragment : Fragment() {
 
         val app = requireActivity().application
         val arguments = SelesaiBersepedaFragmentArgs.fromBundle(arguments!!)
-        Log.d("RESULT","${arguments.bersepedaKey}")
         viewModel = ViewModelProvider(this,SelesaiBersepedaViewModel.Factory(arguments.bersepedaKey,app)).get(SelesaiBersepedaViewModel::class.java)
         binding.viewModel = viewModel
 

@@ -20,7 +20,6 @@ class ElevationHelper(val context: Context) {
 
     suspend fun initializeGeoid(){
         withContext(Dispatchers.IO){
-            Log.d("TRACKING","GEOID INITIALIZED")
             try{
                 Geoid.init()
             } catch (e : IOException) {

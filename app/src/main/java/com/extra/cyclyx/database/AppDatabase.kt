@@ -9,7 +9,7 @@ import com.extra.cyclyx.database.converter.LocationConverter
 import com.extra.cyclyx.entity.Bersepeda
 import com.extra.cyclyx.entity.Tantangan
 
-@Database(entities = [Bersepeda::class, Tantangan::class],version = 2,exportSchema = false)
+@Database(entities = [Bersepeda::class, Tantangan::class],version = 1,exportSchema = false)
 @TypeConverters(LocationConverter::class)
 abstract class AppDatabase : RoomDatabase(){
     abstract val bersepedaDAO : BersepedaDao

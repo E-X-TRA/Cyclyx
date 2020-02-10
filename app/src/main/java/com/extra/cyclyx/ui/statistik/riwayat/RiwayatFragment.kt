@@ -3,7 +3,6 @@ package com.extra.cyclyx.ui.statistik.riwayat
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -71,9 +70,7 @@ class RiwayatFragment : Fragment() {
             .setPositiveButton("Ya", DialogInterface.OnClickListener { _, _->
                 viewModel.onDeleteClicked(actId)
             })
-            .setNegativeButton("Tidak",DialogInterface.OnClickListener { _, _ ->
-                Log.d("DELETE","Cancel")
-            })
+            .setNegativeButton("Tidak",DialogInterface.OnClickListener { _, _ -> })
             .show()
     }
 }

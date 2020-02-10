@@ -3,7 +3,6 @@ package com.extra.cyclyx.ui.bersepeda
 import android.app.Application
 import android.os.Handler
 import android.os.SystemClock
-import android.util.Log
 import androidx.lifecycle.*
 import com.extra.cyclyx.entity.Bersepeda
 import com.extra.cyclyx.repository.CyclyxRepository
@@ -124,7 +123,6 @@ class BersepedaViewModel(
     }
 
     fun onStop() {
-        Log.d("TRACKING","Stopped!")
         uiScope.launch {
             stopTimer()
             val latestAct = thisAct.value ?: return@launch
@@ -140,12 +138,10 @@ class BersepedaViewModel(
             latestAct.elevationLoss = _elevationLoss
             latestAct.routeString = thisActRoute
             latestAct.finished = true
-            Log.d("CALCULATIONS","$latestAct")
-
-            update(latestAct)
-//            modifyUserCyclingData(latestAct)
 
             thisAct.value = latestAct
+
+            update(latestAct)
 
             _navigateToResult.value = latestAct
         }
@@ -223,7 +219,6 @@ class BersepedaViewModel(
     //timer related
     private fun startTimer() {
         uiScope.launch {
-            Log.d("TRACKING","Timer Started")
             startTime.value = System.currentTimeMillis() //set starttime value
             _trackingStatus.value = TRACKING_STARTED
 
@@ -234,7 +229,6 @@ class BersepedaViewModel(
 
     private fun pauseTimer(){
         uiScope.launch {
-            Log.d("TRACKING","Timer Paused")
             _trackingStatus.value = TRACKING_PAUSED
 
             handler?.removeCallbacks(runnable)
@@ -244,7 +238,6 @@ class BersepedaViewModel(
 
     private fun resumeTimer(){
         uiScope.launch {
-            Log.d("TRACKING","Timer Resumed")
             _trackingStatus.value = TRACKING_RESUMED
 
             handler?.postDelayed(runnable,0)

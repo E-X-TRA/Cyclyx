@@ -1,7 +1,6 @@
 package com.extra.cyclyx.ui.hasilBersepeda
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.extra.cyclyx.entity.Bersepeda
 import com.extra.cyclyx.repository.CyclyxRepository
@@ -32,14 +31,12 @@ class HasilBersepedaViewModel(
     val mapStyle = repository.settingsPreferences.getString("tipe_peta","Default")
 
     init {
-        Log.d("MAP","Style : $mapStyle")
         act = repository.getCyclingData(actId)
     }
 
     fun decodeRoute(act: Bersepeda?) {
         uiScope.launch {
             act?.let {
-                Log.d("RESULT","${act.routeString}")
                 val decodedRoute = PolylineUtils.decode(act.routeString, 5)
                 _routeList.value = PolylineUtils.simplify(decodedRoute,0.00005)
             }
@@ -48,7 +45,6 @@ class HasilBersepedaViewModel(
 
     fun onMapAsyncFinished() {
         decodeRoute(act.value)
-        Log.d("RESULT","MapAync : ${act.value}")
     }
 
     fun onBackClicked() {

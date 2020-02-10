@@ -9,8 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.extra.cyclyx.MainActivity
 import com.extra.cyclyx.R
@@ -66,14 +64,14 @@ class EditProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btnSave.setOnClickListener {
-            var sharedPreferences = activity!!.getSharedPreferences(SP_CYCLYX, Context.MODE_PRIVATE)
+            val sharedPreferences = activity!!.getSharedPreferences(SP_CYCLYX, Context.MODE_PRIVATE)
 
-            var first_name: String = firstName.text.toString()
-            var last_name: String = lastName.text.toString()
-            var birth_year: String = birthYear.text.toString()
-            var body_weight: String = bodyWeight.text.toString()
-            var body_height: String = bodyHeight.text.toString()
-            var editor: SharedPreferences.Editor = sharedPreferences.edit()
+            val first_name: String = firstName.text.trim().toString()
+            val last_name: String = lastName.text.trim().toString()
+            val birth_year: String = birthYear.text.trim().toString()
+            val body_weight: String = bodyWeight.text.trim().toString()
+            val body_height: String = bodyHeight.text.trim().toString()
+            val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
             when {
                 first_name == "" -> profileValidate()

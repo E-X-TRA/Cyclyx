@@ -1,14 +1,15 @@
 package com.extra.cyclyx.ui.selesaiSepeda
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.extra.cyclyx.entity.Bersepeda
+import com.extra.cyclyx.entity.Tantangan
 import com.extra.cyclyx.repository.CyclyxRepository
 import com.extra.cyclyx.utils.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class SelesaiBersepedaViewModel(actId: Long = 0L, val app : Application) : AndroidViewModel(app){
     val repository = CyclyxRepository(app.applicationContext)
@@ -35,8 +36,9 @@ class SelesaiBersepedaViewModel(actId: Long = 0L, val app : Application) : Andro
     }
 
     fun onActLoaded(act : Bersepeda){
-        Log.d("TRACKING","Act Loaded")
         modifyUserCyclingData(act)
+
+        compareTantanganWithUserData()
     }
 
     //adding save data to shared preferences
@@ -77,6 +79,58 @@ class SelesaiBersepedaViewModel(actId: Long = 0L, val app : Application) : Andro
 
 
         editor.apply()
+    }
+
+    private fun compareTantanganWithUserData(){
+        //data jarak
+        updateTantanganData(
+            getUnfinishedTantanganData(TANTANGAN_CONSTANTS.TIPE_JARAK),
+            repository.sharedPreferences.getDouble(USER_TOTAL_DISTANCE,0.0)
+        )
+
+        //data waktu
+        updateTantanganData(
+            getUnfinishedTantanganData(TANTANGAN_CONSTANTS.TIPE_WAKTU),
+            repository.sharedPreferences.getLong(USER_TOTAL_DURATION,0L)
+        )
+
+        //data kecepatan
+        updateTantanganData(
+            getUnfinishedTantanganData(TANTANGAN_CONSTANTS.TIPE_SPEED),
+            repository.sharedPreferences.getDouble(USER_MAX_PEAK_SPEED,0.0)
+        )
+
+        //data kalori
+        updateTantanganData(
+            getUnfinishedTantanganData(TANTANGAN_CONSTANTS.TIPE_KALORI),
+            repository.sharedPreferences.getDouble(USER_TOTAL_CALORIES,0.0)
+        )
+    }
+
+    //comparing tantangan data with user data
+    private fun updateTantanganData(tantangan : Tantangan,userData : Number){
+        if(userData.toInt() < tantangan.ambangTantangan){
+            val progress = (userData.toInt() / tantangan.ambangTantangan) * 100
+            updateProgressDataTantangan(progress.toInt(),tantangan)
+        }else{
+            updateProgressDataTantangan(100,tantangan)
+            //lakukan lagi fungsi ini
+            this.updateTantanganData(tantangan,userData)
+        }
+    }
+
+    private fun updateProgressDataTantangan(newProgress : Int,data :Tantangan){
+        uiScope.launch {
+            repository.updateProgressTantangan(newProgress,data)
+        }
+    }
+
+    private fun getUnfinishedTantanganData(label : String) : Tantangan{
+        var tantanganData : Tantangan = Tantangan(0,"ERR","ERR",0.0,0)
+        uiScope.launch {
+            tantanganData = repository.getLatestUnfinishedTantangan(label)
+        }
+        return tantanganData
     }
 
     override fun onCleared() {

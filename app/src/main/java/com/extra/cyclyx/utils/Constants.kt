@@ -35,6 +35,13 @@ object STATUSES{
     const val DONE = "done"
 }
 
+object TANTANGAN_CONSTANTS{
+    const val TIPE_JARAK = "Total Jarak"
+    const val TIPE_WAKTU = "Total Waktu"
+    const val TIPE_SPEED = "Peak Speed Tertinggi"
+    const val TIPE_KALORI = "Total Kalori"
+}
+
 const val TRACKING_STARTED = "tracking_started"
 const val TRACKING_PAUSED = "tracking_paused"
 const val TRACKING_RESUMED = "tracking_resumed"

@@ -3,9 +3,9 @@ package com.extra.cyclyx
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.extra.cyclyx.ui.bersepeda.BersepedaFragment
+import com.extra.cyclyx.ui.selesaiSepeda.SelesaiBersepedaFragment
 
 
 class BersepedaActivity : AppCompatActivity(){
@@ -19,12 +19,13 @@ class BersepedaActivity : AppCompatActivity(){
         val currFragment = navHost?.let {
             it.childFragmentManager.fragments[0]
         }
-        Log.d("FRAGMENT","Current Fragment : $currFragment")
         if(currFragment is BersepedaFragment){
-            Log.d("FRAGMENT","Current Fragment is a Bersepeda Fragment")
             showConfirmationDialog()
-        }else{
-            Log.d("FRAGMENT","Current Fragment is not Bersepeda Fragment")
+        }
+        else if(currFragment is SelesaiBersepedaFragment){
+            this.finish()
+        }
+        else{
             super.onBackPressed()
         }
 
