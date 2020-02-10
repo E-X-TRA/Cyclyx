@@ -13,6 +13,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.extra.cyclyx.R
 import com.extra.cyclyx.databinding.FragmentSelesaiSepedaBinding
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
+
 
 /**
  * A simple [Fragment] subclass.
@@ -20,6 +24,8 @@ import com.extra.cyclyx.databinding.FragmentSelesaiSepedaBinding
 class SelesaiBersepedaFragment : Fragment() {
     lateinit var binding : FragmentSelesaiSepedaBinding
     lateinit var viewModel : SelesaiBersepedaViewModel
+    lateinit var interstitialAd : InterstitialAd
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

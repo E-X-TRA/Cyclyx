@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,10 @@ import com.extra.cyclyx.R
 import com.extra.cyclyx.databinding.FragmentBersepedaBinding
 import com.extra.cyclyx.utils.*
 import com.extra.cyclyx.utils.service.TrackingService
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.MobileAds
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.LineString
@@ -43,6 +48,18 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
     private lateinit var map: MapboxMap
     private lateinit var viewModel: BersepedaViewModel
     private lateinit var ctx: Context
+
+    private val mAppUnitId: String by lazy {
+
+        "ca-app-pub-8879155810445620~5049993345"
+    }
+
+    private val mInterstitialAdUnitId: String by lazy {
+
+        "ca-app-pub-8879155810445620/9344461573"
+    }
+
+    private lateinit var mInterstitialAd: InterstitialAd
 
     override fun onMapReady(mapboxMap: MapboxMap) {
         map = mapboxMap
@@ -102,6 +119,15 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
         //init maps and binding
         Mapbox.getInstance(context!!, com.extra.cyclyx.BuildConfig.apikey)
         binding = FragmentBersepedaBinding.inflate(inflater)
+
+        //Interstitial Ads
+        mInterstitialAd = InterstitialAd(activity)
+
+        initializeInterstitialAd(mAppUnitId)
+
+        loadInterstitialAd(mInterstitialAdUnitId)
+
+        runAdEvents()
 
         binding.lifecycleOwner = this
         //init context for use within fragment
@@ -176,8 +202,14 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun navigateToResult(id : Long){
-        this.findNavController().navigate(BersepedaFragmentDirections.navigateToSelesaiBersepedaFromBersepeda(id))
+        if (mInterstitialAd.isLoaded) {
+            mInterstitialAd.show()
+        }else{
+            this.findNavController().navigate(BersepedaFragmentDirections.navigateToSelesaiBersepedaFromBersepeda(id))
+        }
     }
+
+
 
     //receive service location update
     private val locationUpdateReceiver = object : BroadcastReceiver() {
@@ -233,6 +265,36 @@ class BersepedaFragment : Fragment(), OnMapReadyCallback {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         binding.mapView.onSaveInstanceState(outState)
+    }
+
+    private fun initializeInterstitialAd(appUnitId: String) {
+
+        MobileAds.initialize(activity, appUnitId)
+
+    }
+
+    //for ads
+    private fun loadInterstitialAd(interstitialAdUnitId: String) {
+
+        mInterstitialAd.adUnitId = interstitialAdUnitId
+        mInterstitialAd.loadAd(AdRequest.Builder().build())
+    }
+
+    private fun runAdEvents() {
+
+        mInterstitialAd.adListener = object : AdListener() {
+
+            // If user clicks on the ad and then presses the back, s/he is directed to DetailActivity.
+            override fun onAdClicked() {
+                super.onAdOpened()
+                mInterstitialAd.adListener.onAdClosed()
+            }
+
+            // If user closes the ad, s/he is directed to DetailActivity.
+            override fun onAdClosed() {
+
+            }
+        }
     }
 
 }

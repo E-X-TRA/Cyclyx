@@ -15,10 +15,55 @@
       },
       "oauth_client": [
         {
+          "client_id": "406279706922-ss8s0q888a34ve6k4ebfcvr4b59equp1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.extra.cyclyx",
+            "certificate_hash": "9b9add64ee00a5e89faa0f55ce56f883305e2211"
+          }
+        },
+        {
           "client_id": "406279706922-fmrtu526i459el1sru74ovhkesag4cku.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.extra.cyclyx",
+            "certificate_hash": "6972d207659758c0e4584979b93099f936bbc58a"
+          }
+        },
+        {
+          "client_id": "406279706922-qv5grfhcu22su3b1ujvb7pb0usvgf56v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCltibsNmVAFGFj4JFwbX7l_zb3d0L5bLc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406279706922-qv5grfhcu22su3b1ujvb7pb0usvgf56v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406279706922:android:8077b06c773509a6272653",
+        "android_client_info": {
+          "package_name": "com.extra.cyclyxadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406279706922-dg52p9rlvfq6ohjmdhisejh8btcvkah6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.extra.cyclyxadmin",
             "certificate_hash": "6972d207659758c0e4584979b93099f936bbc58a"
           }
         },
