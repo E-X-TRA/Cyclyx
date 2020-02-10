@@ -176,7 +176,7 @@
                 <Button
                         style="@style/NextButton"
                         android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/_50sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:width="@dimen/_100sdp"
                         android:onClick="@{()->viewModel.onBtnMulaiClicked()}"
                         android:text="Mulai" />
