@@ -46,8 +46,8 @@ class BersepedaViewModel(
         get() = _calories
 
     private var _peakSpeed = 0.0
-    private var _elevationLoss = 0.0
-    private var _elevationGain = 0.0
+//    private var _elevationLoss = 0.0
+//    private var _elevationGain = 0.0
     private var thisActRoute = ""
     private var timeLog = ArrayList<Long>()
 
@@ -60,8 +60,8 @@ class BersepedaViewModel(
     }
 
     var handler : Handler?=null
-    val elevationHelper = ElevationHelper(app.applicationContext)
-    private val altitudeList = ArrayList<Double>()
+//    val elevationHelper = ElevationHelper(app.applicationContext)
+//    private val altitudeList = ArrayList<Double>()
 
     init {
         handler = Handler()
@@ -134,8 +134,8 @@ class BersepedaViewModel(
             latestAct.distance = _totalDistance.value!!
             latestAct.calories = _calories.value!!
             latestAct.peakSpeed = _peakSpeed
-            latestAct.elevationGain = _elevationGain
-            latestAct.elevationLoss = _elevationLoss
+//            latestAct.elevationGain = _elevationGain
+//            latestAct.elevationLoss = _elevationLoss
             latestAct.routeString = thisActRoute
             latestAct.finished = true
 
@@ -154,7 +154,7 @@ class BersepedaViewModel(
             timeLog.add(System.currentTimeMillis())
             val tempListLatLng = PolylineUtils.decode(route, 5)
             _locationPoints.value = tempListLatLng
-            altitudeList.add(alt)
+//            altitudeList.add(alt)
 
             viewModelScope.launch {
                 processMapsData()
@@ -173,28 +173,21 @@ class BersepedaViewModel(
                 //calculate distance
                 //assuming this was KILOMETRES
                 distanceBetweenLastTwoPoints = TurfMeasurement.distance(oldPoint, newPoint,TurfConstants.UNIT_KILOMETRES)
-                //calculate speed (for peak/max speed) in km/h
-                val duration = timeLog.get(timeLog.size - 1) - timeLog.get(timeLog.size - 2)
-                //        val speed = distanceBetweenLastTwoPoints / duration //in m/s
-                val speed = (distanceBetweenLastTwoPoints/1000) / convertLongToSecond(duration) //in m/s
-                if (_peakSpeed < speed) {
-                    _peakSpeed = speed
-                }
                 //elevation loss and gain
-                val oldPointAlt = elevationHelper.getOffset(oldPoint)
-                val newPointAlt = elevationHelper.getOffset(newPoint)
-                when {
-                    oldPointAlt < newPointAlt -> { //means elevation gain
-                        val elevationChange = newPointAlt - oldPointAlt
-                        _elevationGain += elevationChange
-                    }
-                    oldPointAlt > newPointAlt -> { //means elevation loss
-                        val elevationChange = oldPointAlt - newPointAlt
-                        _elevationLoss += elevationChange
-                    }
-                    else -> {
-                    }
-                }
+//                val oldPointAlt = elevationHelper.getOffset(oldPoint)
+//                val newPointAlt = elevationHelper.getOffset(newPoint)
+//                when {
+//                    oldPointAlt < newPointAlt -> { //means elevation gain
+//                        val elevationChange = newPointAlt - oldPointAlt
+//                        _elevationGain += elevationChange
+//                    }
+//                    oldPointAlt > newPointAlt -> { //means elevation loss
+//                        val elevationChange = oldPointAlt - newPointAlt
+//                        _elevationLoss += elevationChange
+//                    }
+//                    else -> {
+//                    }
+//                }
             }
             //summing things when moving for total sum and update UI
             if (pointsList.size >= 2 && distanceBetweenLastTwoPoints > 0) {
@@ -212,6 +205,14 @@ class BersepedaViewModel(
                 val mets = determineMets(averageSpeed!!)
                 val caloriesCalc = ((mets * weightInKg * 3.5) / 200) * (convertLongToMinute(durationUntilThis))
                 _calories.value = caloriesCalc
+            }
+            if(pointsList.size >= 2 && pointsList.size % 5 == 0){
+                //calculate speed (for peak/max speed) every 5 location milestone!
+                val duration = timeLog.get(timeLog.size - 1) - timeLog.get(timeLog.size - 2)
+                val speed = (distanceBetweenLastTwoPoints/1000) / (duration / 1000) //in m/s
+                if (_peakSpeed < speed) {
+                    _peakSpeed = speed
+                }
             }
         }
     }
