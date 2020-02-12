@@ -158,24 +158,24 @@
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
 
-                        <androidx.cardview.widget.CardView style="@style/cardSetting_hasil">
+<!--                        <androidx.cardview.widget.CardView style="@style/cardSetting_hasil">-->
 
-                            <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:padding="@dimen/_10sdp">
+<!--                            <RelativeLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:orientation="horizontal"-->
+<!--                                    android:padding="@dimen/_10sdp">-->
 
-                                <TextView
-                                        style="@style/card_font_left"
-                                        android:text="@string/txt_elevasi" />
+<!--                                <TextView-->
+<!--                                        style="@style/card_font_left"-->
+<!--                                        android:text="@string/txt_elevasi" />-->
 
-                                <TextView
-                                        android:id="@+id/tvHasilElevasi"
-                                        style="@style/card_font_right"
-                                        app:formatElevation="@{viewModel.act}" />
-                            </RelativeLayout>
-                        </androidx.cardview.widget.CardView>
+<!--                                <TextView-->
+<!--                                        android:id="@+id/tvHasilElevasi"-->
+<!--                                        style="@style/card_font_right"-->
+<!--                                        app:formatElevation="@{viewModel.act}" />-->
+<!--                            </RelativeLayout>-->
+<!--                        </androidx.cardview.widget.CardView>-->
 
                         <androidx.cardview.widget.CardView style="@style/cardSetting_hasil">
 
