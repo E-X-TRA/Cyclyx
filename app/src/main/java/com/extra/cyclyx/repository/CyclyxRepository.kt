@@ -117,9 +117,9 @@ class CyclyxRepository(val context: Context){
         } else {
             // This is Deprecated in API 28
             @Suppress("DEPRECATION")
-            val mode : Int = Settings.Secure.getInt(context.getContentResolver(), Settings.Secure.LOCATION_MODE,
-                    Settings.Secure.LOCATION_MODE_OFF);
-            (mode != Settings.Secure.LOCATION_MODE_OFF);
+            val mode : Int = Settings.Secure.getInt(context.contentResolver, Settings.Secure.LOCATION_MODE,
+                    Settings.Secure.LOCATION_MODE_OFF)
+            (mode != Settings.Secure.LOCATION_MODE_OFF)
 
         }
     }

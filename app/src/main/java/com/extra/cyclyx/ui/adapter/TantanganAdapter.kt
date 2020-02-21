@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.extra.cyclyx.databinding.ItemTantanganBinding
 import com.extra.cyclyx.entity.Tantangan
 
-class TantanganAdapter() : ListAdapter<Tantangan, TantanganAdapter.TantanganVH>(TrackingDiffUtil){
+class TantanganAdapter : ListAdapter<Tantangan, TantanganAdapter.TantanganVH>(TrackingDiffUtil){
     companion object TrackingDiffUtil : DiffUtil.ItemCallback<Tantangan>(){
         override fun areItemsTheSame(oldItem: Tantangan, newItem: Tantangan): Boolean {
             return oldItem == newItem

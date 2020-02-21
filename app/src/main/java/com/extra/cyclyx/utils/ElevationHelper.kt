@@ -23,7 +23,7 @@ class ElevationHelper(val context: Context) {
             try{
                 Geoid.init()
             } catch (e : IOException) {
-                Log.e("TRACKING", "Altitude correction $e");
+                Log.e("TRACKING", "Altitude correction $e")
             }
         }
     }

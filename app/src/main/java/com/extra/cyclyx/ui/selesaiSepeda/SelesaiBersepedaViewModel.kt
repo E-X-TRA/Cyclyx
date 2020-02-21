@@ -38,7 +38,7 @@ class SelesaiBersepedaViewModel(actId: Long = 0L, val app : Application) : Andro
     fun onActLoaded(act : Bersepeda){
         modifyUserCyclingData(act)
 
-        compareTantanganWithUserData()
+//        compareTantanganWithUserData()
     }
 
     //adding save data to shared preferences

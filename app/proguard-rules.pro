@@ -24,8 +24,15 @@
 -keepattributes Signature
 
 # This rule will properly ProGuard all the model classes in
-# the package com.yourcompany.models. Modify to fit the structure
-# of your app.
--keepclassmembers class com.extra.cyclyx.entity.** {
+    # the package com.yourcompany.models. Modify to fit the structure
+    # of your app.
+    -keepclassmembers class com.extra.cyclyx.entity.** {
+      *;
+    }
+
+-keepclassmembers class com.extra.cyclyx.database.** {
+  *;
+}
+-keepclassmembers class com.extra.cyclyx.repository.** {
   *;
 }
